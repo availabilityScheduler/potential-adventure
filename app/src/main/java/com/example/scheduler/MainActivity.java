@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
         // [START initialize_auth]
         // Initialize Firebase Auth
-       // mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         // [END initialize_auth]
 
         signInButton.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 signIn();
             }
-        });/5/4/wef843'{
+        });
     }
 
     @Override
