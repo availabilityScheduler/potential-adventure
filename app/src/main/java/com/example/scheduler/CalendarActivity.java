@@ -30,6 +30,7 @@ public class CalendarActivity extends AppCompatActivity {
                 Intent intent = new Intent(CalendarActivity.this, ThirdActivity.class);
                 intent.putExtra("date", date);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
     }

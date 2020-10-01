@@ -22,12 +22,25 @@
 
     <include layout="@layout/content_main" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+    <TextView
+        android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:layout_below="@+id/toolbar"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="60dp"
+        android:hint="Date"
+        android:textSize="25sp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fab"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        app:fabSize="normal"
+        android:backgroundTint="@color/colorPrimary"
+        app:elevation="6dp"
+        android:src="@drawable/ic_baseline_calendar_today_24"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
