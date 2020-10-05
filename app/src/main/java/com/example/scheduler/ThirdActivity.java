@@ -7,7 +7,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,8 +18,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
@@ -30,14 +30,6 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -47,6 +39,7 @@ public class ThirdActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private NavigationView mNavigationView;
 
+    Member thisMember;
 
 
     //Google
@@ -56,7 +49,7 @@ public class ThirdActivity extends AppCompatActivity {
     TextView mEmail;
     TextView id;
     CircleImageView mPhoto;
-
+    DatabaseReference db;
     //Calendar
    private static final String TAG = "ThirdActivity";
    private TextView theDate;
@@ -67,6 +60,10 @@ public class ThirdActivity extends AppCompatActivity {
         setContentView(R.layout.activity_third);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        thisMember = new Member();
+
+
+        db = FirebaseDatabase.getInstance().getReference().child("User");
 
         //connect nav view
         mNavigationView = findViewById(R.id.nav_view);
@@ -109,6 +106,12 @@ public class ThirdActivity extends AppCompatActivity {
             mEmail.setText(personEmail);
             //id.setText("ID: " + personId);
             Glide.with(this).load(personPhoto).into(mPhoto);
+
+
+            thisMember.setaName(personName);
+            thisMember.setID(personEmail);
+            db.push().setValue(thisMember);
+            Toast.makeText(ThirdActivity.this, "Data Inserted Successfully", Toast.LENGTH_LONG).show();
 
         }
 
