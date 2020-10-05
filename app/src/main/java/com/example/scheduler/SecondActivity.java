@@ -24,7 +24,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class SecondActivity extends AppCompatActivity {
 
-    GoogleSignInClient mGoogleSignInClient;
+    /**GoogleSignInClient mGoogleSignInClient;
     Button sign_out;
     TextView name;
     TextView email;
@@ -100,5 +100,5 @@ public class SecondActivity extends AppCompatActivity {
                         finish();
                     }
                 });
-    }
+    }**/
 }
