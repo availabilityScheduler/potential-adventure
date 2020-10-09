@@ -1,3 +1,4 @@
+//testing
 package com.example.scheduler;
 
 import android.content.Intent;
@@ -25,11 +26,6 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 
 public class MainActivity extends AppCompatActivity {
-
-    //david comment
-    //harris comment
-    //Jonathan Comment
-    //trung comment
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private FirebaseAuth mAuth;
@@ -81,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if (account != null) {
-            startActivity(new Intent(MainActivity.this, SecondActivity.class));
+            startActivity(new Intent(MainActivity.this, ThirdActivity.class));
         }
         super.onStart();
         //Check if user is signed in (non-null) and update UI accordingly.
@@ -127,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            startActivity(new Intent(MainActivity.this, SecondActivity.class));
+                            startActivity(new Intent(MainActivity.this, ThirdActivity.class));
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.

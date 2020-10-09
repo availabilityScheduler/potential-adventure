@@ -82,16 +82,11 @@ public class SecondActivity extends AppCompatActivity {
 
     }
 
-    /**sends user to Main Menu CURRENTLY TESTING */
-    public void goToMain(View view){
-        Intent intent = new Intent(this, MainMenuActivity.class);
-        startActivity(intent);
-    }
-
 
     private void toCal() {
         startActivity(new Intent(SecondActivity.this, ThirdActivity.class));
-        //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
     }
 
     private void signOut() {
@@ -106,6 +101,4 @@ public class SecondActivity extends AppCompatActivity {
                     }
                 });
     }
-
-
 }

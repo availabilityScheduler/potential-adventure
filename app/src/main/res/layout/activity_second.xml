@@ -80,21 +80,10 @@
             android:layout_toEndOf="@+id/photo"
             android:text="Id" />
 
-        <Button
-            android:id="@+id/go_to_main_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="134dp"
-            android:onClick="goToMain"
-            android:text="Go To Main Test" />
+
+
 
     </RelativeLayout>
-
-
-
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
