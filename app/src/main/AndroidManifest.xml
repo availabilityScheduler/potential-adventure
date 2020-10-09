@@ -13,7 +13,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Login"></activity>
         <activity android:name=".Register" />
-        <activity android:name=".SecondActivity" />
         <activity android:name=".ThirdActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
