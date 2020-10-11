@@ -4,8 +4,10 @@ import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -57,6 +59,7 @@ public class searchBar extends AppCompatActivity {
         mResultList.setHasFixedSize(true);
         mResultList.setLayoutManager(new LinearLayoutManager(getBaseContext()));
 
+        //onClick
         mSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,32 +69,25 @@ public class searchBar extends AppCompatActivity {
             }
         });
 
+        //For when pressing enter to get search"
+        final EditText edittext = (EditText) findViewById(R.id.search_field);
+        edittext.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                String searchText = mSearchField.getText().toString();
+                // If the event is a key-down event on the "enter" button
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                            firebaseUserSearch(searchText);
+                    return true;
+                }
+                return false;
+            }
+        });
+
+
     }
-    //works locally, will print out users
 
-//    private void firebaseUserSearch(String searchText){
-//        Toast.makeText(searchBar.this, "Started Search", Toast.LENGTH_LONG).show();
-//        Query firebaseSearchQuery = mUserDatabase.orderByChild("aName").startAt(searchText).endAt(searchText + "\uf8ff");
-//        DatabaseReference db = FirebaseDatabase.getInstance().getReference();
-//        DatabaseReference childDB = db.child("Users");
-//        ValueEventListener eventListener = new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for(DataSnapshot ds : dataSnapshot.getChildren()) {
-//                    String name = ds.child("aName").getValue(String.class);
-//                    Log.d("TAG", name);
-//                }
-//            }
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//            }
-//        };
-//        childDB.addListenerForSingleValueEvent(eventListener);
-//    }
-
-    //This doesnt seem to be working
     private void firebaseUserSearch(String searchText) {
-        //super.fireBaseUserSearch();
         Toast.makeText(searchBar.this, "Started Search", Toast.LENGTH_LONG).show();
 
         Query firebaseSearchQuery = mUserDatabase.orderByChild("aName").startAt(searchText).endAt(searchText + "\uf8ff");
@@ -144,6 +140,27 @@ public class searchBar extends AppCompatActivity {
 
     }
 }
+
+//works locally, will print out users
+//    private void firebaseUserSearch(String searchText){
+//        Toast.makeText(searchBar.this, "Started Search", Toast.LENGTH_LONG).show();
+//        Query firebaseSearchQuery = mUserDatabase.orderByChild("aName").startAt(searchText).endAt(searchText + "\uf8ff");
+//        DatabaseReference db = FirebaseDatabase.getInstance().getReference();
+//        DatabaseReference childDB = db.child("Users");
+//        ValueEventListener eventListener = new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+//                    String name = ds.child("aName").getValue(String.class);
+//                    Log.d("TAG", name);
+//                }
+//            }
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//            }
+//        };
+//        childDB.addListenerForSingleValueEvent(eventListener);
+//    }
 
 
 
