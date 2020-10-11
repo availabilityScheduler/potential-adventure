@@ -16,6 +16,9 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
@@ -23,6 +26,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.ValueEventListener;
 
 
 import androidx.annotation.NonNull;
@@ -63,13 +67,36 @@ public class searchBar extends AppCompatActivity {
         });
 
     }
+    //works locally, will print out users
 
+//    private void firebaseUserSearch(String searchText){
+//        Toast.makeText(searchBar.this, "Started Search", Toast.LENGTH_LONG).show();
+//        Query firebaseSearchQuery = mUserDatabase.orderByChild("aName").startAt(searchText).endAt(searchText + "\uf8ff");
+//        DatabaseReference db = FirebaseDatabase.getInstance().getReference();
+//        DatabaseReference childDB = db.child("Users");
+//        ValueEventListener eventListener = new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+//                    String name = ds.child("aName").getValue(String.class);
+//                    Log.d("TAG", name);
+//                }
+//            }
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//            }
+//        };
+//        childDB.addListenerForSingleValueEvent(eventListener);
+//    }
+
+    //This doesnt seem to be working
     private void firebaseUserSearch(String searchText) {
+        //super.fireBaseUserSearch();
         Toast.makeText(searchBar.this, "Started Search", Toast.LENGTH_LONG).show();
+
         Query firebaseSearchQuery = mUserDatabase.orderByChild("aName").startAt(searchText).endAt(searchText + "\uf8ff");
 
         System.out.println(firebaseSearchQuery);
-
 
         FirebaseRecyclerOptions personsOptions =
                 new FirebaseRecyclerOptions.Builder<Member>().setQuery(firebaseSearchQuery, Member.class).build();
@@ -77,42 +104,34 @@ public class searchBar extends AppCompatActivity {
         FirebaseRecyclerAdapter mPeopleRVAdapter =
                 new FirebaseRecyclerAdapter<Member, userViewHolder>(personsOptions) {
 
+                    @Override
+                    protected void onBindViewHolder(userViewHolder holder, int position, Member model) {
+                        holder.setDetails(getApplicationContext(), model.getaName(), model.getID());
+                    }
 
-            @Override
-            protected void onBindViewHolder(userViewHolder holder, int position, Member model) {
-                holder.setDetails(getApplicationContext(), model.getaName(), model.getID());
-            }
+                    @Override
+                    public userViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-
-            @Override
-            public userViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_list, parent, false);
-                return new userViewHolder(view);
-            }
-
-        };
-
+                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_list, parent, false);
+                        return new userViewHolder(view);
+                    }
+                };
+        mPeopleRVAdapter.startListening();
         mResultList.setAdapter(mPeopleRVAdapter);
-
 
     }
 
 
     // View Holder Class
     public static class userViewHolder extends RecyclerView.ViewHolder {
-
         View mView;
 
         public userViewHolder(View itemView) {
             super(itemView);
-            //initalize content from userlistlayout
             mView = itemView;
-
         }
 
-        public void setDetails(Context ctx, String userName, String userID){
-            System.out.println("gheyyy");
+        public void setDetails(Context ctx, String userName, String userID) {
             TextView user_name = (TextView) mView.findViewById(R.id.name_text);
             TextView user_id = (TextView) mView.findViewById(R.id.userID);
             System.out.println(user_name);
@@ -120,18 +139,11 @@ public class searchBar extends AppCompatActivity {
 
             user_name.setText(userName);
             user_id.setText(userID);
-
             //Glide.with(ctx).load(userImage).into(user_image);
-
-
         }
+
     }
 }
 
-//default database rules
-//  {
-//  "rules": {
-//          ".read": true,
-//          ".write": true
-//          }
-//   }
+
+
