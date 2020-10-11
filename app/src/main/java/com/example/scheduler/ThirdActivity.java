@@ -7,7 +7,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,8 +18,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
@@ -30,14 +30,6 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -47,6 +39,7 @@ public class ThirdActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private NavigationView mNavigationView;
 
+    Member thisMember;
 
 
     //Google
@@ -56,7 +49,7 @@ public class ThirdActivity extends AppCompatActivity {
     TextView mEmail;
     TextView id;
     CircleImageView mPhoto;
-
+    DatabaseReference db;
     //Calendar
    private static final String TAG = "ThirdActivity";
    private TextView theDate;
@@ -67,13 +60,20 @@ public class ThirdActivity extends AppCompatActivity {
         setContentView(R.layout.activity_third);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        //Instance of Member class
+        thisMember = new Member();
 
-        //connect nav view
+        //Firebase Database instance
+        db = FirebaseDatabase.getInstance().getReference().child("Users");
+
+
+        //Connect nav view
         mNavigationView = findViewById(R.id.nav_view);
         mName = (TextView)mNavigationView.getHeaderView(0).findViewById(R.id.nav_name);
         mEmail = (TextView)mNavigationView.getHeaderView(0).findViewById(R.id.nav_email);
         mPhoto = (CircleImageView)mNavigationView.getHeaderView(0).findViewById(R.id.nav_profile_pic);
-        //sign out
+
+        //Sign out
         mNavigationView.getMenu().findItem(R.id.sign_out_button).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -82,12 +82,9 @@ public class ThirdActivity extends AppCompatActivity {
             }
         });
         
-        //Calendar
+        //SearchBar
         FloatingActionButton fab = findViewById(R.id.fab);
-        theDate = (TextView) findViewById(R.id.date);
-        Intent incomingIntent = getIntent();
-        String date = incomingIntent.getStringExtra("date");
-        theDate.setText(date);
+
 
         //Google
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -102,21 +99,30 @@ public class ThirdActivity extends AppCompatActivity {
             String personGivenName = acct.getGivenName();
             String personLastName = acct.getFamilyName();
             String personEmail = acct.getEmail();
-            //String personId = acct.getId();
             Uri personPhoto = acct.getPhotoUrl();
 
             mName.setText(personName);
             mEmail.setText(personEmail);
-            //id.setText("ID: " + personId);
             Glide.with(this).load(personPhoto).into(mPhoto);
+            String userAuthId = acct.getId();
+
+            thisMember.setaName(personName);
+            thisMember.setID(personEmail);
+
+            //Edited this
+            // added child, and removed push. Looking at the docs, it said push Creates a reference to an
+            // auto-generated child location."
+            // and because this line is inside the sign in function, its creating a new one each time?
+            db.child(userAuthId).setValue(thisMember);
+            Toast.makeText(ThirdActivity.this, "Data Inserted Successfully", Toast.LENGTH_LONG).show();
 
         }
 
-        //fab
+        //the pop up at the right corner, FAB, Floating Action Bar
         fab.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ThirdActivity.this, CalendarActivity.class);
+                Intent intent = new Intent(ThirdActivity.this, searchBar.class);
                 startActivity(intent);
             }
         });
