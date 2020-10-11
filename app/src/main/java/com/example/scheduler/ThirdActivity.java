@@ -82,12 +82,9 @@ public class ThirdActivity extends AppCompatActivity {
             }
         });
         
-        //Calendar
+        //SearchBar
         FloatingActionButton fab = findViewById(R.id.fab);
-        theDate = (TextView) findViewById(R.id.date);
-        Intent incomingIntent = getIntent();
-        String date = incomingIntent.getStringExtra("date");
-        theDate.setText(date);
+
 
         //Google
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
