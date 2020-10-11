@@ -60,17 +60,20 @@ public class ThirdActivity extends AppCompatActivity {
         setContentView(R.layout.activity_third);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        //Instance of Member class
         thisMember = new Member();
 
+        //Firebase Database instance
+        db = FirebaseDatabase.getInstance().getReference().child("Users");
 
-        db = FirebaseDatabase.getInstance().getReference().child("User");
 
-        //connect nav view
+        //Connect nav view
         mNavigationView = findViewById(R.id.nav_view);
         mName = (TextView)mNavigationView.getHeaderView(0).findViewById(R.id.nav_name);
         mEmail = (TextView)mNavigationView.getHeaderView(0).findViewById(R.id.nav_email);
         mPhoto = (CircleImageView)mNavigationView.getHeaderView(0).findViewById(R.id.nav_profile_pic);
-        //sign out
+
+        //Sign out
         mNavigationView.getMenu().findItem(R.id.sign_out_button).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -99,18 +102,21 @@ public class ThirdActivity extends AppCompatActivity {
             String personGivenName = acct.getGivenName();
             String personLastName = acct.getFamilyName();
             String personEmail = acct.getEmail();
-            //String personId = acct.getId();
             Uri personPhoto = acct.getPhotoUrl();
 
             mName.setText(personName);
             mEmail.setText(personEmail);
-            //id.setText("ID: " + personId);
             Glide.with(this).load(personPhoto).into(mPhoto);
-
+            String userAuthId = acct.getId();
 
             thisMember.setaName(personName);
             thisMember.setID(personEmail);
-            db.push().setValue(thisMember);
+
+            //Edited this
+            // added child, and removed push. Looking at the docs, it said push Creates a reference to an
+            // auto-generated child location."
+            // and because this line is inside the sign in function, its creating a new one each time?
+            db.child(userAuthId).setValue(thisMember);
             Toast.makeText(ThirdActivity.this, "Data Inserted Successfully", Toast.LENGTH_LONG).show();
 
         }
