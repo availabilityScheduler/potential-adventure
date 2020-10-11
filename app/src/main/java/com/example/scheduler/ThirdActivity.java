@@ -121,11 +121,11 @@ public class ThirdActivity extends AppCompatActivity {
 
         }
 
-        //fab
+        //the pop up at the right corner, FAB, Floating Action Bar
         fab.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ThirdActivity.this, CalendarActivity.class);
+                Intent intent = new Intent(ThirdActivity.this, searchBar.class);
                 startActivity(intent);
             }
         });
