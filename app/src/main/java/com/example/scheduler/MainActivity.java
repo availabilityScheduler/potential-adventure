@@ -6,6 +6,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,14 +39,31 @@ public class MainActivity extends AppCompatActivity {
     private SignInButton signInButton;
     private GoogleSignInClient mGoogleSignInClient;
 
+    Animation firstAnim;
+    Animation secondAnim;
+
+    TextView firstHalf;
+    TextView secondHalf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        signInButton = findViewById(R.id.sign_in_button);
 
-        // [START config_signin]
+
+        //Animation logo
+        firstAnim = AnimationUtils.loadAnimation(this, R.anim.first_half);
+        secondAnim = AnimationUtils.loadAnimation(this, R.anim.other_half_logo);
+
+        firstHalf = findViewById(R.id.textView3);
+        secondHalf = findViewById(R.id.textView2);
+
+        firstHalf.setAnimation(firstAnim);
+        secondHalf.setAnimation(secondAnim);
+
+
+
+        signInButton = findViewById(R.id.sign_in_button);
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -52,17 +72,13 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d(TAG, "gso:" + gso);
 
-        // [END config_signin]
-
         //Creates sign in client with specified options
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         Log.d(TAG, "mgooglesigninclient:" + mGoogleSignInClient);
 
-        // [START initialize_auth]
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
-        // [END initialize_auth]
 
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
