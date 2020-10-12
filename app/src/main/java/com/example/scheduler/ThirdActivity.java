@@ -2,7 +2,9 @@ package com.example.scheduler;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
@@ -19,10 +21,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -30,23 +34,25 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 //expanding menu and stuff
 public class ThirdActivity extends AppCompatActivity {
 
+    //Navigation Stuff
     private AppBarConfiguration mAppBarConfiguration;
     private NavigationView mNavigationView;
+    private DrawerLayout drawer;
+    private View navHeader;
+    private TextView txtName, txtWebsite;
+    private Toolbar toolbar;
 
+    //Fab
+    private FloatingActionButton fab;
+
+    //Instance Member
+    Member thisMember;
 
 
     //Google
@@ -57,9 +63,12 @@ public class ThirdActivity extends AppCompatActivity {
     TextView id;
     CircleImageView mPhoto;
 
-    //Calendar
-   private static final String TAG = "ThirdActivity";
-   private TextView theDate;
+    //DB instance
+    DatabaseReference db;
+
+    private static final String TAG = "ThirdActivity";
+    private TextView theDate;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,12 +77,38 @@ public class ThirdActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //connect nav view
-        mNavigationView = findViewById(R.id.nav_view);
+        //Instance of Member class
+        thisMember = new Member();
+
+        //Retrieving ID's
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        //Connect nav view
         mName = (TextView)mNavigationView.getHeaderView(0).findViewById(R.id.nav_name);
         mEmail = (TextView)mNavigationView.getHeaderView(0).findViewById(R.id.nav_email);
         mPhoto = (CircleImageView)mNavigationView.getHeaderView(0).findViewById(R.id.nav_profile_pic);
-        //sign out
+
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.openDrawer, R.string.closeDrawer) {
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                // Code here will be triggered once the drawer closes so we leave this blank
+                super.onDrawerClosed(drawerView);
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
+        };
+
+        //Setting the actionbarToggle to drawer layout
+        drawer.addDrawerListener(actionBarDrawerToggle);
+
+        //calling sync state is necessary or else your hamburger icon wont show up
+        actionBarDrawerToggle.syncState();
+
+        //Sign out
         mNavigationView.getMenu().findItem(R.id.sign_out_button).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -82,12 +117,13 @@ public class ThirdActivity extends AppCompatActivity {
             }
         });
         
-        //Calendar
+        //SearchBar
         FloatingActionButton fab = findViewById(R.id.fab);
-        theDate = (TextView) findViewById(R.id.date);
-        Intent incomingIntent = getIntent();
-        String date = incomingIntent.getStringExtra("date");
-        theDate.setText(date);
+
+
+        //Firebase Database instance
+        db = FirebaseDatabase.getInstance().getReference().child("Users");
+
 
         //Google
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -102,33 +138,39 @@ public class ThirdActivity extends AppCompatActivity {
             String personGivenName = acct.getGivenName();
             String personLastName = acct.getFamilyName();
             String personEmail = acct.getEmail();
-            //String personId = acct.getId();
             Uri personPhoto = acct.getPhotoUrl();
 
             mName.setText(personName);
             mEmail.setText(personEmail);
-            //id.setText("ID: " + personId);
             Glide.with(this).load(personPhoto).into(mPhoto);
+            String userAuthId = acct.getId();
+
+            thisMember.setaName(personName);
+            thisMember.setID(personEmail);
+
+            //saves user under their id, no duplicates
+            db.child(userAuthId).setValue(thisMember);
+            Toast.makeText(ThirdActivity.this, "Data Inserted Successfully", Toast.LENGTH_LONG).show();
 
         }
 
-        //fab
+        //the pop up at the right corner, FAB, Floating Action Bar
         fab.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ThirdActivity.this, CalendarActivity.class);
+                Intent intent = new Intent(ThirdActivity.this, searchBar.class);
                 startActivity(intent);
             }
         });
 
-        //drawer layout
+        //Drawer layout
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.sign_out_button)
-                .setDrawerLayout(drawer)
+                .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
@@ -137,7 +179,7 @@ public class ThirdActivity extends AppCompatActivity {
     }
 
 
-
+    //Inflate the menu; this adds items to the action bar if it is present.
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
