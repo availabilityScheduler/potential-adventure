@@ -50,16 +50,18 @@ public class searchBar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_bar);
 
+        //Retrieving Id's
         mSearchField = (EditText) findViewById(R.id.search_field);
         mSearchButton = (ImageButton) findViewById(R.id.search_btn);
         mResultList = (RecyclerView) this.findViewById(R.id.result_list);
 
+        //Retrieving Users Database
         mUserDatabase = FirebaseDatabase.getInstance().getReference("Users");
 
         mResultList.setHasFixedSize(true);
         mResultList.setLayoutManager(new LinearLayoutManager(getBaseContext()));
 
-        //onClick
+        //onClick(Might not be working with "enter also implemented)
         mSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,7 +71,7 @@ public class searchBar extends AppCompatActivity {
             }
         });
 
-        //For when pressing enter to get search"
+        //For when pressing enter to get search
         final EditText edittext = (EditText) findViewById(R.id.search_field);
         edittext.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -86,7 +88,8 @@ public class searchBar extends AppCompatActivity {
 
 
     }
-
+    //Main logic Rn, should be updated to include lowercase searching
+    //Keyboard could pop up right away when you click on the FAB
     private void firebaseUserSearch(String searchText) {
         Toast.makeText(searchBar.this, "Started Search", Toast.LENGTH_LONG).show();
 
@@ -114,7 +117,6 @@ public class searchBar extends AppCompatActivity {
                 };
         mPeopleRVAdapter.startListening();
         mResultList.setAdapter(mPeopleRVAdapter);
-
     }
 
 
