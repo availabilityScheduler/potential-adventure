@@ -75,7 +75,7 @@ public class searchBar extends AppCompatActivity {
         final EditText edittext = (EditText) findViewById(R.id.search_field);
         edittext.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                String searchText = mSearchField.getText().toString();
+                String searchText = mSearchField.getText().toString().toLowerCase();
                 // If the event is a key-down event on the "enter" button
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
                         (keyCode == KeyEvent.KEYCODE_ENTER)) {

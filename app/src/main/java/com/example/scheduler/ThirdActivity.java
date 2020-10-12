@@ -134,10 +134,8 @@ public class ThirdActivity extends AppCompatActivity {
 
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(ThirdActivity.this);
         if (acct != null) {
-            String personName = acct.getDisplayName();
-            String personGivenName = acct.getGivenName();
-            String personLastName = acct.getFamilyName();
-            String personEmail = acct.getEmail();
+            String personName = acct.getDisplayName().toLowerCase();
+            String personEmail = acct.getEmail().toLowerCase();
             Uri personPhoto = acct.getPhotoUrl();
 
             mName.setText(personName);
