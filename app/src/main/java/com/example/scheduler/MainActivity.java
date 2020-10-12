@@ -27,6 +27,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import org.w3c.dom.Text;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
     TextView firstHalf;
     TextView secondHalf;
 
+    TextView createAccount;
+    TextView loginBtnHomeScreen;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +65,26 @@ public class MainActivity extends AppCompatActivity {
 
         firstHalf.setAnimation(firstAnim);
         secondHalf.setAnimation(secondAnim);
+
+        //registering redirects to register class
+        createAccount = (TextView) findViewById(R.id.accountCreation);
+        createAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Register.class);
+                startActivity(intent);
+            }
+        });
+
+        //Logging in with email
+        loginBtnHomeScreen = (TextView) findViewById(R.id.loginBtnHomeScreen);
+        loginBtnHomeScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Login.class);
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -177,6 +202,8 @@ public class MainActivity extends AppCompatActivity {
           //mBinding.signOutAndDisconnect.setVisibility(View.GONE);
         }
     }
+
+
 
     //FirebaseAuth.getInstance().signOut();
 }
