@@ -69,10 +69,11 @@ public class Register extends AppCompatActivity {
             }
         });
 
-        if(fAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(), Register.class));
-            finish();
-        }
+        //Commented this out, broke everything lmaooooooo
+//        if(fAuth.getCurrentUser() != null){
+//            startActivity(new Intent(getApplicationContext(), Register.class));
+//            finish();
+//        }
         //progressBar = findViewById(R.id.progressBar);
 
         //Not Complete yet
