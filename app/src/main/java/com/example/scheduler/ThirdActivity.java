@@ -58,6 +58,8 @@ public class ThirdActivity extends AppCompatActivity {
     //Google
     GoogleSignInClient mGoogleSignInClient;
     Button mSign_out;
+    TextView firstName;
+    TextView lastName;
     TextView mName;
     TextView mEmail;
     TextView id;
@@ -135,16 +137,22 @@ public class ThirdActivity extends AppCompatActivity {
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(ThirdActivity.this);
         if (acct != null) {
             String personName = acct.getDisplayName().toLowerCase();
+            String personFirstName = acct.getGivenName().toLowerCase();
+            String personLastName = acct.getFamilyName().toLowerCase();
             String personEmail = acct.getEmail().toLowerCase();
             Uri personPhoto = acct.getPhotoUrl();
 
+            //for nav bar
             mName.setText(personName);
             mEmail.setText(personEmail);
-            Glide.with(this).load(personPhoto).into(mPhoto);
+            Glide.with( this).load(personPhoto).into(mPhoto);
             String userAuthId = acct.getId();
 
+            //for member db object
             thisMember.setaName(personName);
             thisMember.setID(personEmail);
+            thisMember.setFirstName(personFirstName);
+            thisMember.setLastName(personLastName);
 
             //saves user under their id, no duplicates
             db.child(userAuthId).setValue(thisMember);

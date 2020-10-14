@@ -2,6 +2,7 @@ package com.example.scheduler;
 
 import android.app.SearchManager;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -36,6 +38,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class searchBar extends AppCompatActivity {
@@ -132,12 +136,13 @@ public class searchBar extends AppCompatActivity {
         public void setDetails(Context ctx, String userName, String userID) {
             TextView user_name = (TextView) mView.findViewById(R.id.name_text);
             TextView user_id = (TextView) mView.findViewById(R.id.userID);
+
             System.out.println(user_name);
             //user_image = (ImageView) mView.findViewById(R.id.profile_image);
 
             user_name.setText(userName);
             user_id.setText(userID);
-            //Glide.with(ctx).load(userImage).into(user_image);
+
         }
 
     }
