@@ -156,7 +156,7 @@ public class ThirdActivity extends AppCompatActivity {
 
             //saves user under their id, no duplicates
             db.child(userAuthId).setValue(thisMember);
-            Toast.makeText(ThirdActivity.this, "Data Inserted Successfully", Toast.LENGTH_LONG).show();
+            //Toast.makeText(ThirdActivity.this, "Data Inserted Successfully", Toast.LENGTH_LONG).show();
 
         }
 

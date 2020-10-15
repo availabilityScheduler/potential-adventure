@@ -65,7 +65,7 @@ public class searchBar extends AppCompatActivity {
         mResultList.setHasFixedSize(true);
         mResultList.setLayoutManager(new LinearLayoutManager(getBaseContext()));
 
-        //onClick(Might not be working with "enter also implemented)
+        //Working but bug--> gotta pull the keyboard down to see result(at least in my oneplus7)
         mSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

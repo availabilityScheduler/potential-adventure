@@ -21,6 +21,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -35,12 +37,14 @@ public class Register extends AppCompatActivity {
 
 
     EditText mFullName, mEmail, mPassword;
+    Member thisMember;
+
     EditText mPhone;
 
     Button mRegisterBtn;
     TextView mLoginBtn;
     FirebaseAuth fAuth;
-    ProgressBar progressBar;
+    DatabaseReference db;
     FirebaseFirestore fStore;
     String userID;
 
@@ -53,11 +57,15 @@ public class Register extends AppCompatActivity {
         mEmail      = findViewById(R.id.editTextEmail);
         mPassword   = findViewById(R.id.editTextTextPassword);
         //mPhone      = findViewById(R.id.phone);
+        thisMember = new Member();
+
 
         mRegisterBtn= findViewById(R.id.registerBtn);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
+        db = FirebaseDatabase.getInstance().getReference().child("Users");
+
 
         //Redirects to login page from register page
         getToLoginPageFromRegister = (TextView)findViewById(R.id.getToLoginPageFromRegister);
@@ -74,7 +82,6 @@ public class Register extends AppCompatActivity {
 //            startActivity(new Intent(getApplicationContext(), Register.class));
 //            finish();
 //        }
-        //progressBar = findViewById(R.id.progressBar);
 
         //Not Complete yet
         //Needs to redirect to login page
@@ -90,18 +97,14 @@ public class Register extends AppCompatActivity {
                     mEmail.setError("Email is Required.");
                     return;
                 }
-
                 if(TextUtils.isEmpty(password)){
                     mPassword.setError("Password is Required.");
                     return;
                 }
-
                 if(password.length() < 8){
                     mPassword.setError("Password Must be >= 8 Characters, Hehe");
                     return;
                 }
-
-                //progressBar.setVisibility(View.VISIBLE);
 
                 //Registering the user in firebase
                 fAuth.createUserWithEmailAndPassword(email , password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -110,11 +113,11 @@ public class Register extends AppCompatActivity {
                         if(task.isSuccessful()){
 
                             //Sending the verification link
-                            FirebaseUser fuser = fAuth.getCurrentUser();
-                            fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            FirebaseUser m_user = fAuth.getCurrentUser();
+                            m_user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Toast.makeText(Register.this, "Verification Email Has been Sent.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Register.this, "Verification Email Sent.", Toast.LENGTH_SHORT).show();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -125,27 +128,32 @@ public class Register extends AppCompatActivity {
 
                             Toast.makeText(Register.this, "User Created.", Toast.LENGTH_SHORT).show();
                             userID = fAuth.getCurrentUser().getUid();
-                            DocumentReference documentReference = fStore.collection("users").document(userID);
-                            Map<String,Object> user = new HashMap<>();
-                            user.put("fName",fullName);
-                            user.put("email",email);
-                            //user.put("phone",phone);
-                            documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    Log.d(TAG, "onSuccess: user Profile is created for "+ userID);
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Log.d(TAG, "onFailure: " + e.toString());
-                                }
-                            });
+//                            DocumentReference documentReference = fStore.collection("users").document(userID);
+//                            Map<String,Object> user = new HashMap<>();
+                            thisMember.setaName(fullName);
+                            thisMember.setID(email);
+//                            thisMember.setFirstName(personFirstName);
+//                            thisMember.setLastName(personLastName);
+//                            user.put("fName", fullName);
+//                            user.put("email", email);
+//                            user.put("phone",phone);
+                            db.child(userID).setValue(thisMember);
+
+//                            documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                @Override
+//                                public void onSuccess(Void aVoid) {
+//                                    Log.d(TAG, "onSuccess: user Profile is created for "+ userID);
+//                                }
+//                            }).addOnFailureListener(new OnFailureListener() {
+//                                @Override
+//                                public void onFailure(@NonNull Exception e) {
+//                                    Log.d(TAG, "onFailure: " + e.toString());
+//                                }
+//                            });
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
 
                         }else {
                             Toast.makeText(Register.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            //progressBar.setVisibility(View.GONE);
                         }
                     }
                 });
