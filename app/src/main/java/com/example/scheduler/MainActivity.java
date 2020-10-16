@@ -90,17 +90,17 @@ public class MainActivity extends AppCompatActivity {
 
         signInButton = findViewById(R.id.sign_in_button);
         // Configure Google Sign In
-//        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//                .requestIdToken(getString(R.string.default_web_client_id))
-//                .requestEmail()
-//                .build();
-//
-//        Log.d(TAG, "gso:" + gso);
-//
-//        //Creates sign in client with specified options
-//        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
 
-//        Log.d(TAG, "mgooglesigninclient:" + mGoogleSignInClient);
+        Log.d(TAG, "gso:" + gso);
+
+        //Creates sign in client with specified options
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        Log.d(TAG, "mgooglesigninclient:" + mGoogleSignInClient);
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
