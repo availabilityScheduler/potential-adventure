@@ -99,7 +99,6 @@ public class searchBar extends AppCompatActivity {
 
         Query firebaseSearchQuery = mUserDatabase.orderByChild("aName").startAt(searchText).endAt(searchText + "\uf8ff");
 
-        System.out.println(firebaseSearchQuery);
 
         FirebaseRecyclerOptions personsOptions =
                 new FirebaseRecyclerOptions.Builder<Member>().setQuery(firebaseSearchQuery, Member.class).build();
@@ -110,11 +109,12 @@ public class searchBar extends AppCompatActivity {
                     @Override
                     protected void onBindViewHolder(userViewHolder holder, int position, Member model) {
                         holder.setDetails(getApplicationContext(), model.getaName(), model.getID());
+
                     }
+
 
                     @Override
                     public userViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
                         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_list, parent, false);
                         return new userViewHolder(view);
                     }
@@ -137,7 +137,7 @@ public class searchBar extends AppCompatActivity {
             TextView user_name = (TextView) mView.findViewById(R.id.name_text);
             TextView user_id = (TextView) mView.findViewById(R.id.userID);
 
-            System.out.println(user_name);
+            System.out.println("haha" + user_name);
             //user_image = (ImageView) mView.findViewById(R.id.profile_image);
 
             user_name.setText(userName);
