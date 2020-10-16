@@ -1,9 +1,11 @@
 package com.example.scheduler;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -19,26 +21,49 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.ValueEventListener;
 
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 
 public class searchBar extends AppCompatActivity {
+    private static final String TAG = "";
     private EditText mSearchField;
     private ImageButton mSearchButton;
     private RecyclerView mResultList;
     private DatabaseReference mUserDatabase;
+    yourFriends myFriends;
 
 
+
+
+
+
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +76,7 @@ public class searchBar extends AppCompatActivity {
         mResultList = (RecyclerView) this.findViewById(R.id.result_list);
 
         //Retrieving Users Database
-        mUserDatabase = FirebaseDatabase.getInstance().getReference("Users");
+        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
 
         mResultList.setHasFixedSize(true);
         mResultList.setLayoutManager(new LinearLayoutManager(getBaseContext()));
@@ -146,8 +171,8 @@ public class searchBar extends AppCompatActivity {
         }
 
         public void setDetails(Context ctx, String userName, String userID) {
-            TextView user_name = (TextView) mView.findViewById(R.id.name_text);
-            TextView user_id = (TextView) mView.findViewById(R.id.userID);
+            final TextView user_name = (TextView) mView.findViewById(R.id.name_text);
+            final TextView user_id = (TextView) mView.findViewById(R.id.userID);
             Button add_button = (Button) mView.findViewById(R.id.add_friends);
 
             System.out.println("haha" + user_name);
@@ -159,41 +184,52 @@ public class searchBar extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(searchBar.this, "Adding friend", Toast.LENGTH_LONG).show();
-                    //add button redirects now, all we gotta do now is to handle the logic of adding friend to db in another class o
-                    Intent intent = new Intent(searchBar.this, ThirdActivity.class);
-                    startActivity(intent);
+                    myFriends = new yourFriends();
+                    String friend_id = user_name.getText().toString();
+                    writeFriendData(friend_id);
+//                    Intent intent = new Intent(searchBar.this, ThirdActivity.class);
+//                    startActivity(intent);
                 }
             });
 
         }
 
     }
+    public void writeFriendData(String friend_id){
+        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        String firebaseAcctId =  currentFirebaseUser.getUid();
+
+        mUserDatabase = FirebaseDatabase.getInstance().getReference("Users").child(firebaseAcctId).child("Friends");
 
 
 
+        Map<String, List<Boolean>> map =  new HashMap<>();
+        if(map.containsKey(friend_id)){
+            map.get(friend_id).add(true);
+        } else {
+            List<Boolean> list = new ArrayList<>();
+            list.add(true);
+            map.put(friend_id, list);
+        }
+
+        Member member = new Member();
+        member.setFriends(map);
+
+
+        mUserDatabase.setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(searchBar.this, "Friend Added", Toast.LENGTH_LONG).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(searchBar.this, "Adding Unsuccessful", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
 
 }
-
-//works locally, will print out users
-//    private void firebaseUserSearch(String searchText){
-//        Toast.makeText(searchBar.this, "Started Search", Toast.LENGTH_LONG).show();
-//        Query firebaseSearchQuery = mUserDatabase.orderByChild("aName").startAt(searchText).endAt(searchText + "\uf8ff");
-//        DatabaseReference db = FirebaseDatabase.getInstance().getReference();
-//        DatabaseReference childDB = db.child("Users");
-//        ValueEventListener eventListener = new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for(DataSnapshot ds : dataSnapshot.getChildren()) {
-//                    String name = ds.child("aName").getValue(String.class);
-//                    Log.d("TAG", name);
-//                }
-//            }
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//            }
-//        };
-//        childDB.addListenerForSingleValueEvent(eventListener);
-//    }
 
 
 

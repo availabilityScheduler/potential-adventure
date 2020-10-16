@@ -3,6 +3,7 @@
     package="com.example.scheduler">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -31,6 +32,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".searchBar"/>
+
 
         <meta-data
             android:name="preloaded_fonts"
