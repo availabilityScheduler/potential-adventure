@@ -24,6 +24,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -115,7 +116,7 @@ public class searchBar extends AppCompatActivity {
 
 
     // View Holder Class
-    public static class userViewHolder extends RecyclerView.ViewHolder {
+    public class userViewHolder extends RecyclerView.ViewHolder {
         View mView;
 
         public userViewHolder(View itemView) {
@@ -126,12 +127,22 @@ public class searchBar extends AppCompatActivity {
         public void setDetails(Context ctx, String userName, String userID) {
             TextView user_name = (TextView) mView.findViewById(R.id.name_text);
             TextView user_id = (TextView) mView.findViewById(R.id.userID);
+            Button add_button = (Button) mView.findViewById(R.id.add_friends);
 
             System.out.println("haha" + user_name);
             //user_image = (ImageView) mView.findViewById(R.id.profile_image);
 
             user_name.setText(userName);
             user_id.setText(userID);
+            add_button.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(searchBar.this, "Adding friend", Toast.LENGTH_LONG).show();
+                    //add button redirects now, all we gotta do now is to handle the logic of adding friend to db in another class o
+                    Intent intent = new Intent(searchBar.this, ThirdActivity.class);
+                    startActivity(intent);
+                }
+            });
 
         }
 
