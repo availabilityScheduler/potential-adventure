@@ -1,17 +1,13 @@
 package com.example.scheduler;
 
-import android.app.SearchManager;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -20,26 +16,16 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 
 
-import com.bumptech.glide.Glide;
-import com.google.firebase.database.ValueEventListener;
-
-
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class searchBar extends AppCompatActivity {
@@ -54,6 +40,7 @@ public class searchBar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_bar);
 
+
         //Retrieving Id's
         mSearchField = (EditText) findViewById(R.id.search_field);
         mSearchButton = (ImageButton) findViewById(R.id.search_btn);
@@ -64,6 +51,7 @@ public class searchBar extends AppCompatActivity {
 
         mResultList.setHasFixedSize(true);
         mResultList.setLayoutManager(new LinearLayoutManager(getBaseContext()));
+
 
         //Working but bug--> gotta pull the keyboard down to see result(at least in my oneplus7)
         mSearchButton.setOnClickListener(new View.OnClickListener() {
@@ -76,8 +64,9 @@ public class searchBar extends AppCompatActivity {
         });
 
         //For when pressing enter to get search
-        final EditText edittext = (EditText) findViewById(R.id.search_field);
-        edittext.setOnKeyListener(new View.OnKeyListener() {
+        final EditText searchField = (EditText) findViewById(R.id.search_field);
+
+        searchField.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 String searchText = mSearchField.getText().toString().toLowerCase();
                 // If the event is a key-down event on the "enter" button
@@ -124,6 +113,7 @@ public class searchBar extends AppCompatActivity {
     }
 
 
+
     // View Holder Class
     public static class userViewHolder extends RecyclerView.ViewHolder {
         View mView;
@@ -146,6 +136,10 @@ public class searchBar extends AppCompatActivity {
         }
 
     }
+
+
+
+
 }
 
 //works locally, will print out users
