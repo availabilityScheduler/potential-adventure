@@ -59,38 +59,35 @@
         android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="Full Name"
-        app:hintAnimationEnabled="true"
-        app:hintEnabled="true"
         android:inputType="textPersonName"
         android:textColor="#FFFFFF"
+        app:hintAnimationEnabled="true"
+        app:hintEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <!--    register btn-->
+
+    <!--    password-->
 
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="306dp"
         android:layout_height="47dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="399dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="E-Mail Address"
         android:inputType="textEmailAddress"
-        android:textColor="#FFFFFF"
         android:singleLine="false"
 
+        android:textColor="#FFFFFF"
         app:hintAnimationEnabled="true"
         app:hintEnabled="true"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.344"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fullName"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <!--    register btn-->
-
-    <!--    password-->
+        app:layout_constraintTop_toBottomOf="@+id/fullName" />
 
     <Button
         android:id="@+id/registerBtn"

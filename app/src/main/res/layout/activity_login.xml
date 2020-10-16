@@ -74,11 +74,11 @@
         android:id="@+id/loginBtn"
         android:layout_width="81dp"
         android:layout_height="41dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="Login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
     <EditText
         android:id="@+id/editTextEmail"
@@ -94,19 +94,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-    <EditText
-        android:id="@+id/editTextTextPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/registerBtn"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout2"
+        android:layout_width="341dp"
+        android:layout_height="68dp"
+        android:textColorHint="#B9B8B8"
+        app:hintAnimationEnabled="true"
+        app:hintEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.133"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
-        app:layout_constraintVertical_bias="0.0" />
+        app:passwordToggleEnabled="true">
+
+        <EditText
+            android:id="@+id/editTextTextPassword"
+            android:layout_width="179dp"
+            android:layout_height="55dp"
+            android:layout_margin="100dp"
+            android:ems="10"
+            android:hapticFeedbackEnabled="false"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:singleLine="false"
+            android:soundEffectsEnabled="true"
+            android:visibility="visible" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/createAccountFromLoginPage"
