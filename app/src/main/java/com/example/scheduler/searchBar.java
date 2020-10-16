@@ -149,6 +149,7 @@ public class searchBar extends AppCompatActivity {
             TextView user_name = (TextView) mView.findViewById(R.id.name_text);
             TextView user_id = (TextView) mView.findViewById(R.id.userID);
             Button add_button = (Button) mView.findViewById(R.id.add_friends);
+            Button view_profile = (Button) mView.findViewById(R.id.view_profile);
 
             System.out.println("haha" + user_name);
             //user_image = (ImageView) mView.findViewById(R.id.profile_image);
@@ -164,6 +165,14 @@ public class searchBar extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
+            view_profile.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(searchBar.this, userProfile.class);
+                    startActivity(intent);
+                }
+
+            } );
 
         }
 
