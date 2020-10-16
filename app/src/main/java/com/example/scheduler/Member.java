@@ -15,8 +15,12 @@ import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
 public class Member {
     private String firstName, lastName, aName, ID;
-//    public Map<ArrayList<String>, Boolean> friends = new HashMap<>();
-    Map<String, List<Boolean>> friends =  new HashMap<>();
+    Map<String, Boolean> memberMap =  new HashMap<>();
+
+    public void setMemberMap(Map<String, Boolean> memberMap) {
+        this.memberMap = memberMap;
+    }
+
 
 
     public Member(){}
@@ -27,22 +31,6 @@ public class Member {
     }
 
 
-    public Map<String, List<Boolean>> getFriends() {
-        return friends;
-    }
-
-    public void setFriends(Map<String, List<Boolean>> friends) {
-        this.friends = friends;
-    }
-
-//
-//    public Map<ArrayList<String>, Boolean> getFriends(Map<ArrayList<String>, Boolean> friends) {
-//        return this.friends;
-//    }
-//
-//    public void setFriends(Map<ArrayList<String>, Boolean> friends) {
-//        this.friends = friends;
-//    }
 
     public String getFirstName() {
         return firstName;

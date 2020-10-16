@@ -52,16 +52,12 @@ import java.util.Map;
 
 public class searchBar extends AppCompatActivity {
     private static final String TAG = "";
+
     private EditText mSearchField;
     private ImageButton mSearchButton;
+
     private RecyclerView mResultList;
     private DatabaseReference mUserDatabase;
-    yourFriends myFriends;
-
-
-
-
-
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -125,9 +121,8 @@ public class searchBar extends AppCompatActivity {
                 return false;
             }
         });
-
-
     }
+
     //Main logic Rn, should be updated to include lowercase searching
     //Keyboard could pop up right away when you click on the FAB
     private void firebaseUserSearch(String searchText) {
@@ -145,9 +140,7 @@ public class searchBar extends AppCompatActivity {
                     @Override
                     protected void onBindViewHolder(userViewHolder holder, int position, Member model) {
                         holder.setDetails(getApplicationContext(), model.getaName(), model.getID());
-
                     }
-
 
                     @Override
                     public userViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -171,6 +164,9 @@ public class searchBar extends AppCompatActivity {
         }
 
         public void setDetails(Context ctx, String userName, String userID) {
+            final String email = userID;
+            final String username = userName;
+
             final TextView user_name = (TextView) mView.findViewById(R.id.name_text);
             final TextView user_id = (TextView) mView.findViewById(R.id.userID);
             Button add_button = (Button) mView.findViewById(R.id.add_friends);
@@ -184,39 +180,33 @@ public class searchBar extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(searchBar.this, "Adding friend", Toast.LENGTH_LONG).show();
-                    myFriends = new yourFriends();
-                    String friend_id = user_name.getText().toString();
-                    writeFriendData(friend_id);
-//                    Intent intent = new Intent(searchBar.this, ThirdActivity.class);
-//                    startActivity(intent);
+                    writeFriendData(username);
                 }
             });
 
         }
 
     }
-    public void writeFriendData(String friend_id){
+    public void writeFriendData(String username){
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         String firebaseAcctId =  currentFirebaseUser.getUid();
 
-        mUserDatabase = FirebaseDatabase.getInstance().getReference("Users").child(firebaseAcctId).child("Friends");
-
-
-
-        Map<String, List<Boolean>> map =  new HashMap<>();
-        if(map.containsKey(friend_id)){
-            map.get(friend_id).add(true);
-        } else {
-            List<Boolean> list = new ArrayList<>();
-            list.add(true);
-            map.put(friend_id, list);
-        }
-
+        //creating a new category of friend and under your own ID
+        mUserDatabase = FirebaseDatabase.getInstance().getReference("Friends").child(firebaseAcctId);
         Member member = new Member();
-        member.setFriends(map);
 
+        //the object pushed to the database
+        Map<String, Object> friendDbHashMap = new HashMap<>();
 
-        mUserDatabase.setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+        //local db in member class
+        Map<String, Boolean> memberMap =  new HashMap<>();
+        //Storing the username and boolean value, and setting it up
+        memberMap.put(username, true);
+        member.setMemberMap(memberMap);
+
+        //passing local db as the object value into this database
+        friendDbHashMap.put(username, memberMap);
+        mUserDatabase.updateChildren(friendDbHashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(searchBar.this, "Friend Added", Toast.LENGTH_LONG).show();
