@@ -67,7 +67,7 @@ public class Login extends AppCompatActivity {
         });
 
 
-        //Login Logic
+        //Login Logic seems to work in terms of auth but does not show up in the nav bar
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -56,11 +56,12 @@ public class Register extends AppCompatActivity {
         mFullName = findViewById(R.id.fullName);
         mEmail      = findViewById(R.id.editTextEmail);
         mPassword   = findViewById(R.id.editTextTextPassword);
+        mRegisterBtn= findViewById(R.id.registerBtn);
+
         //mPhone      = findViewById(R.id.phone);
         thisMember = new Member();
 
 
-        mRegisterBtn= findViewById(R.id.registerBtn);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -77,14 +78,8 @@ public class Register extends AppCompatActivity {
             }
         });
 
-        //Commented this out, broke everything lmaooooooo
-//        if(fAuth.getCurrentUser() != null){
-//            startActivity(new Intent(getApplicationContext(), Register.class));
-//            finish();
-//        }
 
-        //Not Complete yet
-        //Needs to redirect to login page
+        //creates account and redirects to login
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -150,7 +145,7 @@ public class Register extends AppCompatActivity {
 //                                    Log.d(TAG, "onFailure: " + e.toString());
 //                                }
 //                            });
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(), Login.class));
 
                         }else {
                             Toast.makeText(Register.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
