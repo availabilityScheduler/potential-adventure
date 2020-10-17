@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Logging in with email
+        //Logging in with email screen
         loginBtnHomeScreen = (TextView) findViewById(R.id.loginBtnHomeScreen);
         loginBtnHomeScreen.setOnClickListener(new View.OnClickListener() {
             @Override

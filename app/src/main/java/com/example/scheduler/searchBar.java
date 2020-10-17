@@ -1,13 +1,14 @@
 package com.example.scheduler;
 
-import android.app.SearchManager;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -18,22 +19,15 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 
 
-import com.bumptech.glide.Glide;
-import com.google.firebase.database.ValueEventListener;
-
-
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -50,6 +44,7 @@ public class searchBar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_bar);
 
+
         //Retrieving Id's
         mSearchField = (EditText) findViewById(R.id.search_field);
         mSearchButton = (ImageButton) findViewById(R.id.search_btn);
@@ -61,7 +56,8 @@ public class searchBar extends AppCompatActivity {
         mResultList.setHasFixedSize(true);
         mResultList.setLayoutManager(new LinearLayoutManager(getBaseContext()));
 
-        //onClick(Might not be working with "enter also implemented)
+
+        //Working but bug--> gotta pull the keyboard down to see result(at least in my oneplus7)
         mSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,11 +67,30 @@ public class searchBar extends AppCompatActivity {
             }
         });
 
+        //visual feedback of click
+        mSearchButton.setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN: {
+                        v.getBackground().setColorFilter(Color.LTGRAY, PorterDuff.Mode.SRC_ATOP);
+                        v.invalidate();
+                        break;
+                    }
+                    case MotionEvent.ACTION_UP: {
+                        v.getBackground().clearColorFilter();
+                        v.invalidate();
+                        break;
+                    }
+                }
+                return false;
+            }
+        });
+
         //For when pressing enter to get search
-        final EditText edittext = (EditText) findViewById(R.id.search_field);
-        edittext.setOnKeyListener(new View.OnKeyListener() {
+        final EditText searchField = (EditText) findViewById(R.id.search_field);
+        searchField.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                String searchText = mSearchField.getText().toString();
+                String searchText = mSearchField.getText().toString().toLowerCase();
                 // If the event is a key-down event on the "enter" button
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
                         (keyCode == KeyEvent.KEYCODE_ENTER)) {
@@ -95,7 +110,6 @@ public class searchBar extends AppCompatActivity {
 
         Query firebaseSearchQuery = mUserDatabase.orderByChild("aName").startAt(searchText).endAt(searchText + "\uf8ff");
 
-        System.out.println(firebaseSearchQuery);
 
         FirebaseRecyclerOptions personsOptions =
                 new FirebaseRecyclerOptions.Builder<Member>().setQuery(firebaseSearchQuery, Member.class).build();
@@ -106,11 +120,12 @@ public class searchBar extends AppCompatActivity {
                     @Override
                     protected void onBindViewHolder(userViewHolder holder, int position, Member model) {
                         holder.setDetails(getApplicationContext(), model.getaName(), model.getID());
+
                     }
+
 
                     @Override
                     public userViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
                         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_list, parent, false);
                         return new userViewHolder(view);
                     }
@@ -120,8 +135,9 @@ public class searchBar extends AppCompatActivity {
     }
 
 
+
     // View Holder Class
-    public static class userViewHolder extends RecyclerView.ViewHolder {
+    public class userViewHolder extends RecyclerView.ViewHolder {
         View mView;
 
         public userViewHolder(View itemView) {
@@ -132,15 +148,30 @@ public class searchBar extends AppCompatActivity {
         public void setDetails(Context ctx, String userName, String userID) {
             TextView user_name = (TextView) mView.findViewById(R.id.name_text);
             TextView user_id = (TextView) mView.findViewById(R.id.userID);
-            System.out.println(user_name);
+            Button add_button = (Button) mView.findViewById(R.id.add_friends);
+
+            System.out.println("haha" + user_name);
             //user_image = (ImageView) mView.findViewById(R.id.profile_image);
 
             user_name.setText(userName);
             user_id.setText(userID);
-            //Glide.with(ctx).load(userImage).into(user_image);
+            add_button.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(searchBar.this, "Adding friend", Toast.LENGTH_LONG).show();
+                    //add button redirects now, all we gotta do now is to handle the logic of adding friend to db in another class o
+                    Intent intent = new Intent(searchBar.this, ThirdActivity.class);
+                    startActivity(intent);
+                }
+            });
+
         }
 
     }
+
+
+
+
 }
 
 //works locally, will print out users
