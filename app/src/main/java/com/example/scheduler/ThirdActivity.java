@@ -148,6 +148,8 @@ public class ThirdActivity extends AppCompatActivity {
             mName.setText(personName);
             mEmail.setText(personEmail);
             Glide.with( this).load(personPhoto).into(mPhoto);
+
+            //changed google auth to firebase auth
             FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
             String userAuthId = currentFirebaseUser.getUid();
 
@@ -159,8 +161,6 @@ public class ThirdActivity extends AppCompatActivity {
 
             //saves user under their id, no duplicates
             db.child(userAuthId).setValue(thisMember);
-            //Toast.makeText(ThirdActivity.this, "Data Inserted Successfully", Toast.LENGTH_LONG).show();
-
         }
 
         //the pop up at the right corner, FAB, Floating Action Bar

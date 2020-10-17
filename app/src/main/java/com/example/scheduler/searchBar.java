@@ -88,6 +88,9 @@ public class searchBar extends AppCompatActivity {
             }
         });
 
+
+
+
         //visual feedback of click
         mSearchButton.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
@@ -108,50 +111,47 @@ public class searchBar extends AppCompatActivity {
         });
 
         //For when pressing enter to get search
-        final EditText searchField = (EditText) findViewById(R.id.search_field);
-        searchField.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                String searchText = mSearchField.getText().toString().toLowerCase();
-                // If the event is a key-down event on the "enter" button
-                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
-                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                            firebaseUserSearch(searchText);
-                    return true;
+            final EditText searchField = (EditText) findViewById(R.id.search_field);
+            searchField.setOnKeyListener(new View.OnKeyListener() {
+                public boolean onKey(View v, int keyCode, KeyEvent event) {
+                    String searchText = mSearchField.getText().toString().toLowerCase();
+                    // If the event is a key-down event on the "enter" button
+                    if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                            (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                        firebaseUserSearch(searchText);
+                        return true;
+                    }
+                    return false;
                 }
-                return false;
-            }
-        });
+            });
     }
 
-    //Main logic Rn, should be updated to include lowercase searching
-    //Keyboard could pop up right away when you click on the FAB
-    private void firebaseUserSearch(String searchText) {
+
+
+    //Main logic to search users
+    private void firebaseUserSearch(final String searchText) {
         Toast.makeText(searchBar.this, "Started Search", Toast.LENGTH_LONG).show();
-
         Query firebaseSearchQuery = mUserDatabase.orderByChild("aName").startAt(searchText).endAt(searchText + "\uf8ff");
-
-
         FirebaseRecyclerOptions personsOptions =
                 new FirebaseRecyclerOptions.Builder<Member>().setQuery(firebaseSearchQuery, Member.class).build();
 
         FirebaseRecyclerAdapter mPeopleRVAdapter =
                 new FirebaseRecyclerAdapter<Member, userViewHolder>(personsOptions) {
-
-                    @Override
-                    protected void onBindViewHolder(userViewHolder holder, int position, Member model) {
-                        holder.setDetails(getApplicationContext(), model.getaName(), model.getID());
-                    }
-
                     @Override
                     public userViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
                         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_list, parent, false);
                         return new userViewHolder(view);
                     }
+                    @Override
+                    protected void onBindViewHolder(userViewHolder holder, int position, Member model) {
+                        holder.setDetails(getApplicationContext(), model.getaName(), model.getID());
+
+                    }
                 };
         mPeopleRVAdapter.startListening();
         mResultList.setAdapter(mPeopleRVAdapter);
-    }
 
+    }
 
 
     // View Holder Class
@@ -164,29 +164,31 @@ public class searchBar extends AppCompatActivity {
         }
 
         public void setDetails(Context ctx, String userName, String userID) {
-            final String email = userID;
-            final String username = userName;
-
             final TextView user_name = (TextView) mView.findViewById(R.id.name_text);
-            final TextView user_id = (TextView) mView.findViewById(R.id.userID);
-            Button add_button = (Button) mView.findViewById(R.id.add_friends);
+            final TextView theEmail = (TextView) mView.findViewById(R.id.userID);
 
-            System.out.println("haha" + user_name);
-            //user_image = (ImageView) mView.findViewById(R.id.profile_image);
 
             user_name.setText(userName);
-            user_id.setText(userID);
+            theEmail.setText(userID);
+
+            Button add_button = (Button)mView.findViewById(R.id.add_friends);
             add_button.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(searchBar.this, "Adding friend", Toast.LENGTH_LONG).show();
+                    final TextView user_name = (TextView) findViewById(R.id.name_text);
+                    String username = user_name.getText().toString();
                     writeFriendData(username);
+                    Intent intent = new Intent(searchBar.this, ThirdActivity.class);
+                    startActivity(intent);
+
                 }
             });
-
         }
-
     }
+
+
+
     public void writeFriendData(String username){
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         String firebaseAcctId =  currentFirebaseUser.getUid();
@@ -218,6 +220,8 @@ public class searchBar extends AppCompatActivity {
             }
         });
     }
+
+
 
 }
 
