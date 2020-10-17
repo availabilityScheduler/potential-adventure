@@ -89,8 +89,6 @@ public class searchBar extends AppCompatActivity {
         });
 
 
-
-
         //visual feedback of click
         mSearchButton.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
@@ -130,8 +128,9 @@ public class searchBar extends AppCompatActivity {
 
     //Main logic to search users
     private void firebaseUserSearch(final String searchText) {
-        Toast.makeText(searchBar.this, "Started Search", Toast.LENGTH_LONG).show();
+        Toast.makeText(searchBar.this, "Started Search", Toast.LENGTH_SHORT).show();
         Query firebaseSearchQuery = mUserDatabase.orderByChild("aName").startAt(searchText).endAt(searchText + "\uf8ff");
+        //after this, goes to the end of the method
         FirebaseRecyclerOptions personsOptions =
                 new FirebaseRecyclerOptions.Builder<Member>().setQuery(firebaseSearchQuery, Member.class).build();
 
@@ -139,15 +138,18 @@ public class searchBar extends AppCompatActivity {
                 new FirebaseRecyclerAdapter<Member, userViewHolder>(personsOptions) {
                     @Override
                     public userViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+                        //Inflates out the user list layout
                         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_list, parent, false);
                         return new userViewHolder(view);
                     }
                     @Override
                     protected void onBindViewHolder(userViewHolder holder, int position, Member model) {
+                        //sets the detail for the user lists
                         holder.setDetails(getApplicationContext(), model.getaName(), model.getID());
 
                     }
                 };
+        //this then gets called, and adapter is set, and the function ^ above starts
         mPeopleRVAdapter.startListening();
         mResultList.setAdapter(mPeopleRVAdapter);
 
@@ -167,15 +169,17 @@ public class searchBar extends AppCompatActivity {
             final TextView user_name = (TextView) mView.findViewById(R.id.name_text);
             final TextView theEmail = (TextView) mView.findViewById(R.id.userID);
 
-
+            //sets up the text to display
             user_name.setText(userName);
             theEmail.setText(userID);
 
+            //adds a friend and redirects to the main screen
             Button add_button = (Button)mView.findViewById(R.id.add_friends);
             add_button.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(searchBar.this, "Adding friend", Toast.LENGTH_LONG).show();
+                    Toast.makeText(searchBar.this, "Adding friend", Toast.LENGTH_SHORT).show();
+
                     final TextView user_name = (TextView) findViewById(R.id.name_text);
                     String username = user_name.getText().toString();
                     writeFriendData(username);
@@ -211,12 +215,12 @@ public class searchBar extends AppCompatActivity {
         mUserDatabase.updateChildren(friendDbHashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(searchBar.this, "Friend Added", Toast.LENGTH_LONG).show();
+                Toast.makeText(searchBar.this, "Friend Added", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(searchBar.this, "Adding Unsuccessful", Toast.LENGTH_LONG).show();
+                Toast.makeText(searchBar.this, "Adding Unsuccessful", Toast.LENGTH_SHORT).show();
             }
         });
     }
