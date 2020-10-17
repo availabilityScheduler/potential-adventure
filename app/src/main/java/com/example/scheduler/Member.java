@@ -4,12 +4,24 @@ import android.net.Uri;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
 public class Member {
     private String firstName, lastName, aName, ID;
+    Map<String, Boolean> memberMap =  new HashMap<>();
+
+    public void setMemberMap(Map<String, Boolean> memberMap) {
+        this.memberMap = memberMap;
+    }
+
+
 
     public Member(){}
 
@@ -17,6 +29,8 @@ public class Member {
         this.aName = aName;
         this.ID = ID;
     }
+
+
 
     public String getFirstName() {
         return firstName;
@@ -50,6 +64,9 @@ public class Member {
     public String getID() {
         return ID;
     }
+
+
+
 
 
 }

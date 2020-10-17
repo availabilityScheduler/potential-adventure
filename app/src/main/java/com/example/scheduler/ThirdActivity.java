@@ -22,6 +22,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -146,7 +148,8 @@ public class ThirdActivity extends AppCompatActivity {
             mName.setText(personName);
             mEmail.setText(personEmail);
             Glide.with( this).load(personPhoto).into(mPhoto);
-            String userAuthId = acct.getId();
+            FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+            String userAuthId = currentFirebaseUser.getUid();
 
             //for member db object
             thisMember.setaName(personName);

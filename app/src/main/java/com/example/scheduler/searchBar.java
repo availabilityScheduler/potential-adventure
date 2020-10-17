@@ -1,5 +1,6 @@
 package com.example.scheduler;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -19,17 +20,25 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class searchBar extends AppCompatActivity {
@@ -39,6 +48,7 @@ public class searchBar extends AppCompatActivity {
     private DatabaseReference mUserDatabase;
 
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -146,54 +156,64 @@ public class searchBar extends AppCompatActivity {
         }
 
         public void setDetails(Context ctx, String userName, String userID) {
-            TextView user_name = (TextView) mView.findViewById(R.id.name_text);
-            TextView user_id = (TextView) mView.findViewById(R.id.userID);
-            Button add_button = (Button) mView.findViewById(R.id.add_friends);
+            final TextView user_name = (TextView) mView.findViewById(R.id.name_text);
+            final TextView theEmail = (TextView) mView.findViewById(R.id.userID);
 
-            System.out.println("haha" + user_name);
-            //user_image = (ImageView) mView.findViewById(R.id.profile_image);
 
             user_name.setText(userName);
-            user_id.setText(userID);
+            theEmail.setText(userID);
+
+            Button add_button = (Button)mView.findViewById(R.id.add_friends);
             add_button.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(searchBar.this, "Adding friend", Toast.LENGTH_LONG).show();
-                    //add button redirects now, all we gotta do now is to handle the logic of adding friend to db in another class o
+                    final TextView user_name = (TextView) findViewById(R.id.name_text);
+                    String username = user_name.getText().toString();
+                    writeFriendData(username);
                     Intent intent = new Intent(searchBar.this, ThirdActivity.class);
                     startActivity(intent);
+
                 }
             });
-
         }
 
     }
+    public void writeFriendData(String username){
+        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        String firebaseAcctId =  currentFirebaseUser.getUid();
 
+        //creating a new category of friend and under your own ID
+        mUserDatabase = FirebaseDatabase.getInstance().getReference("Friends").child(firebaseAcctId);
+        Member member = new Member();
 
+        //the object pushed to the database
+        Map<String, Object> friendDbHashMap = new HashMap<>();
 
+        //local db in member class
+        Map<String, Boolean> memberMap =  new HashMap<>();
+        //Storing the username and boolean value, and setting it up
+        memberMap.put(username, true);
+        member.setMemberMap(memberMap);
+
+        //passing local db as the object value into this database
+        friendDbHashMap.put(username, memberMap);
+        mUserDatabase.updateChildren(friendDbHashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(searchBar.this, "Friend Added", Toast.LENGTH_LONG).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(searchBar.this, "Adding Unsuccessful", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
 
 }
 
-//works locally, will print out users
-//    private void firebaseUserSearch(String searchText){
-//        Toast.makeText(searchBar.this, "Started Search", Toast.LENGTH_LONG).show();
-//        Query firebaseSearchQuery = mUserDatabase.orderByChild("aName").startAt(searchText).endAt(searchText + "\uf8ff");
-//        DatabaseReference db = FirebaseDatabase.getInstance().getReference();
-//        DatabaseReference childDB = db.child("Users");
-//        ValueEventListener eventListener = new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for(DataSnapshot ds : dataSnapshot.getChildren()) {
-//                    String name = ds.child("aName").getValue(String.class);
-//                    Log.d("TAG", name);
-//                }
-//            }
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//            }
-//        };
-//        childDB.addListenerForSingleValueEvent(eventListener);
-//    }
+
 
 
 
