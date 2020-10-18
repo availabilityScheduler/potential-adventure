@@ -2,14 +2,11 @@ package com.example.scheduler;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.fragment.app.DialogFragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -70,6 +68,9 @@ public class ThirdActivity extends AppCompatActivity {
     //DB instance
     DatabaseReference db;
 
+    //Dialog box stuff
+    private Button openFriendsDialog;
+
     private static final String TAG = "ThirdActivity";
     private TextView theDate;
 
@@ -89,9 +90,9 @@ public class ThirdActivity extends AppCompatActivity {
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
 
         //Connect nav view
-        mName = (TextView)mNavigationView.getHeaderView(0).findViewById(R.id.nav_name);
-        mEmail = (TextView)mNavigationView.getHeaderView(0).findViewById(R.id.nav_email);
-        mPhoto = (CircleImageView)mNavigationView.getHeaderView(0).findViewById(R.id.nav_profile_pic);
+        mName = (TextView) mNavigationView.getHeaderView(0).findViewById(R.id.nav_name);
+        mEmail = (TextView) mNavigationView.getHeaderView(0).findViewById(R.id.nav_email);
+        mPhoto = (CircleImageView) mNavigationView.getHeaderView(0).findViewById(R.id.nav_profile_pic);
 
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.openDrawer, R.string.closeDrawer) {
             @Override
@@ -120,9 +121,20 @@ public class ThirdActivity extends AppCompatActivity {
                 return true;
             }
         });
-        
+
         //SearchBar
         FloatingActionButton fab = findViewById(R.id.fab);
+
+        //Friends dialog box
+        openFriendsDialog = findViewById(R.id.btnOpenFriends);
+        openFriendsDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View v){
+                DialogFragment newFragment = new FriendDialogBox();
+                newFragment.show(getSupportFragmentManager(), "friendslist");
+            }
+        });
+
 
 
         //Firebase Database instance
@@ -147,7 +159,7 @@ public class ThirdActivity extends AppCompatActivity {
             //for nav bar
             mName.setText(personName);
             mEmail.setText(personEmail);
-            Glide.with( this).load(personPhoto).into(mPhoto);
+            Glide.with(this).load(personPhoto).into(mPhoto);
             FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
             String userAuthId = currentFirebaseUser.getUid();
 
@@ -164,7 +176,7 @@ public class ThirdActivity extends AppCompatActivity {
         }
 
         //the pop up at the right corner, FAB, Floating Action Bar
-        fab.setOnClickListener(new View.OnClickListener(){
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ThirdActivity.this, searchBar.class);
@@ -184,6 +196,7 @@ public class ThirdActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
 
     }
 

@@ -66,13 +66,13 @@
         android:layout_marginTop="24dp"
         android:text="Create New Event"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintEnd_toStartOf="@+id/btnOpenFriends"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/date" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnOpenFriends"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
