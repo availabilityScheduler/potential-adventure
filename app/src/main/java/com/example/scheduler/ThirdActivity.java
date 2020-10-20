@@ -120,10 +120,6 @@ public class ThirdActivity extends AppCompatActivity {
                 return true;
             }
         });
-        
-        //SearchBar
-        FloatingActionButton fab = findViewById(R.id.fab);
-
 
         //Firebase Database instance
         db = FirebaseDatabase.getInstance().getReference().child("Users");
@@ -162,6 +158,10 @@ public class ThirdActivity extends AppCompatActivity {
             //saves user under their id, no duplicates
             db.child(userAuthId).setValue(thisMember);
         }
+
+
+        //SearchBar
+        FloatingActionButton fab = findViewById(R.id.fab);
 
         //the pop up at the right corner, FAB, Floating Action Bar
         fab.setOnClickListener(new View.OnClickListener(){
