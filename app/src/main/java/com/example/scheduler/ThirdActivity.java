@@ -22,6 +22,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -146,7 +148,12 @@ public class ThirdActivity extends AppCompatActivity {
             mName.setText(personName);
             mEmail.setText(personEmail);
             Glide.with( this).load(personPhoto).into(mPhoto);
-            String userAuthId = acct.getId();
+
+            //added firebase id auth insteead using the google one, google sign in still doable
+            //from my understanding, this is so registered using normal email to sign up also shows up in the database under
+            //a "universal" id
+            FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+            String userAuthId = currentFirebaseUser.getUid();
 
             //for member db object
             thisMember.setaName(personName);
