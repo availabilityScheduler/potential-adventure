@@ -180,6 +180,7 @@ public class searchBar extends AppCompatActivity {
 
     }
     public void writeFriendData(String username){
+        //gets firebase auth id
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         String firebaseAcctId =  currentFirebaseUser.getUid();
 

@@ -160,6 +160,7 @@ public class ThirdActivity extends AppCompatActivity {
             mName.setText(personName);
             mEmail.setText(personEmail);
             Glide.with(this).load(personPhoto).into(mPhoto);
+            //Firebase auth should be used instead of google for userID, as people who register through normal email wont show up otherwise
             FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
             String userAuthId = currentFirebaseUser.getUid();
 
@@ -171,11 +172,9 @@ public class ThirdActivity extends AppCompatActivity {
 
             //saves user under their id, no duplicates
             db.child(userAuthId).setValue(thisMember);
-            //Toast.makeText(ThirdActivity.this, "Data Inserted Successfully", Toast.LENGTH_LONG).show();
-
         }
 
-        //the pop up at the right corner, FAB, Floating Action Bar
+        //the pop up at the right corner, FAB, Floating Action Bar, to find friends
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
