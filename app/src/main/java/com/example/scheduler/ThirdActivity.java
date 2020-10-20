@@ -126,7 +126,7 @@ public class ThirdActivity extends AppCompatActivity {
         FloatingActionButton fab = findViewById(R.id.fab);
 
         //Friends dialog box
-        openFriendsDialog = findViewById(R.id.btnOpenFriends);
+        openFriendsDialog = findViewById(R.id.compareFriends);
         openFriendsDialog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View v){
