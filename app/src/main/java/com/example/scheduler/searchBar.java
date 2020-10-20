@@ -106,7 +106,7 @@ public class searchBar extends AppCompatActivity {
     //Main logic Rn, should be updated to include lowercase searching
     //Keyboard could pop up right away when you click on the FAB
     private void firebaseUserSearch(String searchText) {
-        Toast.makeText(searchBar.this, "Started Search", Toast.LENGTH_LONG).show();
+        //Toast.makeText(searchBar.this, "Started Search", Toast.LENGTH_LONG).show();
 
         Query firebaseSearchQuery = mUserDatabase.orderByChild("aName").startAt(searchText).endAt(searchText + "\uf8ff");
 
