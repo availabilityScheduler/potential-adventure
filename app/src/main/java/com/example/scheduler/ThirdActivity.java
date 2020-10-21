@@ -148,6 +148,7 @@ public class ThirdActivity extends AppCompatActivity {
             mName.setText(personName);
             mEmail.setText(personEmail);
             Glide.with( this).load(personPhoto).into(mPhoto);
+
             //added firebase id auth insteead using the google one, google sign in still doable
             //from my understanding, this is so registered using normal email to sign up also shows up in the database under
             //a "universal" id

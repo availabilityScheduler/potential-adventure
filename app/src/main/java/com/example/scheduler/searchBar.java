@@ -106,7 +106,7 @@ public class searchBar extends AppCompatActivity {
     //Main logic Rn, should be updated to include lowercase searching
     //Keyboard could pop up right away when you click on the FAB
     private void firebaseUserSearch(String searchText) {
-        Toast.makeText(searchBar.this, "Started Search", Toast.LENGTH_LONG).show();
+        //Toast.makeText(searchBar.this, "Started Search", Toast.LENGTH_LONG).show();
 
         Query firebaseSearchQuery = mUserDatabase.orderByChild("aName").startAt(searchText).endAt(searchText + "\uf8ff");
 
@@ -149,6 +149,7 @@ public class searchBar extends AppCompatActivity {
             TextView user_name = (TextView) mView.findViewById(R.id.name_text);
             TextView user_id = (TextView) mView.findViewById(R.id.userID);
             Button add_button = (Button) mView.findViewById(R.id.add_friends);
+            Button view_profile = (Button) mView.findViewById(R.id.view_profile);
 
             System.out.println("haha" + user_name);
             //user_image = (ImageView) mView.findViewById(R.id.profile_image);
@@ -164,6 +165,14 @@ public class searchBar extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
+            view_profile.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(searchBar.this, userProfile.class);
+                    startActivity(intent);
+                }
+
+            } );
 
         }
 
