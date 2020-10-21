@@ -18,40 +18,65 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Map;
 
 public class FriendDialogBox extends DialogFragment {
     ArrayList<Integer> selectedFriends;
+
     private DatabaseReference mUserFriendDatabase;
     private static final String TAG = "";
+    private int friendCount;
+
+    //friend string aray
+    String friendList[];
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         //tracks chosen friends
         selectedFriends = new ArrayList<Integer>();
-        //gets current firebase auth id
+
+        //firebase authid
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         String firebaseAcctId =  currentFirebaseUser.getUid();
 
-        //access the current users friend
+        //dialog builder
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+
+        //access the current users friend's
         mUserFriendDatabase = FirebaseDatabase.getInstance().getReference("Friends").child(firebaseAcctId);
-        mUserFriendDatabase.addValueEventListener(new ValueEventListener() {
-            //to see in the terminal
+
+        //gets the number of friends the user have
+        mUserFriendDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                //convert hashmap to string type beat
+                friendCount = (int) dataSnapshot.getChildrenCount();
+                System.out.println("count " + friendCount);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        //retrieves the friend and puts it into the friend array
+        mUserFriendDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //convert hashmap to string type
                 Map<String, Object> getFriendMaps = (Map<String, Object>) dataSnapshot.getValue();
                 //iterate through the values of our hashmap
                 Iterator it = getFriendMaps.entrySet().iterator();
-                while (it.hasNext()) {
+                friendList = new String[friendCount];
+                for(int i=0 ; it.hasNext() ;i++){
                     Map.Entry pair = (Map.Entry)it.next();
-                    //Prints key value pairs, for now i only wanna save the key or display that in dialog box
-                    //System.out.println(pair.getKey() + " = " + pair.getValue());
-                    System.out.println(pair.getKey());
-                    it.remove();
+                    String friend1 = pair.getKey().toString();
+                    friendList[i] = friend1;
+                    System.out.println(Arrays.toString(friendList));
                 }
-                //Log.i(TAG, "Value is: " + getFriendMaps);
+                it.remove();
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -60,35 +85,42 @@ public class FriendDialogBox extends DialogFragment {
         });
 
 
-        //Use the builder class for convenient dialog construction
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle(R.string.dialog_choose_friends)
-                //specify list array, items to be selected  by default (null for none)
-                .setMultiChoiceItems(R.array.friends, null, new DialogInterface.OnMultiChoiceClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-                        if (isChecked){
-                            //if user selects add to selected friends
-                            selectedFriends.add(which);
-                        } else if (selectedFriends.contains(which)){
-                            //If friend is already in array, remove
-                            selectedFriends.remove(Integer.valueOf(which));
-                        }
-                    }
-                })
+        //if u pass in cars in the parameters, it works just fine, just for testing purposes
+        final String[] cars = {"Volvo", "BMW", "Ford", "Mazda"};
 
-                //Set positive action
-                .setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        //accept friends
-                    }
-                })
-                //set negative action
-                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                    }
-                });
+        //the problem is retrieving the data from firebase through the above onDataChange calls is an async function,
+        // so you're never really getting it back? or smth like that
+        //doesnt work if u put friendlist as the parameter, tried using the debugger apparently value is null
+       builder.setTitle(R.string.dialog_choose_friends).setMultiChoiceItems(friendList, null, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                if (isChecked){
+                    //testing pringint car string array
+                    System.out.println("printCars" + Arrays.toString(cars));
+
+                    //but for some reason it prints the friends just fine here?
+                    System.out.println("printFriendList" + Arrays.toString(friendList));
+
+                    //if user selects add to selected friends
+                    selectedFriends.add(which);
+                } else if (selectedFriends.contains(which)){
+                    //If friend is already in array, remove
+                    System.out.println("elseif" + which);
+
+                    selectedFriends.remove(Integer.valueOf(which));
+                }
+            }
+        }).setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                //accept friends
+            }
+        }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+
+            }
+        });
         return builder.create();
     }
+
 }
