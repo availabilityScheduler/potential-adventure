@@ -125,7 +125,6 @@ public class searchBar extends AppCompatActivity {
     }
 
 
-
     //Main logic to search users
     private void firebaseUserSearch(final String searchText) {
         Toast.makeText(searchBar.this, "Started Search", Toast.LENGTH_SHORT).show();
@@ -179,7 +178,6 @@ public class searchBar extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(searchBar.this, "Adding friend", Toast.LENGTH_SHORT).show();
-
                     final TextView user_name = (TextView) findViewById(R.id.name_text);
                     String username = user_name.getText().toString();
                     writeFriendData(username);
@@ -188,6 +186,16 @@ public class searchBar extends AppCompatActivity {
 
                 }
             });
+            Button view_profile = (Button) mView.findViewById(R.id.view_profile);
+            view_profile.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(searchBar.this, userProfile.class);
+                    startActivity(intent);
+                }
+
+            });
+
         }
     }
 

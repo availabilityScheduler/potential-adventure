@@ -145,7 +145,6 @@ public class ThirdActivity extends AppCompatActivity {
             mEmail.setText(personEmail);
             Glide.with( this).load(personPhoto).into(mPhoto);
 
-            //changed google auth to firebase auth
             FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
             String userAuthId = currentFirebaseUser.getUid();
 
