@@ -120,10 +120,6 @@ public class ThirdActivity extends AppCompatActivity {
                 return true;
             }
         });
-        
-        //SearchBar
-        FloatingActionButton fab = findViewById(R.id.fab);
-
 
         //Firebase Database instance
         db = FirebaseDatabase.getInstance().getReference().child("Users");
@@ -149,9 +145,6 @@ public class ThirdActivity extends AppCompatActivity {
             mEmail.setText(personEmail);
             Glide.with( this).load(personPhoto).into(mPhoto);
 
-            //added firebase id auth insteead using the google one, google sign in still doable
-            //from my understanding, this is so registered using normal email to sign up also shows up in the database under
-            //a "universal" id
             FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
             String userAuthId = currentFirebaseUser.getUid();
 
@@ -163,9 +156,11 @@ public class ThirdActivity extends AppCompatActivity {
 
             //saves user under their id, no duplicates
             db.child(userAuthId).setValue(thisMember);
-            //Toast.makeText(ThirdActivity.this, "Data Inserted Successfully", Toast.LENGTH_LONG).show();
-
         }
+
+
+        //SearchBar
+        FloatingActionButton fab = findViewById(R.id.fab);
 
         //the pop up at the right corner, FAB, Floating Action Bar
         fab.setOnClickListener(new View.OnClickListener(){
