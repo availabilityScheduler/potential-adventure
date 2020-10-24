@@ -21,10 +21,10 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -43,6 +43,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -124,10 +125,8 @@ public class searchBar extends AppCompatActivity {
             });
     }
 
-
     //Main logic to search users
     private void firebaseUserSearch(final String searchText) {
-        Toast.makeText(searchBar.this, "Started Search", Toast.LENGTH_SHORT).show();
         Query firebaseSearchQuery = mUserDatabase.orderByChild("aName").startAt(searchText).endAt(searchText + "\uf8ff");
         //after this, goes to the end of the method
         FirebaseRecyclerOptions personsOptions =
@@ -172,12 +171,12 @@ public class searchBar extends AppCompatActivity {
             user_name.setText(userName);
             theEmail.setText(userID);
 
+
             //adds a friend and redirects to the main screen
             Button add_button = (Button)mView.findViewById(R.id.add_friends);
             add_button.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(searchBar.this, "Adding friend", Toast.LENGTH_SHORT).show();
                     final TextView user_name = (TextView) findViewById(R.id.name_text);
                     String username = user_name.getText().toString();
                     writeFriendData(username);
@@ -195,11 +194,8 @@ public class searchBar extends AppCompatActivity {
                 }
 
             });
-
         }
     }
-
-
 
     public void writeFriendData(String username){
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -211,6 +207,7 @@ public class searchBar extends AppCompatActivity {
 
         //the object pushed to the database
         Map<String, Object> friendDbHashMap = new HashMap<>();
+
 
         //local db in member class
         Map<String, Boolean> memberMap =  new HashMap<>();
@@ -232,10 +229,4 @@ public class searchBar extends AppCompatActivity {
             }
         });
     }
-
-
-
 }
-
-
-

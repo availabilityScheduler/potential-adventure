@@ -17,15 +17,18 @@ public class Member {
     private String firstName, lastName, aName, ID;
     Map<String, Boolean> memberMap =  new HashMap<>();
 
+    public void setMemberMap(Map<String, Boolean> memberMap) {
+        this.memberMap = memberMap;
+    }
+
     public Member(){}
 
     public Member(String aName, String ID) {
         this.aName = aName;
         this.ID = ID;
     }
-    public void setMemberMap(Map<String, Boolean> memberMap) {
-        this.memberMap = memberMap;
-    }
+
+
     public String getFirstName() {
         return firstName;
     }
@@ -50,4 +53,5 @@ public class Member {
     public String getID() {
         return ID;
     }
+
 }
