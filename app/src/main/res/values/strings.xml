@@ -29,13 +29,6 @@
     <string name="accept">Accept</string>
     <string name="cancel">Cancel</string>
 
-    <!-- array for friendslist-->
-    <string-array name="friends">
-        <item>Friend 1</item>
-        <item>Friend 2</item>
-        <item>Friend 3</item>
-        <item>Friend 4</item>
-    </string-array>
 
 <!--    underlined texts-->
 </resources>

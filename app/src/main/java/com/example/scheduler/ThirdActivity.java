@@ -3,6 +3,7 @@ package com.example.scheduler;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
@@ -21,8 +22,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -34,6 +38,10 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -54,8 +62,10 @@ public class ThirdActivity extends AppCompatActivity {
     //Instance Member
     Member thisMember;
 
+    //DB instance normal
+    DatabaseReference db;
 
-    //Google
+    //Google and nav display
     GoogleSignInClient mGoogleSignInClient;
     Button mSign_out;
     TextView firstName;
@@ -65,14 +75,18 @@ public class ThirdActivity extends AppCompatActivity {
     TextView id;
     CircleImageView mPhoto;
 
-    //DB instance
-    DatabaseReference db;
+    //For dialog box retrieving friends
+    private DatabaseReference mUserFriendDatabase;
+    private String firebaseAcctId;
+    private int friendCount;
+    String friendList[];
+    private static final String EXTRA_MESSAGE = "";
 
-    //Dialog box stuff
+
+    //Dialog box button
     private Button openFriendsDialog;
 
     private static final String TAG = "ThirdActivity";
-    private TextView theDate;
 
 
     @Override
@@ -88,6 +102,12 @@ public class ThirdActivity extends AppCompatActivity {
         //Retrieving ID's
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        //SearchBar
+        FloatingActionButton fab = findViewById(R.id.fab);
+        //Firebase Database instance
+        db = FirebaseDatabase.getInstance().getReference().child("Users");
+
 
         //Connect nav view
         mName = (TextView) mNavigationView.getHeaderView(0).findViewById(R.id.nav_name);
@@ -122,32 +142,14 @@ public class ThirdActivity extends AppCompatActivity {
             }
         });
 
-        //SearchBar
-        FloatingActionButton fab = findViewById(R.id.fab);
-
-        //Friends dialog box
-        openFriendsDialog = findViewById(R.id.compareFriends);
-        openFriendsDialog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick (View v){
-                DialogFragment newFragment = new FriendDialogBox();
-                newFragment.show(getSupportFragmentManager(), "friendslist");
-            }
-        });
 
 
 
-        //Firebase Database instance
-        db = FirebaseDatabase.getInstance().getReference().child("Users");
-
-
-        //Google
+        //Google Sign in and Display to NAV bar also saves new user into database
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
-
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(ThirdActivity.this);
         if (acct != null) {
             String personName = acct.getDisplayName().toLowerCase();
@@ -160,6 +162,7 @@ public class ThirdActivity extends AppCompatActivity {
             mName.setText(personName);
             mEmail.setText(personEmail);
             Glide.with(this).load(personPhoto).into(mPhoto);
+
             //Firebase auth should be used instead of google for userID, as people who register through normal email wont show up otherwise
             FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
             String userAuthId = currentFirebaseUser.getUid();
@@ -174,7 +177,46 @@ public class ThirdActivity extends AppCompatActivity {
             db.child(userAuthId).setValue(thisMember);
         }
 
-        //the pop up at the right corner, FAB, Floating Action Bar, to find friends
+        //Friends dialog box compare click listener, and logic to retrieve friends from db and put in to string array
+        openFriendsDialog = findViewById(R.id.compareFriends);
+        openFriendsDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View v){
+                //Gets current firebase authID
+                FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                firebaseAcctId =  currentFirebaseUser.getUid();
+                //Gets the path to friend list
+                mUserFriendDatabase = FirebaseDatabase.getInstance().getReference("Friends").child(firebaseAcctId);
+                mUserFriendDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        friendCount = (int) dataSnapshot.getChildrenCount();
+                        Map<String, Object> getFriendMaps = (Map<String, Object>) dataSnapshot.getValue();
+                        //Iterates through the values of our hashmap
+                        Iterator it = getFriendMaps.entrySet().iterator();
+                        friendList = new String[friendCount];
+                        for(int i=0 ; it.hasNext() ;i++){
+                            Map.Entry pair = (Map.Entry)it.next();
+                            String eachFriend = pair.getKey().toString();
+                            friendList[i] = eachFriend;
+                        }
+                        DialogFragment newFragment = new FriendDialogBox();
+                        Bundle bundle = new Bundle();
+                        bundle.putStringArray("sendFriendList",friendList);
+                        newFragment.setArguments(bundle);
+                        newFragment.show(getSupportFragmentManager(), "friendDialogBox");
+                        it.remove();
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.w(TAG, "Failed To Read", databaseError.toException());
+                    }
+                });
+
+            }
+        });
+
+        //Right Corner POP UP FOR searching Friends, FAB, Floating Action Bar
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -196,7 +238,7 @@ public class ThirdActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-
+    //ENDS ONCREATE()
     }
 
 
@@ -215,18 +257,17 @@ public class ThirdActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+    //Google Sign Out
     private void signOut() {
-        mGoogleSignInClient.signOut()
-                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(ThirdActivity.this, "Successfully signed out", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(ThirdActivity.this, MainActivity.class));
-                        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-                        finish();
-                    }
-                });
+        mGoogleSignInClient.signOut().addOnCompleteListener(this, new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(ThirdActivity.this, "Successfully signed out", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(ThirdActivity.this, MainActivity.class));
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                finish();
+            }
+        });
     }
-
 
 }
