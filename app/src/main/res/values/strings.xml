@@ -8,7 +8,7 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-<!--    For Sliding Navigation bar-->
+    <!--    For Sliding Navigation bar-->
     <string name="openDrawer">open_drawer</string>
     <string name="closeDrawer">close_drawer</string>
 
@@ -16,7 +16,7 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
 
-<!--    Toolbar titles-->
+    <!--    Toolbar titles-->
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
@@ -28,7 +28,5 @@
     <string name="dialog_choose_friends">Choose friends to compare with</string>
     <string name="accept">Accept</string>
     <string name="cancel">Cancel</string>
-
-
-<!--    underlined texts-->
+  
 </resources>

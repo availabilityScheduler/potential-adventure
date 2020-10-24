@@ -3,6 +3,7 @@
     package="com.example.scheduler">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Login"></activity>
+        <activity android:name=".userProfile"></activity>
+        <activity android:name=".Login" />
         <activity android:name=".Register" />
         <activity android:name=".ThirdActivity">
             <intent-filter>
@@ -30,7 +32,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".searchBar" />
+        <activity android:name=".searchBar"/>
+
 
         <meta-data
             android:name="preloaded_fonts"

@@ -143,8 +143,6 @@ public class ThirdActivity extends AppCompatActivity {
         });
 
 
-
-
         //Google Sign in and Display to NAV bar also saves new user into database
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -216,8 +214,11 @@ public class ThirdActivity extends AppCompatActivity {
             }
         });
 
-        //Right Corner POP UP FOR searching Friends, FAB, Floating Action Bar
-        fab.setOnClickListener(new View.OnClickListener() {
+
+
+
+        //the pop up at the right corner, FAB, Floating Action Bar
+        fab.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ThirdActivity.this, searchBar.class);
