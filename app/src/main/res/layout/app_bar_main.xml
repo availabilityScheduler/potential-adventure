@@ -13,23 +13,26 @@
         layout="@layout/content_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+
     <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="30dp"
+        android:layout_width="366dp"
+        android:layout_height="412dp"
         android:layout_marginHorizontal="10dp"
-        android:background="#f1f1f1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        >
+        android:layout_marginVertical="30dp"
+        android:background="@color/whiteColor"
+        android:contextClickable="false"
+        android:hapticFeedbackEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
 
         //row1
+
         <TableRow>
 
-            <Button
+            <TextView
                 android:layout_width="35dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -102,399 +105,423 @@
         </TableRow>
 
         //row 2
-        <TableRow>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="6:00 AM"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
+
+        <TableRow android:background="@color/whiteColor">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
-            <TextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="6:00 AM" />
+
+            <RadioButton
+                android:id="@+id/mon6am"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
-            <TextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/t6am"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
-            <TextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/wed6am"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
-            <TextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/tr6am"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
-            <TextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/f6am"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
-            <TextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/sat6am"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/sun6am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
 
         </TableRow>
         //row 3
+
         <TableRow>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="7:00 AM"
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="7:00 AM" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/mon7am"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
                 android:layout_weight="1"
                 android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
+                android:text="" />
 
+            <RadioButton
+                android:id="@+id/t7am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/wed7am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/tr7am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/fri7am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/sat7am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/sun7am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
         </TableRow>
 
         //8AM row
+
         <TableRow>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="8:00 AM"
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="8:00 AM" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/mon8am"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
-            <TextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+            <RadioButton
+                android:id="@+id/t8am"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
                 android:layout_weight="1"
                 android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
+                android:text="" />
 
+            <RadioButton
+                android:id="@+id/wed8am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/tr8am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/fri8am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/sat8am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/sun8am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
         </TableRow>
 
         //9AM Row
+
         <TableRow>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="9:00 AM"
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="9:00 AM" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/mon9am"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
-            <TextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+            <RadioButton
+                android:id="@+id/t9am"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
                 android:layout_weight="1"
                 android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
+                android:text="" />
 
+            <RadioButton
+                android:id="@+id/wed9am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/tr9am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/fri9am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/sat9am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/sun9am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
         </TableRow>
 
         //10AM row
+
         <TableRow>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10:00 AM"
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="10:00 AM" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/mon10am"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
-            <TextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+            <RadioButton
+                android:id="@+id/t10am"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
                 android:layout_weight="1"
                 android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
+                android:text="" />
 
+            <RadioButton
+                android:id="@+id/wed10am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/tr10am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/fri10am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/sat10am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/sun10am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
         </TableRow>
 
         //11AM Row
-        <TableRow>
 
+        <TableRow>
             <TextView
-                android:layout_width="79dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
@@ -502,77 +529,80 @@
                 android:gravity="center"
                 android:text="11:00 AM" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/mon11am"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
-            <TextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+            <RadioButton
+                android:id="@+id/t11am"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
                 android:layout_weight="1"
                 android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
+                android:text="" />
 
+            <RadioButton
+                android:id="@+id/wed11am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/tr11am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/fri11am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/sat11am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/sun11am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
         </TableRow>
 
         //12PM row
         <TableRow>
-
             <TextView
-                android:layout_width="79dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
@@ -580,72 +610,77 @@
                 android:gravity="center"
                 android:text="12:00 PM" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/mon12pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
-            <TextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+            <RadioButton
+                android:id="@+id/t12pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
                 android:layout_weight="1"
                 android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
+                android:text="" />
 
+            <RadioButton
+                android:id="@+id/wed12pm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/tr12pm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/fri12pm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/sat12pm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/sun12pm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
         </TableRow>
         //1PM row
+
         <TableRow>
 
             <TextView
@@ -660,68 +695,68 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
         </TableRow>
         //2PM row
+
         <TableRow>
 
             <TextView
@@ -736,70 +771,70 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
 
         </TableRow>
 
         //3pm row
+
         <TableRow>
 
             <TextView
@@ -814,70 +849,70 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
 
         </TableRow>
 
         //4PM row
+
         <TableRow>
 
             <TextView
@@ -892,70 +927,70 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
 
         </TableRow>
 
         //5pm row
+
         <TableRow>
 
             <TextView
@@ -970,69 +1005,69 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
 
         </TableRow>
         //6PM row
+
         <TableRow>
 
             <TextView
@@ -1047,70 +1082,70 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
 
         </TableRow>
 
         //7pm row
+
         <TableRow>
 
             <TextView
@@ -1125,70 +1160,70 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
 
         </TableRow>
 
         //8pm row
+
         <TableRow>
 
             <TextView
@@ -1203,69 +1238,69 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
 
         </TableRow>
         //9pm row
+
         <TableRow>
 
             <TextView
@@ -1280,69 +1315,69 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
 
         </TableRow>
         //10PM row
+
         <TableRow>
 
             <TextView
@@ -1357,70 +1392,70 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
 
         </TableRow>
 
         //11PM row
+
         <TableRow>
 
             <TextView
@@ -1435,70 +1470,70 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
 
         </TableRow>
 
         //12AM row
+
         <TableRow>
 
             <TextView
@@ -1513,472 +1548,69 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-
-        </TableRow>
-        //1AM row
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="79dp"
-                android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="1:00 AM" />
+                android:text="" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-
-        </TableRow>
-
-        //2AM row
-        <TableRow>
-
-            <TextView
-                android:layout_width="79dp"
-                android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="2:00 AM" />
+                android:text="" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-
-        </TableRow>
-
-        //3AM Row
-        <TableRow>
-
-            <TextView
-                android:layout_width="79dp"
-                android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="3:00 AM" />
+                android:text="" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-
-        </TableRow>
-
-        //4AM row
-        <TableRow>
-
-            <TextView
-                android:layout_width="79dp"
-                android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="4:00 AM" />
+                android:text="" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-
-        </TableRow>
-
-        //5AM row
-        <TableRow>
-
-            <TextView
-                android:layout_width="79dp"
-                android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="5:00 AM" />
+                android:text="" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
                 android:layout_weight="1"
                 android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
-                />
+                android:text="" />
 
         </TableRow>
 
     </TableLayout>
-
-
-    <TextView
-        android:id="@+id/date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="296dp"
-        android:layout_marginTop="36dp"
-        android:hint="My Dates"
-        android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
