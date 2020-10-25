@@ -14,6 +14,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <ScrollView
+        android:layout_width="366dp"
+        android:layout_height="412dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="30dp"
+        android:background="@color/whiteColor"
+        android:scrollbars="none"
+        android:layout_weight="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
 
     <TableLayout
         android:layout_width="366dp"
@@ -28,7 +40,7 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
 
-        //row1
+        <!--row1-->
 
         <TableRow>
 
@@ -104,7 +116,7 @@
 
         </TableRow>
 
-        //row 2
+        <!--row2-->
 
         <TableRow android:background="@color/whiteColor">
 
@@ -188,7 +200,8 @@
                 android:text="" />
 
         </TableRow>
-        //row 3
+
+        <!--row3-->
 
         <TableRow>
             <TextView
@@ -271,7 +284,7 @@
                 android:text="" />
         </TableRow>
 
-        //8AM row
+        <!--8AM row-->
 
         <TableRow>
             <TextView
@@ -353,7 +366,7 @@
                 android:text="" />
         </TableRow>
 
-        //9AM Row
+        <!--9AM row-->
 
         <TableRow>
             <TextView
@@ -435,7 +448,7 @@
                 android:text="" />
         </TableRow>
 
-        //10AM row
+        <!--10AM row-->
 
         <TableRow>
             <TextView
@@ -517,7 +530,7 @@
                 android:text="" />
         </TableRow>
 
-        //11AM Row
+        <!--11AM row-->
 
         <TableRow>
             <TextView
@@ -599,7 +612,8 @@
                 android:text="" />
         </TableRow>
 
-        //12PM row
+        <!--12PM row-->
+
         <TableRow>
             <TextView
                 android:layout_width="wrap_content"
@@ -619,6 +633,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="" />
+
             <RadioButton
                 android:id="@+id/t12pm"
                 android:layout_width="wrap_content"
@@ -679,12 +694,12 @@
                 android:gravity="center"
                 android:text="" />
         </TableRow>
-        //1PM row
+
+        <!--1PM row-->
 
         <TableRow>
-
             <TextView
-                android:layout_width="79dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
@@ -692,7 +707,8 @@
                 android:gravity="center"
                 android:text="1:00 PM" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/mon1pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -701,7 +717,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/t1pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -710,7 +727,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/wed1pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -719,7 +737,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/tr1pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -728,7 +747,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/fri1pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -737,7 +757,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/sat1pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -746,7 +767,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/sun1pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -755,12 +777,12 @@
                 android:gravity="center"
                 android:text="" />
         </TableRow>
-        //2PM row
+
+        <!--2PM row-->
 
         <TableRow>
-
             <TextView
-                android:layout_width="79dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
@@ -768,7 +790,8 @@
                 android:gravity="center"
                 android:text="2:00 PM" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/mon2pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -777,7 +800,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/t2pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -786,7 +810,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/wed2pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -795,7 +820,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/tr2pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -804,7 +830,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/fri2pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -813,7 +840,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/sat2pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -822,7 +850,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/sun2pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -830,15 +859,13 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="" />
-
         </TableRow>
 
-        //3pm row
+        <!--3PM row-->
 
         <TableRow>
-
             <TextView
-                android:layout_width="79dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
@@ -846,7 +873,8 @@
                 android:gravity="center"
                 android:text="3:00 PM" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/mon3pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -855,7 +883,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/t3pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -864,7 +893,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/wed3pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -873,7 +903,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/tr3pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -882,7 +913,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/fri3pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -891,7 +923,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/sat3pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -900,7 +933,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/sun3pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -908,15 +942,13 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="" />
-
         </TableRow>
 
-        //4PM row
+        <!--4PM row-->
 
         <TableRow>
-
             <TextView
-                android:layout_width="79dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
@@ -924,7 +956,8 @@
                 android:gravity="center"
                 android:text="4:00 PM" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/mon4pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -933,7 +966,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/t4pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -942,7 +976,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/wed4pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -951,7 +986,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/tr4pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -960,7 +996,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/fri4pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -969,7 +1006,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/sat4pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -978,7 +1016,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/sun4pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -986,15 +1025,13 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="" />
-
         </TableRow>
 
-        //5pm row
+        <!--5PM row-->
 
         <TableRow>
-
             <TextView
-                android:layout_width="79dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
@@ -1002,7 +1039,8 @@
                 android:gravity="center"
                 android:text="5:00 PM" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/mon5pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1011,7 +1049,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/t5pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1020,7 +1059,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/wed5pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1029,7 +1069,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/tr5pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1038,7 +1079,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/fri5pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1047,7 +1089,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/sat5pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1056,7 +1099,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/sun5pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1064,14 +1108,13 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="" />
-
         </TableRow>
-        //6PM row
+
+        <!--6PM row-->
 
         <TableRow>
-
             <TextView
-                android:layout_width="79dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
@@ -1079,7 +1122,8 @@
                 android:gravity="center"
                 android:text="6:00 PM" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/mon6pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1088,7 +1132,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/t6pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1097,7 +1142,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/wed6pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1106,7 +1152,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/tr6pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1115,7 +1162,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/fri6pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1124,7 +1172,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/sat6pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1133,7 +1182,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/sun6pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1141,15 +1191,13 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="" />
-
         </TableRow>
 
-        //7pm row
+        <!--7PM row-->
 
         <TableRow>
-
             <TextView
-                android:layout_width="79dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
@@ -1157,7 +1205,8 @@
                 android:gravity="center"
                 android:text="7:00 PM" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/mon7pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1166,7 +1215,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/t7pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1175,7 +1225,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/wed7pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1184,7 +1235,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/tr7pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1193,7 +1245,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/fri7pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1202,7 +1255,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/sat7pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1211,7 +1265,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/sun7pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1219,15 +1274,13 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="" />
-
         </TableRow>
 
-        //8pm row
+        <!--8PM row-->
 
         <TableRow>
-
             <TextView
-                android:layout_width="79dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
@@ -1235,7 +1288,8 @@
                 android:gravity="center"
                 android:text="8:00 PM" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/mon8pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1244,7 +1298,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/t8pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1253,7 +1308,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/wed8pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1262,7 +1318,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/tr8pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1271,7 +1328,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/fri8pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1280,7 +1338,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/sat8pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1289,7 +1348,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/sun8pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1297,14 +1357,13 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="" />
-
         </TableRow>
-        //9pm row
+
+        <!--9PM row-->
 
         <TableRow>
-
             <TextView
-                android:layout_width="79dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
@@ -1312,7 +1371,8 @@
                 android:gravity="center"
                 android:text="9:00 PM" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/mon9pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1321,7 +1381,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/t9pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1330,7 +1391,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/wed9pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1339,7 +1401,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/tr9pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1348,7 +1411,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/fri9pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1357,7 +1421,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/sat9pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1366,7 +1431,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/sun9pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1374,14 +1440,13 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="" />
-
         </TableRow>
-        //10PM row
+
+        <!--10PM row-->
 
         <TableRow>
-
             <TextView
-                android:layout_width="79dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
@@ -1389,7 +1454,8 @@
                 android:gravity="center"
                 android:text="10:00 PM" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/mon10pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1398,7 +1464,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/t10pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1407,7 +1474,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/wed10pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1416,7 +1484,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/tr10pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1425,7 +1494,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/fri10pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1434,7 +1504,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/sat10pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1443,7 +1514,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/sun10pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1451,15 +1523,13 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="" />
-
         </TableRow>
 
-        //11PM row
+        <!--11PM row-->
 
         <TableRow>
-
             <TextView
-                android:layout_width="79dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
@@ -1467,7 +1537,8 @@
                 android:gravity="center"
                 android:text="11:00 PM" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/mon11pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1476,7 +1547,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/t11pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1485,7 +1557,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/wed11pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1494,7 +1567,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/tr11pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1503,7 +1577,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/fri11pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1512,7 +1587,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/sat11pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1521,7 +1597,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/sun11pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1529,15 +1606,13 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="" />
-
         </TableRow>
 
-        //12AM row
+        <!--12AM row-->
 
         <TableRow>
-
             <TextView
-                android:layout_width="79dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
@@ -1545,7 +1620,8 @@
                 android:gravity="center"
                 android:text="12:00 AM" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/mon12am"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1554,7 +1630,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/t12am"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1563,7 +1640,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/wed12am"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1572,7 +1650,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/tr12am"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1581,7 +1660,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/fri12am"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1590,7 +1670,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/sat12am"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1599,7 +1680,8 @@
                 android:gravity="center"
                 android:text="" />
 
-            <TextView
+            <RadioButton
+                android:id="@+id/sun12am"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
@@ -1607,10 +1689,11 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="" />
-
         </TableRow>
 
     </TableLayout>
+
+    </ScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
