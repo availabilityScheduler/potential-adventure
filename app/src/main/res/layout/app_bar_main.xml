@@ -16,10 +16,10 @@
 
     <ScrollView
         android:layout_width="366dp"
-        android:layout_height="412dp"
+        android:layout_height="450dp"
         android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="30dp"
-        android:background="@color/whiteColor"
+        android:background="#FFFFFF"
         android:scrollbars="none"
         android:layout_weight="1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,9 +30,8 @@
     <TableLayout
         android:layout_width="366dp"
         android:layout_height="412dp"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginVertical="30dp"
-        android:background="@color/whiteColor"
+        android:layout_marginHorizontal="0dp"
+        android:layout_marginVertical="0dp"
         android:contextClickable="false"
         android:hapticFeedbackEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -118,7 +117,7 @@
 
         <!--row2-->
 
-        <TableRow android:background="@color/whiteColor">
+        <TableRow>
 
             <TextView
                 android:layout_width="wrap_content"
