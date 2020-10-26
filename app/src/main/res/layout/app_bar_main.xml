@@ -55,46 +55,19 @@
 
             <TextView
 
-                android:layout_width="33dp"
+                android:layout_width="35dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="M"
+                android:text="MON"
                 android:textStyle="bold" />
 
             <TextView
-                android:layout_width="36dp"
+                android:layout_width="35dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="T"
-                android:textStyle="bold" />
-
-            <TextView
-
-                android:layout_width="36dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="W"
-                android:textStyle="bold" />
-
-            <TextView
-
-                android:layout_width="38dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="TR"
-                android:textStyle="bold" />
-
-            <TextView
-
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="F"
+                android:text="TUE"
                 android:textStyle="bold" />
 
             <TextView
@@ -103,16 +76,43 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Sat"
+                android:text="WED"
                 android:textStyle="bold" />
 
             <TextView
 
-                android:layout_width="37dp"
+                android:layout_width="35dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Sun"
+                android:text="THR"
+                android:textStyle="bold" />
+
+            <TextView
+
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="FRI"
+                android:textStyle="bold" />
+
+            <TextView
+
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="SAT"
+                android:textStyle="bold" />
+
+            <TextView
+
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="SUN"
                 android:textStyle="bold" />
 
         </TableRow>
