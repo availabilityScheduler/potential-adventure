@@ -52,11 +52,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 //expanding menu and stuff
 public class ThirdActivity extends AppCompatActivity implements View.OnClickListener {
 
-
-    Button saveSchedule;
-    RadioButton mon6am;
-
-
     //Navigation Stuff
     private AppBarConfiguration mAppBarConfiguration;
     private NavigationView mNavigationView;
@@ -84,6 +79,9 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     TextView id;
     CircleImageView mPhoto;
 
+    //Dialog box button
+    private Button openFriendsDialog;
+
     //For dialog box retrieving friends
     private DatabaseReference mUserFriendDatabase;
     private String firebaseAcctId;
@@ -92,11 +90,10 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     private static final String EXTRA_MESSAGE = "";
 
 
-    //Dialog box button
-    private Button openFriendsDialog;
-
+    //Tag string
     private static final String TAG = "ThirdActivity";
 
+    //Button theory
     private int[][] buttonViewIds = new int[][] {
             { R.id.mon6am, R.id.t6am, R.id.wed6am, R.id.tr6am, R.id.fri6am, R.id.sat6am, R.id.sun6am },
             { R.id.mon7am, R.id.t7am, R.id.wed7am, R.id.tr7am, R.id.fri7am, R.id.sat7am, R.id.sun7am },
@@ -121,6 +118,9 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     // assuming each row is the same length you can do this
     private RadioButton[][] buttonArray = new RadioButton[buttonViewIds.length][buttonViewIds[0].length];
     private Button saveButton;
+
+    //not sure what type of data structure it should be yet
+    private String availableTimes[];
 
 
     @Override
@@ -367,6 +367,8 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         if (!time.isSelected()) {
             time.setChecked(true);
             time.setSelected(true);
+            Toast.makeText(ThirdActivity.this, time+ " Added! ", Toast.LENGTH_SHORT).show();
+
         } else {
             time.setChecked(false);
             time.setSelected(false);
