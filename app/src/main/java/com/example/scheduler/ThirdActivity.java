@@ -361,6 +361,8 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 break;
         }
     }
+
+    //Deselection and saving data into temp array before pushing it to db on "save"
     public void deselection(RadioButton time) {
         if (!time.isSelected()) {
             time.setChecked(true);
@@ -368,6 +370,8 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         } else {
             time.setChecked(false);
             time.setSelected(false);
+            Toast.makeText(ThirdActivity.this, time+ " Value deleted", Toast.LENGTH_SHORT).show();
+
         }
     }
 
