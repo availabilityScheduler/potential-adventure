@@ -53,7 +53,11 @@ public class FriendDialogBox extends DialogFragment {
             }
         }).setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                //accept friends
+                //ig in another activity class which will show the final output, we can handle the logic there by using these
+                //names and retrieving their schedules to compare and show
+                for(int i=0; i <selectedFriends.size();i++){
+                    System.out.println(yourFriendFromDb[selectedFriends.get(i)]);
+                }
             }
         }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
