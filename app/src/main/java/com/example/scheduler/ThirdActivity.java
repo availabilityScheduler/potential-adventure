@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +48,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 //expanding menu and stuff
 public class ThirdActivity extends AppCompatActivity {
+
+
+    Button saveSchedule;
+    RadioButton mon6am;
+
 
     //Navigation Stuff
     private AppBarConfiguration mAppBarConfiguration;
@@ -213,9 +219,6 @@ public class ThirdActivity extends AppCompatActivity {
 
             }
         });
-
-
-
 
         //the pop up at the right corner, FAB, Floating Action Bar
         fab.setOnClickListener(new View.OnClickListener(){
