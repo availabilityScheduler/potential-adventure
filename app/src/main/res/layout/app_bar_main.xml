@@ -124,13 +124,9 @@
                     android:gravity="center"
                     android:text="SUN"
                     android:textStyle="bold" />
-
             </TableRow>
-
             <!--row2-->
-
             <TableRow>
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -138,7 +134,7 @@
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="6:00 AM" />
+                    android:text="" />
 
                 a<RadioButton
                     android:id="@+id/mon6am"
@@ -181,7 +177,7 @@
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/f6am"
+                    android:id="@+id/fri6am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="1dp"
