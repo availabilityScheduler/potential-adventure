@@ -339,7 +339,9 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()) {
             case R.id.mon6am:
                 System.out.println("vID: " +v.getId());
+
                 deselection((RadioButton) findViewById(R.id.mon6am));
+
                 break;
             case R.id.t6am:
                 deselection((RadioButton) findViewById(R.id.t6am));
@@ -367,6 +369,11 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         if (!time.isSelected()) {
             time.setChecked(true);
             time.setSelected(true);
+            System.out.println(time);
+            //retrieve substring from time object and split it, and push it into hashmap
+
+            //{thursday{6am: true}, wednesday{7am:true}}
+            //{wednesday{7am:true}, friday{8pm:true}}
             Toast.makeText(ThirdActivity.this, time+ " Added! ", Toast.LENGTH_SHORT).show();
 
         } else {
