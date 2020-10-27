@@ -26,9 +26,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-        <ScrollView
+
+    <TableLayout
+        android:id="@+id/weekdays"
         android:layout_width="366dp"
-        android:layout_height="450dp"
+        android:layout_height="20dp"
         android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="30dp"
         android:background="#FFFFFF"
@@ -37,6 +39,106 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <!--row1-->
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="91dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/mon"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/tue"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/wed"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/thr"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/fri"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/sat"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/sun"
+                android:textStyle="bold" />
+        </TableRow>
+
+
+</TableLayout>
+
+
+        <ScrollView
+        android:layout_width="366dp"
+        android:layout_height="450dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="0dp"
+        android:background="#FFFFFF"
+        android:scrollbars="none"
+        android:layout_weight="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weekdays">
 
 
         <TableLayout
@@ -48,87 +150,14 @@
             android:hapticFeedbackEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+            app:layout_constraintTop_toBottomOf="@+id/weekdays">
 
-
-            <!--row1-->
-
-            <TableRow>
-
-                <TextView
-                    android:layout_width="35dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text=""
-                    android:textStyle="bold" />
-
-                <TextView
-
-                    android:layout_width="35dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="MON"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="35dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="TUE"
-                    android:textStyle="bold" />
-
-                <TextView
-
-                    android:layout_width="35dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="WED"
-                    android:textStyle="bold" />
-
-                <TextView
-
-                    android:layout_width="35dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="THR"
-                    android:textStyle="bold" />
-
-                <TextView
-
-                    android:layout_width="35dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="FRI"
-                    android:textStyle="bold" />
-
-                <TextView
-
-                    android:layout_width="35dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="SAT"
-                    android:textStyle="bold" />
-
-                <TextView
-
-                    android:layout_width="35dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="SUN"
-                    android:textStyle="bold" />
-            </TableRow>
             <!--row2-->
+
             <TableRow>
+
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="91dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="1dp"
                     android:layout_marginBottom="1dp"
@@ -136,22 +165,22 @@
                     android:gravity="center"
                     android:text="6:00AM" />
 
-                a<RadioButton
+                <RadioButton
                     android:id="@+id/mon6am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="" />
+                android:background="@drawable/radiobutton_design"
+                android:button="@android:color/transparent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
 
                 <RadioButton
                     android:id="@+id/t6am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -160,8 +189,8 @@
                     android:id="@+id/wed6am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -170,8 +199,8 @@
                     android:id="@+id/tr6am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -180,8 +209,8 @@
                     android:id="@+id/fri6am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -190,8 +219,8 @@
                     android:id="@+id/sat6am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -200,8 +229,8 @@
                     android:id="@+id/sun6am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -224,8 +253,8 @@
                     android:id="@+id/mon7am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -234,8 +263,8 @@
                     android:id="@+id/t7am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -244,8 +273,8 @@
                     android:id="@+id/wed7am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -254,8 +283,8 @@
                     android:id="@+id/tr7am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -264,8 +293,8 @@
                     android:id="@+id/fri7am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -274,8 +303,8 @@
                     android:id="@+id/sat7am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -284,8 +313,8 @@
                     android:id="@+id/sun7am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
