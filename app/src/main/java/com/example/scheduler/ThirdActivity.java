@@ -96,25 +96,25 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
 
     //Button theory
     private int[][] buttonViewIds = new int[][] {
-            { R.id.mon6am, R.id.t6am, R.id.wed6am, R.id.tr6am, R.id.fri6am, R.id.sat6am, R.id.sun6am },
-            { R.id.mon7am, R.id.t7am, R.id.wed7am, R.id.tr7am, R.id.fri7am, R.id.sat7am, R.id.sun7am },
-            { R.id.mon8am, R.id.t8am, R.id.wed8am, R.id.tr8am, R.id.fri8am, R.id.sat8am, R.id.sun8am },
-            { R.id.mon9am, R.id.t9am, R.id.wed9am, R.id.tr9am, R.id.fri9am, R.id.sat9am, R.id.sun9am },
-            { R.id.mon10am, R.id.t10am, R.id.wed10am, R.id.tr10am, R.id.fri10am, R.id.sat10am, R.id.sun10am },
-            { R.id.mon11am, R.id.t11am, R.id.wed11am, R.id.tr11am, R.id.fri11am, R.id.sat11am, R.id.sun11am },
-            { R.id.mon12pm, R.id.t12pm, R.id.wed12pm, R.id.tr12pm, R.id.fri12pm, R.id.sat12pm, R.id.sun12pm },
-            { R.id.mon1pm, R.id.t1pm, R.id.wed1pm, R.id.tr1pm, R.id.fri1pm, R.id.sat1pm, R.id.sun1pm },
-            { R.id.mon2pm, R.id.t2pm, R.id.wed2pm, R.id.tr2pm, R.id.fri2pm, R.id.sat2pm, R.id.sun2pm },
-            { R.id.mon3pm, R.id.t3pm, R.id.wed3pm, R.id.tr3pm, R.id.fri3pm, R.id.sat3pm, R.id.sun3pm },
-            { R.id.mon4pm, R.id.t4pm, R.id.wed4pm, R.id.tr4pm, R.id.fri4pm, R.id.sat4pm, R.id.sun4pm },
-            { R.id.mon5pm, R.id.t5pm, R.id.wed5pm, R.id.tr5pm, R.id.fri5pm, R.id.sat5pm, R.id.sun5pm },
-            { R.id.mon6pm, R.id.t6pm, R.id.wed6pm, R.id.tr6pm, R.id.fri6pm, R.id.sat6pm, R.id.sun6pm },
-            { R.id.mon7pm, R.id.t7pm, R.id.wed7pm, R.id.tr7pm, R.id.fri7pm, R.id.sat7pm, R.id.sun7pm },
-            { R.id.mon8pm, R.id.t8pm, R.id.wed8pm, R.id.tr8pm, R.id.fri8pm, R.id.sat8pm, R.id.sun8pm },
-            { R.id.mon9pm, R.id.t9pm, R.id.wed9pm, R.id.tr9pm, R.id.fri9pm, R.id.sat9pm, R.id.sun9pm },
-            { R.id.mon10pm, R.id.t10pm, R.id.wed10pm, R.id.tr10pm, R.id.fri10pm, R.id.sat10pm, R.id.sun10pm},
-            { R.id.mon11pm, R.id.t11pm, R.id.wed11pm, R.id.tr11pm, R.id.fri11pm, R.id.sat11pm, R.id.sun11pm},
-            { R.id.mon12am, R.id.t12am, R.id.wed12am, R.id.tr12am, R.id.fri12am, R.id.sat12am, R.id.sun12am},
+            { R.id.mon6am, R.id.tue6am, R.id.wed6am, R.id.thr6am, R.id.fri6am, R.id.sat6am, R.id.sun6am },
+            { R.id.mon7am, R.id.tue7am, R.id.wed7am, R.id.thr7am, R.id.fri7am, R.id.sat7am, R.id.sun7am },
+            { R.id.mon8am, R.id.tue8am, R.id.wed8am, R.id.thr8am, R.id.fri8am, R.id.sat8am, R.id.sun8am },
+            { R.id.mon9am, R.id.tue9am, R.id.wed9am, R.id.thr9am, R.id.fri9am, R.id.sat9am, R.id.sun9am },
+            { R.id.mon10am, R.id.tue10am, R.id.wed10am, R.id.thr10am, R.id.fri10am, R.id.sat10am, R.id.sun10am },
+            { R.id.mon11am, R.id.tue11am, R.id.wed11am, R.id.thr11am, R.id.fri11am, R.id.sat11am, R.id.sun11am },
+            { R.id.mon12pm, R.id.tue12pm, R.id.wed12pm, R.id.thr12pm, R.id.fri12pm, R.id.sat12pm, R.id.sun12pm },
+            { R.id.mon1pm, R.id.tue1pm, R.id.wed1pm, R.id.thr1pm, R.id.fri1pm, R.id.sat1pm, R.id.sun1pm },
+            { R.id.mon2pm, R.id.tue2pm, R.id.wed2pm, R.id.thr2pm, R.id.fri2pm, R.id.sat2pm, R.id.sun2pm },
+            { R.id.mon3pm, R.id.tue3pm, R.id.wed3pm, R.id.thr3pm, R.id.fri3pm, R.id.sat3pm, R.id.sun3pm },
+            { R.id.mon4pm, R.id.tue4pm, R.id.wed4pm, R.id.thr4pm, R.id.fri4pm, R.id.sat4pm, R.id.sun4pm },
+            { R.id.mon5pm, R.id.tue5pm, R.id.wed5pm, R.id.thr5pm, R.id.fri5pm, R.id.sat5pm, R.id.sun5pm },
+            { R.id.mon6pm, R.id.tue6pm, R.id.wed6pm, R.id.thr6pm, R.id.fri6pm, R.id.sat6pm, R.id.sun6pm },
+            { R.id.mon7pm, R.id.tue7pm, R.id.wed7pm, R.id.thr7pm, R.id.fri7pm, R.id.sat7pm, R.id.sun7pm },
+            { R.id.mon8pm, R.id.tue8pm, R.id.wed8pm, R.id.thr8pm, R.id.fri8pm, R.id.sat8pm, R.id.sun8pm },
+            { R.id.mon9pm, R.id.tue9pm, R.id.wed9pm, R.id.thr9pm, R.id.fri9pm, R.id.sat9pm, R.id.sun9pm },
+            { R.id.mon10pm, R.id.tue10pm, R.id.wed10pm, R.id.thr10pm, R.id.fri10pm, R.id.sat10pm, R.id.sun10pm},
+            { R.id.mon11pm, R.id.tue11pm, R.id.wed11pm, R.id.thr11pm, R.id.fri11pm, R.id.sat11pm, R.id.sun11pm},
+            { R.id.mon12am, R.id.tue12am, R.id.wed12am, R.id.thr12am, R.id.fri12am, R.id.sat12am, R.id.sun12am},
     };
     // assuming each row is the same length you can do this
     private RadioButton[][] buttonArray = new RadioButton[buttonViewIds.length][buttonViewIds[0].length];
@@ -343,14 +343,14 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 System.out.println("vID: " +v.getId());
                 deselection((RadioButton) findViewById(R.id.mon6am));
                 break;
-            case R.id.t6am:
-                deselection((RadioButton) findViewById(R.id.t6am));
+            case R.id.tue6am:
+                deselection((RadioButton) findViewById(R.id.tue6am));
                 break;
             case R.id.wed6am:
                 deselection((RadioButton) findViewById(R.id.wed6am));
                 break;
-            case R.id.tr6am:
-                deselection((RadioButton) findViewById(R.id.tr6am));
+            case R.id.thr6am:
+                deselection((RadioButton) findViewById(R.id.thr6am));
                 break;
             case R.id.fri6am:
                 deselection((RadioButton) findViewById(R.id.fri6am));
@@ -365,14 +365,14 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 System.out.println("vID: " +v.getId());
                 deselection((RadioButton) findViewById(R.id.mon7am));
                 break;
-            case R.id.t7am:
-                deselection((RadioButton) findViewById(R.id.t7am));
+            case R.id.tue7am:
+                deselection((RadioButton) findViewById(R.id.tue7am));
                 break;
             case R.id.wed7am:
                 deselection((RadioButton) findViewById(R.id.wed7am));
                 break;
-            case R.id.tr7am:
-                deselection((RadioButton) findViewById(R.id.tr7am));
+            case R.id.thr7am:
+                deselection((RadioButton) findViewById(R.id.thr7am));
                 break;
             case R.id.fri7am:
                 deselection((RadioButton) findViewById(R.id.fri7am));
@@ -387,14 +387,14 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 System.out.println("vID: " +v.getId());
                 deselection((RadioButton) findViewById(R.id.mon8am));
                 break;
-            case R.id.t8am:
-                deselection((RadioButton) findViewById(R.id.t8am));
+            case R.id.tue8am:
+                deselection((RadioButton) findViewById(R.id.tue8am));
                 break;
             case R.id.wed8am:
                 deselection((RadioButton) findViewById(R.id.wed8am));
                 break;
-            case R.id.tr8am:
-                deselection((RadioButton) findViewById(R.id.tr8am));
+            case R.id.thr8am:
+                deselection((RadioButton) findViewById(R.id.thr8am));
                 break;
             case R.id.fri8am:
                 deselection((RadioButton) findViewById(R.id.fri8am));
@@ -409,14 +409,14 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 System.out.println("vID: " +v.getId());
                 deselection((RadioButton) findViewById(R.id.mon9am));
                 break;
-            case R.id.t9am:
-                deselection((RadioButton) findViewById(R.id.t9am));
+            case R.id.tue9am:
+                deselection((RadioButton) findViewById(R.id.tue9am));
                 break;
             case R.id.wed9am:
                 deselection((RadioButton) findViewById(R.id.wed9am));
                 break;
-            case R.id.tr9am:
-                deselection((RadioButton) findViewById(R.id.tr9am));
+            case R.id.thr9am:
+                deselection((RadioButton) findViewById(R.id.thr9am));
                 break;
             case R.id.fri9am:
                 deselection((RadioButton) findViewById(R.id.fri9am));
@@ -431,14 +431,14 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 System.out.println("vID: " +v.getId());
                 deselection((RadioButton) findViewById(R.id.mon10am));
                 break;
-            case R.id.t10am:
-                deselection((RadioButton) findViewById(R.id.t10am));
+            case R.id.tue10am:
+                deselection((RadioButton) findViewById(R.id.tue10am));
                 break;
             case R.id.wed10am:
                 deselection((RadioButton) findViewById(R.id.wed10am));
                 break;
-            case R.id.tr10am:
-                deselection((RadioButton) findViewById(R.id.tr10am));
+            case R.id.thr10am:
+                deselection((RadioButton) findViewById(R.id.thr10am));
                 break;
             case R.id.fri10am:
                 deselection((RadioButton) findViewById(R.id.fri10am));
@@ -453,14 +453,14 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 System.out.println("vID: " +v.getId());
                 deselection((RadioButton) findViewById(R.id.mon11am));
                 break;
-            case R.id.t11am:
-                deselection((RadioButton) findViewById(R.id.t11am));
+            case R.id.tue11am:
+                deselection((RadioButton) findViewById(R.id.tue11am));
                 break;
             case R.id.wed11am:
                 deselection((RadioButton) findViewById(R.id.wed11am));
                 break;
-            case R.id.tr11am:
-                deselection((RadioButton) findViewById(R.id.tr11am));
+            case R.id.thr11am:
+                deselection((RadioButton) findViewById(R.id.thr11am));
                 break;
             case R.id.fri11am:
                 deselection((RadioButton) findViewById(R.id.fri11am));
@@ -475,14 +475,14 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 System.out.println("vID: " +v.getId());
                 deselection((RadioButton) findViewById(R.id.mon12pm));
                 break;
-            case R.id.t12pm:
-                deselection((RadioButton) findViewById(R.id.t12pm));
+            case R.id.tue12pm:
+                deselection((RadioButton) findViewById(R.id.tue12pm));
                 break;
             case R.id.wed12pm:
                 deselection((RadioButton) findViewById(R.id.wed12pm));
                 break;
-            case R.id.tr12pm:
-                deselection((RadioButton) findViewById(R.id.tr12pm));
+            case R.id.thr12pm:
+                deselection((RadioButton) findViewById(R.id.thr12pm));
                 break;
             case R.id.fri12pm:
                 deselection((RadioButton) findViewById(R.id.fri12pm));

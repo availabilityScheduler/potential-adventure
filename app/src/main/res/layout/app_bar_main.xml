@@ -47,11 +47,11 @@
             <TextView
                 android:layout_width="91dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="" />
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="" />
 
             <TextView
                 android:layout_width="35dp"
@@ -176,7 +176,7 @@
                 android:text="" />
 
                 <RadioButton
-                android:id="@+id/t6am"
+                android:id="@+id/tue6am"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/radiobutton_design"
@@ -196,7 +196,7 @@
                 android:text="" />
 
                 <RadioButton
-                android:id="@+id/tr6am"
+                android:id="@+id/thr6am"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/radiobutton_design"
@@ -260,7 +260,7 @@
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/t7am"
+                    android:id="@+id/tue7am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/radiobutton_design"
@@ -280,7 +280,7 @@
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/tr7am"
+                    android:id="@+id/thr7am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/radiobutton_design"
@@ -342,7 +342,7 @@
                     android:gravity="center"
                     android:text="" />
                 <RadioButton
-                    android:id="@+id/t8am"
+                    android:id="@+id/tue8am"
                     android:background="@drawable/radiobutton_design"
                     android:button="@android:color/transparent"
                     android:layout_width="wrap_content"
@@ -362,7 +362,7 @@
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/tr8am"
+                    android:id="@+id/thr8am"
                     android:background="@drawable/radiobutton_design"
                     android:button="@android:color/transparent"
                     android:layout_width="wrap_content"
@@ -424,7 +424,7 @@
                     android:gravity="center"
                     android:text="" />
                 <RadioButton
-                    android:id="@+id/t9am"
+                    android:id="@+id/tue9am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/radiobutton_design"
@@ -444,7 +444,7 @@
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/tr9am"
+                    android:id="@+id/thr9am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/radiobutton_design"
@@ -506,7 +506,7 @@
                     android:gravity="center"
                     android:text="" />
                 <RadioButton
-                    android:id="@+id/t10am"
+                    android:id="@+id/tue10am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/radiobutton_design"
@@ -526,7 +526,7 @@
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/tr10am"
+                    android:id="@+id/thr10am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/radiobutton_design"
@@ -588,7 +588,7 @@
                     android:gravity="center"
                     android:text="" />
                 <RadioButton
-                    android:id="@+id/t11am"
+                    android:id="@+id/tue11am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/radiobutton_design"
@@ -608,7 +608,7 @@
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/tr11am"
+                    android:id="@+id/thr11am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/radiobutton_design"
@@ -671,7 +671,7 @@
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/t12pm"
+                    android:id="@+id/tue12pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/radiobutton_design"
@@ -691,7 +691,7 @@
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/tr12pm"
+                    android:id="@+id/thr12pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/radiobutton_design"
@@ -747,18 +747,18 @@
                     android:id="@+id/mon1pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/t1pm"
+                    android:id="@+id/tue1pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -767,18 +767,18 @@
                     android:id="@+id/wed1pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/tr1pm"
+                    android:id="@+id/thr1pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -787,8 +787,8 @@
                     android:id="@+id/fri1pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -797,8 +797,8 @@
                     android:id="@+id/sat1pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -807,8 +807,8 @@
                     android:id="@+id/sun1pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -830,18 +830,18 @@
                     android:id="@+id/mon2pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/t2pm"
+                    android:id="@+id/tue2pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -850,18 +850,18 @@
                     android:id="@+id/wed2pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/tr2pm"
+                    android:id="@+id/thr2pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -870,8 +870,8 @@
                     android:id="@+id/fri2pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -880,8 +880,8 @@
                     android:id="@+id/sat2pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -890,8 +890,8 @@
                     android:id="@+id/sun2pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -913,18 +913,18 @@
                     android:id="@+id/mon3pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/t3pm"
+                    android:id="@+id/tue3pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -933,18 +933,18 @@
                     android:id="@+id/wed3pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/tr3pm"
+                    android:id="@+id/thr3pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -953,8 +953,8 @@
                     android:id="@+id/fri3pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -963,8 +963,8 @@
                     android:id="@+id/sat3pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -973,8 +973,8 @@
                     android:id="@+id/sun3pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -996,18 +996,18 @@
                     android:id="@+id/mon4pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/t4pm"
+                    android:id="@+id/tue4pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1016,18 +1016,18 @@
                     android:id="@+id/wed4pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/tr4pm"
+                    android:id="@+id/thr4pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1036,8 +1036,8 @@
                     android:id="@+id/fri4pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1046,8 +1046,8 @@
                     android:id="@+id/sat4pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1056,8 +1056,8 @@
                     android:id="@+id/sun4pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1079,18 +1079,18 @@
                     android:id="@+id/mon5pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/t5pm"
+                    android:id="@+id/tue5pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1099,18 +1099,18 @@
                     android:id="@+id/wed5pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/tr5pm"
+                    android:id="@+id/thr5pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1119,8 +1119,8 @@
                     android:id="@+id/fri5pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1129,8 +1129,8 @@
                     android:id="@+id/sat5pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1139,8 +1139,8 @@
                     android:id="@+id/sun5pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1162,18 +1162,18 @@
                     android:id="@+id/mon6pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/t6pm"
+                    android:id="@+id/tue6pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1182,18 +1182,18 @@
                     android:id="@+id/wed6pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/tr6pm"
+                    android:id="@+id/thr6pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1202,8 +1202,8 @@
                     android:id="@+id/fri6pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1212,8 +1212,8 @@
                     android:id="@+id/sat6pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1222,8 +1222,8 @@
                     android:id="@+id/sun6pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1245,18 +1245,18 @@
                     android:id="@+id/mon7pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/t7pm"
+                    android:id="@+id/tue7pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1265,18 +1265,18 @@
                     android:id="@+id/wed7pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/tr7pm"
+                    android:id="@+id/thr7pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1285,8 +1285,8 @@
                     android:id="@+id/fri7pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1295,8 +1295,8 @@
                     android:id="@+id/sat7pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1305,8 +1305,8 @@
                     android:id="@+id/sun7pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1328,18 +1328,18 @@
                     android:id="@+id/mon8pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/t8pm"
+                    android:id="@+id/tue8pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1348,18 +1348,18 @@
                     android:id="@+id/wed8pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/tr8pm"
+                    android:id="@+id/thr8pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1368,8 +1368,8 @@
                     android:id="@+id/fri8pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1378,8 +1378,8 @@
                     android:id="@+id/sat8pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1388,8 +1388,8 @@
                     android:id="@+id/sun8pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1412,18 +1412,18 @@
                     android:id="@+id/mon9pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/t9pm"
+                    android:id="@+id/tue9pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1432,18 +1432,18 @@
                     android:id="@+id/wed9pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/tr9pm"
+                    android:id="@+id/thr9pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1452,8 +1452,8 @@
                     android:id="@+id/fri9pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1462,8 +1462,8 @@
                     android:id="@+id/sat9pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1472,8 +1472,8 @@
                     android:id="@+id/sun9pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1495,18 +1495,18 @@
                     android:id="@+id/mon10pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/t10pm"
+                    android:id="@+id/tue10pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1515,18 +1515,18 @@
                     android:id="@+id/wed10pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/tr10pm"
+                    android:id="@+id/thr10pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1535,8 +1535,8 @@
                     android:id="@+id/fri10pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1545,8 +1545,8 @@
                     android:id="@+id/sat10pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1555,8 +1555,8 @@
                     android:id="@+id/sun10pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1578,18 +1578,18 @@
                     android:id="@+id/mon11pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/t11pm"
+                    android:id="@+id/tue11pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1598,18 +1598,18 @@
                     android:id="@+id/wed11pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/tr11pm"
+                    android:id="@+id/thr11pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1618,8 +1618,8 @@
                     android:id="@+id/fri11pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1628,8 +1628,8 @@
                     android:id="@+id/sat11pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1638,8 +1638,8 @@
                     android:id="@+id/sun11pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1661,18 +1661,18 @@
                     android:id="@+id/mon12am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/t12am"
+                    android:id="@+id/tue12am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1681,18 +1681,18 @@
                     android:id="@+id/wed12am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
 
                 <RadioButton
-                    android:id="@+id/tr12am"
+                    android:id="@+id/thr12am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1701,8 +1701,8 @@
                     android:id="@+id/fri12am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1711,8 +1711,8 @@
                     android:id="@+id/sat12am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
@@ -1721,8 +1721,8 @@
                     android:id="@+id/sun12am"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginBottom="1dp"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="" />
