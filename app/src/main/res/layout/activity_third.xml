@@ -36,12 +36,6 @@
             android:paddingRight="16dp"
             android:paddingBottom="16dp"
             tools:context="com.example.scheduler.ThirdActivity">
-
-
         </RelativeLayout>
     </com.google.android.material.navigation.NavigationView>
-
-
-
-
 </androidx.drawerlayout.widget.DrawerLayout>

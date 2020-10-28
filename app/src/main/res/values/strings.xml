@@ -28,5 +28,12 @@
     <string name="dialog_choose_friends">Choose friends to compare with</string>
     <string name="accept">Accept</string>
     <string name="cancel">Cancel</string>
-  
+    <string name="mon">MON</string>
+    <string name="tue">TUE</string>
+    <string name="wed">WED</string>
+    <string name="thr">THR</string>
+    <string name="fri">FRI</string>
+    <string name="sat">SAT</string>
+    <string name="sun">SUN</string>
+
 </resources>
