@@ -21,6 +21,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -165,9 +167,6 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
             }
         }
 
-        //save button
-        saveButton = findViewById(R.id.saveSchedule);
-
         //Retrieving ID's
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -283,13 +282,6 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
-        saveButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                //save to database
-            }
-        });
-
         //the pop up at the right corner, FAB, Floating Action Bar
         fab.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -312,8 +304,47 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-    //ENDS ONCREATE()
 
+        //save button to save schedule into db
+        saveButton = findViewById(R.id.saveSchedule);
+        saveButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+//                FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+//                String firebaseAcctId =  currentFirebaseUser.getUid();
+//
+//                //creating a new category of friend and under your own ID
+//                mFriendUserDatabase = FirebaseDatabase.getInstance().getReference("Friends").child(firebaseAcctId);
+//                Member member = new Member();
+//
+//                //the object pushed to the database
+//                Map<String, Object> friendDbHashMap = new HashMap<>();
+//
+//
+//                //local db in member class
+//                Map<String, Boolean> memberMap =  new HashMap<>();
+//                //Storing the username and boolean value, and setting it up
+//                memberMap.put(username, true);
+//                member.setMemberMap(memberMap);
+//
+//                //passing local db as the object value into this database
+//                friendDbHashMap.put(username, memberMap);
+//
+//                mUserDatabase.updateChildren(friendDbHashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+//                    @Override
+//                    public void onSuccess(Void aVoid) {
+//                        Toast.makeText(ThirdActivity.this, "Friend Added", Toast.LENGTH_SHORT).show();
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Toast.makeText(ThirdActivity.this, "Adding Unsuccessful", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+            }
+        });
+
+    //Ends onCreate()
     }
 
 
@@ -773,27 +804,6 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     //Deselection and saving data into temp array before pushing it to db on "save"
     public void deselection(RadioButton theButton) {
         int redis = theButton.getId();
-        //boilerplate stuff for db implementation, will fix later
-//        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-//        firebaseAcctId =  currentFirebaseUser.getUid();
-//
-//        mUserFriendDatabase = FirebaseDatabase.getInstance().getReference("Friends").child(firebaseAcctId);
-//        Member member = new Member();
-//
-//        //theDay, theTime are current hashmaps
-//
-//        //the object pushed to the database
-//        Map<String, Object> friendDbHashMap = new HashMap<>();
-//
-//        //local db in member class
-//        Map<String, Boolean> memberMap =  new HashMap<>();
-//        //Storing the username and boolean value, and setting it up
-//        memberMap.put(username, true);
-//        member.setMemberMap(memberMap);
-//
-//        //passing local db as the object value into this database
-//        friendDbHashMap.put(username, memberMap);
-
         if (!theButton.isSelected()) {
             theButton.setChecked(true);
             theButton.setSelected(true);
