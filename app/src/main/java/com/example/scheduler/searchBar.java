@@ -217,6 +217,7 @@ public class searchBar extends AppCompatActivity {
 
         //passing local db as the object value into this database
         friendDbHashMap.put(username, memberMap);
+
         mUserDatabase.updateChildren(friendDbHashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {

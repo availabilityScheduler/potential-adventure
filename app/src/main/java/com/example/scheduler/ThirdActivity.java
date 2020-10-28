@@ -44,6 +44,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Stack;
@@ -122,6 +123,15 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
 
     //not sure what type of data structure it should be yet
     private String availableTimes[];
+    private String theIdString;
+    private String day;
+    private String time;
+
+    //Hashmap to save and push schedule to db
+    Map<String, Object> saveDay =  new HashMap<>();
+    Map<String, Boolean> saveTime =  new HashMap<>();
+
+
 
 
     @Override
@@ -761,22 +771,46 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     }
 
     //Deselection and saving data into temp array before pushing it to db on "save"
-    public void deselection(RadioButton time) {
-        if (!time.isSelected()) {
-            time.setChecked(true);
-            time.setSelected(true);
-            System.out.println(time);
-            //retrieve substring from time object and split it, and push it into hashmap
+    public void deselection(RadioButton theButton) {
+        int redis = theButton.getId();
+        //boilerplate stuff for db implementation, will fix later
+//        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+//        firebaseAcctId =  currentFirebaseUser.getUid();
+//
+//        mUserFriendDatabase = FirebaseDatabase.getInstance().getReference("Friends").child(firebaseAcctId);
+//        Member member = new Member();
+//
+//        //theDay, theTime are current hashmaps
+//
+//        //the object pushed to the database
+//        Map<String, Object> friendDbHashMap = new HashMap<>();
+//
+//        //local db in member class
+//        Map<String, Boolean> memberMap =  new HashMap<>();
+//        //Storing the username and boolean value, and setting it up
+//        memberMap.put(username, true);
+//        member.setMemberMap(memberMap);
+//
+//        //passing local db as the object value into this database
+//        friendDbHashMap.put(username, memberMap);
 
-            //{thursday{6am: true}, wednesday{7am:true}}
-            //{wednesday{7am:true}, friday{8pm:true}}
-            Toast.makeText(ThirdActivity.this, time+ " Added! ", Toast.LENGTH_SHORT).show();
+        if (!theButton.isSelected()) {
+            theButton.setChecked(true);
+            theButton.setSelected(true);
+
+            //retrieve substring from time object and split it, and push it into hashmap
+            theIdString = theButton.getResources().getResourceEntryName(redis);
+            day = theIdString.substring(0,3);
+            time = theIdString.substring(3, theIdString.length());
+
+            //{thr{6am: true}, wed{7am:true}}
+            //{wed{7am:true}, fri{8pm:true}}
+            Toast.makeText(ThirdActivity.this, day + time + " Added! ", Toast.LENGTH_SHORT).show();
 
         } else {
-            time.setChecked(false);
-            time.setSelected(false);
-            Toast.makeText(ThirdActivity.this, time+ " Value deleted", Toast.LENGTH_SHORT).show();
-
+            theButton.setChecked(false);
+            theButton.setSelected(false);
+            Toast.makeText(ThirdActivity.this, day + time + " Deleted! ", Toast.LENGTH_SHORT).show();
         }
     }
 
