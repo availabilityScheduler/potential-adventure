@@ -21,6 +21,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -44,6 +46,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Stack;
@@ -122,6 +125,15 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
 
     //not sure what type of data structure it should be yet
     private String availableTimes[];
+    private String theIdString;
+    private String day;
+    private String time;
+
+    //Hashmap to save and push schedule to db
+    Map<String, Object> saveDay =  new HashMap<>();
+    Map<String, Boolean> saveTime =  new HashMap<>();
+
+
 
 
     @Override
@@ -154,9 +166,6 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
 
             }
         }
-
-        //save button
-        saveButton = findViewById(R.id.saveSchedule);
 
         //Retrieving ID's
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -273,13 +282,6 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
-        saveButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                //save to database
-            }
-        });
-
         //the pop up at the right corner, FAB, Floating Action Bar
         fab.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -302,8 +304,47 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-    //ENDS ONCREATE()
 
+        //save button to save schedule into db
+        saveButton = findViewById(R.id.saveSchedule);
+        saveButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+//                FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+//                String firebaseAcctId =  currentFirebaseUser.getUid();
+//
+//                //creating a new category of friend and under your own ID
+//                mFriendUserDatabase = FirebaseDatabase.getInstance().getReference("Friends").child(firebaseAcctId);
+//                Member member = new Member();
+//
+//                //the object pushed to the database
+//                Map<String, Object> friendDbHashMap = new HashMap<>();
+//
+//
+//                //local db in member class
+//                Map<String, Boolean> memberMap =  new HashMap<>();
+//                //Storing the username and boolean value, and setting it up
+//                memberMap.put(username, true);
+//                member.setMemberMap(memberMap);
+//
+//                //passing local db as the object value into this database
+//                friendDbHashMap.put(username, memberMap);
+//
+//                mUserDatabase.updateChildren(friendDbHashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+//                    @Override
+//                    public void onSuccess(Void aVoid) {
+//                        Toast.makeText(ThirdActivity.this, "Friend Added", Toast.LENGTH_SHORT).show();
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Toast.makeText(ThirdActivity.this, "Adding Unsuccessful", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+            }
+        });
+
+    //Ends onCreate()
     }
 
 
@@ -761,22 +802,25 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     }
 
     //Deselection and saving data into temp array before pushing it to db on "save"
-    public void deselection(RadioButton time) {
-        if (!time.isSelected()) {
-            time.setChecked(true);
-            time.setSelected(true);
-            System.out.println(time);
-            //retrieve substring from time object and split it, and push it into hashmap
+    public void deselection(RadioButton theButton) {
+        int redis = theButton.getId();
+        if (!theButton.isSelected()) {
+            theButton.setChecked(true);
+            theButton.setSelected(true);
 
-            //{thursday{6am: true}, wednesday{7am:true}}
-            //{wednesday{7am:true}, friday{8pm:true}}
-            Toast.makeText(ThirdActivity.this, time+ " Added! ", Toast.LENGTH_SHORT).show();
+            //retrieve substring from time object and split it, and push it into hashmap
+            theIdString = theButton.getResources().getResourceEntryName(redis);
+            day = theIdString.substring(0,3);
+            time = theIdString.substring(3, theIdString.length());
+
+            //{thr{6am: true}, wed{7am:true}}
+            //{wed{7am:true}, fri{8pm:true}}
+            Toast.makeText(ThirdActivity.this, day + time + " Added! ", Toast.LENGTH_SHORT).show();
 
         } else {
-            time.setChecked(false);
-            time.setSelected(false);
-            Toast.makeText(ThirdActivity.this, time+ " Value deleted", Toast.LENGTH_SHORT).show();
-
+            theButton.setChecked(false);
+            theButton.setSelected(false);
+            Toast.makeText(ThirdActivity.this, day + time + " Deleted! ", Toast.LENGTH_SHORT).show();
         }
     }
 
