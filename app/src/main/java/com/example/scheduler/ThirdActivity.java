@@ -26,6 +26,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.ListMultimap;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -35,6 +37,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.fragment.app.DialogFragment;
 import androidx.navigation.NavController;
@@ -45,10 +48,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 import java.util.Stack;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -126,12 +132,17 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     //not sure what type of data structure it should be yet
     private String availableTimes[];
     private String theIdString;
-    private String day;
-    private String time;
+
 
     //Hashmap to save and push schedule to db
-    Map<String, Object> saveDay =  new HashMap<>();
-    Map<String, Boolean> saveTime =  new HashMap<>();
+    Map<String, Map<String,Boolean>> saveDay =  new HashMap<>();
+    Map<String,Boolean> mon = new HashMap<>();
+    Map<String,Boolean> tue = new HashMap<>();
+    Map<String,Boolean> wed = new HashMap<>();
+    Map<String,Boolean> thr = new HashMap<>();
+    Map<String,Boolean> fri = new HashMap<>();
+    Map<String,Boolean> sat = new HashMap<>();
+    Map<String,Boolean> sun = new HashMap<>();
 
 
 
@@ -145,6 +156,15 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
 
         //Instance of Member class
         thisMember = new Member();
+
+        saveDay.put("mon", mon);
+        saveDay.put("tue", tue);
+        saveDay.put("wed", wed);
+        saveDay.put("thr", thr);
+        saveDay.put("fri", fri);
+        saveDay.put("sat", sat);
+        saveDay.put("sun", sun);
+
 
         //for radio button color
         ColorStateList colorStateList = new ColorStateList(
@@ -804,6 +824,8 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     //Deselection and saving data into temp array before pushing it to db on "save"
     public void deselection(RadioButton theButton) {
         int redis = theButton.getId();
+        String temp;
+        String day, time;
         if (!theButton.isSelected()) {
             theButton.setChecked(true);
             theButton.setSelected(true);
@@ -813,15 +835,83 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
             day = theIdString.substring(0,3);
             time = theIdString.substring(3, theIdString.length());
 
-            //{thr{6am: true}, wed{7am:true}}
-            //{wed{7am:true}, fri{8pm:true}}
+            boolean noDelete = false;
+            handleIfForHashmaps(saveDay, day, time, noDelete);
+
+
             Toast.makeText(ThirdActivity.this, day + time + " Added! ", Toast.LENGTH_SHORT).show();
 
         } else {
             theButton.setChecked(false);
             theButton.setSelected(false);
+
+            theIdString = theButton.getResources().getResourceEntryName(redis);
+            day = theIdString.substring(0,3);
+            time = theIdString.substring(3, theIdString.length());
+
+            boolean delete = true;
+            handleIfForHashmaps(saveDay, day, time, delete);
+
             Toast.makeText(ThirdActivity.this, day + time + " Deleted! ", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void handleIfForHashmaps(Map<String, Map<String, Boolean>> main, String theDay, String theTime, boolean delete) {
+        if (theDay.equals("mon")){
+            if(delete == true)
+                mon.remove(theTime, true);
+            else {
+                mon.put(theTime, true);
+                main.put(theDay, mon);
+            }
+        }else if(theDay.equals("tue")) {
+            if(delete == true)
+                tue.remove(theTime, true);
+            else {
+                tue.put(theTime, true);
+                main.put(theDay, tue);
+            }
+        }else if(theDay.equals("wed")){
+            if(delete == true)
+                wed.remove(theTime, true);
+            else {
+                wed.put(theTime, true);
+                main.put(theDay, wed);
+            }
+        }else if(theDay.equals("thr")){
+            if(delete == true)
+                thr.remove(theTime, true);
+            else {
+                thr.put(theTime, true);
+                main.put(theDay, thr);
+            }
+        }
+        else if(theDay.equals("fri")){
+            if(delete == true)
+                fri.remove(theTime, true);
+            else {
+                fri.put(theTime, true);
+                main.put(theDay, fri);
+            }
+        }
+        else if(theDay.equals("sat")){
+            if(delete == true)
+                sat.remove(theTime, true);
+            else {
+                sat.put(theTime, true);
+                main.put(theDay, sat);
+            }
+        }
+        else if(theDay.equals("sun")){
+            if(delete == true)
+                sun.remove(theTime, true);
+            else {
+                sun.put(theTime, true);
+                main.put(theDay, sun);
+            }
+        }
+        System.out.println("my hashmap "+ Arrays.asList(main));
+
     }
 
 }
