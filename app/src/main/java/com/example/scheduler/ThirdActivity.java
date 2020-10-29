@@ -335,15 +335,15 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 String firebaseAcctId =  currentFirebaseUser.getUid();
                 db = FirebaseDatabase.getInstance().getReference("Schedules");
 
-                //for updateChildren
-                Map<String, Object> thestuff = new HashMap<>();
                 thisMember.setUserSchedule(saveDay);
-                thestuff.put("AvailableTimes", saveDay);
 
-                db.child(firebaseAcctId).updateChildren(thestuff);
+                //for updateChildren(thought this wont overwrite data like in searchBar, but not working so far
+                //Map<String, Object> thestuff = new HashMap<>();
+                //thestuff.put("AvailableTimes", saveDay);
+                //db.child(firebaseAcctId).updateChildren(thestuff);
 
-                //this works too, just comment out the 4lines above
-                //db.child(firebaseAcctId).setValue(thisMember);
+
+                db.child(firebaseAcctId).setValue(thisMember);
 
             }
         });
