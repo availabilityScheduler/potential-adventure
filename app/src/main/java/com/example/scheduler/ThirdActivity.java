@@ -32,6 +32,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
@@ -146,7 +147,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_third);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -185,6 +186,11 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         FloatingActionButton fab = findViewById(R.id.fab);
         //Firebase Database instance
         db = FirebaseDatabase.getInstance().getReference().child("Users");
+        try {
+            db.keepSynced(true);
+        } catch (DatabaseException e) {
+            // Do anything
+        }
 
 
         //Connect nav view
@@ -322,35 +328,17 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
             public void onClick(View v) {
                 FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
                 String firebaseAcctId =  currentFirebaseUser.getUid();
+
                 thisMember.setUserSchedule(saveDay);
-                db.child(firebaseAcctId).setValue(thisMember);
 
+                Map<String, Object> userScheduleMap = new HashMap<>();
+                userScheduleMap.put("MySchedule", saveDay);
 
-//
-//                //the object pushed to the database
-//                Map<String, Object> friendDbHashMap = new HashMap<>();
-//
-//
-//                //local db in member class
-//                Map<String, Boolean> memberMap =  new HashMap<>();
-//                //Storing the username and boolean value, and setting it up
-//                memberMap.put(username, true);
-//                member.setMemberMap(memberMap);
-//
-//                //passing local db as the object value into this database
-//                friendDbHashMap.put(username, memberMap);
-//
-//                mUserDatabase.updateChildren(friendDbHashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void aVoid) {
-//                        Toast.makeText(ThirdActivity.this, "Friend Added", Toast.LENGTH_SHORT).show();
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Toast.makeText(ThirdActivity.this, "Adding Unsuccessful", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
+                //both works but the data gets deleted if u restart the app, i thought update would fix it like i did in searchBar
+                //but its not working either
+
+                db.child(firebaseAcctId).setValue(thisMember).isComplete();
+                //db.child(firebaseAcctId).updateChildren(userScheduleMap);
             }
         });
 
