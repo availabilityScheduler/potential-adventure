@@ -134,7 +134,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     private String theIdString;
 
     //Hashmap to save and push schedule to db
-    Map<String, Map<String,Boolean>> saveDay =  new HashMap<>();
+    Map<String, Object> saveDay =  new HashMap<>();
     Map<String,Boolean> mon = new HashMap<>();
     Map<String,Boolean> tue = new HashMap<>();
     Map<String,Boolean> wed = new HashMap<>();
@@ -329,7 +329,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
                 String firebaseAcctId =  currentFirebaseUser.getUid();
 
-                thisMember.setUserSchedule(saveDay);
+                //thisMember.setUserSchedule(saveDay);
 
                 Map<String, Object> userScheduleMap = new HashMap<>();
                 userScheduleMap.put("MySchedule", saveDay);
@@ -337,8 +337,8 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 //both works but the data gets deleted if u restart the app, i thought update would fix it like i did in searchBar
                 //but its not working either
 
-                db.child(firebaseAcctId).setValue(thisMember).isComplete();
-                //db.child(firebaseAcctId).updateChildren(userScheduleMap);
+                //db.child(firebaseAcctId).setValue(thisMember);
+                db.child(firebaseAcctId).updateChildren(userScheduleMap);
             }
         });
 
@@ -834,7 +834,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    private void handleIfForHashmaps(Map<String, Map<String, Boolean>> main, String theDay, String theTime, boolean delete) {
+    private void handleIfForHashmaps(Map<String, Object> main, String theDay, String theTime, boolean delete) {
         if (theDay.equals("mon")){
             if(delete == true)
                 mon.remove(theTime, true);
