@@ -16,13 +16,13 @@ import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 public class Member {
     private String firstName, lastName, aName, ID;
 
-    Map<String, Map<String, Boolean>> userSchedule = new HashMap<>();
+    Map<String, Object> userSchedule = new HashMap<>();
 
-    public Map<String, Map<String, Boolean>> getUserSchedule() {
+    public Map<String, Object> getUserSchedule() {
         return userSchedule;
     }
 
-    public void setUserSchedule(Map<String, Map<String, Boolean>> userSchedule) {
+    public void setUserSchedule(Map<String, Object> userSchedule) {
         this.userSchedule = userSchedule;
     }
 
