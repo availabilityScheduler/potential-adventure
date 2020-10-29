@@ -329,7 +329,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
                 String firebaseAcctId =  currentFirebaseUser.getUid();
 
-                //thisMember.setUserSchedule(saveDay);
+                thisMember.setUserSchedule(saveDay);
 
                 Map<String, Object> userScheduleMap = new HashMap<>();
                 userScheduleMap.put("MySchedule", saveDay);
@@ -337,8 +337,8 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 //both works but the data gets deleted if u restart the app, i thought update would fix it like i did in searchBar
                 //but its not working either
 
-                //db.child(firebaseAcctId).setValue(thisMember);
-                db.child(firebaseAcctId).updateChildren(userScheduleMap);
+                db.child(firebaseAcctId).setValue(thisMember);
+                //db.child(firebaseAcctId).updateChildren(userScheduleMap);
             }
         });
 
