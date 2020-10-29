@@ -15,11 +15,26 @@ import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
 public class Member {
     private String firstName, lastName, aName, ID;
+
+    Map<String, Map<String, Boolean>> userSchedule = new HashMap<>();
+
+    public Map<String, Map<String, Boolean>> getUserSchedule() {
+        return userSchedule;
+    }
+
+    public void setUserSchedule(Map<String, Map<String, Boolean>> userSchedule) {
+        this.userSchedule = userSchedule;
+    }
+
     Map<String, Boolean> memberMap =  new HashMap<>();
 
     public void setMemberMap(Map<String, Boolean> memberMap) {
         this.memberMap = memberMap;
     }
+    public Map<String, Boolean> getMemberMap() {
+        return memberMap;
+    }
+
 
     public Member(){}
 
@@ -35,18 +50,21 @@ public class Member {
     public String getLastName() {
         return lastName;
     }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
     public void setaName(String aName) {
         this.aName = aName;
     }
     public String getaName() {
         return aName;
     }
+
     public void setID(String ID) {
         this.ID = ID;
     }

@@ -129,10 +129,8 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     private RadioButton[][] buttonArray = new RadioButton[buttonViewIds.length][buttonViewIds[0].length];
     private Button saveButton;
 
-    //not sure what type of data structure it should be yet
-    private String availableTimes[];
+    //the button id in string format
     private String theIdString;
-
 
     //Hashmap to save and push schedule to db
     Map<String, Map<String,Boolean>> saveDay =  new HashMap<>();
@@ -156,14 +154,6 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
 
         //Instance of Member class
         thisMember = new Member();
-
-        saveDay.put("mon", mon);
-        saveDay.put("tue", tue);
-        saveDay.put("wed", wed);
-        saveDay.put("thr", thr);
-        saveDay.put("fri", fri);
-        saveDay.put("sat", sat);
-        saveDay.put("sun", sun);
 
 
         //for radio button color
@@ -330,12 +320,12 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         saveButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-//                FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-//                String firebaseAcctId =  currentFirebaseUser.getUid();
-//
-//                //creating a new category of friend and under your own ID
-//                mFriendUserDatabase = FirebaseDatabase.getInstance().getReference("Friends").child(firebaseAcctId);
-//                Member member = new Member();
+                FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                String firebaseAcctId =  currentFirebaseUser.getUid();
+                thisMember.setUserSchedule(saveDay);
+                db.child(firebaseAcctId).setValue(thisMember);
+
+
 //
 //                //the object pushed to the database
 //                Map<String, Object> friendDbHashMap = new HashMap<>();
