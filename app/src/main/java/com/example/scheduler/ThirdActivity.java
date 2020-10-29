@@ -35,6 +35,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
@@ -233,6 +234,8 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(ThirdActivity.this);
+
+
         if (acct != null) {
             String personName = acct.getDisplayName().toLowerCase();
             String personFirstName = acct.getGivenName().toLowerCase();
@@ -243,11 +246,13 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
             //for nav bar
             mName.setText(personName);
             mEmail.setText(personEmail);
+            //mSchedule
             Glide.with(this).load(personPhoto).into(mPhoto);
 
             //Firebase auth should be used instead of google for userID, as people who register through normal email wont show up otherwise
             FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
             String userAuthId = currentFirebaseUser.getUid();
+            //save button to save schedule into db
 
             //for member db object
             thisMember.setaName(personName);
@@ -321,28 +326,49 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         NavigationUI.setupWithNavController(navigationView, navController);
 
 
-        //save button to save schedule into db
+        //Save Button
         saveButton = findViewById(R.id.saveSchedule);
         saveButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
                 String firebaseAcctId =  currentFirebaseUser.getUid();
+                db = FirebaseDatabase.getInstance().getReference("Schedules");
 
+                //for updateChildren
+                Map<String, Object> thestuff = new HashMap<>();
                 thisMember.setUserSchedule(saveDay);
+                thestuff.put("AvailableTimes", saveDay);
 
-                Map<String, Object> userScheduleMap = new HashMap<>();
-                userScheduleMap.put("MySchedule", saveDay);
+                db.child(firebaseAcctId).updateChildren(thestuff);
 
-                //both works but the data gets deleted if u restart the app, i thought update would fix it like i did in searchBar
-                //but its not working either
+                //this works too, just comment out the 4lines above
+                //db.child(firebaseAcctId).setValue(thisMember);
 
-                db.child(firebaseAcctId).setValue(thisMember);
-                //db.child(firebaseAcctId).updateChildren(userScheduleMap);
             }
         });
 
-    //Ends onCreate()
+        //Proof of concept that schedule can be accessed
+        Button getStuff = findViewById(R.id.getStuff);
+        getStuff.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                db = FirebaseDatabase.getInstance().getReference("Schedules");
+                db.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        System.out.println(dataSnapshot.getValue());
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        System.out.println("The read failed: " + databaseError.getCode());
+                    }
+                });
+
+            }
+        });
+
+        //Ends onCreate()
     }
 
 
