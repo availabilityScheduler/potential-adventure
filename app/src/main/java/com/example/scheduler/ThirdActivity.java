@@ -3,6 +3,7 @@ package com.example.scheduler;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
@@ -14,6 +15,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -80,7 +82,6 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     private View navHeader;
     private TextView txtName, txtWebsite;
     private Toolbar toolbar;
-    private RadioGroup mRadioGroup;
 
     //Fab
     private FloatingActionButton fab;
@@ -137,6 +138,30 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
             { R.id.mon11pm, R.id.tue11pm, R.id.wed11pm, R.id.thr11pm, R.id.fri11pm, R.id.sat11pm, R.id.sun11pm},
             { R.id.mon12am, R.id.tue12am, R.id.wed12am, R.id.thr12am, R.id.fri12am, R.id.sat12am, R.id.sun12am},
     };
+
+    //String days and times
+    private String[][] stringDaysAndTime = new String[][]{
+            {"mon6am", "tue6am", "wed6am", "thr6am", "fri6am", "sat6am", "sun6am"},
+            {"mon7am", "tue7am", "wed7am", "thr7am", "fri7am", "sat7am", "sun7am"},
+            {"mon8am", "tue8am", "wed8am", "thr8am", "fri8am", "sat8am", "sun8am"},
+            {"mon9am", "tue9am", "wed9am", "thr9am", "fri9am", "sat9am", "sun9am"},
+            {"mon10am", "tue10am", "wed10am", "thr10am", "fri10am", "sat10am", "sun10am"},
+            {"mon1pm", "tue1pm", "wed1pm", "thr1pm", "fri1pm", "sat1pm", "sun1pm"},
+            {"mon2pm", "tue2pm", "wed2pm", "thr2pm", "fri2pm", "sat2pm", "sun2pm"},
+            {"mon3pm", "tue3pm", "wed3pm", "thr3pm", "fri3pm", "sat3pm", "sun3pm"},
+            {"mon4pm", "tue4pm", "wed4pm", "thr4pm", "fri4pm", "sat4pm", "sun4pm"},
+            {"mon5pm", "tue5pm", "wed5pm", "thr5pm", "fri5pm", "sat5pm", "sun5pm"},
+            {"mon6pm", "tue6pm", "wed6pm", "thr6pm", "fri6pm", "sat6pm", "sun6pm"},
+            {"mon7pm", "tue7pm", "wed7pm", "thr7pm", "fri7pm", "sat7pm", "sun7pm"},
+            {"mon8pm", "tue8pm", "wed8pm", "thr8pm", "fri8pm", "sat8pm", "sun8pm"},
+            {"mon9pm", "tue9pm", "wed9pm", "thr9pm", "fri9pm", "sat9pm", "sun9pm"},
+            {"mon11am", "tue11am", "wed11am", "thr11am", "fri11am", "sat11am", "sun11am"},
+            {"mon12pm", "tue12pm", "wed12pm", "thr12pm", "fri12pm", "sat12pm", "sun12pm"},
+            {"mon10pm", "tue10pm", "wed10pm", "thr10pm", "fri10pm", "sat10pm", "sun10pm"},
+            {"mon11pm", "tue11pm", "wed11pm", "thr11pm", "fri11pm", "sat11pm", "sun11pm"},
+            {"mon12am", "tue12am", "wed12am", "thr12am", "fri12am", "sat12am", "sun12am"},
+    };
+
     // assuming each row is the same length you can do this
     private RadioButton[][] buttonArray = new RadioButton[buttonViewIds.length][buttonViewIds[0].length];
     private Button saveButton;
@@ -154,11 +179,15 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     Map<String,Boolean> sat = new HashMap<>();
     Map<String,Boolean> sun = new HashMap<>();
 
+    //radiogroup button
+    private RadioGroup mRadioGroup;
+
+    //for showing image
     TableLayout tableLayout;
     ImageView imageView;
 
-    OutputStream outputStream;
-
+    //to save state of buttons
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -166,9 +195,9 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_third);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        mRadioGroup = (RadioGroup) findViewById(R.id.UIClear);
+        loadRadioButtons();
         Button clearButton = (Button) findViewById(R.id.clear);
-        clearButton.setOnClickListener(this);
+        //clearButton.setOnClickListener(this);
 
         //Instance of Member class
         thisMember = new Member();
@@ -353,27 +382,27 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 String firebaseAcctId =  currentFirebaseUser.getUid();
                 db = FirebaseDatabase.getInstance().getReference("Schedules");
 
-                //thisMember.setUserSchedule(saveDay);
+                thisMember.setUserSchedule(saveDay);
+                db.child(firebaseAcctId).setValue(thisMember);
+
 
                 //for updateChildren(thought this wont overwrite data like in searchBar, but not working so far
-                Map<String, Object> thestuff = new HashMap<>();
-                thestuff.put("AvailableTimes", saveDay);
-                //db.child(firebaseAcctId).updateChildren(thestuff);
+//                Map<String, Object> thestuff = new HashMap<>();
+//                thestuff.put("AvailableTimes", saveDay);
+                saveRadioButtons();
 
-
-                //db.child(firebaseAcctId).setValue(thisMember);
-                db.child(firebaseAcctId).updateChildren(thestuff).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(ThirdActivity.this, "Schedule added", Toast.LENGTH_SHORT).show();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        e.printStackTrace();
-                        Toast.makeText(ThirdActivity.this, "Adding Unsuccessful", Toast.LENGTH_SHORT).show();
-                    }
-                });
+//                db.child(firebaseAcctId).updateChildren(thestuff).addOnSuccessListener(new OnSuccessListener<Void>() {
+//                    @Override
+//                    public void onSuccess(Void aVoid) {
+//                        Toast.makeText(ThirdActivity.this, "Schedule added", Toast.LENGTH_SHORT).show();
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        e.printStackTrace();
+//                        Toast.makeText(ThirdActivity.this, "Adding Unsuccessful", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
 
             }
         });
@@ -391,15 +420,11 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         });
 
         //Ends onCreate()
-
-
     }
 
     public void onCLick(View v){
         mRadioGroup.clearCheck();
     }
-
-
 
     //Inflate the menu; this adds items to the action bar if it is present.
     @Override
@@ -889,6 +914,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    //handles whethere to insert schedule into hashmap or remove
     public void handleIfForHashmaps(Map<String, Object> main, String theDay, String theTime, boolean delete) {
         if (theDay.equals("mon")){
             if(delete == true)
@@ -945,6 +971,31 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         }
         System.out.println("my hashmap "+ Arrays.asList(main));
 
+    }
+
+    //saves state of the button when savebutton is clicked
+    public void saveRadioButtons(){
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        for (int i=0; i<stringDaysAndTime.length; i++) {
+            for (int j=0; j<stringDaysAndTime[0].length; j++) {
+                buttonArray[i][j] = (RadioButton) findViewById(buttonViewIds[i][j]);
+                editor.putBoolean(stringDaysAndTime[i][j], (buttonArray[i][j].isChecked()));
+            }
+        }
+        editor.apply();
+    }
+
+    //loads button at startup
+    public void loadRadioButtons(){
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        for (int i=0; i<stringDaysAndTime.length; i++) {
+            for (int j=0; j<stringDaysAndTime[0].length; j++) {
+                buttonArray[i][j] = (RadioButton) findViewById(buttonViewIds[i][j]);
+                buttonArray[i][j].setChecked(sharedPreferences.getBoolean(stringDaysAndTime[i][j], false));
+                buttonArray[i][j].setSelected(sharedPreferences.getBoolean(stringDaysAndTime[i][j], false));
+            }
+        }
     }
 
 
