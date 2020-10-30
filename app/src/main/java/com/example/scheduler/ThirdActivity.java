@@ -382,9 +382,11 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 String firebaseAcctId =  currentFirebaseUser.getUid();
                 db = FirebaseDatabase.getInstance().getReference("Schedules");
 
+                //maybe we're not saving it right which is why the overwriting occurs, maybe im using the member class wrong?
+
+                //saves user info as well
                 thisMember.setUserSchedule(saveDay);
                 db.child(firebaseAcctId).setValue(thisMember);
-
 
                 //for updateChildren(thought this wont overwrite data like in searchBar, but not working so far
 //                Map<String, Object> thestuff = new HashMap<>();
@@ -994,6 +996,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 buttonArray[i][j] = (RadioButton) findViewById(buttonViewIds[i][j]);
                 buttonArray[i][j].setChecked(sharedPreferences.getBoolean(stringDaysAndTime[i][j], false));
                 buttonArray[i][j].setSelected(sharedPreferences.getBoolean(stringDaysAndTime[i][j], false));
+                //maybe here we repush the values that are "true" to the db?
             }
         }
     }
