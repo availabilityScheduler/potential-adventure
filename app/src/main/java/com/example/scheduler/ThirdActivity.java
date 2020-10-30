@@ -1011,7 +1011,10 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                     System.out.println("days " + stringDaysAndTime[i][j]);
                     System.out.println("buttons " + buttonArray[i][j]);
                 }
-                //maybe here we repush the values that are "true" to the db?
+                //WAIT WAIT SO I THINK THE PROBLEM IS THAT WHEN THE PROGRAM STARTS AGAIN, THE HAASHMAP IS EMPTY, AND WE CLICK
+                //ON OUR NEW SCHEDULE OR WHATEVER, AND IT CREATES THAT HASHMAP FROM THE BEGINNIGN, AND THEN PUSHES IT
+                //TO THE DB AND AS SUCH OVERWRITES IT ALL.
+                //SO MAYBE WE CAN AT LOAD, ALSO FILL THE NOW EMPTY HASHMAP WITH THE FIREBASE DATA, AND THEN GO ON WITH THE PROGRAM??
             }
         }
     }
