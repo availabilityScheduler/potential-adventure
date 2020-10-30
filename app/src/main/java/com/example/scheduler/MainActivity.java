@@ -6,6 +6,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +27,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import org.w3c.dom.Text;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,14 +41,58 @@ public class MainActivity extends AppCompatActivity {
     private SignInButton signInButton;
     private GoogleSignInClient mGoogleSignInClient;
 
+
 //changes
+
+    Animation firstAnim;
+    Animation secondAnim;
+
+    TextView firstHalf;
+    TextView secondHalf;
+
+    TextView createAccount;
+    TextView loginBtnHomeScreen;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        signInButton = findViewById(R.id.sign_in_button);
 
-        // [START config_signin]
+
+        //Animation logo
+        firstAnim = AnimationUtils.loadAnimation(this, R.anim.first_half);
+        secondAnim = AnimationUtils.loadAnimation(this, R.anim.other_half_logo);
+
+        firstHalf = findViewById(R.id.textView3);
+        secondHalf = findViewById(R.id.textView2);
+
+        firstHalf.setAnimation(firstAnim);
+        secondHalf.setAnimation(secondAnim);
+
+        //registering redirects to register class
+        createAccount = (TextView) findViewById(R.id.accountCreation);
+        createAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Register.class);
+                startActivity(intent);
+            }
+        });
+
+        //Logging in with email screen
+        loginBtnHomeScreen = (TextView) findViewById(R.id.loginBtnHomeScreen);
+        loginBtnHomeScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Login.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+        signInButton = findViewById(R.id.sign_in_button);
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -52,17 +101,13 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d(TAG, "gso:" + gso);
 
-        // [END config_signin]
-
         //Creates sign in client with specified options
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         Log.d(TAG, "mgooglesigninclient:" + mGoogleSignInClient);
 
-        // [START initialize_auth]
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
-        // [END initialize_auth]
 
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            startActivity(new Intent(MainActivity.this, SecondActivity.class));
+                            startActivity(new Intent(MainActivity.this, ThirdActivity.class));
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -161,6 +206,8 @@ public class MainActivity extends AppCompatActivity {
           //mBinding.signOutAndDisconnect.setVisibility(View.GONE);
         }
     }
+
+
 
     //FirebaseAuth.getInstance().signOut();
 }

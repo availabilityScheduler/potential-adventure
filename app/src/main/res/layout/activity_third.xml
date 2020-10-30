@@ -6,6 +6,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/lightGrayColor"
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
@@ -15,6 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
@@ -22,38 +25,17 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer" />
+        app:menu="@menu/activity_main_drawer" >
 
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/activity_third"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="16dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="16dp"
-        tools:context="com.example.scheduler.ThirdActivity">
-
-        <Button
+        <RelativeLayout
+            android:id="@+id/activity_third"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnGoCalendar"
-            android:text="Go To Calendar"/>
-
-        <TextView
-            android:layout_centerHorizontal="true"
-            android:textSize="25sp"
-            android:layout_marginTop="30dp"
-            android:layout_below="@+id/btnGoCalendar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Date"
-            android:id="@+id/date"
-            />
-    </RelativeLayout>
-
-
-
+            android:layout_height="match_parent"
+            android:paddingLeft="16dp"
+            android:paddingTop="16dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="16dp"
+            tools:context="com.example.scheduler.ThirdActivity">
+        </RelativeLayout>
+    </com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>
