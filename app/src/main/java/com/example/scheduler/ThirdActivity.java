@@ -1,17 +1,27 @@
 package com.example.scheduler;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.media.MediaScannerConnection;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,8 +36,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.ListMultimap;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -35,12 +43,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -50,14 +57,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import java.util.ArrayList;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
-import java.util.Stack;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -144,7 +152,10 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     Map<String,Boolean> sat = new HashMap<>();
     Map<String,Boolean> sun = new HashMap<>();
 
+    TableLayout tableLayout;
+    ImageView imageView;
 
+    OutputStream outputStream;
 
 
     @Override
@@ -157,6 +168,8 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         //Instance of Member class
         thisMember = new Member();
 
+        tableLayout = findViewById(R.id.mainTable);
+        imageView = findViewById(R.id.thepic);
 
         //for radio button color
         ColorStateList colorStateList = new ColorStateList(
@@ -335,15 +348,27 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 String firebaseAcctId =  currentFirebaseUser.getUid();
                 db = FirebaseDatabase.getInstance().getReference("Schedules");
 
-                thisMember.setUserSchedule(saveDay);
+                //thisMember.setUserSchedule(saveDay);
 
                 //for updateChildren(thought this wont overwrite data like in searchBar, but not working so far
-                //Map<String, Object> thestuff = new HashMap<>();
-                //thestuff.put("AvailableTimes", saveDay);
+                Map<String, Object> thestuff = new HashMap<>();
+                thestuff.put("AvailableTimes", saveDay);
                 //db.child(firebaseAcctId).updateChildren(thestuff);
 
 
-                db.child(firebaseAcctId).setValue(thisMember);
+                //db.child(firebaseAcctId).setValue(thisMember);
+                db.child(firebaseAcctId).updateChildren(thestuff).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(ThirdActivity.this, "Schedule added", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        e.printStackTrace();
+                        Toast.makeText(ThirdActivity.this, "Adding Unsuccessful", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
             }
         });
@@ -353,23 +378,16 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         getStuff.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                db = FirebaseDatabase.getInstance().getReference("Schedules");
-                db.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        System.out.println(dataSnapshot.getValue());
-                    }
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        System.out.println("The read failed: " + databaseError.getCode());
-                    }
-                });
-
+                Bitmap bitmap = Bitmap.createBitmap(tableLayout.getWidth(), tableLayout.getHeight(), Bitmap.Config.ARGB_8888);
+                Canvas canvas = new Canvas(bitmap);
+                tableLayout.draw(canvas);
+                imageView.setImageBitmap(bitmap);
             }
         });
 
         //Ends onCreate()
     }
+
 
 
     //Inflate the menu; this adds items to the action bar if it is present.
@@ -860,7 +878,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    private void handleIfForHashmaps(Map<String, Object> main, String theDay, String theTime, boolean delete) {
+    public void handleIfForHashmaps(Map<String, Object> main, String theDay, String theTime, boolean delete) {
         if (theDay.equals("mon")){
             if(delete == true)
                 mon.remove(theTime, true);
@@ -917,5 +935,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         System.out.println("my hashmap "+ Arrays.asList(main));
 
     }
+
+
 
 }
