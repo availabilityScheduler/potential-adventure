@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/coordinatorLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    >
 
-
-    <include
-        android:id="@+id/include2"
-        layout="@layout/content_main"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,7 +20,7 @@
         >
 
 
-        //row1
+    //row1
         <TableRow>
 
             <TextView
@@ -178,7 +172,7 @@
                 />
 
         </TableRow>
-        //row 3
+    //row 3
         <TableRow>
             <TextView
                 android:layout_width="wrap_content"
@@ -645,7 +639,7 @@
                 />
 
         </TableRow>
-        //1PM row
+    //1PM row
         <TableRow>
 
             <TextView
@@ -721,7 +715,7 @@
                 android:layout_marginBottom="1dp"
                 />
         </TableRow>
-        //2PM row
+    //2PM row
         <TableRow>
 
             <TextView
@@ -1032,7 +1026,7 @@
                 />
 
         </TableRow>
-        //6PM row
+    //6PM row
         <TableRow>
 
             <TextView
@@ -1967,67 +1961,5 @@
         </TableRow>
 
     </TableLayout>
-
-
-    <TextView
-        android:id="@+id/date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="296dp"
-        android:layout_marginTop="36dp"
-        android:hint="My Dates"
-        android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/whiteColor"
-        android:hapticFeedbackEnabled="true"
-        app:elevation="6dp"
-        app:fabSize="mini"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.936"
-        app:srcCompat="@mipmap/friends" />
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="409dp"
-        android:layout_height="54dp"
-        android:background="?attr/colorPrimary"
-        app:layout_anchorGravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="576dp"
-        android:text="Create New Event"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/compareFriends"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="6dp"
-        android:text="Compare"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
