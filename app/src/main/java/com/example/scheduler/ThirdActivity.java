@@ -1,17 +1,27 @@
 package com.example.scheduler;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.media.MediaScannerConnection;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,12 +40,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -45,11 +57,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Stack;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -123,21 +139,27 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     private RadioButton[][] buttonArray = new RadioButton[buttonViewIds.length][buttonViewIds[0].length];
     private Button saveButton;
 
-    //not sure what type of data structure it should be yet
-    private String availableTimes[];
+    //the button id in string format
     private String theIdString;
-    private String day;
-    private String time;
 
     //Hashmap to save and push schedule to db
     Map<String, Object> saveDay =  new HashMap<>();
-    Map<String, Boolean> saveTime =  new HashMap<>();
+    Map<String,Boolean> mon = new HashMap<>();
+    Map<String,Boolean> tue = new HashMap<>();
+    Map<String,Boolean> wed = new HashMap<>();
+    Map<String,Boolean> thr = new HashMap<>();
+    Map<String,Boolean> fri = new HashMap<>();
+    Map<String,Boolean> sat = new HashMap<>();
+    Map<String,Boolean> sun = new HashMap<>();
 
+    TableLayout tableLayout;
+    ImageView imageView;
 
+    OutputStream outputStream;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_third);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -145,6 +167,9 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
 
         //Instance of Member class
         thisMember = new Member();
+
+        tableLayout = findViewById(R.id.mainTable);
+        imageView = findViewById(R.id.thepic);
 
         //for radio button color
         ColorStateList colorStateList = new ColorStateList(
@@ -175,6 +200,11 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         FloatingActionButton fab = findViewById(R.id.fab);
         //Firebase Database instance
         db = FirebaseDatabase.getInstance().getReference().child("Users");
+        try {
+            db.keepSynced(true);
+        } catch (DatabaseException e) {
+            // Do anything
+        }
 
 
         //Connect nav view
@@ -217,6 +247,8 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(ThirdActivity.this);
+
+
         if (acct != null) {
             String personName = acct.getDisplayName().toLowerCase();
             String personFirstName = acct.getGivenName().toLowerCase();
@@ -227,11 +259,13 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
             //for nav bar
             mName.setText(personName);
             mEmail.setText(personEmail);
+            //mSchedule
             Glide.with(this).load(personPhoto).into(mPhoto);
 
             //Firebase auth should be used instead of google for userID, as people who register through normal email wont show up otherwise
             FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
             String userAuthId = currentFirebaseUser.getUid();
+            //save button to save schedule into db
 
             //for member db object
             thisMember.setaName(personName);
@@ -305,47 +339,55 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         NavigationUI.setupWithNavController(navigationView, navController);
 
 
-        //save button to save schedule into db
+        //Save Button
         saveButton = findViewById(R.id.saveSchedule);
         saveButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-//                FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-//                String firebaseAcctId =  currentFirebaseUser.getUid();
-//
-//                //creating a new category of friend and under your own ID
-//                mFriendUserDatabase = FirebaseDatabase.getInstance().getReference("Friends").child(firebaseAcctId);
-//                Member member = new Member();
-//
-//                //the object pushed to the database
-//                Map<String, Object> friendDbHashMap = new HashMap<>();
-//
-//
-//                //local db in member class
-//                Map<String, Boolean> memberMap =  new HashMap<>();
-//                //Storing the username and boolean value, and setting it up
-//                memberMap.put(username, true);
-//                member.setMemberMap(memberMap);
-//
-//                //passing local db as the object value into this database
-//                friendDbHashMap.put(username, memberMap);
-//
-//                mUserDatabase.updateChildren(friendDbHashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void aVoid) {
-//                        Toast.makeText(ThirdActivity.this, "Friend Added", Toast.LENGTH_SHORT).show();
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Toast.makeText(ThirdActivity.this, "Adding Unsuccessful", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
+                FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                String firebaseAcctId =  currentFirebaseUser.getUid();
+                db = FirebaseDatabase.getInstance().getReference("Schedules");
+
+                //thisMember.setUserSchedule(saveDay);
+
+                //for updateChildren(thought this wont overwrite data like in searchBar, but not working so far
+                Map<String, Object> thestuff = new HashMap<>();
+                thestuff.put("AvailableTimes", saveDay);
+                //db.child(firebaseAcctId).updateChildren(thestuff);
+
+
+                //db.child(firebaseAcctId).setValue(thisMember);
+                db.child(firebaseAcctId).updateChildren(thestuff).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(ThirdActivity.this, "Schedule added", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        e.printStackTrace();
+                        Toast.makeText(ThirdActivity.this, "Adding Unsuccessful", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
             }
         });
 
-    //Ends onCreate()
+        //Proof of concept that schedule can be accessed
+        Button getStuff = findViewById(R.id.getStuff);
+        getStuff.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Bitmap bitmap = Bitmap.createBitmap(tableLayout.getWidth(), tableLayout.getHeight(), Bitmap.Config.ARGB_8888);
+                Canvas canvas = new Canvas(bitmap);
+                tableLayout.draw(canvas);
+                imageView.setImageBitmap(bitmap);
+            }
+        });
+
+        //Ends onCreate()
     }
+
 
 
     //Inflate the menu; this adds items to the action bar if it is present.
@@ -804,6 +846,8 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     //Deselection and saving data into temp array before pushing it to db on "save"
     public void deselection(RadioButton theButton) {
         int redis = theButton.getId();
+        String temp;
+        String day, time;
         if (!theButton.isSelected()) {
             theButton.setChecked(true);
             theButton.setSelected(true);
@@ -813,15 +857,85 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
             day = theIdString.substring(0,3);
             time = theIdString.substring(3, theIdString.length());
 
-            //{thr{6am: true}, wed{7am:true}}
-            //{wed{7am:true}, fri{8pm:true}}
+            boolean noDelete = false;
+            handleIfForHashmaps(saveDay, day, time, noDelete);
+
+
             Toast.makeText(ThirdActivity.this, day + time + " Added! ", Toast.LENGTH_SHORT).show();
 
         } else {
             theButton.setChecked(false);
             theButton.setSelected(false);
+
+            theIdString = theButton.getResources().getResourceEntryName(redis);
+            day = theIdString.substring(0,3);
+            time = theIdString.substring(3, theIdString.length());
+
+            boolean delete = true;
+            handleIfForHashmaps(saveDay, day, time, delete);
+
             Toast.makeText(ThirdActivity.this, day + time + " Deleted! ", Toast.LENGTH_SHORT).show();
         }
     }
+
+    public void handleIfForHashmaps(Map<String, Object> main, String theDay, String theTime, boolean delete) {
+        if (theDay.equals("mon")){
+            if(delete == true)
+                mon.remove(theTime, true);
+            else {
+                mon.put(theTime, true);
+                main.put(theDay, mon);
+            }
+        }else if(theDay.equals("tue")) {
+            if(delete == true)
+                tue.remove(theTime, true);
+            else {
+                tue.put(theTime, true);
+                main.put(theDay, tue);
+            }
+        }else if(theDay.equals("wed")){
+            if(delete == true)
+                wed.remove(theTime, true);
+            else {
+                wed.put(theTime, true);
+                main.put(theDay, wed);
+            }
+        }else if(theDay.equals("thr")){
+            if(delete == true)
+                thr.remove(theTime, true);
+            else {
+                thr.put(theTime, true);
+                main.put(theDay, thr);
+            }
+        }
+        else if(theDay.equals("fri")){
+            if(delete == true)
+                fri.remove(theTime, true);
+            else {
+                fri.put(theTime, true);
+                main.put(theDay, fri);
+            }
+        }
+        else if(theDay.equals("sat")){
+            if(delete == true)
+                sat.remove(theTime, true);
+            else {
+                sat.put(theTime, true);
+                main.put(theDay, sat);
+            }
+        }
+        else if(theDay.equals("sun")){
+            if(delete == true)
+                sun.remove(theTime, true);
+            else {
+                sun.put(theTime, true);
+                main.put(theDay, sun);
+            }
+        }
+        System.out.println("my hashmap "+ Arrays.asList(main));
+
+    }
+
+
 
 }
