@@ -21,6 +21,7 @@ import android.view.Menu;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -79,6 +80,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     private View navHeader;
     private TextView txtName, txtWebsite;
     private Toolbar toolbar;
+    private RadioGroup mRadioGroup;
 
     //Fab
     private FloatingActionButton fab;
@@ -164,6 +166,9 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_third);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        mRadioGroup = (RadioGroup) findViewById(R.id.UIClear);
+        Button clearButton = (Button) findViewById(R.id.clear);
+        clearButton.setOnClickListener(this);
 
         //Instance of Member class
         thisMember = new Member();
@@ -386,6 +391,12 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         });
 
         //Ends onCreate()
+
+
+    }
+
+    public void onCLick(View v){
+        mRadioGroup.clearCheck();
     }
 
 

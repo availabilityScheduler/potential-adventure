@@ -154,8 +154,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:checkedButton="@+id/lunch"
-            android:id="@+id/menu">
+            android:checkedButton="@+id/checked"
+            android:id="@+id/UIClear">
         <!--row2-->
 
         <TableRow>
@@ -1759,8 +1759,8 @@
                 android:text="" />
 
         </TableRow>
-
         </RadioGroup>
+
     </TableLayout>
         </ScrollView>
 
@@ -1820,7 +1820,7 @@
         app:layout_constraintTop_toBottomOf="@+id/compareFriends" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/clear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="184dp"
