@@ -347,7 +347,6 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                         Log.w(TAG, "Failed To Read", databaseError.toException());
                     }
                 });
-
             }
         });
 
@@ -383,29 +382,11 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 String firebaseAcctId =  currentFirebaseUser.getUid();
                 db = FirebaseDatabase.getInstance().getReference("Schedules");
 
-                //maybe we're not saving it right which is why the overwriting occurs, maybe im using the member class wrong?
-
                 //saves user info as well
                 thisMember.setUserSchedule(saveDay);
                 db.child(firebaseAcctId).setValue(thisMember);
 
-                //for updateChildren(thought this wont overwrite data like in searchBar, but not working so far
-//                Map<String, Object> thestuff = new HashMap<>();
-//                thestuff.put("AvailableTimes", saveDay);
                 saveRadioButtons();
-
-//                db.child(firebaseAcctId).updateChildren(thestuff).addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void aVoid) {
-//                        Toast.makeText(ThirdActivity.this, "Schedule added", Toast.LENGTH_SHORT).show();
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        e.printStackTrace();
-//                        Toast.makeText(ThirdActivity.this, "Adding Unsuccessful", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
 
             }
         });
@@ -992,22 +973,12 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     //loads button at startup
     public void loadRadioButtons(){
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        String firebaseAcctId =  currentFirebaseUser.getUid();
-        db = FirebaseDatabase.getInstance().getReference("Schedules");
         for (int i=0; i<stringDaysAndTime.length; i++) {
             for (int j=0; j<stringDaysAndTime[0].length; j++) {
                 buttonArray[i][j] = (RadioButton) findViewById(buttonViewIds[i][j]);
                 buttonArray[i][j].setChecked(sharedPreferences.getBoolean(stringDaysAndTime[i][j], false));
                 buttonArray[i][j].setSelected(sharedPreferences.getBoolean(stringDaysAndTime[i][j], false));
                 if(buttonArray[i][j].isChecked()) {
-//                    String day = stringDaysAndTime[i][j].substring(0,3);
-//                    String time = stringDaysAndTime[i][j].substring(3, stringDaysAndTime[i][j].length());
-//                    handleIfForHashmaps(tempSave, day, time, false);
-//                    if(tempSave == null) {
-//                        thisMember.setUserSchedule(tempSave);
-//                        db.child(firebaseAcctId).setValue(thisMember);
-//                    }
                     System.out.println("days " + stringDaysAndTime[i][j]);
                     System.out.println("buttons " + buttonArray[i][j]);
                 }
@@ -1015,6 +986,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 //ON OUR NEW SCHEDULE OR WHATEVER, AND IT CREATES THAT HASHMAP FROM THE BEGINNIGN, AND THEN PUSHES IT
                 //TO THE DB AND AS SUCH OVERWRITES IT ALL.
                 //SO MAYBE WE CAN AT LOAD, ALSO FILL THE NOW EMPTY HASHMAP WITH THE FIREBASE DATA, AND THEN GO ON WITH THE PROGRAM??
+                //Hopefully or imma just kms
             }
         }
     }
