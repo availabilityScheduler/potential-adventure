@@ -150,6 +150,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/weekdays">
 
+        <RadioGroup
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:checkedButton="@+id/lunch"
+            android:id="@+id/menu">
         <!--row2-->
 
         <TableRow>
@@ -1465,6 +1471,8 @@
                 android:gravity="center"
                 android:text="" />
 
+
+
             <RadioButton
                 android:id="@+id/fri9pm"
                 android:layout_width="wrap_content"
@@ -1578,11 +1586,14 @@
                 android:button="@android:color/transparent"
                 android:gravity="center"
                 android:text="" />
+
         </TableRow>
 
         <!--11PM row-->
 
-        <TableRow>
+
+
+            <TableRow>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -1633,7 +1644,7 @@
                 android:gravity="center"
                 android:text="" />
 
-            <RadioButton
+                <RadioButton
                 android:id="@+id/fri11pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -1746,8 +1757,10 @@
                 android:button="@android:color/transparent"
                 android:gravity="center"
                 android:text="" />
+
         </TableRow>
 
+        </RadioGroup>
     </TableLayout>
         </ScrollView>
 
@@ -1805,5 +1818,15 @@
         android:text="Show Schedule"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/compareFriends" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="184dp"
+        android:text="Clear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/compareFriends" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
