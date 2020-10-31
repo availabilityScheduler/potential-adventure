@@ -987,28 +987,10 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 buttonArray[i][j].setChecked(sharedPreferences.getBoolean(stringDaysAndTime[i][j], false));
                 buttonArray[i][j].setSelected(sharedPreferences.getBoolean(stringDaysAndTime[i][j], false));
                 if(buttonArray[i][j].isChecked()) {
-                    time = stringDaysAndTime[i][j].substring(3);
-                    System.out.println("time " + time);
-
-                    if(saveDay.size()==0) {
-                        db.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                //saveDay.put(dataSnapshot.getKey(), dataSnapshot.getValue());
-                                //saves user info as well
-                                //db.setValue(getFriendMaps);
-                            }
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-                                Log.w(TAG, "Failed To Read", databaseError.toException());
-                            }
-                        });
-                    }
-
+                    System.out.println("days " + stringDaysAndTime[i][j]);
+                    System.out.println("buttons " + buttonArray[i][j]);
                 }
             }
         }
-        System.out.println("muhahaha "+ Arrays.asList(getFriendMaps));
-
     }
 }
