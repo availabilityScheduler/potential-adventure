@@ -973,24 +973,42 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     //loads button at startup
     public void loadRadioButtons(){
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String day, time;
+
+        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        final String firebaseAcctId =  currentFirebaseUser.getUid();
+
+        final Map<String, Object> getFriendMaps = new HashMap<>();
+        db = FirebaseDatabase.getInstance().getReference("Schedules");
+
         for (int i=0; i<stringDaysAndTime.length; i++) {
             for (int j=0; j<stringDaysAndTime[0].length; j++) {
                 buttonArray[i][j] = (RadioButton) findViewById(buttonViewIds[i][j]);
                 buttonArray[i][j].setChecked(sharedPreferences.getBoolean(stringDaysAndTime[i][j], false));
                 buttonArray[i][j].setSelected(sharedPreferences.getBoolean(stringDaysAndTime[i][j], false));
                 if(buttonArray[i][j].isChecked()) {
-                    System.out.println("days " + stringDaysAndTime[i][j]);
-                    System.out.println("buttons " + buttonArray[i][j]);
+                    time = stringDaysAndTime[i][j].substring(3);
+                    System.out.println("time " + time);
+
+                    if(saveDay.size()==0) {
+                        db.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                //saveDay.put(dataSnapshot.getKey(), dataSnapshot.getValue());
+                                //saves user info as well
+                                //db.setValue(getFriendMaps);
+                            }
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                                Log.w(TAG, "Failed To Read", databaseError.toException());
+                            }
+                        });
+                    }
+
                 }
-                //WAIT WAIT SO I THINK THE PROBLEM IS THAT WHEN THE PROGRAM STARTS AGAIN, THE HAASHMAP IS EMPTY, AND WE CLICK
-                //ON OUR NEW SCHEDULE OR WHATEVER, AND IT CREATES THAT HASHMAP FROM THE BEGINNIGN, AND THEN PUSHES IT
-                //TO THE DB AND AS SUCH OVERWRITES IT ALL.
-                //SO MAYBE WE CAN AT LOAD, ALSO FILL THE NOW EMPTY HASHMAP WITH THE FIREBASE DATA, AND THEN GO ON WITH THE PROGRAM??
-                //Hopefully or imma just kms
             }
         }
+        System.out.println("muhahaha "+ Arrays.asList(getFriendMaps));
+
     }
-
-
-
 }
