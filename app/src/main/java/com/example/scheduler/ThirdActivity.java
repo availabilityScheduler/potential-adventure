@@ -391,7 +391,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
-        //Proof of concept that schedule can be accessed
+        //Image stuff
         Button getStuff = findViewById(R.id.getStuff);
         getStuff.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -404,10 +404,6 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         });
 
         //Ends onCreate()
-    }
-
-    public void onCLick(View v){
-        mRadioGroup.clearCheck();
     }
 
     //Inflate the menu; this adds items to the action bar if it is present.
@@ -901,11 +897,15 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     //handles whethere to insert schedule into hashmap or remove
     public void handleIfForHashmaps(Map<String, Object> main, String theDay, String theTime, boolean delete) {
         if (theDay.equals("mon")){
-            if(delete == true)
+            System.out.println("originalSaveDay " + Arrays.asList(saveDay));
+            if(delete == true) {
                 mon.remove(theTime, true);
-            else {
+                System.out.println("afterDeleteSmthSaveDay " + Arrays.asList(saveDay));
+
+            }else {
                 mon.put(theTime, true);
                 main.put(theDay, mon);
+                System.out.println("AfterAddedSmthSaveDay "+ Arrays.asList(main));
             }
         }else if(theDay.equals("tue")) {
             if(delete == true)
@@ -953,7 +953,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 main.put(theDay, sun);
             }
         }
-        System.out.println("my hashmap "+ Arrays.asList(main));
+        System.out.println("Final Saveday before Saving "+ Arrays.asList(main));
 
     }
 
@@ -979,7 +979,8 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         final String firebaseAcctId =  currentFirebaseUser.getUid();
 
         final Map<String, Object> getFriendMaps = new HashMap<>();
-        db = FirebaseDatabase.getInstance().getReference("Schedules");
+        db = FirebaseDatabase.getInstance().getReference("Schedules").child(firebaseAcctId);
+        final DatabaseReference schedDB = db.child("userSchedule");
 
         for (int i=0; i<stringDaysAndTime.length; i++) {
             for (int j=0; j<stringDaysAndTime[0].length; j++) {
@@ -989,26 +990,36 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 if(buttonArray[i][j].isChecked()) {
                     time = stringDaysAndTime[i][j].substring(3);
                     System.out.println("time " + time);
-
-                    if(saveDay.size()==0) {
-                        db.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                //saveDay.put(dataSnapshot.getKey(), dataSnapshot.getValue());
-                                //saves user info as well
-                                //db.setValue(getFriendMaps);
-                            }
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-                                Log.w(TAG, "Failed To Read", databaseError.toException());
-                            }
-                        });
-                    }
-
                 }
             }
         }
-        System.out.println("muhahaha "+ Arrays.asList(getFriendMaps));
+        if(saveDay.size()==0) {
+            schedDB.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.exists()) {
+                        System.out.println("Key: " + dataSnapshot.getKey());
+                        System.out.println("Value: " + dataSnapshot.getValue());
 
+                        Map<String, Object> getScheduleMap = (Map<String, Object>) dataSnapshot.getValue();
+                        Iterator it = getScheduleMap.entrySet().iterator();
+                        for (int i = 0; it.hasNext(); i++) {
+                            Map.Entry pair = (Map.Entry) it.next();
+                            String eachDay = pair.getKey().toString();
+                            Object eachTime = pair.getValue();
+                            System.out.println("DAY: " + eachDay);
+                            System.out.println("TIME: " + eachTime.toString());
+                            saveDay.put(eachDay, eachTime);
+
+                        }
+                        //schedDB.setValue(saveDay);
+                    }
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.w(TAG, "Failed To Read", databaseError.toException());
+                }
+            });
+        }
     }
 }
