@@ -125,1634 +125,1633 @@
     </TableLayout>
 
 
-        <ScrollView
-            android:layout_width="366dp"
-            android:layout_height="450dp"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="0dp"
-            android:layout_weight="1"
-            android:background="#FFFFFF"
-            android:scrollbars="none"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/weekdays">
-
-
-    <TableLayout
-        android:id="@+id/mainTable"
+    <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="366dp"
-        android:layout_height="412dp"
-        android:layout_marginHorizontal="0dp"
+        android:layout_height="450dp"
+        android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="0dp"
-        android:contextClickable="false"
-        android:hapticFeedbackEnabled="true"
+        android:layout_weight="1"
+        android:background="#FFFFFF"
+        android:scrollbars="none"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/weekdays">
 
-        <TableRow>
-
-            <TextView
-                android:layout_width="91dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="6:00AM" />
-
-            <RadioButton
-                android:id="@+id/mon6am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/tue6am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/wed6am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/thr6am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/fri6am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sat6am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sun6am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-        </TableRow>
-
-        <!--row3-->
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="7:00 AM" />
-
-            <RadioButton
-                android:id="@+id/mon7am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/tue7am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/wed7am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/thr7am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/fri7am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sat7am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sun7am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-        </TableRow>
-
-        <!--8AM row-->
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="8:00 AM" />
-
-            <RadioButton
-                android:id="@+id/mon8am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/tue8am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/wed8am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/thr8am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/fri8am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sat8am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sun8am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-        </TableRow>
-
-        <!--9AM row-->
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="9:00 AM" />
-
-            <RadioButton
-                android:id="@+id/mon9am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/tue9am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/wed9am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/thr9am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/fri9am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sat9am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sun9am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-        </TableRow>
-
-        <!--10AM row-->
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="10:00 AM" />
-
-            <RadioButton
-                android:id="@+id/mon10am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/tue10am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/wed10am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/thr10am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/fri10am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sat10am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sun10am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-        </TableRow>
-
-        <!--11AM row-->
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="11:00 AM" />
-
-            <RadioButton
-                android:id="@+id/mon11am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/tue11am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/wed11am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/thr11am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/fri11am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sat11am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sun11am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-        </TableRow>
-
-        <!--12PM row-->
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="12:00 PM" />
-
-            <RadioButton
-                android:id="@+id/mon12pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/tue12pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/wed12pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/thr12pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/fri12pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sat12pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sun12pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-        </TableRow>
-
-        <!--1PM row-->
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="1:00 PM" />
-
-            <RadioButton
-                android:id="@+id/mon1pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/tue1pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/wed1pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/thr1pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/fri1pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sat1pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sun1pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-        </TableRow>
-
-        <!--2PM row-->
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="2:00 PM" />
-
-            <RadioButton
-                android:id="@+id/mon2pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/tue2pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/wed2pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/thr2pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/fri2pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sat2pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sun2pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-        </TableRow>
-
-        <!--3PM row-->
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="3:00 PM" />
-
-            <RadioButton
-                android:id="@+id/mon3pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/tue3pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/wed3pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/thr3pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/fri3pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sat3pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sun3pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-        </TableRow>
-
-        <!--4PM row-->
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="4:00 PM" />
-
-            <RadioButton
-                android:id="@+id/mon4pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/tue4pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/wed4pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/thr4pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/fri4pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sat4pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sun4pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-        </TableRow>
-
-        <!--5PM row-->
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="5:00 PM" />
-
-            <RadioButton
-                android:id="@+id/mon5pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/tue5pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/wed5pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/thr5pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/fri5pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sat5pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sun5pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-        </TableRow>
-
-        <!--6PM row-->
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="6:00 PM" />
-
-            <RadioButton
-                android:id="@+id/mon6pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/tue6pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/wed6pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/thr6pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/fri6pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sat6pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sun6pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-        </TableRow>
-
-        <!--7PM row-->
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="7:00 PM" />
-
-            <RadioButton
-                android:id="@+id/mon7pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/tue7pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/wed7pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/thr7pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/fri7pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sat7pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sun7pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-        </TableRow>
-
-        <!--8PM row-->
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="8:00 PM" />
-
-            <RadioButton
-                android:id="@+id/mon8pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/tue8pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/wed8pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/thr8pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/fri8pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sat8pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sun8pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-        </TableRow>
-
-        <!--9PM row-->
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="88dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="9:00 PM" />
-
-            <RadioButton
-                android:id="@+id/mon9pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/tue9pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/wed9pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/thr9pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-
-
-            <RadioButton
-                android:id="@+id/fri9pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sat9pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sun9pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-        </TableRow>
-
-        <!--10PM row-->
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="10:00 PM" />
-
-            <RadioButton
-                android:id="@+id/mon10pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/tue10pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/wed10pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/thr10pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/fri10pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sat10pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/sun10pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-        </TableRow>
-
-        <!--11PM row-->
 
+        <TableLayout
+            android:id="@+id/mainTable"
+            android:layout_width="366dp"
+            android:layout_height="412dp"
+            android:layout_marginHorizontal="0dp"
+            android:layout_marginVertical="0dp"
+            android:contextClickable="false"
+            android:hapticFeedbackEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/weekdays">
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="91dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="6:00AM" />
+
+                <RadioButton
+                    android:id="@+id/mon6am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/tue6am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/wed6am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/thr6am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/fri6am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sat6am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sun6am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+            </TableRow>
+
+            <!--row3-->
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="7:00 AM" />
+
+                <RadioButton
+                    android:id="@+id/mon7am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/tue7am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/wed7am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/thr7am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/fri7am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sat7am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sun7am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+            </TableRow>
+
+            <!--8AM row-->
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="8:00 AM" />
+
+                <RadioButton
+                    android:id="@+id/mon8am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/tue8am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/wed8am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/thr8am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/fri8am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sat8am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sun8am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+            </TableRow>
+
+            <!--9AM row-->
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="9:00 AM" />
+
+                <RadioButton
+                    android:id="@+id/mon9am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/tue9am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/wed9am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/thr9am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/fri9am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sat9am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sun9am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+            </TableRow>
+
+            <!--10AM row-->
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="10:00 AM" />
+
+                <RadioButton
+                    android:id="@+id/mon10am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/tue10am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/wed10am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/thr10am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/fri10am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sat10am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sun10am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+            </TableRow>
+
+            <!--11AM row-->
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="11:00 AM" />
+
+                <RadioButton
+                    android:id="@+id/mon11am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/tue11am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/wed11am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/thr11am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/fri11am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sat11am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sun11am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+            </TableRow>
+
+            <!--12PM row-->
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="12:00 PM" />
+
+                <RadioButton
+                    android:id="@+id/mon12pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/tue12pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/wed12pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/thr12pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/fri12pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sat12pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sun12pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+            </TableRow>
+
+            <!--1PM row-->
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="1:00 PM" />
+
+                <RadioButton
+                    android:id="@+id/mon1pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/tue1pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/wed1pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/thr1pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/fri1pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sat1pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sun1pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+            </TableRow>
+
+            <!--2PM row-->
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="2:00 PM" />
+
+                <RadioButton
+                    android:id="@+id/mon2pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/tue2pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/wed2pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/thr2pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/fri2pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sat2pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sun2pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+            </TableRow>
+
+            <!--3PM row-->
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="3:00 PM" />
+
+                <RadioButton
+                    android:id="@+id/mon3pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/tue3pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/wed3pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/thr3pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/fri3pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sat3pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sun3pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+            </TableRow>
+
+            <!--4PM row-->
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="4:00 PM" />
+
+                <RadioButton
+                    android:id="@+id/mon4pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/tue4pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/wed4pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/thr4pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/fri4pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sat4pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sun4pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+            </TableRow>
+
+            <!--5PM row-->
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="5:00 PM" />
+
+                <RadioButton
+                    android:id="@+id/mon5pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/tue5pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/wed5pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/thr5pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/fri5pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sat5pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sun5pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+            </TableRow>
+
+            <!--6PM row-->
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="6:00 PM" />
+
+                <RadioButton
+                    android:id="@+id/mon6pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/tue6pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/wed6pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/thr6pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/fri6pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sat6pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sun6pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+            </TableRow>
+
+            <!--7PM row-->
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="7:00 PM" />
+
+                <RadioButton
+                    android:id="@+id/mon7pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/tue7pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/wed7pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/thr7pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/fri7pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sat7pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sun7pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+            </TableRow>
+
+            <!--8PM row-->
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="8:00 PM" />
+
+                <RadioButton
+                    android:id="@+id/mon8pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/tue8pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/wed8pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/thr8pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/fri8pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sat8pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sun8pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+            </TableRow>
+
+            <!--9PM row-->
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="88dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="9:00 PM" />
+
+                <RadioButton
+                    android:id="@+id/mon9pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/tue9pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/wed9pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/thr9pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+
+                <RadioButton
+                    android:id="@+id/fri9pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sat9pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sun9pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+            </TableRow>
+
+            <!--10PM row-->
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="10:00 PM" />
+
+                <RadioButton
+                    android:id="@+id/mon10pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/tue10pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/wed10pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/thr10pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/fri10pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sat10pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sun10pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+            </TableRow>
+
+            <!--11PM row-->
 
 
             <TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="11:00 PM" />
-
-            <RadioButton
-                android:id="@+id/mon11pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/tue11pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/wed11pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-
-            <RadioButton
-                android:id="@+id/thr11pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="11:00 PM" />
 
                 <RadioButton
-                android:id="@+id/fri11pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
+                    android:id="@+id/mon11pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
 
-            <RadioButton
-                android:id="@+id/sat11pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
+                <RadioButton
+                    android:id="@+id/tue11pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
 
-            <RadioButton
-                android:id="@+id/sun11pm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-        </TableRow>
+                <RadioButton
+                    android:id="@+id/wed11pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
 
-        <!--12AM row-->
+                <RadioButton
+                    android:id="@+id/thr11pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
 
-        <TableRow>
+                <RadioButton
+                    android:id="@+id/fri11pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="12:00 AM" />
+                <RadioButton
+                    android:id="@+id/sat11pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
 
-            <RadioButton
-                android:id="@+id/mon12am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
+                <RadioButton
+                    android:id="@+id/sun11pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+            </TableRow>
 
-            <RadioButton
-                android:id="@+id/tue12am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
+            <!--12AM row-->
 
-            <RadioButton
-                android:id="@+id/wed12am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
+            <TableRow>
 
-            <RadioButton
-                android:id="@+id/thr12am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="12:00 AM" />
 
-            <RadioButton
-                android:id="@+id/fri12am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
+                <RadioButton
+                    android:id="@+id/mon12am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
 
-            <RadioButton
-                android:id="@+id/sat12am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
+                <RadioButton
+                    android:id="@+id/tue12am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
 
-            <RadioButton
-                android:id="@+id/sun12am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/radiobutton_design"
-                android:button="@android:color/transparent"
-                android:gravity="center"
-                android:text="" />
-        </TableRow>
+                <RadioButton
+                    android:id="@+id/wed12am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
 
-    </TableLayout>
-        </ScrollView>
+                <RadioButton
+                    android:id="@+id/thr12am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/fri12am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sat12am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+
+                <RadioButton
+                    android:id="@+id/sun12am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radiobutton_design"
+                    android:button="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="" />
+            </TableRow>
+
+        </TableLayout>
+    </ScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -1772,23 +1771,27 @@
 
     <Button
         android:id="@+id/compareFriends"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="240dp"
         android:text="Compare"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.99" />
 
     <Button
         android:id="@+id/saveSchedule"
-        android:layout_width="0dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="240dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/compareFriends" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias=".915"/>
 
     <ImageView
         android:id="@+id/thepic"
@@ -1803,21 +1806,25 @@
         android:id="@+id/getStuff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
         android:text="Show Schedule"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/compareFriends" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.345"
+        app:layout_constraintStart_toStartOf="@id/saveSchedule"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.915" />
 
     <Button
         android:id="@+id/clear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="88dp"
         android:text="Clear"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/compareFriends" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.99" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
