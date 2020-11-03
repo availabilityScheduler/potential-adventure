@@ -895,17 +895,11 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     //handles whethere to insert schedule into hashmap or remove
     public void handleIfForHashmaps(Map<String, Object> main, String theDay, String theTime, boolean delete) {
         if (theDay.equals("mon")){
-            System.out.println("originalSaveDay " + Arrays.asList(saveDay));
-            if(delete == true) {
+            if(delete == true) 
                 mon.remove(theTime, true);
-                System.out.println("afterDeleteSmthSaveDay " + Arrays.asList(saveDay));
-
-            }else {
-                System.out.println("beforeMonHasAnything "+ Arrays.asList(mon));
+            else {
                 mon.put(theTime, true);
-                System.out.println("AfterMonHasAnything "+ Arrays.asList(mon));
                 main.put(theDay, mon);
-                System.out.println("AfterAddedSmthSaveDay "+ Arrays.asList(main));
             }
         }else if(theDay.equals("tue")) {
             if(delete == true)
@@ -970,7 +964,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         editor.apply();
     }
 
-    //loads button at startup
+    //loads button at startup, and also handles saving loaded values properlyg
     public void loadRadioButtons(){
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String day, time;
@@ -1006,12 +1000,20 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                         for (int i = 0; it.hasNext(); i++) {
                             Map.Entry pair = (Map.Entry) it.next();
                             String eachDay = pair.getKey().toString();
-                            String eachTime = pair.getValue().toString();
+                            System.out.println("Testing " + getScheduleMap.get(pair.getKey()).toString());
 
-                            String times = eachTime.substring(1,4);
-                            System.out.println("DAY: " + eachDay);
-                            System.out.println("TIME: " + times);
-                            handleIfForHashmaps(saveDay, eachDay, times, false);
+                            Map<String, Boolean> getTimeMap = (Map<String, Boolean>) getScheduleMap.get(pair.getKey());
+                            Iterator lit = getTimeMap.entrySet().iterator();
+                            for (int k = 0; lit.hasNext(); k++) {
+                                Map.Entry pair2 = (Map.Entry) lit.next();
+                                
+                                String eachTime = pair2.getKey().toString();
+                                String eachBool = pair2.getValue().toString();
+
+                                System.out.println("TIME: " + eachTime);
+                                System.out.println("BOOL: " + eachBool);
+                                handleIfForHashmaps(saveDay, eachDay, eachTime, false);
+                            }
                         }
                     }
                 }
