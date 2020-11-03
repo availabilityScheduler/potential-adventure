@@ -197,8 +197,6 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         loadRadioButtons();
-        Button clearButton = (Button) findViewById(R.id.clear);
-        //clearButton.setOnClickListener(this);
 
         //Instance of Member class
         thisMember = new Member();
@@ -903,7 +901,9 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 System.out.println("afterDeleteSmthSaveDay " + Arrays.asList(saveDay));
 
             }else {
+                System.out.println("beforeMonHasAnything "+ Arrays.asList(mon));
                 mon.put(theTime, true);
+                System.out.println("AfterMonHasAnything "+ Arrays.asList(mon));
                 main.put(theDay, mon);
                 System.out.println("AfterAddedSmthSaveDay "+ Arrays.asList(main));
             }
@@ -1006,13 +1006,13 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                         for (int i = 0; it.hasNext(); i++) {
                             Map.Entry pair = (Map.Entry) it.next();
                             String eachDay = pair.getKey().toString();
-                            Object eachTime = pair.getValue();
-                            System.out.println("DAY: " + eachDay);
-                            System.out.println("TIME: " + eachTime.toString());
-                            saveDay.put(eachDay, eachTime);
+                            String eachTime = pair.getValue().toString();
 
+                            String times = eachTime.substring(1,4);
+                            System.out.println("DAY: " + eachDay);
+                            System.out.println("TIME: " + times);
+                            handleIfForHashmaps(saveDay, eachDay, times, false);
                         }
-                        //schedDB.setValue(saveDay);
                     }
                 }
                 @Override
