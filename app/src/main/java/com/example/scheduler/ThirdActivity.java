@@ -227,6 +227,9 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
             }
         }
 
+        //will attempt to do clear through arrays here.
+
+
         //Retrieving ID's
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
