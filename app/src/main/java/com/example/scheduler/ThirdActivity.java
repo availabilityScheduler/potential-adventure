@@ -112,11 +112,10 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     String friendList[];
     private static final String EXTRA_MESSAGE = "";
 
-
     //Tag string
     private static final String TAG = "ThirdActivity";
 
-    //Button theory
+    //Int all the radio buttons
     private int[][] buttonViewIds = new int[][] {
             { R.id.mon6am, R.id.tue6am, R.id.wed6am, R.id.thr6am, R.id.fri6am, R.id.sat6am, R.id.sun6am },
             { R.id.mon7am, R.id.tue7am, R.id.wed7am, R.id.thr7am, R.id.fri7am, R.id.sat7am, R.id.sun7am },
@@ -169,9 +168,10 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     //the button id in string format
     private String theIdString;
 
-    //Hashmap to save and push schedule to db
+    //Main hashmap to save and push schedule to db
     Map<String, Object> saveDay =  new HashMap<>();
-    Map<String, Object> tempSave =  new HashMap<>();
+
+    //Secondary hasmap placed into saveDay appropriately
     Map<String,Boolean> mon = new HashMap<>();
     Map<String,Boolean> tue = new HashMap<>();
     Map<String,Boolean> wed = new HashMap<>();
@@ -389,7 +389,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
-        //Image stuff
+        //Generates a screenshot of your schedule and displays it
         Button getStuff = findViewById(R.id.getStuff);
         getStuff.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -892,7 +892,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    //handles whethere to insert schedule into hashmap or remove
+    //handles whether to insert schedule into hashmap or remove the value
     public void handleIfForHashmaps(Map<String, Object> main, String theDay, String theTime, boolean delete) {
         if (theDay.equals("mon")){
             if(delete == true) 
@@ -964,18 +964,21 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         editor.apply();
     }
 
-    //loads button at startup, and also handles saving loaded values properlyg
+    //loads button at startup, and also handles saving loaded values properly
     public void loadRadioButtons(){
+        //loads it from the sharedpreference xml file which is saved locally.
+        //If you'd like to see where its under device file explorer/data/data/com.example.scheduler/sharedpreferences
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String day, time;
+        String time;
 
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         final String firebaseAcctId =  currentFirebaseUser.getUid();
 
-        final Map<String, Object> getFriendMaps = new HashMap<>();
+        //db ref to get to the userSchedule child
         db = FirebaseDatabase.getInstance().getReference("Schedules").child(firebaseAcctId);
         final DatabaseReference schedDB = db.child("userSchedule");
 
+        //At load time, select the checked buttons that were checked the session before
         for (int i=0; i<stringDaysAndTime.length; i++) {
             for (int j=0; j<stringDaysAndTime[0].length; j++) {
                 buttonArray[i][j] = (RadioButton) findViewById(buttonViewIds[i][j]);
@@ -987,6 +990,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 }
             }
         }
+        //if the hashmap is empty at loadTime, then add the existing values to the hashmap, and if any new values are added, deleted it will be appended accordingly
         if(saveDay.size()==0) {
             schedDB.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -995,23 +999,27 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                         System.out.println("Key: " + dataSnapshot.getKey());
                         System.out.println("Value: " + dataSnapshot.getValue());
 
+                        //hashmap to retrieve higher level of our structure
                         Map<String, Object> getScheduleMap = (Map<String, Object>) dataSnapshot.getValue();
                         Iterator it = getScheduleMap.entrySet().iterator();
                         for (int i = 0; it.hasNext(); i++) {
                             Map.Entry pair = (Map.Entry) it.next();
+                            //retrieve the "day" key
                             String eachDay = pair.getKey().toString();
                             System.out.println("Testing " + getScheduleMap.get(pair.getKey()).toString());
-
+                            //hashmap to iterate through the time:true values from the hasmap
                             Map<String, Boolean> getTimeMap = (Map<String, Boolean>) getScheduleMap.get(pair.getKey());
                             Iterator lit = getTimeMap.entrySet().iterator();
                             for (int k = 0; lit.hasNext(); k++) {
                                 Map.Entry pair2 = (Map.Entry) lit.next();
-                                
+
+                                //saves time, and bool into var
                                 String eachTime = pair2.getKey().toString();
                                 String eachBool = pair2.getValue().toString();
 
                                 System.out.println("TIME: " + eachTime);
                                 System.out.println("BOOL: " + eachBool);
+                                //passes it to the handler function for proper integration
                                 handleIfForHashmaps(saveDay, eachDay, eachTime, false);
                             }
                         }
