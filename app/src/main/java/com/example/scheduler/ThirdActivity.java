@@ -146,6 +146,8 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
             {"mon8am", "tue8am", "wed8am", "thr8am", "fri8am", "sat8am", "sun8am"},
             {"mon9am", "tue9am", "wed9am", "thr9am", "fri9am", "sat9am", "sun9am"},
             {"mon10am", "tue10am", "wed10am", "thr10am", "fri10am", "sat10am", "sun10am"},
+            {"mon11am", "tue11am", "wed11am", "thr11am", "fri11am", "sat11am", "sun11am"},
+            {"mon12pm", "tue12pm", "wed12pm", "thr12pm", "fri12pm", "sat12pm", "sun12pm"},
             {"mon1pm", "tue1pm", "wed1pm", "thr1pm", "fri1pm", "sat1pm", "sun1pm"},
             {"mon2pm", "tue2pm", "wed2pm", "thr2pm", "fri2pm", "sat2pm", "sun2pm"},
             {"mon3pm", "tue3pm", "wed3pm", "thr3pm", "fri3pm", "sat3pm", "sun3pm"},
@@ -153,10 +155,8 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
             {"mon5pm", "tue5pm", "wed5pm", "thr5pm", "fri5pm", "sat5pm", "sun5pm"},
             {"mon6pm", "tue6pm", "wed6pm", "thr6pm", "fri6pm", "sat6pm", "sun6pm"},
             {"mon7pm", "tue7pm", "wed7pm", "thr7pm", "fri7pm", "sat7pm", "sun7pm"},
-            {"mon8pm", "tue8pm", "wed8pm", "thr8pm", "fri8pm", "sat8pm", "sun8pm"},
+            {"mon8am", "tue8am", "wed8am", "thr8am", "fri8am", "sat8am", "sun8am"},
             {"mon9pm", "tue9pm", "wed9pm", "thr9pm", "fri9pm", "sat9pm", "sun9pm"},
-            {"mon11am", "tue11am", "wed11am", "thr11am", "fri11am", "sat11am", "sun11am"},
-            {"mon12pm", "tue12pm", "wed12pm", "thr12pm", "fri12pm", "sat12pm", "sun12pm"},
             {"mon10pm", "tue10pm", "wed10pm", "thr10pm", "fri10pm", "sat10pm", "sun10pm"},
             {"mon11pm", "tue11pm", "wed11pm", "thr11pm", "fri11pm", "sat11pm", "sun11pm"},
             {"mon12am", "tue12am", "wed12am", "thr12am", "fri12am", "sat12am", "sun12am"},
@@ -171,6 +171,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
 
     //Hashmap to save and push schedule to db
     Map<String, Object> saveDay =  new HashMap<>();
+    Map<String, Object> tempSave =  new HashMap<>();
     Map<String,Boolean> mon = new HashMap<>();
     Map<String,Boolean> tue = new HashMap<>();
     Map<String,Boolean> wed = new HashMap<>();
@@ -346,7 +347,6 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                         Log.w(TAG, "Failed To Read", databaseError.toException());
                     }
                 });
-
             }
         });
 
@@ -382,29 +382,11 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 String firebaseAcctId =  currentFirebaseUser.getUid();
                 db = FirebaseDatabase.getInstance().getReference("Schedules");
 
-                //maybe we're not saving it right which is why the overwriting occurs, maybe im using the member class wrong?
-
                 //saves user info as well
                 thisMember.setUserSchedule(saveDay);
                 db.child(firebaseAcctId).setValue(thisMember);
 
-                //for updateChildren(thought this wont overwrite data like in searchBar, but not working so far
-//                Map<String, Object> thestuff = new HashMap<>();
-//                thestuff.put("AvailableTimes", saveDay);
                 saveRadioButtons();
-
-//                db.child(firebaseAcctId).updateChildren(thestuff).addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void aVoid) {
-//                        Toast.makeText(ThirdActivity.this, "Schedule added", Toast.LENGTH_SHORT).show();
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        e.printStackTrace();
-//                        Toast.makeText(ThirdActivity.this, "Adding Unsuccessful", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
 
             }
         });
@@ -991,16 +973,24 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     //loads button at startup
     public void loadRadioButtons(){
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String day, time;
+
+        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        final String firebaseAcctId =  currentFirebaseUser.getUid();
+
+        final Map<String, Object> getFriendMaps = new HashMap<>();
+        db = FirebaseDatabase.getInstance().getReference("Schedules");
+
         for (int i=0; i<stringDaysAndTime.length; i++) {
             for (int j=0; j<stringDaysAndTime[0].length; j++) {
                 buttonArray[i][j] = (RadioButton) findViewById(buttonViewIds[i][j]);
                 buttonArray[i][j].setChecked(sharedPreferences.getBoolean(stringDaysAndTime[i][j], false));
                 buttonArray[i][j].setSelected(sharedPreferences.getBoolean(stringDaysAndTime[i][j], false));
-                //maybe here we repush the values that are "true" to the db?
+                if(buttonArray[i][j].isChecked()) {
+                    System.out.println("days " + stringDaysAndTime[i][j]);
+                    System.out.println("buttons " + buttonArray[i][j]);
+                }
             }
         }
     }
-
-
-
 }
