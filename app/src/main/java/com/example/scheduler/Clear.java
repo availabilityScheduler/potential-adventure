@@ -19,7 +19,7 @@ public class Clear extends ThirdActivity implements View.OnClickListener {
         clearButton.setOnClickListener(this);
     }
 
-
+    //supposed to clear all buttons on-click
 
     public void onClick(View v) {
         mRadioGroup.clearCheck();
