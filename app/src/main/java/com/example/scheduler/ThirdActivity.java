@@ -3,6 +3,9 @@ package com.example.scheduler;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
@@ -111,11 +114,10 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     String friendList[];
     private static final String EXTRA_MESSAGE = "";
 
-
     //Tag string
     private static final String TAG = "ThirdActivity";
 
-    //Button theory
+    //Int all the radio buttons
     private int[][] buttonViewIds = new int[][] {
             { R.id.mon6am, R.id.tue6am, R.id.wed6am, R.id.thr6am, R.id.fri6am, R.id.sat6am, R.id.sun6am },
             { R.id.mon7am, R.id.tue7am, R.id.wed7am, R.id.thr7am, R.id.fri7am, R.id.sat7am, R.id.sun7am },
@@ -136,7 +138,31 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
             { R.id.mon10pm, R.id.tue10pm, R.id.wed10pm, R.id.thr10pm, R.id.fri10pm, R.id.sat10pm, R.id.sun10pm},
             { R.id.mon11pm, R.id.tue11pm, R.id.wed11pm, R.id.thr11pm, R.id.fri11pm, R.id.sat11pm, R.id.sun11pm},
             { R.id.mon12am, R.id.tue12am, R.id.wed12am, R.id.thr12am, R.id.fri12am, R.id.sat12am, R.id.sun12am},
+
+    //String days and times
+    private String[][] stringDaysAndTime = new String[][]{
+            {"mon6am", "tue6am", "wed6am", "thr6am", "fri6am", "sat6am", "sun6am"},
+            {"mon7am", "tue7am", "wed7am", "thr7am", "fri7am", "sat7am", "sun7am"},
+            {"mon8am", "tue8am", "wed8am", "thr8am", "fri8am", "sat8am", "sun8am"},
+            {"mon9am", "tue9am", "wed9am", "thr9am", "fri9am", "sat9am", "sun9am"},
+            {"mon10am", "tue10am", "wed10am", "thr10am", "fri10am", "sat10am", "sun10am"},
+            {"mon11am", "tue11am", "wed11am", "thr11am", "fri11am", "sat11am", "sun11am"},
+            {"mon12pm", "tue12pm", "wed12pm", "thr12pm", "fri12pm", "sat12pm", "sun12pm"},
+            {"mon1pm", "tue1pm", "wed1pm", "thr1pm", "fri1pm", "sat1pm", "sun1pm"},
+            {"mon2pm", "tue2pm", "wed2pm", "thr2pm", "fri2pm", "sat2pm", "sun2pm"},
+            {"mon3pm", "tue3pm", "wed3pm", "thr3pm", "fri3pm", "sat3pm", "sun3pm"},
+            {"mon4pm", "tue4pm", "wed4pm", "thr4pm", "fri4pm", "sat4pm", "sun4pm"},
+            {"mon5pm", "tue5pm", "wed5pm", "thr5pm", "fri5pm", "sat5pm", "sun5pm"},
+            {"mon6pm", "tue6pm", "wed6pm", "thr6pm", "fri6pm", "sat6pm", "sun6pm"},
+            {"mon7pm", "tue7pm", "wed7pm", "thr7pm", "fri7pm", "sat7pm", "sun7pm"},
+            {"mon8am", "tue8am", "wed8am", "thr8am", "fri8am", "sat8am", "sun8am"},
+            {"mon9pm", "tue9pm", "wed9pm", "thr9pm", "fri9pm", "sat9pm", "sun9pm"},
+            {"mon10pm", "tue10pm", "wed10pm", "thr10pm", "fri10pm", "sat10pm", "sun10pm"},
+            {"mon11pm", "tue11pm", "wed11pm", "thr11pm", "fri11pm", "sat11pm", "sun11pm"},
+            {"mon12am", "tue12am", "wed12am", "thr12am", "fri12am", "sat12am", "sun12am"},
+
     };
+
     // assuming each row is the same length you can do this
     private RadioButton[][] buttonArray = new RadioButton[buttonViewIds.length][buttonViewIds[0].length];
     private Button saveButton;
@@ -144,8 +170,10 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     //the button id in string format
     private String theIdString;
 
-    //Hashmap to save and push schedule to db
+    //Main hashmap to save and push schedule to db
     Map<String, Object> saveDay =  new HashMap<>();
+      
+    //Secondary hasmap placed into saveDay appropriately
     Map<String,Boolean> mon = new HashMap<>();
     Map<String,Boolean> tue = new HashMap<>();
     Map<String,Boolean> wed = new HashMap<>();
@@ -157,8 +185,15 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     TableLayout tableLayout;
     ImageView imageView;
 
-    OutputStream outputStream;
+    //radiogroup button
+    private RadioGroup mRadioGroup;
 
+    //for showing image
+    TableLayout tableLayout;
+    ImageView imageView;
+
+    //to save state of buttons
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -166,10 +201,8 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_third);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        mRadioGroup = (RadioGroup) findViewById(R.id.UIClear);
-        Button clearButton = (Button) findViewById(R.id.clear);
-        clearButton.setOnClickListener(this);
-
+        loadRadioButtons();
+      
         //Instance of Member class
         thisMember = new Member();
 
@@ -317,7 +350,6 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                         Log.w(TAG, "Failed To Read", databaseError.toException());
                     }
                 });
-
             }
         });
 
@@ -393,13 +425,38 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         //Ends onCreate()
 
 
+        //Save Button
+        saveButton = findViewById(R.id.saveSchedule);
+        saveButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                String firebaseAcctId =  currentFirebaseUser.getUid();
+                db = FirebaseDatabase.getInstance().getReference("Schedules");
+
+                //saves user info as well
+                thisMember.setUserSchedule(saveDay);
+                db.child(firebaseAcctId).setValue(thisMember);
+
+                saveRadioButtons();
+
+            }
+        });
+
+        //Generates a screenshot of your schedule and displays it
+        Button getStuff = findViewById(R.id.getStuff);
+        getStuff.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Bitmap bitmap = Bitmap.createBitmap(tableLayout.getWidth(), tableLayout.getHeight(), Bitmap.Config.ARGB_8888);
+                Canvas canvas = new Canvas(bitmap);
+                tableLayout.draw(canvas);
+                imageView.setImageBitmap(bitmap);
+            }
+        });
+
+        //Ends onCreate()
     }
-
-    public void onCLick(View v){
-        mRadioGroup.clearCheck();
-    }
-
-
 
     //Inflate the menu; this adds items to the action bar if it is present.
     @Override
@@ -889,9 +946,10 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    //handles whether to insert schedule into hashmap or remove the value
     public void handleIfForHashmaps(Map<String, Object> main, String theDay, String theTime, boolean delete) {
         if (theDay.equals("mon")){
-            if(delete == true)
+            if(delete == true) 
                 mon.remove(theTime, true);
             else {
                 mon.put(theTime, true);
@@ -943,10 +1001,92 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 main.put(theDay, sun);
             }
         }
-        System.out.println("my hashmap "+ Arrays.asList(main));
+        System.out.println("Final Saveday before Saving "+ Arrays.asList(main));
 
     }
 
+    //saves state of the button when savebutton is clicked
+    public void saveRadioButtons(){
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        for (int i=0; i<stringDaysAndTime.length; i++) {
+            for (int j=0; j<stringDaysAndTime[0].length; j++) {
+                buttonArray[i][j] = (RadioButton) findViewById(buttonViewIds[i][j]);
+                editor.putBoolean(stringDaysAndTime[i][j], (buttonArray[i][j].isChecked()));
+            }
+        }
+        editor.apply();
+    }
 
+    //loads button at startup, and also handles saving loaded values properly
+    public void loadRadioButtons(){
+        //loads it from the sharedpreference xml file which is saved locally.
+        //If you'd like to see where its under device file explorer/data/data/com.example.scheduler/sharedpreferences
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String time;
 
+        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        final String firebaseAcctId =  currentFirebaseUser.getUid();
+
+        //db ref to get to the userSchedule child
+        db = FirebaseDatabase.getInstance().getReference("Schedules").child(firebaseAcctId);
+        final DatabaseReference schedDB = db.child("userSchedule");
+
+        //At load time, select the checked buttons that were checked the session before
+        for (int i=0; i<stringDaysAndTime.length; i++) {
+            for (int j=0; j<stringDaysAndTime[0].length; j++) {
+                buttonArray[i][j] = (RadioButton) findViewById(buttonViewIds[i][j]);
+                buttonArray[i][j].setChecked(sharedPreferences.getBoolean(stringDaysAndTime[i][j], false));
+                buttonArray[i][j].setSelected(sharedPreferences.getBoolean(stringDaysAndTime[i][j], false));
+                if(buttonArray[i][j].isChecked()) {
+                    time = stringDaysAndTime[i][j].substring(3);
+                    System.out.println("time " + time);
+                }
+            }
+        }
+        //if the hashmap is empty at loadTime, then add the existing values to the hashmap, and if any new values are added, deleted it will be appended accordingly
+        if(saveDay.size()==0) {
+            schedDB.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.exists()) {
+                        System.out.println("Key: " + dataSnapshot.getKey());
+                        System.out.println("Value: " + dataSnapshot.getValue());
+
+                        //hashmap to retrieve higher level of our structure
+                        Map<String, Object> getScheduleMap = (Map<String, Object>) dataSnapshot.getValue();
+                        Iterator it = getScheduleMap.entrySet().iterator();
+                        for (int i = 0; it.hasNext(); i++) {
+                            Map.Entry pair = (Map.Entry) it.next();
+                            //retrieve the "day" key
+                            String eachDay = pair.getKey().toString();
+                            System.out.println("Testing " + getScheduleMap.get(pair.getKey()).toString());
+                            //hashmap to iterate through the time:true values from the hasmap
+                            Map<String, Boolean> getTimeMap = (Map<String, Boolean>) getScheduleMap.get(pair.getKey());
+                            Iterator lit = getTimeMap.entrySet().iterator();
+                            for (int k = 0; lit.hasNext(); k++) {
+                                Map.Entry pair2 = (Map.Entry) lit.next();
+
+                                //saves time, and bool into var
+                                String eachTime = pair2.getKey().toString();
+                                String eachBool = pair2.getValue().toString();
+
+                                System.out.println("TIME: " + eachTime);
+                                System.out.println("BOOL: " + eachBool);
+                                //passes it to the handler function for proper integration
+                                handleIfForHashmaps(saveDay, eachDay, eachTime, false);
+                            }
+                        }
+                    }
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.w(TAG, "Failed To Read", databaseError.toException());
+                }
+            });
+        }
+    }
+        System.out.println("my hashmap "+ Arrays.asList(main));
+
+    }
 }
