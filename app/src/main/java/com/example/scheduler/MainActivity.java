@@ -41,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
     private SignInButton signInButton;
     private GoogleSignInClient mGoogleSignInClient;
 
+
+//changes
+
     Animation firstAnim;
     Animation secondAnim;
 
@@ -49,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView createAccount;
     TextView loginBtnHomeScreen;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

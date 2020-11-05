@@ -4,6 +4,8 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
@@ -15,7 +17,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -82,6 +83,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     private View navHeader;
     private TextView txtName, txtWebsite;
     private Toolbar toolbar;
+    private RadioGroup mRadioGroup;
 
     //Fab
     private FloatingActionButton fab;
@@ -136,7 +138,6 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
             { R.id.mon10pm, R.id.tue10pm, R.id.wed10pm, R.id.thr10pm, R.id.fri10pm, R.id.sat10pm, R.id.sun10pm},
             { R.id.mon11pm, R.id.tue11pm, R.id.wed11pm, R.id.thr11pm, R.id.fri11pm, R.id.sat11pm, R.id.sun11pm},
             { R.id.mon12am, R.id.tue12am, R.id.wed12am, R.id.thr12am, R.id.fri12am, R.id.sat12am, R.id.sun12am},
-    };
 
     //String days and times
     private String[][] stringDaysAndTime = new String[][]{
@@ -159,6 +160,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
             {"mon10pm", "tue10pm", "wed10pm", "thr10pm", "fri10pm", "sat10pm", "sun10pm"},
             {"mon11pm", "tue11pm", "wed11pm", "thr11pm", "fri11pm", "sat11pm", "sun11pm"},
             {"mon12am", "tue12am", "wed12am", "thr12am", "fri12am", "sat12am", "sun12am"},
+
     };
 
     // assuming each row is the same length you can do this
@@ -170,7 +172,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
 
     //Main hashmap to save and push schedule to db
     Map<String, Object> saveDay =  new HashMap<>();
-
+      
     //Secondary hasmap placed into saveDay appropriately
     Map<String,Boolean> mon = new HashMap<>();
     Map<String,Boolean> tue = new HashMap<>();
@@ -179,6 +181,9 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     Map<String,Boolean> fri = new HashMap<>();
     Map<String,Boolean> sat = new HashMap<>();
     Map<String,Boolean> sun = new HashMap<>();
+
+    TableLayout tableLayout;
+    ImageView imageView;
 
     //radiogroup button
     private RadioGroup mRadioGroup;
@@ -197,7 +202,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         loadRadioButtons();
-
+      
         //Instance of Member class
         thisMember = new Member();
 
@@ -369,6 +374,55 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+
+        //Save Button
+        saveButton = findViewById(R.id.saveSchedule);
+        saveButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                String firebaseAcctId =  currentFirebaseUser.getUid();
+                db = FirebaseDatabase.getInstance().getReference("Schedules");
+
+                //thisMember.setUserSchedule(saveDay);
+
+                //for updateChildren(thought this wont overwrite data like in searchBar, but not working so far
+                Map<String, Object> thestuff = new HashMap<>();
+                thestuff.put("AvailableTimes", saveDay);
+                //db.child(firebaseAcctId).updateChildren(thestuff);
+
+
+                //db.child(firebaseAcctId).setValue(thisMember);
+                db.child(firebaseAcctId).updateChildren(thestuff).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(ThirdActivity.this, "Schedule added", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        e.printStackTrace();
+                        Toast.makeText(ThirdActivity.this, "Adding Unsuccessful", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+            }
+        });
+
+        //Proof of concept that schedule can be accessed
+        Button getStuff = findViewById(R.id.getStuff);
+        getStuff.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Bitmap bitmap = Bitmap.createBitmap(tableLayout.getWidth(), tableLayout.getHeight(), Bitmap.Config.ARGB_8888);
+                Canvas canvas = new Canvas(bitmap);
+                tableLayout.draw(canvas);
+                imageView.setImageBitmap(bitmap);
+            }
+        });
+
+        //Ends onCreate()
 
 
         //Save Button
@@ -1031,5 +1085,8 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 }
             });
         }
+    }
+        System.out.println("my hashmap "+ Arrays.asList(main));
+
     }
 }

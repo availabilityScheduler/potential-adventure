@@ -124,8 +124,21 @@
 
     </TableLayout>
 
+    <ScrollView
+        android:layout_width="366dp"
+        android:layout_height="450dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="0dp"
+        android:layout_weight="1"
+        android:background="#FFFFFF"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weekdays">
 
-        <ScrollView
+
+        <TableLayout
+            android:id="@+id/mainTable"
             android:layout_width="366dp"
             android:layout_height="450dp"
             android:layout_marginHorizontal="10dp"
@@ -136,7 +149,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/weekdays">
-
 
     <TableLayout
         android:id="@+id/mainTable"
@@ -1753,7 +1765,7 @@
 
     </TableLayout>
         </ScrollView>
-
+  
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
