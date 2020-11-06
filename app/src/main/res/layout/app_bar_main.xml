@@ -124,9 +124,13 @@
 
     </TableLayout>
 
+<<<<<<< HEAD
 
     <ScrollView
         android:id="@+id/scrollView2"
+=======
+    <ScrollView
+>>>>>>> master
         android:layout_width="366dp"
         android:layout_height="450dp"
         android:layout_marginHorizontal="10dp"
@@ -137,6 +141,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/weekdays">
+<<<<<<< HEAD
 
 
         <TableLayout
@@ -152,6 +157,8 @@
             app:layout_constraintTop_toBottomOf="@+id/weekdays">
 
             <TableRow>
+=======
+>>>>>>> master
 
                 <TextView
                     android:layout_width="91dp"
@@ -1739,6 +1746,7 @@
                     android:gravity="center"
                     android:text="" />
 
+<<<<<<< HEAD
                 <RadioButton
                     android:id="@+id/sun12am"
                     android:layout_width="wrap_content"
@@ -1753,6 +1761,11 @@
         </TableLayout>
     </ScrollView>
 
+=======
+    </TableLayout>
+        </ScrollView>
+  
+>>>>>>> master
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
