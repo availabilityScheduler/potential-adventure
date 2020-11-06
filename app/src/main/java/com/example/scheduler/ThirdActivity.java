@@ -226,6 +226,9 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
             }
         }
 
+        //will attempt to do clear through arrays here.
+
+
         //Retrieving ID's
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -1020,6 +1023,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 buttonArray[i][j].setChecked(sharedPreferences.getBoolean(stringDaysAndTime[i][j], false));
                 buttonArray[i][j].setSelected(sharedPreferences.getBoolean(stringDaysAndTime[i][j], false));
                 if(buttonArray[i][j].isChecked()) {
+<<<<<<< HEAD
                     time = stringDaysAndTime[i][j].substring(3);
                     System.out.println("time " + time);
                 }
@@ -1059,6 +1063,10 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                             }
                         }
                     }
+=======
+                    System.out.println("days " + stringDaysAndTime[i][j]);
+                    System.out.println("buttons " + buttonArray[i][j]);
+>>>>>>> testui
                 }
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
