@@ -124,13 +124,7 @@
 
     </TableLayout>
 
-<<<<<<< HEAD
-
     <ScrollView
-        android:id="@+id/scrollView2"
-=======
-    <ScrollView
->>>>>>> master
         android:layout_width="366dp"
         android:layout_height="450dp"
         android:layout_marginHorizontal="10dp"
@@ -141,8 +135,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/weekdays">
-<<<<<<< HEAD
-
 
         <TableLayout
             android:id="@+id/mainTable"
@@ -157,8 +149,6 @@
             app:layout_constraintTop_toBottomOf="@+id/weekdays">
 
             <TableRow>
-=======
->>>>>>> master
 
                 <TextView
                     android:layout_width="91dp"
@@ -1472,6 +1462,7 @@
                     android:text="" />
 
 
+
                 <RadioButton
                     android:id="@+id/fri9pm"
                     android:layout_width="wrap_content"
@@ -1589,6 +1580,7 @@
             </TableRow>
 
             <!--11PM row-->
+
 
 
             <TableRow>
@@ -1746,7 +1738,6 @@
                     android:gravity="center"
                     android:text="" />
 
-<<<<<<< HEAD
                 <RadioButton
                     android:id="@+id/sun12am"
                     android:layout_width="wrap_content"
@@ -1761,11 +1752,6 @@
         </TableLayout>
     </ScrollView>
 
-=======
-    </TableLayout>
-        </ScrollView>
-  
->>>>>>> master
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
@@ -1784,27 +1770,23 @@
 
     <Button
         android:id="@+id/compareFriends"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="240dp"
         android:text="Compare"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.01"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.99" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/saveSchedule"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="240dp"
         android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.01"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias=".915"/>
+        app:layout_constraintStart_toEndOf="@+id/compareFriends" />
 
     <ImageView
         android:id="@+id/thepic"
@@ -1819,25 +1801,21 @@
         android:id="@+id/getStuff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
         android:text="Show Schedule"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.345"
-        app:layout_constraintStart_toStartOf="@id/saveSchedule"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.915" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/compareFriends" />
 
     <Button
         android:id="@+id/clear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="88dp"
         android:text="Clear"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.99" />
+        app:layout_constraintTop_toBottomOf="@+id/compareFriends" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
