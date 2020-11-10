@@ -80,13 +80,6 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
     private AppBarConfiguration mAppBarConfiguration;
     private NavigationView mNavigationView;
     private DrawerLayout drawer;
-    private View navHeader;
-    private TextView txtName, txtWebsite;
-    private Toolbar toolbar;
-    private RadioGroup mRadioGroup;
-
-    //Fab
-    private FloatingActionButton fab;
 
     //Instance Member
     Member thisMember;
@@ -96,9 +89,6 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
 
     //Google and nav display
     GoogleSignInClient mGoogleSignInClient;
-    Button mSign_out;
-    TextView firstName;
-    TextView lastName;
     TextView mName;
     TextView mEmail;
     TextView id;
@@ -285,7 +275,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(ThirdActivity.this);
 
-
+        
         if (acct != null) {
             String personName = acct.getDisplayName().toLowerCase();
             String personFirstName = acct.getGivenName().toLowerCase();
