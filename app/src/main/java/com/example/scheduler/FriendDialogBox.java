@@ -3,24 +3,12 @@ package com.example.scheduler;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.Map;
 
 public class FriendDialogBox extends DialogFragment {
 
@@ -53,11 +41,15 @@ public class FriendDialogBox extends DialogFragment {
             }
         }).setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                //ig in another activity class which will show the final output, we can handle the logic there by using these
-                //names and retrieving their schedules to compare and show
                 for(int i=0; i <selectedFriends.size();i++){
                     System.out.println(yourFriendFromDb[selectedFriends.get(i)]);
                 }
+                Intent accept = new Intent(FriendDialogBox.this.getActivity(), compareActivity.class);
+                accept.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(accept);
+                //ig in another activity class which will show the final output, we can handle the logic there by using these
+                //names and retrieving their schedules to compare and show
+
             }
         }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             @Override

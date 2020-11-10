@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
-public class userProfile extends AppCompatActivity {
+public class compareActivity extends AppCompatActivity {
 
     TextView userName;
     Member thisUser;
