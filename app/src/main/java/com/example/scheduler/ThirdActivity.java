@@ -226,7 +226,20 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
             }
         }
 
-        //will attempt to do clear through arrays here.
+        //make it clear
+        Button clear = (Button)findViewById(R.id.clearBtn);
+        clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //going through all the buttons
+                for (int i=0; i<buttonViewIds.length; i++) {
+                    for (int j=0; j<buttonViewIds[0].length; j++) {
+                        buttonArray[i][j] = (RadioButton) findViewById(buttonViewIds[i][j]);
+                        buttonArray[i][j].setChecked(false);
+                    }
+                }
+            }
+        });
 
 
         //Retrieving ID's
