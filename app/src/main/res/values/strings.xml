@@ -36,4 +36,13 @@
     <string name="sat">SAT</string>
     <string name="sun">SUN</string>
 
+    <string name="_6_00am">6:00 AM</string>
+    <string name="_7_00_am">7:00 AM</string>
+    <string name="_8_00_am">8:00 AM</string>
+    <string name="_9_00_am">9:00 AM</string>
+    <string name="_10_00_am">10:00 AM</string>
+    <string name="_11_00_am">11:00 AM</string>
+    <string name="_12_00_pm">12:00 PM</string>
+    <string name="_1_00_pm">1:00 PM</string>
+
 </resources>

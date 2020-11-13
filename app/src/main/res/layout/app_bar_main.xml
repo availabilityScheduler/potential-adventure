@@ -166,7 +166,7 @@
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="6:00AM" />
+                    android:text="@string/_6_00am" />
 
                 <RadioButton
                     android:id="@+id/mon6am"
@@ -251,7 +251,7 @@
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="7:00 AM" />
+                    android:text="@string/_7_00_am" />
 
                 <RadioButton
                     android:id="@+id/mon7am"
@@ -335,7 +335,7 @@
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="8:00 AM" />
+                    android:text="@string/_8_00_am" />
 
                 <RadioButton
                     android:id="@+id/mon8am"
@@ -419,7 +419,7 @@
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="9:00 AM" />
+                    android:text="@string/_9_00_am" />
 
                 <RadioButton
                     android:id="@+id/mon9am"
@@ -504,7 +504,7 @@
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="10:00 AM" />
+                    android:text="@string/_10_00_am" />
 
                 <RadioButton
                     android:id="@+id/mon10am"
@@ -588,7 +588,7 @@
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="11:00 AM" />
+                    android:text="@string/_11_00_am" />
 
                 <RadioButton
                     android:id="@+id/mon11am"
@@ -672,7 +672,7 @@
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="12:00 PM" />
+                    android:text="@string/_12_00_pm" />
 
                 <RadioButton
                     android:id="@+id/mon12pm"
@@ -756,7 +756,7 @@
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="1:00 PM" />
+                    android:text="@string/_1_00_pm" />
 
                 <RadioButton
                     android:id="@+id/mon1pm"

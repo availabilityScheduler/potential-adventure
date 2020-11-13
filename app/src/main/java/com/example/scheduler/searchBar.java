@@ -182,6 +182,7 @@ public class searchBar extends AppCompatActivity {
                     writeFriendData(username);
                     Intent intent = new Intent(searchBar.this, ThirdActivity.class);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.visible_to_top, R.anim.bottom_to_visible);
 
                 }
             });
@@ -191,6 +192,7 @@ public class searchBar extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(searchBar.this, userProfile.class);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.visible_to_top, R.anim.bottom_to_visible);
                 }
 
             });

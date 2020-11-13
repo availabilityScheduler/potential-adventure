@@ -358,6 +358,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
             public void onClick(View v) {
                 Intent intent = new Intent(ThirdActivity.this, searchBar.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.top_to_visible, R.anim.visible_to_bottom);
             }
         });
 
