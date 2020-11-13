@@ -232,4 +232,11 @@ public class searchBar extends AppCompatActivity {
             }
         });
     }
+
+    //handles the back press, or swipe back to override default animation
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.visible_to_top, R.anim.bottom_to_visible);
+    }
 }
