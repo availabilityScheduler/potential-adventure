@@ -368,7 +368,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.sign_out_button)
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_about, R.id.sign_out_button)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
