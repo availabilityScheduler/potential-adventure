@@ -259,6 +259,17 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         //calling sync state is necessary or else your hamburger icon wont show up
         actionBarDrawerToggle.syncState();
 
+        //About Activity
+        mNavigationView.getMenu().findItem(R.id.nav_about).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent intent = new Intent(ThirdActivity.this, AboutActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.top_to_visible, R.anim.visible_to_bottom);
+                return true;
+            }
+        });
+
         //Sign out
         mNavigationView.getMenu().findItem(R.id.sign_out_button).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
@@ -358,13 +369,13 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
+        /**mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_about, R.id.sign_out_button)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+        NavigationUI.setupWithNavController(navigationView, navController);**/
 
 
         //Save Button
