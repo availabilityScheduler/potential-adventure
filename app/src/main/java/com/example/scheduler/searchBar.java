@@ -172,6 +172,7 @@ public class searchBar extends AppCompatActivity {
                     writeFriendData(username);
                     Intent intent = new Intent(searchBar.this, ThirdActivity.class);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.visible_to_top, R.anim.bottom_to_visible);
 
                 }
             });
@@ -181,6 +182,7 @@ public class searchBar extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(searchBar.this, compareActivity.class);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.visible_to_top, R.anim.bottom_to_visible);
                 }
 
             });
@@ -219,5 +221,12 @@ public class searchBar extends AppCompatActivity {
                 Toast.makeText(searchBar.this, "Adding Unsuccessful", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    //handles the back press, or swipe back to override default animation
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.visible_to_top, R.anim.bottom_to_visible);
     }
 }

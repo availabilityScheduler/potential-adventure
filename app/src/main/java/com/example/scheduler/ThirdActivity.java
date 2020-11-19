@@ -30,6 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.scheduler.ui.about.AboutFragment;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -348,6 +349,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
             public void onClick(View v) {
                 Intent intent = new Intent(ThirdActivity.this, searchBar.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.top_to_visible, R.anim.visible_to_bottom);
             }
         });
 
@@ -357,7 +359,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.sign_out_button)
+                R.id.nav_home, R.id.nav_about, R.id.sign_out_button)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
