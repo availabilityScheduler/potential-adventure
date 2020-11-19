@@ -266,7 +266,7 @@ public class ThirdActivity extends AppCompatActivity implements View.OnClickList
                 Intent intent = new Intent(ThirdActivity.this, AboutActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.top_to_visible, R.anim.visible_to_bottom);
-                return true;
+                return false;
             }
         });
 
