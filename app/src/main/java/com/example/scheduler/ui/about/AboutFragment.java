@@ -16,20 +16,20 @@ import com.example.scheduler.R;
 
 public class AboutFragment extends Fragment {
 
-    private AboutViewModel galleryViewModel;
+    private AboutViewModel AboutViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel =
+        AboutViewModel =
                 ViewModelProviders.of(this).get(AboutViewModel.class);
         View root = inflater.inflate(R.layout.fragment_about, container, false);
-        final TextView textView = root.findViewById(R.id.text_about);
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        /**final TextView textView = root.findViewById(R.id.text_about);
+         aboutViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        @Override
+        public void onChanged(@Nullable String s) {
+        textView.setText(s);
+        }
+        });**/
         return root;
     }
 }
