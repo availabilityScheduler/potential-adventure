@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".AboutActivity"></activity>
         <activity android:name=".scheduler" />
-        <activity android:name=".compareActivity" />
+        <activity android:name=".CompareActivity" />
         <activity android:name=".Login" />
         <activity android:name=".Register" />
         <activity android:name=".ThirdActivity">

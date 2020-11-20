@@ -9,10 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-
-public class compareActivity extends AppCompatActivity {
+public class CompareActivity extends AppCompatActivity {
 
     TextView userName;
     Member thisUser;
@@ -20,7 +17,7 @@ public class compareActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_profile);
+        setContentView(R.layout.activity_compare);
 
         userName = (TextView) findViewById(R.id.usersName);
 

@@ -44,7 +44,7 @@ public class FriendDialogBox extends DialogFragment {
                 for(int i=0; i <selectedFriends.size();i++){
                     System.out.println(yourFriendFromDb[selectedFriends.get(i)]);
                 }
-                Intent accept = new Intent(FriendDialogBox.this.getActivity(), compareActivity.class);
+                Intent accept = new Intent(FriendDialogBox.this.getActivity(), CompareActivity.class);
                 accept.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(accept);
                 //ig in another activity class which will show the final output, we can handle the logic there by using these
