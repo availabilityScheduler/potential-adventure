@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class CompareActivity extends AppCompatActivity {
+public class UserProfile extends AppCompatActivity {
 
     TextView userName;
     Member thisUser;
