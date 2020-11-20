@@ -13,9 +13,10 @@
         android:roundIcon="@drawable/image_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AboutActivity"></activity>
+        <activity android:name=".CompareSchedules"></activity>
+        <activity android:name=".AboutActivity" />
         <activity android:name=".scheduler" />
-        <activity android:name=".CompareActivity" />
+        <activity android:name=".UserProfile" />
         <activity android:name=".Login" />
         <activity android:name=".Register" />
         <activity android:name=".ThirdActivity">
