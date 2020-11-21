@@ -227,6 +227,8 @@ public class searchBar extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        Intent intent = new Intent(searchBar.this, ThirdActivity.class);
+        startActivity(intent);
         overridePendingTransition(R.anim.visible_to_top, R.anim.bottom_to_visible);
     }
 }
