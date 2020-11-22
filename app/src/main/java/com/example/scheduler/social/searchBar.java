@@ -174,7 +174,7 @@ public class searchBar extends AppCompatActivity {
                     final TextView user_name = (TextView) findViewById(R.id.name_text);
                     String username = user_name.getText().toString();
                     writeFriendData(username);
-                    Intent intent = new Intent(searchBar.this, HomeFragment.class);
+                    Intent intent = new Intent(searchBar.this, ThirdActivity.class);
                     startActivity(intent);
                     overridePendingTransition(R.anim.visible_to_top, R.anim.bottom_to_visible);
 
