@@ -1,4 +1,4 @@
-package com.example.scheduler;
+package com.example.scheduler.social;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -19,6 +19,10 @@ import android.view.View;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.example.scheduler.mainActivities.Member;
+import com.example.scheduler.R;
+import com.example.scheduler.mainActivities.ThirdActivity;
+import com.example.scheduler.fragments.HomeFragment;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;

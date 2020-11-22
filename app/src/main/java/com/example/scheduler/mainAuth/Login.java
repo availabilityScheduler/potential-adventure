@@ -1,4 +1,4 @@
-package com.example.scheduler;
+package com.example.scheduler.mainAuth;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.scheduler.mainActivities.Member;
+import com.example.scheduler.R;
+import com.example.scheduler.mainActivities.ThirdActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

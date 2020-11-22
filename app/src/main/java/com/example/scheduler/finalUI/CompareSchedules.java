@@ -1,19 +1,14 @@
-package com.example.scheduler;
+package com.example.scheduler.finalUI;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 
+import com.example.scheduler.R;
+import com.example.scheduler.mainActivities.ThirdActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.navigation.NavigationView;
 
 public class CompareSchedules extends AppCompatActivity {
 

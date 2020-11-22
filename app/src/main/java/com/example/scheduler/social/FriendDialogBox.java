@@ -1,4 +1,4 @@
-package com.example.scheduler;
+package com.example.scheduler.social;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -7,6 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.DialogFragment;
+
+import com.example.scheduler.finalUI.CompareSchedules;
+import com.example.scheduler.R;
 
 import java.util.ArrayList;
 

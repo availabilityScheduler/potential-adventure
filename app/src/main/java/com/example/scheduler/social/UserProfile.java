@@ -1,4 +1,4 @@
-package com.example.scheduler;
+package com.example.scheduler.social;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.scheduler.mainActivities.Member;
+import com.example.scheduler.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class UserProfile extends AppCompatActivity {
