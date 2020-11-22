@@ -6,14 +6,18 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Menu;
+import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.scheduler.R;
+import com.example.scheduler.finalUI.CompareSchedules;
 import com.example.scheduler.fragments.AboutFragment;
 import com.example.scheduler.fragments.HomeFragment;
+import com.example.scheduler.social.searchBar;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -31,10 +35,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.navigation.ui.NavigationUI;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -72,9 +79,7 @@ public class ThirdActivity extends AppCompatActivity implements NavigationView.O
     //Tag string
     private static final String TAG = "ThirdActivity";
 
-
-
-
+    private Button someButton;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -176,16 +181,35 @@ public class ThirdActivity extends AppCompatActivity implements NavigationView.O
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main_drawer, menu);
+        getMenuInflater().inflate(R.menu.top_right_drawer, menu);
         return true;
     }
 
-//    @Override
-//    public boolean onSupportNavigateUp() {
-//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-//        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-//                || super.onSupportNavigateUp();
-//    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.nav_top_right_home:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new HomeFragment()).commit();
+                return true;
+            case R.id.create_event:
+                Toast.makeText(ThirdActivity.this, "Create your event!", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.join_event:
+                Toast.makeText(ThirdActivity.this, "Join an event!", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_container);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                || super.onSupportNavigateUp();
+    }
 
     //Google Sign Out
     private void signOut() {
