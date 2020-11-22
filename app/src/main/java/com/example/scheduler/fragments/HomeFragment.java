@@ -1,11 +1,8 @@
 package com.example.scheduler.fragments;
 
 import androidx.annotation.Nullable;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.ui.AppBarConfiguration;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,11 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RadioButton;
-import android.widget.TableLayout;
-import android.widget.TextView;
-
 import com.example.scheduler.social.FriendDialogBox;
 import com.example.scheduler.mainActivities.Member;
 import com.example.scheduler.R;
@@ -32,7 +25,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -40,19 +32,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
-    private AppBarConfiguration mAppBarConfiguration;
-    private NavigationView mNavigationView;
-    private DrawerLayout drawer;
-
     //Instance Member
     Member thisMember;
 
@@ -61,10 +47,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     //Google and nav display
     GoogleSignInClient mGoogleSignInClient;
-    TextView mName;
-    TextView mEmail;
-    TextView id;
-    CircleImageView mPhoto;
 
     //Dialog box button
     private Button openFriendsDialog;
@@ -74,7 +56,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private String firebaseAcctId;
     private int friendCount;
     String friendList[];
-    private static final String EXTRA_MESSAGE = "";
 
     //Tag string
     private static final String TAG = "ThirdActivity";
@@ -146,20 +127,18 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     Map<String, Boolean> sun = new HashMap<>();
 
 
-    //for showing image
-    TableLayout tableLayout;
-    ImageView imageView;
-
     //to save state of buttons
     private SharedPreferences sharedPreferences;
+
+    //Will return the finalview
+    private View finalView;
+
 
 
     @Nullable
     public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        View finalView;
         finalView = loadRadioButtons(inflater, container);
-
         onCreate(savedInstanceState, finalView);
 
         return finalView;
@@ -167,9 +146,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     public void onCreate(final Bundle savedInstanceState, final View view){
         super.onCreate(savedInstanceState);
-
-        tableLayout = view.findViewById(R.id.mainTable);
-        imageView = view.findViewById(R.id.thepic);
 
         //for radio button color
         ColorStateList colorStateList = new ColorStateList(

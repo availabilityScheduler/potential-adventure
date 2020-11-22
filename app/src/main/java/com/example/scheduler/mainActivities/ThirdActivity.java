@@ -6,18 +6,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Menu;
-import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.example.scheduler.R;
-import com.example.scheduler.finalUI.CompareSchedules;
 import com.example.scheduler.fragments.AboutFragment;
 import com.example.scheduler.fragments.HomeFragment;
-import com.example.scheduler.social.searchBar;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -31,7 +26,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
@@ -66,20 +60,6 @@ public class ThirdActivity extends AppCompatActivity implements NavigationView.O
     TextView id;
     CircleImageView mPhoto;
 
-    //Dialog box button
-    private Button openFriendsDialog;
-
-    //For dialog box retrieving friends
-    private DatabaseReference mUserFriendDatabase;
-    private String firebaseAcctId;
-    private int friendCount;
-    String friendList[];
-    private static final String EXTRA_MESSAGE = "";
-
-    //Tag string
-    private static final String TAG = "ThirdActivity";
-
-    private Button someButton;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -88,25 +68,9 @@ public class ThirdActivity extends AppCompatActivity implements NavigationView.O
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //Instance of Member class
-        thisMember = new Member();
-
-
-
         //Retrieving ID's
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
-
-        //SearchBar
-        FloatingActionButton fab = findViewById(R.id.fab);
-        //Firebase Database instance
-        db = FirebaseDatabase.getInstance().getReference().child("Users");
-        try {
-            db.keepSynced(true);
-        } catch (DatabaseException e) {
-            // Do anything
-        }
-
 
         //Connect nav view
         mName = (TextView) mNavigationView.getHeaderView(0).findViewById(R.id.nav_name);
@@ -114,13 +78,13 @@ public class ThirdActivity extends AppCompatActivity implements NavigationView.O
         mPhoto = (CircleImageView) mNavigationView.getHeaderView(0).findViewById(R.id.nav_profile_pic);
 
 
+        //Navigation starters
         mNavigationView.setNavigationItemSelectedListener(this);
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.openDrawer, R.string.closeDrawer);
         //Setting the actionbarToggle to drawer layout
         drawer.addDrawerListener(actionBarDrawerToggle);
         //calling sync state is necessary or else your hamburger icon wont show up
         actionBarDrawerToggle.syncState();
-
 
 
         //Sign out
@@ -140,7 +104,19 @@ public class ThirdActivity extends AppCompatActivity implements NavigationView.O
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(ThirdActivity.this);
 
-        
+
+        //Instance of Member class
+        thisMember = new Member();
+
+        //Firebase Database instance
+        db = FirebaseDatabase.getInstance().getReference().child("Users");
+        try {
+            db.keepSynced(true);
+        } catch (DatabaseException e) {
+            // Do anything
+        }
+
+        //Fill in navigation panel information and save to database
         if (acct != null) {
             String personName = acct.getDisplayName().toLowerCase();
             String personFirstName = acct.getGivenName().toLowerCase();
@@ -185,6 +161,7 @@ public class ThirdActivity extends AppCompatActivity implements NavigationView.O
         return true;
     }
 
+    //Selection of inflated menu buttons
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
