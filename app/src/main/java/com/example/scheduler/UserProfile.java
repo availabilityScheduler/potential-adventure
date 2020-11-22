@@ -25,7 +25,8 @@ public class UserProfile extends AppCompatActivity {
         setContentView(R.layout.activity_compare);
 
         userName = (TextView) findViewById(R.id.usersName);
-        backbtn = (FloatingActionButton)findViewById(R.id.bckButtonForUserProfile);
+        backbtn = (FloatingActionButton)findViewById(R.id.bckButtonForUserProfile
+        );
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -44,5 +44,11 @@
     <string name="_11_00_am">11:00 AM</string>
     <string name="_12_00_pm">12:00 PM</string>
     <string name="_1_00_pm">1:00 PM</string>
+    <string name="title_activity_test_activity">test_activity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
 
 </resources>
