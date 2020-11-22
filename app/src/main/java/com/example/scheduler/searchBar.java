@@ -170,7 +170,7 @@ public class searchBar extends AppCompatActivity {
                     final TextView user_name = (TextView) findViewById(R.id.name_text);
                     String username = user_name.getText().toString();
                     writeFriendData(username);
-                    Intent intent = new Intent(searchBar.this, ThirdActivity.class);
+                    Intent intent = new Intent(searchBar.this, HomeFragment.class);
                     startActivity(intent);
                     overridePendingTransition(R.anim.visible_to_top, R.anim.bottom_to_visible);
 
@@ -227,7 +227,7 @@ public class searchBar extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(searchBar.this, ThirdActivity.class);
+        Intent intent = new Intent(searchBar.this, HomeFragment.class);
         startActivity(intent);
         overridePendingTransition(R.anim.visible_to_top, R.anim.bottom_to_visible);
     }

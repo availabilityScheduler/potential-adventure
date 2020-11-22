@@ -232,40 +232,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         });
 
 
-        //Save Button
-        saveButton = v.findViewById(R.id.saveSchedule);
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-                String firebaseAcctId = currentFirebaseUser.getUid();
-                db = FirebaseDatabase.getInstance().getReference("Schedules");
-
-                //thisMember.setUserSchedule(saveDay);
-
-                //for updateChildren(thought this wont overwrite data like in searchBar, but not working so far
-                Map<String, Object> thestuff = new HashMap<>();
-                thestuff.put("AvailableTimes", saveDay);
-                //db.child(firebaseAcctId).updateChildren(thestuff);
-
-
-                //db.child(firebaseAcctId).setValue(thisMember);
-                db.child(firebaseAcctId).updateChildren(thestuff).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(getActivity(), "Schedule added", Toast.LENGTH_SHORT).show();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        e.printStackTrace();
-                        Toast.makeText(getActivity(), "Adding Unsuccessful", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-            }
-        });
-
 
         //Save Button
         saveButton = v.findViewById(R.id.saveSchedule);
@@ -279,7 +245,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 //saves user info as well
                 thisMember.setUserSchedule(saveDay);
                 db.child(firebaseAcctId).setValue(thisMember);
-
                 saveRadioButtons(inflater,container);
 
             }
@@ -812,6 +777,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         for (int i=0; i<stringDaysAndTime.length; i++) {
             for (int j=0; j<stringDaysAndTime[0].length; j++) {
                 buttonArray[i][j] = (RadioButton) v.findViewById(buttonViewIds[i][j]);
+                System.out.println("checked of buttons" + buttonArray[i][j].isChecked());
                 editor.putBoolean(stringDaysAndTime[i][j], (buttonArray[i][j].isChecked()));
             }
         }
