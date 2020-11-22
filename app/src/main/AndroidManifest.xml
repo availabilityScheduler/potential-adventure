@@ -16,7 +16,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".test_activity"/>
         <activity android:name=".CompareSchedules" />
         <activity android:name=".scheduler" />
         <activity android:name=".UserProfile" />
