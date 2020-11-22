@@ -5,10 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.scheduler.R;
 import com.example.scheduler.mainActivities.ThirdActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CompareSchedules extends AppCompatActivity {
 
@@ -19,6 +23,7 @@ public class CompareSchedules extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compare_schedules);
 
+        getTheFriendsToCompare();
 
         //For now
         backButton = findViewById(R.id.backButton);
@@ -29,6 +34,17 @@ public class CompareSchedules extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void getTheFriendsToCompare(){
+        Bundle extras = getIntent().getExtras();
+        if(extras != null) {
+            ArrayList<String> value = extras.getStringArrayList("friendsPassedToCompareSchedules");
+            System.out.println("Heres the friends u wanna compare "+ value);
+
+            //just to see/and test it out
+            Toast.makeText(CompareSchedules.this, value.get(0), Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void onBackPressed() {
