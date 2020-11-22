@@ -27,7 +27,10 @@ import com.example.scheduler.social.FriendDialogBox;
 import com.example.scheduler.mainActivities.Member;
 import com.example.scheduler.R;
 import com.example.scheduler.social.searchBar;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -164,7 +167,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     public void onCreate(final Bundle savedInstanceState, final View view){
         super.onCreate(savedInstanceState);
-        thisMember = new Member();
 
         tableLayout = view.findViewById(R.id.mainTable);
         imageView = view.findViewById(R.id.thepic);
@@ -228,6 +230,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 });
             }
         });
+
+        //Floating action button to show friend search
         FloatingActionButton fab = view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -238,7 +242,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }
         });
 
-
+        final Member getTheName = addName();
 
         //Save Button
         saveButton = view.findViewById(R.id.saveSchedule);
@@ -250,15 +254,33 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 db = FirebaseDatabase.getInstance().getReference("Schedules");
 
                 //saves user info as well
-                thisMember.setUserSchedule(saveDay);
-                db.child(firebaseAcctId).setValue(thisMember);
+                getTheName.setUserSchedule(saveDay);
+                db.child(firebaseAcctId).setValue(getTheName);
                 View theViewBeingSaved = view;
                 saveRadioButtons(theViewBeingSaved);
 
             }
         });
+
+        //ENDS OnCreate()
     }
 
+
+    public Member addName(){
+        thisMember = new Member();
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(getContext(), gso);
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getContext());
+        if (acct != null) {
+            String personName = acct.getDisplayName().toLowerCase();
+            //for member db object
+            thisMember.setaName(personName);
+
+        }
+        return thisMember;
+    }
 
     @SuppressLint("NonConstantResourceId")
     @Override
