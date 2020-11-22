@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.scheduler.R;
 
-public class AboutFragment extends Fragment {
+public class aboutfrag extends Fragment {
 
     private AboutViewModel AboutViewModel;
 
