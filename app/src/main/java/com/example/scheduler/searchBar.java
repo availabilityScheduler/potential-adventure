@@ -226,8 +226,7 @@ public class searchBar extends AppCompatActivity {
     //handles the back press, or swipe back to override default animation
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        Intent intent = new Intent(searchBar.this, HomeFragment.class);
+        Intent intent = new Intent(searchBar.this, ThirdActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.visible_to_top, R.anim.bottom_to_visible);
     }

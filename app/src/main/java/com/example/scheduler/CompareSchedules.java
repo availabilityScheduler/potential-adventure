@@ -36,4 +36,9 @@ public class CompareSchedules extends AppCompatActivity {
         });
     }
 
+    public void onBackPressed() {
+        Intent intent = new Intent(CompareSchedules.this, ThirdActivity.class);
+        startActivity(intent);
+    }
+
 }

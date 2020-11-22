@@ -1,6 +1,7 @@
 package com.example.scheduler;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
@@ -38,7 +39,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.zip.Inflater;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -151,12 +151,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Nullable
     public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        View finalView;
+        finalView = loadRadioButtons(inflater, container);
+
         View v = inflater.inflate(R.layout.fragment_home, container, false);
-        onCreate(savedInstanceState, v);
-        //loadRadioButtons(inflater, container);
+        onCreate(savedInstanceState, finalView);
 
 
-        return v;
+        //return v;
+        return finalView;
     }
 
     public void onCreate(final Bundle savedInstanceState, final View view){
@@ -783,7 +786,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         editor.apply();
     }
 
-    public void loadRadioButtons(LayoutInflater inflater, ViewGroup container){
+    public View loadRadioButtons(LayoutInflater inflater, ViewGroup container){
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
         //loads it from the sharedpreference xml file which is saved locally.
@@ -802,8 +805,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         for (int i=0; i<stringDaysAndTime.length; i++) {
             for (int j=0; j<stringDaysAndTime[0].length; j++) {
                 buttonArray[i][j] = (RadioButton) v.findViewById(buttonViewIds[i][j]);
-                buttonArray[i][j].setChecked(sharedPreferences.getBoolean(stringDaysAndTime[i][j], false));
-                buttonArray[i][j].setSelected(sharedPreferences.getBoolean(stringDaysAndTime[i][j], false));
+                buttonArray[i][j].setChecked(sharedPreferences.getBoolean(stringDaysAndTime[i][j], true));
+                buttonArray[i][j].setSelected(sharedPreferences.getBoolean(stringDaysAndTime[i][j], true));
                 if(buttonArray[i][j].isChecked()) {
                     time = stringDaysAndTime[i][j].substring(3);
                     System.out.println("time " + time);
@@ -852,6 +855,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 }
             });
         }
+        return v;
     }
 }
 

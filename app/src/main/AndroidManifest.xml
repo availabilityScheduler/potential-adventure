@@ -17,7 +17,6 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".CompareSchedules" />
-        <activity android:name=".scheduler" />
         <activity android:name=".UserProfile" />
         <activity android:name=".Login" />
         <activity android:name=".Register" />
