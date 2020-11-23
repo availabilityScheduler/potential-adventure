@@ -2,6 +2,11 @@
 <resources>
     <color name="colorPrimary">#006b80</color>
     <color name="colorPrimaryDark">#000000</color>
+    <color name="colorPrimaryText">#000000</color>
+    <color name="colorSecondary">#47b5bd</color>
+    <color name="colorSecondaryDark">#006b80</color>
+    <color name="colorTertiary">#006b80</color>
+    <color name="colorTertiaryDark">#006b80</color>
     <color name="colorAccent">#000000</color>
     <color name="whiteColor">#EAEAEA</color>
     <color name="blackColor">#000</color>

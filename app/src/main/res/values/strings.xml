@@ -18,7 +18,7 @@
 
     <!--    Toolbar titles-->
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
+    <string name="menu_about">About</string>
     <string name="menu_slideshow">Slideshow</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
@@ -35,5 +35,20 @@
     <string name="fri">FRI</string>
     <string name="sat">SAT</string>
     <string name="sun">SUN</string>
+
+    <string name="_6_00am">6:00 AM</string>
+    <string name="_7_00_am">7:00 AM</string>
+    <string name="_8_00_am">8:00 AM</string>
+    <string name="_9_00_am">9:00 AM</string>
+    <string name="_10_00_am">10:00 AM</string>
+    <string name="_11_00_am">11:00 AM</string>
+    <string name="_12_00_pm">12:00 PM</string>
+    <string name="_1_00_pm">1:00 PM</string>
+    <string name="title_activity_test_activity">test_activity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
 
 </resources>

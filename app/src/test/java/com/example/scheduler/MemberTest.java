@@ -1,5 +1,7 @@
 package com.example.scheduler;
 
+import com.example.scheduler.mainActivities.Member;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
