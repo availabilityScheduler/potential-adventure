@@ -40,13 +40,13 @@ import java.util.Map;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
     //Instance Member
-    Member thisMember;
+    private Member thisMember;
 
     //DB instance normal
-    DatabaseReference db;
+    private DatabaseReference db;
 
     //Google and nav display
-    GoogleSignInClient mGoogleSignInClient;
+    private GoogleSignInClient mGoogleSignInClient;
 
     //Dialog box button
     private Button openFriendsDialog;
@@ -55,7 +55,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private DatabaseReference mUserFriendDatabase;
     private String firebaseAcctId;
     private int friendCount;
-    String friendList[];
+    private String friendList[];
 
     //Tag string
     private static final String TAG = "ThirdActivity";
@@ -115,16 +115,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private String theIdString;
 
     //Main hashmap to save and push schedule to db
-    Map<String, Object> saveDay = new HashMap<>();
+    private Map<String, Object> saveDay = new HashMap<>();
 
     //Secondary hasmap placed into saveDay appropriately
-    Map<String, Boolean> mon = new HashMap<>();
-    Map<String, Boolean> tue = new HashMap<>();
-    Map<String, Boolean> wed = new HashMap<>();
-    Map<String, Boolean> thr = new HashMap<>();
-    Map<String, Boolean> fri = new HashMap<>();
-    Map<String, Boolean> sat = new HashMap<>();
-    Map<String, Boolean> sun = new HashMap<>();
+    private Map<String, Boolean> mon = new HashMap<>();
+    private Map<String, Boolean> tue = new HashMap<>();
+    private Map<String, Boolean> wed = new HashMap<>();
+    private Map<String, Boolean> thr = new HashMap<>();
+    private Map<String, Boolean> fri = new HashMap<>();
+    private Map<String, Boolean> sat = new HashMap<>();
+    private Map<String, Boolean> sun = new HashMap<>();
 
 
     //to save state of buttons
@@ -133,21 +133,23 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     //Will return the finalview
     private View finalView;
 
-
+    //Clear button
+    private DatabaseReference deleteSchedule;
+    private FirebaseUser currentFirebaseUser;
+    private Button clearButton;
 
     @Nullable
     public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         finalView = loadRadioButtons(inflater, container);
-        onCreate(savedInstanceState, finalView);
 
+        onCreate(savedInstanceState, finalView);
         return finalView;
     }
 
     public void onCreate(final Bundle savedInstanceState, final View view){
         super.onCreate(savedInstanceState);
-
-        //for radio button color
+//for radio button color
         ColorStateList colorStateList = new ColorStateList(
                 new int[][]{
                         new int[]{-android.R.attr.state_enabled}, //disabled
@@ -161,20 +163,19 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         //for the million buttons
         for (int i = 0; i < buttonViewIds.length; i++) {
             for (int j = 0; j < buttonViewIds[0].length; j++) {
-                buttonArray[i][j] = (RadioButton) view.findViewById(buttonViewIds[i][j]);
+                buttonArray[i][j] = finalView.findViewById(buttonViewIds[i][j]);
                 buttonArray[i][j].setOnClickListener(this);
                 buttonArray[i][j].setButtonTintList(colorStateList);
 
             }
         }
 
-
         openFriendsDialog = view.findViewById(R.id.compareFriends);
         openFriendsDialog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Gets current firebase authID
-                FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
                 firebaseAcctId = currentFirebaseUser.getUid();
                 //Gets the path to friend list
                 mUserFriendDatabase = FirebaseDatabase.getInstance().getReference("Friends").child(firebaseAcctId);
@@ -218,31 +219,61 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }
         });
 
-        final Member getTheName = addName();
+        final Member getTheName = addsNameToScheduleDb();
 
         //Save Button
         saveButton = view.findViewById(R.id.saveSchedule);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-                String firebaseAcctId = currentFirebaseUser.getUid();
+                currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                firebaseAcctId = currentFirebaseUser.getUid();
                 db = FirebaseDatabase.getInstance().getReference("Schedules");
 
-                //saves user info as well
+                //Member object now includes the name we just retrieved thru addsNameToScheduleDb function
+                //Then we save schdule into it as well
                 getTheName.setUserSchedule(saveDay);
+
+                //Push it to db
                 db.child(firebaseAcctId).setValue(getTheName);
+
                 View theViewBeingSaved = view;
+                //sends current view to saveRadioButton function to save the states of the buttons
                 saveRadioButtons(theViewBeingSaved);
 
+            }
+        });
+
+
+        deleteSchedule = FirebaseDatabase.getInstance().getReference().child("Schedules");
+        currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        //Clears Button
+        clearButton = view.findViewById(R.id.clear);
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Clears from data storage
+                sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.clear().apply();
+                //clears the ui
+                for (int i = 0; i < buttonViewIds.length; i++) {
+                    for (int j = 0; j < buttonViewIds[0].length; j++) {
+                        buttonArray[i][j] = finalView.findViewById(buttonViewIds[i][j]);
+                         buttonArray[i][j].setChecked(false);
+                    }
+                }
+                //clears database
+                String clearUserID = currentFirebaseUser.getUid();
+                deleteSchedule.child(clearUserID).child("userSchedule").removeValue();
             }
         });
 
         //ENDS OnCreate()
     }
 
-
-    public Member addName(){
+    public Member addsNameToScheduleDb(){
         thisMember = new Member();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -793,8 +824,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
         String time;
 
-        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        final String firebaseAcctId =  currentFirebaseUser.getUid();
+        currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        firebaseAcctId =  currentFirebaseUser.getUid();
 
         //db ref to get to the userSchedule child
         db = FirebaseDatabase.getInstance().getReference("Schedules").child(firebaseAcctId);
@@ -804,8 +835,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         for (int i=0; i<stringDaysAndTime.length; i++) {
             for (int j=0; j<stringDaysAndTime[0].length; j++) {
                 buttonArray[i][j] = (RadioButton) v.findViewById(buttonViewIds[i][j]);
-                buttonArray[i][j].setChecked(sharedPreferences.getBoolean(stringDaysAndTime[i][j], true));
-                buttonArray[i][j].setSelected(sharedPreferences.getBoolean(stringDaysAndTime[i][j], true));
+                buttonArray[i][j].setChecked(sharedPreferences.getBoolean(stringDaysAndTime[i][j], false));
+                buttonArray[i][j].setSelected(sharedPreferences.getBoolean(stringDaysAndTime[i][j], false));
                 if(buttonArray[i][j].isChecked()) {
                     time = stringDaysAndTime[i][j].substring(3);
                     System.out.println("time " + time);
