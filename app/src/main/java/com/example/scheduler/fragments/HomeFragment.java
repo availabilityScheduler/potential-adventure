@@ -260,13 +260,25 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 //clears the ui
                 for (int i = 0; i < buttonViewIds.length; i++) {
                     for (int j = 0; j < buttonViewIds[0].length; j++) {
-                        buttonArray[i][j] = finalView.findViewById(buttonViewIds[i][j]);
+                        //buttonArray[i][j] = finalView.findViewById(buttonViewIds[i][j]);
                          buttonArray[i][j].setChecked(false);
+                        buttonArray[i][j].setSelected(false);
+
                     }
                 }
                 //clears database
                 String clearUserID = currentFirebaseUser.getUid();
                 deleteSchedule.child(clearUserID).child("userSchedule").removeValue();
+
+                //clear hashmaps
+                saveDay.clear();
+                mon.clear();
+                tue.clear();
+                wed.clear();
+                thr.clear();
+                fri.clear();
+                sat.clear();
+                sun.clear();
             }
         });
 
@@ -800,7 +812,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }
         }
         System.out.println("Final Saveday before Saving "+ Arrays.asList(main));
-
     }
 
     public void saveRadioButtons(View viewBeingSaved){
