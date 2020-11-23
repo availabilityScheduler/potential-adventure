@@ -44,6 +44,7 @@ public class CompareSchedules extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(CompareSchedules.this, ThirdActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
     }
