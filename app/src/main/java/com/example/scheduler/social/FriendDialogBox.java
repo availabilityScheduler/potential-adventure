@@ -11,6 +11,7 @@ import androidx.fragment.app.DialogFragment;
 import com.example.scheduler.finalUI.CompareSchedules;
 import com.example.scheduler.R;
 
+
 import java.util.ArrayList;
 
 public class FriendDialogBox extends DialogFragment {

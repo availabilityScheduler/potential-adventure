@@ -1,19 +1,29 @@
 package com.example.scheduler.finalUI;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.example.scheduler.R;
 import com.example.scheduler.mainActivities.ThirdActivity;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class CompareSchedules extends AppCompatActivity {
 
     private FloatingActionButton backButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +31,11 @@ public class CompareSchedules extends AppCompatActivity {
         setContentView(R.layout.activity_compare_schedules);
 
         getTheFriendsToCompare();
+
+        //Toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
 
         //For now
         backButton = findViewById(R.id.backButton);
