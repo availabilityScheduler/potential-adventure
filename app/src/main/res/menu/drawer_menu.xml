@@ -10,6 +10,16 @@
             android:id="@+id/nav_about"
             android:title="About" />
     </group>
+
+    <item android:title="Realtime Matching">
+        <menu>
+            <item
+                android:id="@+id/saved_schedules"
+                android:icon="@drawable/refresh"
+                android:title="Get Updates" />
+        </menu>
+
+    </item>
     <item android:title="Account">
         <menu>
 

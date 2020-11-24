@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.example.scheduler.R;
 import com.example.scheduler.fragments.AboutFragment;
 import com.example.scheduler.fragments.HomeFragment;
+import com.example.scheduler.fragments.UpdateFragment;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -211,6 +212,10 @@ public class ThirdActivity extends AppCompatActivity implements NavigationView.O
             case R.id.nav_about:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new AboutFragment()).commit();
+                break;
+            case R.id.saved_schedules:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new UpdateFragment()).commit();
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);

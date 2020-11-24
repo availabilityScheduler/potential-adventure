@@ -11,4 +11,6 @@
     <color name="whiteColor">#EAEAEA</color>
     <color name="blackColor">#000</color>
     <color name="lightGrayColor">#8E8D8D</color>
+    <color name="teal">#009a9a </color>
+
 </resources>
