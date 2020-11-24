@@ -30,20 +30,20 @@ public class Register extends AppCompatActivity {
 
     private static final String TAG = "";
 
-    TextView getToLoginPageFromRegister;
+    private TextView getToLoginPageFromRegister;
 
 
-    EditText mFullName, mEmail, mPassword;
-    Member thisMember;
+    private EditText mFullName, mEmail, mPassword;
+    private Member thisMember;
 
-    EditText mPhone;
+    private EditText mPhone;
 
-    Button mRegisterBtn;
-    TextView mLoginBtn;
-    FirebaseAuth fAuth;
-    DatabaseReference db;
-    FirebaseFirestore fStore;
-    String userID;
+    private Button mRegisterBtn;
+    private TextView mLoginBtn;
+    private FirebaseAuth fAuth;
+    private DatabaseReference db;
+    private FirebaseFirestore fStore;
+    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

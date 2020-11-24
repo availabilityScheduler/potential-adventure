@@ -17,8 +17,8 @@ import java.util.ArrayList;
 public class FriendDialogBox extends DialogFragment {
 
     //friend check marks, tracks em
-    ArrayList<Integer> selectedFriends;
-    ArrayList<String> friendsToCompare;
+    private ArrayList<Integer> selectedFriends;
+    private ArrayList<String> friendsToCompare;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

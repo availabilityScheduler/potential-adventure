@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     private MainActivity mBinding;
-    int RC_SIGN_IN = 9001;
+    private int RC_SIGN_IN = 9001;
 
     private SignInButton signInButton;
     private GoogleSignInClient mGoogleSignInClient;
@@ -45,14 +45,14 @@ public class MainActivity extends AppCompatActivity {
 
 //changes
 
-    Animation firstAnim;
-    Animation secondAnim;
+    private Animation firstAnim;
+    private Animation secondAnim;
 
-    TextView firstHalf;
-    TextView secondHalf;
+    private TextView firstHalf;
+    private TextView secondHalf;
 
-    TextView createAccount;
-    TextView loginBtnHomeScreen;
+    private TextView createAccount;
+    private TextView loginBtnHomeScreen;
 
 
     @Override

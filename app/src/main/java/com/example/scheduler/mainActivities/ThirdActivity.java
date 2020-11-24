@@ -48,17 +48,17 @@ public class ThirdActivity extends AppCompatActivity implements NavigationView.O
     private DrawerLayout drawer;
 
     //Instance Member
-    Member thisMember;
+    private Member thisMember;
 
     //DB instance normal
-    DatabaseReference db;
+    private DatabaseReference db;
 
     //Google and nav display
-    GoogleSignInClient mGoogleSignInClient;
-    TextView mName;
-    TextView mEmail;
-    TextView id;
-    CircleImageView mPhoto;
+    private GoogleSignInClient mGoogleSignInClient;
+    private TextView mName;
+    private TextView mEmail;
+    private TextView id;
+    private CircleImageView mPhoto;
 
 
     @Override

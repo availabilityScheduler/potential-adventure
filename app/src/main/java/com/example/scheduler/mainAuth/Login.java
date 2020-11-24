@@ -30,26 +30,26 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class Login extends AppCompatActivity {
 
     //buttons and stuff yk
-    EditText mEmail,mPassword;
-    Button mLoginBtn;
-    TextView mCreateBtn;
-    TextView forgotTextLink;
-    TextView createAccountFromLoginPage;
+    private EditText mEmail,mPassword;
+    private Button mLoginBtn;
+    private TextView mCreateBtn;
+    private TextView forgotTextLink;
+    private TextView createAccountFromLoginPage;
 
     // to actually display the login-ed user
     private NavigationView mNavigationView;
     private DrawerLayout drawer;
     private View navHeader;
-    CircleImageView mPhoto;
+    private CircleImageView mPhoto;
 
 
     //for auth and database
-    FirebaseAuth fAuth;
-    DatabaseReference db;
-    Member thisMember;
+    private FirebaseAuth fAuth;
+    private DatabaseReference db;
+    private Member thisMember;
 
     //GSO!!
-    GoogleSignInClient mGoogleSignInClient;
+    private GoogleSignInClient mGoogleSignInClient;
 
 
     @Override
