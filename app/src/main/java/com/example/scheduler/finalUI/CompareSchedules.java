@@ -49,7 +49,7 @@ public class CompareSchedules extends AppCompatActivity {
         });
     }
 
-    public void getTheFriendsToCompare(){
+    private void getTheFriendsToCompare(){
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
             ArrayList<String> value = extras.getStringArrayList("friendsPassedToCompareSchedules");
@@ -60,6 +60,7 @@ public class CompareSchedules extends AppCompatActivity {
         }
     }
 
+    @Override
     public void onBackPressed() {
         Intent intent = new Intent(CompareSchedules.this, ThirdActivity.class);
         startActivity(intent);

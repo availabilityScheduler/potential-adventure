@@ -16,9 +16,9 @@ import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 public class Member {
     private String firstName, lastName, aName, ID;
 
-    Map<String, Object> userSchedule = new HashMap<>();
+    private Map<String, Object> userSchedule = new HashMap<>();
 
-    public Map<String, Object> getUserSchedule() {
+    private Map<String, Object> getUserSchedule() {
         return userSchedule;
     }
 

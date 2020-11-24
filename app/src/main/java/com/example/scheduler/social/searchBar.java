@@ -149,15 +149,15 @@ public class searchBar extends AppCompatActivity {
 
 
     // View Holder Class
-    public class userViewHolder extends RecyclerView.ViewHolder {
+    private class userViewHolder extends RecyclerView.ViewHolder {
         View mView;
 
-        public userViewHolder(View itemView) {
+        private userViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
         }
 
-        public void setDetails(Context ctx, String userName, String userID) {
+        private void setDetails(Context ctx, String userName, String userID) {
             final TextView user_name = (TextView) mView.findViewById(R.id.name_text);
             final TextView theEmail = (TextView) mView.findViewById(R.id.userID);
 
@@ -193,7 +193,7 @@ public class searchBar extends AppCompatActivity {
         }
     }
 
-    public void writeFriendData(String username){
+    private void writeFriendData(String username){
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         String firebaseAcctId =  currentFirebaseUser.getUid();
 

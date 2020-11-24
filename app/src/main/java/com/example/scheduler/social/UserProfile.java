@@ -41,7 +41,7 @@ public class UserProfile extends AppCompatActivity {
 
 
     }
-    public class userProfileInfo extends RecyclerView.ViewHolder{
+    private class userProfileInfo extends RecyclerView.ViewHolder{
 
         public userProfileInfo(@NonNull View itemView) {
             super(itemView);

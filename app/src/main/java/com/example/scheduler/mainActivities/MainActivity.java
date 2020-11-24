@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Log.d(TAG, "requestcodde:" + requestCode);
         Log.d(TAG, "RCSIGNIN:" + RC_SIGN_IN);

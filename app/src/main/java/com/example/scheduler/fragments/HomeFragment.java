@@ -147,7 +147,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         return finalView;
     }
 
-    public void onCreate(final Bundle savedInstanceState, final View view){
+    private void onCreate(final Bundle savedInstanceState, final View view){
         super.onCreate(savedInstanceState);
 //for radio button color
         ColorStateList colorStateList = new ColorStateList(
@@ -285,7 +285,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         //ENDS OnCreate()
     }
 
-    public Member addsNameToScheduleDb(){
+    private Member addsNameToScheduleDb(){
         thisMember = new Member();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -726,7 +726,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    public void deselection(RadioButton theButton) {
+    private void deselection(RadioButton theButton) {
         int redis = theButton.getId();
         String temp;
         String day, time;
@@ -757,7 +757,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    public void handleIfForHashmaps(Map<String, Object> main, String theDay, String theTime, boolean delete) {
+    private void handleIfForHashmaps(Map<String, Object> main, String theDay, String theTime, boolean delete) {
         if (theDay.equals("mon")){
             if(delete == true)
                 mon.remove(theTime, true);
@@ -814,7 +814,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         System.out.println("Final Saveday before Saving "+ Arrays.asList(main));
     }
 
-    public void saveRadioButtons(View viewBeingSaved){
+    private void saveRadioButtons(View viewBeingSaved){
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
         SharedPreferences.Editor editor = sharedPreferences.edit();
         for (int i=0; i<stringDaysAndTime.length; i++) {
@@ -826,7 +826,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         editor.apply();
     }
 
-    public View loadRadioButtons(LayoutInflater inflater, ViewGroup container){
+    private View loadRadioButtons(LayoutInflater inflater, ViewGroup container){
         //Loads the default empty calendar view
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
