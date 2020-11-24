@@ -22,11 +22,6 @@ public class AboutFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
-
-//        adview1 = v.findViewById(R.id.adView);
-//        MobileAds.initialize(getContext());
-//        AdRequest adRequest = new AdRequest.Builder().build();
-//        adview1.loadAd(adRequest);
         return inflater.inflate(R.layout.fragment_about, container, false);
     }
 
