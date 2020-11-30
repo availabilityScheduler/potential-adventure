@@ -5,24 +5,32 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.RadioButton;
 import android.widget.Toast;
 import com.example.scheduler.R;
 import com.example.scheduler.mainActivities.ThirdActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 public class CompareSchedules extends AppCompatActivity {
 
+    private static final String TAG = "";
     private FloatingActionButton backButton;
     private ExpandableListView expandableListView;
 
@@ -53,24 +61,65 @@ public class CompareSchedules extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        expandableListView = findViewById(R.id.expandableDays);
 
+        //For the logic
         ArrayList<String> friendList = getTheFriendsToCompare();
         findAvailabilityTimes(friendList);
 
+        //For the UI
+        expandableListView = findViewById(R.id.expandableDays);
         listGroup =  new ArrayList<>();
         listItems = new HashMap<>();
         adapter =  new MainAdapter(this, listGroup, listItems);
         expandableListView.setAdapter(adapter);
         getListData();
-
-
     }
+
+
     private void findAvailabilityTimes(ArrayList<String> friendList){
         currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         firebaseAcctId = currentFirebaseUser.getUid();
-        mUserFriendDatabase = FirebaseDatabase.getInstance().getReference("Schedules");
 
+
+        //Makeshift logic to retreive all the other comparison friend userschedule, dont know what will happen if they dont have one to begin with, no error handling so far
+        for(int i=0; i<friendList.size();i++){
+            mUserFriendDatabase = FirebaseDatabase.getInstance().getReference("Schedules");
+            mUserFriendDatabase.orderByChild("aName").equalTo(friendList.get(i)).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.exists()){
+                        //hashmap to retrieve higher level of our structure
+                        Map<String, Object> getScheduleMap = (Map<String, Object>) dataSnapshot.getValue();
+                        Iterator it = getScheduleMap.entrySet().iterator();
+                        for (int i = 0; it.hasNext(); i++) {
+                            Map.Entry pair = (Map.Entry) it.next();
+                            //retrieve the "day" key
+                            String eachDay = pair.getKey().toString();
+                            System.out.println("Testing " + getScheduleMap.get(pair.getKey()).toString());
+                            //hashmap to iterate through the time:true values from the hasmap
+                            Map<String, Boolean> getTimeMap = (Map<String, Boolean>) getScheduleMap.get(pair.getKey());
+                            Iterator lit = getTimeMap.entrySet().iterator();
+                            for (int k = 0; lit.hasNext(); k++) {
+                                Map.Entry pair2 = (Map.Entry) lit.next();
+
+                                //saves time, and bool into var
+                                String eachTime = pair2.getKey().toString();
+                                String eachBool = pair2.getValue().toString();
+
+                                System.out.println("TIME: " + eachTime);
+
+                                //Currently bool holds all the userschedule data(in string version ofc)
+                                System.out.println("BOOL: " + eachBool);
+                            }
+                        }
+                    }
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.w(TAG, "Failed To Read", databaseError.toException());
+                }
+            });
+        }
     }
 
     private void getListData(){
@@ -131,6 +180,8 @@ public class CompareSchedules extends AppCompatActivity {
 
 
     }
+
+
 
     private ArrayList<String> getTheFriendsToCompare(){
         Bundle extras = getIntent().getExtras();
