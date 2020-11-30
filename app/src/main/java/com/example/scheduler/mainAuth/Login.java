@@ -63,7 +63,7 @@ public class Login extends AppCompatActivity {
     private Member thisMember;
 
     //GSO!!
-    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = Login.class.getSimpleName();
     private FirebaseAuth mAuth;
 
     private MainActivity mBinding;
