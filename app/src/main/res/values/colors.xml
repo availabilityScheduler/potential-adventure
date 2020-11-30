@@ -11,7 +11,7 @@
 
     <!-- for Normal/Light Mode -->
     <color name="colorBackground">#FFFFFF</color>
-    <color name="colorForeground">#272727</color>
+    <color name="colorForeground">#EEEEEE</color>
     <color name="colorOutline">#000000</color>
     <color name="colorPrimaryText">#000000</color>
     <color name="colorSecondaryText">#FFFFFF</color>
