@@ -8,6 +8,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.scheduler.R;
@@ -23,7 +25,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class CompareSchedules extends AppCompatActivity {
 
     private FloatingActionButton backButton;
-
+    private TableRow tableRow;
+    private TableLayout tableLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
