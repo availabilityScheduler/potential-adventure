@@ -54,7 +54,9 @@ public class CompareSchedules extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         expandableListView = findViewById(R.id.expandableDays);
+
         ArrayList<String> friendList = getTheFriendsToCompare();
+        findAvailabilityTimes(friendList);
 
         listGroup =  new ArrayList<>();
         listItems = new HashMap<>();
@@ -64,7 +66,7 @@ public class CompareSchedules extends AppCompatActivity {
 
 
     }
-    private void findAvailabilityTimes(){
+    private void findAvailabilityTimes(ArrayList<String> friendList){
         currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         firebaseAcctId = currentFirebaseUser.getUid();
         mUserFriendDatabase = FirebaseDatabase.getInstance().getReference("Schedules");
