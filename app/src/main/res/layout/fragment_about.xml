@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".fragments.AboutFragment">
 
     <TextView
@@ -21,15 +22,15 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/nunito_semibold"
+        android:fontFamily="@font/nunito_bold"
         android:text="About Us"
         android:textAlignment="center"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorSecondaryText"
         android:textSize="45sp"
+        app:layout_constraintBottom_toBottomOf="@+id/about_heading"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/about_heading"
-        app:layout_constraintBottom_toBottomOf="@+id/about_heading" />
+        app:layout_constraintTop_toTopOf="@+id/about_heading" />
 
     <TextView
         android:id="@+id/about_endcap"
@@ -57,12 +58,25 @@
         android:id="@+id/editTextTextPersonName2"
         android:layout_width="310dp"
         android:layout_height="172dp"
-        android:gravity="center"
         android:ems="10"
+        android:gravity="center"
         android:inputType="textPersonName"
         android:text="Insert description here"
+        android:textColor="@color/colorPrimaryText"
         app:layout_constraintBottom_toTopOf="@+id/about_endcap"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/about_logo_icon" />
+
+    <Button
+        android:id="@+id/ModeSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        android:textAllCaps="true"
+        android:textColor="@color/colorSecondaryText"
+        app:layout_constraintBottom_toBottomOf="@+id/about_endcap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/about_endcap" />
 </androidx.constraintlayout.widget.ConstraintLayout>

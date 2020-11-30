@@ -9,12 +9,12 @@
     <color name="lightGrayColor">#8E8D8D</color>
     <color name="teal">#009a9a </color>
 
-    <!-- for Normal/Light Mode -->
-    <color name="colorBackground">#FFFFFF</color>
+    <!-- for Night/Dark Mode -->
+    <color name="colorBackground">#121212</color>
     <color name="colorForeground">#272727</color>
-    <color name="colorOutline">#000000</color>
-    <color name="colorPrimaryText">#000000</color>
-    <color name="colorSecondaryText">#FFFFFF</color>
+    <color name="colorOutline">#FFFFFF</color>
+    <color name="colorPrimaryText">#FFFFFF</color>
+    <color name="colorSecondaryText">#000000</color>
 
 
 </resources>
