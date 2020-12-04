@@ -62,6 +62,8 @@ public class Login extends AppCompatActivity {
     private DatabaseReference db;
     private Member thisMember;
 
+    //test commit
+
     //GSO!!
     private static final String TAG = Login.class.getSimpleName();
     private FirebaseAuth mAuth;
