@@ -12,4 +12,4 @@ jobs:
       uses: techulus/push-github-action@1.0.0
       env:
         API_KEY: ${{ secrets.API_KEY }}
-        MESSAGE: "There is a new commit!"
+        MESSAGE: "Hey Mahir Rahman, there's a new build"
