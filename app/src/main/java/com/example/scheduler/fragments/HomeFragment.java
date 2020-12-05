@@ -768,6 +768,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    //test#2
     private void handleIfForHashmaps(Map<String, Object> main, String theDay, String theTime, boolean delete) {
         if (theDay.equals("mon")){
             if(delete == true)
