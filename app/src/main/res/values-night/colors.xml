@@ -14,6 +14,7 @@
     <color name="colorForeground">#272727</color>
     <color name="colorOutline">#FFFFFF</color>
     <color name="colorPrimaryText">#FFFFFF</color>
+    <color name="colorMinorText">#777777</color>
     <color name="colorSecondaryText">#000000</color>
 
 

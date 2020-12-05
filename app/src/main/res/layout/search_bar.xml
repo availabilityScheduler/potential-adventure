@@ -5,7 +5,8 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:textColor="@color/colorPrimaryText"
+    android:background="@color/colorBackground"
     android:importantForAutofill="noExcludeDescendants">
 
 
@@ -18,7 +19,8 @@
         android:layout_marginBottom="12dp"
         android:fontFamily="@font/nunito_bold"
         android:text="Search for Users"
-        android:textColor="#555555"
+        android:gravity="center"
+        android:textColor="@color/colorPrimaryText"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/search_field"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +43,7 @@
         android:paddingTop="10dp"
         android:paddingRight="20dp"
         android:paddingBottom="10dp"
-        android:textColor="#999999"
+        android:textColor="@color/colorMinorText"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -49,14 +51,14 @@
 
     <ImageButton
         android:id="@+id/search_btn"
-        android:layout_width="42dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="76dp"
-        android:background="@android:color/background_light"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/search_icon_backdrop"
         android:scaleType="fitCenter"
-        app:layout_constraintStart_toEndOf="@+id/search_field"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/search_field"
+        app:layout_constraintEnd_toEndOf="@+id/search_field"
+        app:layout_constraintTop_toTopOf="@+id/search_field"
         app:srcCompat="@drawable/ic_baseline_search_24" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -69,6 +71,8 @@
         app:layout_constraintHorizontal_bias="0.156"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_field"
-        app:layout_constraintVertical_bias="0.028"></androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintVertical_bias="0.028">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
