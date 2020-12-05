@@ -744,6 +744,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             theButton.setChecked(true);
             theButton.setSelected(true);
 
+            //hehe
             //retrieve substring from time object and split it, and push it into hashmap
             theIdString = theButton.getResources().getResourceEntryName(redis);
             day = theIdString.substring(0,3);
