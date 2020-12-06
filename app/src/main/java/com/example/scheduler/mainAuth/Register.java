@@ -110,11 +110,11 @@ public class Register extends AppCompatActivity {
                     mEmail.setError("Email is Required.");
                     return;
                 }
-                if(TextUtils.isEmpty(password)){
+                if (TextUtils.isEmpty(password)){
                     mPassword.setError("Password is Required.");
                     return;
                 }
-                if(password.length() < 8){
+                if(password.length() < 7){
                     mPassword.setError("Password Must be >= 8 Characters, Hehe");
                     return;
                 }

@@ -120,7 +120,7 @@ public class Login extends AppCompatActivity {
                     mPassword.setError("Password is Required.");
                     return;
                 }
-                if(password.length() < 6){
+                if(password.length() < 8){
                     mPassword.setError("Password Must be >= 8 Characters");
                     return;
                 }
