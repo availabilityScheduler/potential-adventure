@@ -18,12 +18,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firestore.v1.Value;
 
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class CompareSchedules extends AppCompatActivity {
 
@@ -63,7 +66,7 @@ public class CompareSchedules extends AppCompatActivity {
 
         //For the logic
         ArrayList<String> friendList = getTheFriendsToCompare();
-        findAvailabilityTimes(friendList);
+        scheduleDataRetrieval(friendList);
 
         //For the UI
         expandableListView = findViewById(R.id.expandableDays);
@@ -74,8 +77,23 @@ public class CompareSchedules extends AppCompatActivity {
         getListData();
     }
 
+    private void compareSchedules(Map<String, Object> first, Map<String, Object> second) {
+        //Testing out what the individual key values are for each user
+        for(Map.Entry<String, Object> entry1: first.entrySet()) {
+            String key1 = entry1.getKey();
+            Object value1 = entry1.getValue();
+            System.out.println("firstKey " + key1);
+            System.out.println("firstValue " + value1);
+        }
+        for(Map.Entry<String, Object> entry2: second.entrySet()) {
+            String key2 = entry2.getKey();
+            Object value2 = entry2.getValue();
+            System.out.println("secondKey "+ key2);
+            System.out.println("secondValue " + value2);
+        }
+    }
 
-    private void getMyScheduleData(final MyCallback myCallback){
+    private void getMyOwnScheduleData(final MyCallback myCallback){
         currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         firebaseAcctId = currentFirebaseUser.getUid();
 
@@ -98,7 +116,7 @@ public class CompareSchedules extends AppCompatActivity {
         void onCallback(Map<String, Object> ownMap);
     }
 
-    private void findAvailabilityTimes(final ArrayList<String> friendList){
+    private void scheduleDataRetrieval(final ArrayList<String> friendList){
         currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         firebaseAcctId = currentFirebaseUser.getUid();
 
@@ -122,11 +140,13 @@ public class CompareSchedules extends AppCompatActivity {
                             if(getFriendsMap.containsKey("userSchedule")){
 
                                 //gets my own data, have to use callback method as onDataChange is a async method
-                                getMyScheduleData(new MyCallback() {
+                                getMyOwnScheduleData(new MyCallback() {
                                     @Override
                                     public void onCallback(Map<String, Object> ownMap) {
                                         System.out.println("Own user " + ownMap);
                                         System.out.println("userSchedule " +getFriendsMap.get("userSchedule"));
+                                        compareSchedules(ownMap, (Map<String, Object>) getFriendsMap.get("userSchedule"));
+
 
                                     }
                                 });
