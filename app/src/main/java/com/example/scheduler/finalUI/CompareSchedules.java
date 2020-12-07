@@ -103,6 +103,7 @@ public class CompareSchedules extends AppCompatActivity {
             }
 
         }
+        //I guess it could return the newly made days and matching times
     }
 
     private void getMyOwnScheduleData(final MyCallback myCallback){
@@ -156,8 +157,11 @@ public class CompareSchedules extends AppCompatActivity {
                                     @Override
                                     public void onCallback(Map<String, Object> ownMap) {
                                         //System.out.println("Own user " + ownMap);
-                                        //System.out.println("userSchedule " +getFriendsMap.get("userSchedule"));
+                                        System.out.println("userSchedule " +getFriendsMap.get("userSchedule"));
+
                                         compareSchedules(ownMap, (Map<String, Object>) getFriendsMap.get("userSchedule"));
+                                        //maybe we could implement a recursive sol here?, where the next user will get matched with
+                                        //the just-newly-matched schedule
 
 
                                     }
