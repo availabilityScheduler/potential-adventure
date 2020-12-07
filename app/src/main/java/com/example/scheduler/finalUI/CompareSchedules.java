@@ -6,9 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.ExpandableListView;
-import android.widget.RadioButton;
 import android.widget.Toast;
 import com.example.scheduler.R;
 import com.example.scheduler.mainActivities.ThirdActivity;
@@ -19,7 +17,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -52,6 +49,8 @@ public class CompareSchedules extends AppCompatActivity {
     private Map<String, Boolean> sat = new HashMap<>();
     private Map<String, Boolean> sun = new HashMap<>();
 
+    private Map<String, Object> ownUser = new HashMap<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,42 +73,62 @@ public class CompareSchedules extends AppCompatActivity {
         expandableListView.setAdapter(adapter);
         getListData();
     }
-
-
-    private void findAvailabilityTimes(ArrayList<String> friendList){
+    private void getMyScheduleData(final MyCallback myCallback){
         currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         firebaseAcctId = currentFirebaseUser.getUid();
 
+        mUserFriendDatabase = FirebaseDatabase.getInstance().getReference("Schedules").child(firebaseAcctId).child("userSchedule");
+        mUserFriendDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                final Map<String, Object> getMyMap = (Map<String, Object>) dataSnapshot.getValue();
+                myCallback.onCallback(getMyMap);
+            }
 
-        //Makeshift logic to retreive all the other comparison friend userschedule, dont know what will happen if they dont have one to begin with, no error handling so far
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "Failed To Read", databaseError.toException());
+            }
+        });
+    }
+
+    public interface MyCallback {
+        void onCallback(Map<String, Object> ownMap);
+    }
+
+    private void findAvailabilityTimes(final ArrayList<String> friendList){
+        currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        firebaseAcctId = currentFirebaseUser.getUid();
+
         for(int i=0; i<friendList.size();i++){
             mUserFriendDatabase = FirebaseDatabase.getInstance().getReference("Schedules");
             mUserFriendDatabase.orderByChild("aName").equalTo(friendList.get(i)).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if(dataSnapshot.exists()){
-                        //hashmap to retrieve higher level of our structure
+                        //HashMap to retrieve higher level of our structure, this retrieves each user's entire object
                         Map<String, Object> getScheduleMap = (Map<String, Object>) dataSnapshot.getValue();
+                        System.out.println("getScheduleMap " +getScheduleMap);
+
                         Iterator it = getScheduleMap.entrySet().iterator();
                         for (int i = 0; it.hasNext(); i++) {
                             Map.Entry pair = (Map.Entry) it.next();
-                            //retrieve the "day" key
-                            String eachDay = pair.getKey().toString();
-                            System.out.println("Testing " + getScheduleMap.get(pair.getKey()).toString());
-                            //hashmap to iterate through the time:true values from the hasmap
-                            Map<String, Boolean> getTimeMap = (Map<String, Boolean>) getScheduleMap.get(pair.getKey());
-                            Iterator lit = getTimeMap.entrySet().iterator();
-                            for (int k = 0; lit.hasNext(); k++) {
-                                Map.Entry pair2 = (Map.Entry) lit.next();
+                            //Retrieves User Schedule and the aName for that particular user
+                            Map<String, Object> getFriendsMap = (Map<String, Object>) getScheduleMap.get(pair.getKey());
+                            System.out.println("getFriendsMap " +getFriendsMap);
 
-                                //saves time, and bool into var
-                                String eachTime = pair2.getKey().toString();
-                                String eachBool = pair2.getValue().toString();
+                            if(getFriendsMap.containsKey("userSchedule")){
 
-                                System.out.println("TIME: " + eachTime);
+                                //gets my own data, have to use callback method as onDataChange is a async method
+                                getMyScheduleData(new MyCallback() {
+                                    @Override
+                                    public void onCallback(Map<String, Object> ownMap) {
+                                        System.out.println("Own user " + ownMap);
+                                    }
+                                });
 
-                                //Currently bool holds all the userschedule data(in string version ofc)
-                                System.out.println("BOOL: " + eachBool);
+                                //Prints out each user's schedule data if they have one
+                                System.out.println("userSchedule " +getFriendsMap.get("userSchedule"));
                             }
                         }
                     }
@@ -180,7 +199,6 @@ public class CompareSchedules extends AppCompatActivity {
 
 
     }
-
 
 
     private ArrayList<String> getTheFriendsToCompare(){
