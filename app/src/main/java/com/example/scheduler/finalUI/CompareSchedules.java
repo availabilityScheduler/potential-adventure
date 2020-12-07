@@ -73,6 +73,8 @@ public class CompareSchedules extends AppCompatActivity {
         expandableListView.setAdapter(adapter);
         getListData();
     }
+
+
     private void getMyScheduleData(final MyCallback myCallback){
         currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         firebaseAcctId = currentFirebaseUser.getUid();
@@ -114,7 +116,7 @@ public class CompareSchedules extends AppCompatActivity {
                         for (int i = 0; it.hasNext(); i++) {
                             Map.Entry pair = (Map.Entry) it.next();
                             //Retrieves User Schedule and the aName for that particular user
-                            Map<String, Object> getFriendsMap = (Map<String, Object>) getScheduleMap.get(pair.getKey());
+                            final Map<String, Object> getFriendsMap = (Map<String, Object>) getScheduleMap.get(pair.getKey());
                             System.out.println("getFriendsMap " +getFriendsMap);
 
                             if(getFriendsMap.containsKey("userSchedule")){
@@ -124,11 +126,10 @@ public class CompareSchedules extends AppCompatActivity {
                                     @Override
                                     public void onCallback(Map<String, Object> ownMap) {
                                         System.out.println("Own user " + ownMap);
+                                        System.out.println("userSchedule " +getFriendsMap.get("userSchedule"));
+
                                     }
                                 });
-
-                                //Prints out each user's schedule data if they have one
-                                System.out.println("userSchedule " +getFriendsMap.get("userSchedule"));
                             }
                         }
                     }
