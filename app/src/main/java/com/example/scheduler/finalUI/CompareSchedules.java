@@ -97,6 +97,7 @@ public class CompareSchedules extends AppCompatActivity {
             String day = e.getKey();
             Object times = first.get(day);
             if (e.getValue().equals(times)){
+                //prints out the matching days/times
                 System.out.println("second day " + day);
                 System.out.println("e.getValue " + e.getValue());
             }
@@ -173,6 +174,8 @@ public class CompareSchedules extends AppCompatActivity {
         }
     }
 
+    //Ideally we would save the matching days and times in here for it to show up in the UI, right now its just values from
+    //string resources. You can have a alook at the mainadapter to see how it works
     private void getListData(){
         System.out.println("Here you want the Days");
         listGroup.add(getString(R.string.Monday));
