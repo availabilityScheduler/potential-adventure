@@ -79,17 +79,28 @@ public class CompareSchedules extends AppCompatActivity {
 
     private void compareSchedules(Map<String, Object> first, Map<String, Object> second) {
         //Testing out what the individual key values are for each user
-        for(Map.Entry<String, Object> entry1: first.entrySet()) {
-            String key1 = entry1.getKey();
-            Object value1 = entry1.getValue();
-            System.out.println("firstKey " + key1);
-            System.out.println("firstValue " + value1);
-        }
-        for(Map.Entry<String, Object> entry2: second.entrySet()) {
-            String key2 = entry2.getKey();
-            Object value2 = entry2.getValue();
-            System.out.println("secondKey "+ key2);
-            System.out.println("secondValue " + value2);
+//        for(Map.Entry<String, Object> entry1: first.entrySet()) {
+//            String key1 = entry1.getKey();
+//            Object value1 = entry1.getValue();
+////            System.out.println("firstKey " + key1);
+////            System.out.println("firstValue " + value1);
+//        }
+//        for(Map.Entry<String, Object> entry2: second.entrySet()) {
+//            String key2 = entry2.getKey();
+//            Object value2 = entry2.getValue();
+////            System.out.println("secondKey "+ key2);
+////            System.out.println("secondValue " + value2);
+//        }
+
+        //compares right if the values on each day are singular, does not notice if there are multiple times for a day
+        for( Map.Entry<String, Object> e : second.entrySet() ) {
+            String day = e.getKey();
+            Object times = first.get(day);
+            if (e.getValue().equals(times)){
+                System.out.println("second day " + day);
+                System.out.println("e.getValue " + e.getValue());
+            }
+
         }
     }
 
@@ -128,14 +139,14 @@ public class CompareSchedules extends AppCompatActivity {
                     if(dataSnapshot.exists()){
                         //HashMap to retrieve higher level of our structure, this retrieves each user's entire object
                         Map<String, Object> getScheduleMap = (Map<String, Object>) dataSnapshot.getValue();
-                        System.out.println("getScheduleMap " +getScheduleMap);
+                        //System.out.println("getScheduleMap " +getScheduleMap);
 
                         Iterator it = getScheduleMap.entrySet().iterator();
                         for (int i = 0; it.hasNext(); i++) {
                             Map.Entry pair = (Map.Entry) it.next();
                             //Retrieves User Schedule and the aName for that particular user
                             final Map<String, Object> getFriendsMap = (Map<String, Object>) getScheduleMap.get(pair.getKey());
-                            System.out.println("getFriendsMap " +getFriendsMap);
+                            //System.out.println("getFriendsMap " +getFriendsMap);
 
                             if(getFriendsMap.containsKey("userSchedule")){
 
@@ -143,8 +154,8 @@ public class CompareSchedules extends AppCompatActivity {
                                 getMyOwnScheduleData(new MyCallback() {
                                     @Override
                                     public void onCallback(Map<String, Object> ownMap) {
-                                        System.out.println("Own user " + ownMap);
-                                        System.out.println("userSchedule " +getFriendsMap.get("userSchedule"));
+                                        //System.out.println("Own user " + ownMap);
+                                        //System.out.println("userSchedule " +getFriendsMap.get("userSchedule"));
                                         compareSchedules(ownMap, (Map<String, Object>) getFriendsMap.get("userSchedule"));
 
 
