@@ -77,35 +77,59 @@ public class CompareSchedules extends AppCompatActivity {
         getListData();
     }
 
-    private void compareSchedules(Map<String, Object> first, Map<String, Object> second) {
-        //Testing out what the individual key values are for each user
-//        for(Map.Entry<String, Object> entry1: first.entrySet()) {
-//            String key1 = entry1.getKey();
-//            Object value1 = entry1.getValue();
-////            System.out.println("firstKey " + key1);
-////            System.out.println("firstValue " + value1);
-//        }
-//        for(Map.Entry<String, Object> entry2: second.entrySet()) {
-//            String key2 = entry2.getKey();
-//            Object value2 = entry2.getValue();
-////            System.out.println("secondKey "+ key2);
-////            System.out.println("secondValue " + value2);
-//        }
+    private void compareSchedules(Map<String, Map<String, Boolean>> first, Map<String, Map<String, Boolean>> second) {
 
-        //compares right if the values on each day are singular, does not notice if there are multiple times for a day
-        for( Map.Entry<String, Object> e : second.entrySet() ) {
-            String day = e.getKey();
-            Object times = first.get(day);
-            if (e.getValue().equals(times)){
-                //prints out the matching days/times
-                System.out.println("second day " + day);
-                System.out.println("e.getValue " + e.getValue());
+        //There probably is a better way to do this, ive got tunnel vision rn lol, but ive commented so u know what I was thinking at least.
+        //It works if availability times are single values but yeah its really not flexible
+
+        //For multi values of time, its working if say we were to compare Alex's-thu{10am=true, 12pm=true} with Mahir-thu{12pm=true}---this would work, but if alex
+        //had one value and mahir had two, it wont work properly --> probably because the main for loop is dedicated to secondmap entries
+
+        // Please test it out and/or fix or entirely make it anew, up to you lol.
+
+        for(Map.Entry<String, Map<String, Boolean>> secondMap : second.entrySet()) {
+            //gets the day from second user
+            String day = secondMap.getKey();
+            //gets the time pertaining to that day from the first user's
+            Map<String, Boolean> myTime = first.get(day);
+
+            //if the value has more than one availability times
+            if(secondMap.getValue().entrySet().size() > 1){
+                //iterator of the entrysets ==> ex {7am = true, 8am = true}
+                Iterator<Map.Entry<String, Boolean>> j = secondMap.getValue().entrySet().iterator();
+                while(j.hasNext()){
+                    //j.next ==>  //{7am = true} ---> following iter --->{8am = true}
+                    Map.Entry<String, Boolean> smth = j.next();
+                    //creating a temp hashmap
+                    Map<String, Boolean> finale = new HashMap<>();
+                    //puts the key, value pair {7am = true} inside it, had to to do this to compare below, then {8am = true}
+                    finale.put(smth.getKey(), smth.getValue());
+                    System.out.println("finale " + finale);
+
+                    //comparing that with {7am = true} != myTime{8am = true}, but the secound time around its a match! {8am = true}
+                    if (finale.equals(myTime)) {
+                        System.out.println("DayMatched " + day);
+                        System.out.println("FriendTimeMatched " + finale);
+                        System.out.println("myTime " + myTime);
+                    }
+
+                }
+
             }
+            //if the value of second user ex: {7am = true} == firstuser ex {7am = true} ---then its a match, couldnt find a way to do this with
+            // multiple value so had to make the other if statement
+            else{
+                if (secondMap.getValue().equals(myTime)) {
+                    System.out.println("DayMatched " + day);
+                    System.out.println("FriendTimeMatched " + secondMap.getValue());
+                    System.out.println("myTime " + myTime);
 
+                }
+            }
         }
-        //I guess it could return the newly made days and matching times
     }
 
+    //To retrieve my own schedule data
     private void getMyOwnScheduleData(final MyCallback myCallback){
         currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         firebaseAcctId = currentFirebaseUser.getUid();
@@ -114,7 +138,7 @@ public class CompareSchedules extends AppCompatActivity {
         mUserFriendDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                final Map<String, Object> getMyMap = (Map<String, Object>) dataSnapshot.getValue();
+                final Map<String, Map<String, Boolean>> getMyMap = (Map<String, Map<String, Boolean>>) dataSnapshot.getValue();
                 myCallback.onCallback(getMyMap);
             }
 
@@ -125,8 +149,9 @@ public class CompareSchedules extends AppCompatActivity {
         });
     }
 
+    //callback to store my own schedule data as ondatachanged is async
     public interface MyCallback {
-        void onCallback(Map<String, Object> ownMap);
+        void onCallback(Map<String, Map<String, Boolean>> ownMap);
     }
 
     private void scheduleDataRetrieval(final ArrayList<String> friendList){
@@ -155,13 +180,15 @@ public class CompareSchedules extends AppCompatActivity {
                                 //gets my own data, have to use callback method as onDataChange is a async method
                                 getMyOwnScheduleData(new MyCallback() {
                                     @Override
-                                    public void onCallback(Map<String, Object> ownMap) {
+                                    public void onCallback(Map<String, Map<String, Boolean>> ownMap) {
                                         //System.out.println("Own user " + ownMap);
                                         System.out.println("userSchedule " +getFriendsMap.get("userSchedule"));
+                                        System.out.println("myschedule " +ownMap);
 
-                                        compareSchedules(ownMap, (Map<String, Object>) getFriendsMap.get("userSchedule"));
                                         //maybe we could implement a recursive sol here?, where the next user will get matched with
                                         //the just-newly-matched schedule
+                                        compareSchedules(ownMap, (Map<String, Map<String, Boolean>>) getFriendsMap.get("userSchedule"));
+
 
 
                                     }
@@ -239,7 +266,7 @@ public class CompareSchedules extends AppCompatActivity {
 
     }
 
-
+    //gets the friends to compare
     private ArrayList<String> getTheFriendsToCompare(){
         Bundle extras = getIntent().getExtras();
         ArrayList<String> theFriends = null;
