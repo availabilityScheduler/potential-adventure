@@ -22,10 +22,13 @@ import com.google.firestore.v1.Value;
 
 import java.security.Key;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 public class CompareSchedules extends AppCompatActivity {
@@ -79,6 +82,7 @@ public class CompareSchedules extends AppCompatActivity {
 
     private void compareSchedules(Map<String, Map<String, Boolean>> first, Map<String, Map<String, Boolean>> second) {
 
+
         //There probably is a better way to do this, ive got tunnel vision rn lol, but ive commented so u know what I was thinking at least.
         //It works if availability times are single values but yeah its really not flexible
 
@@ -87,43 +91,76 @@ public class CompareSchedules extends AppCompatActivity {
 
         // Please test it out and/or fix or entirely make it anew, up to you lol.
 
+//        Set<String> keys = first.keySet();
+//        ArrayList<String> listOfKeys = new ArrayList<>(keys);
+//
+//        Collection<Map<String, Boolean>> values = first.values();
+//        ArrayList<Map<String, Boolean>> listOfValues = new ArrayList<>(values);
+//
+//        Set<String> anotherKey = second.keySet();
+//        ArrayList<String> AnotherlistOfKeys = new ArrayList<>(anotherKey);
+//
+//        Collection<Map<String, Boolean>> anotherValues = second.values();
+//        ArrayList<Map<String, Boolean>> anotherlistOfValues = new ArrayList<>(anotherValues);
+//
+//        listOfKeys.retainAll(AnotherlistOfKeys);
+//        System.out.println("simmilar keys " + listOfKeys);
+
+//        listOfValues.retainAll(anotherlistOfValues);
+//        System.out.println("similiar values " + listOfValues);
+
         for(Map.Entry<String, Map<String, Boolean>> secondMap : second.entrySet()) {
-            //gets the day from second user
             String day = secondMap.getKey();
-            //gets the time pertaining to that day from the first user's
-            Map<String, Boolean> myTime = first.get(day);
-
-            //if the value has more than one availability times
-            if(secondMap.getValue().entrySet().size() > 1){
-                //iterator of the entrysets ==> ex {7am = true, 8am = true}
-                Iterator<Map.Entry<String, Boolean>> j = secondMap.getValue().entrySet().iterator();
-                while(j.hasNext()){
-                    //j.next ==>  //{7am = true} ---> following iter --->{8am = true}
-                    Map.Entry<String, Boolean> smth = j.next();
-                    //creating a temp hashmap
-                    Map<String, Boolean> finale = new HashMap<>();
-                    //puts the key, value pair {7am = true} inside it, had to to do this to compare below, then {8am = true}
-                    finale.put(smth.getKey(), smth.getValue());
-                    System.out.println("finale " + finale);
-
-                    //comparing that with {7am = true} != myTime{8am = true}, but the secound time around its a match! {8am = true}
-                    if (finale.equals(myTime)) {
-                        System.out.println("DayMatched " + day);
-                        System.out.println("FriendTimeMatched " + finale);
-                        System.out.println("myTime " + myTime);
-                    }
-
-                }
-
-            }
-            //if the value of second user ex: {7am = true} == firstuser ex {7am = true} ---then its a match, couldnt find a way to do this with
-            // multiple value so had to make the other if statement
-            else{
-                if (secondMap.getValue().equals(myTime)) {
+            System.out.println("day Retrieved from user's " + day);
+            if(day.equals(day)){
+                Map<String, Boolean> myTime = first.get(day);
+                Map<String, Boolean> theirTime = second.get(day);
+                System.out.println("my time pertaining to that day " + myTime); //{6am= true}
+                System.out.println("Their time pertaining to that day " + theirTime); //{6am= true, 8am = true}
+                if(secondMap.getValue().equals(myTime)) {
                     System.out.println("DayMatched " + day);
                     System.out.println("FriendTimeMatched " + secondMap.getValue());
                     System.out.println("myTime " + myTime);
+                }
+                else if(myTime.entrySet().size() > 1 && theirTime.entrySet().size() > 1){
+                    for(Map.Entry<String, Boolean> myTime1 : myTime.entrySet()) {
+                        System.out.println("mytime1.entryset " + myTime1);
+                        Map<String, Boolean> finale = new HashMap<>();
+                        finale.put(myTime1.getKey(), myTime1.getValue());
+                        for(Map.Entry<String, Boolean> theirTime1 : theirTime.entrySet()) {
+                            System.out.println("theirTime1.entryset " + theirTime1);
+                            Map<String, Boolean> theirFinale = new HashMap<>();
+                            theirFinale.put(theirTime1.getKey(), theirTime1.getValue());
+                            if(finale.equals(theirFinale)){
+                                System.out.println("Matched day " + day);
+                                System.out.println("Matched Time " + finale);
+                                System.out.println("TheirMatched Time " + theirFinale);
 
+                            }
+                        }
+                    }
+                }
+                else if(myTime.entrySet().size() > 1){
+                    for(Map.Entry<String, Boolean> myTime1 : myTime.entrySet()) {
+                        System.out.println("mytime1.entryset " + myTime1);
+                        Map<String, Boolean> finale = new HashMap<>();
+                        finale.put(myTime1.getKey(), myTime1.getValue());
+                        if(finale.equals(second.get(day))){
+                            System.out.println("Matched day " + day);
+                            System.out.println("Matched Time " + finale);
+                        }
+                    }
+                }
+                else if(theirTime.entrySet().size() > 1){
+                    for(Map.Entry<String, Boolean> theirTime1 : theirTime.entrySet()) {
+                        System.out.println("theirTime1.entryset " + theirTime1);
+                        Map<String, Boolean> finale = new HashMap<>();
+                        finale.put(theirTime1.getKey(), theirTime1.getValue());
+                        if(finale.equals(first.get(day))){
+                            System.out.println("Matched day " + day);
+                            System.out.println("Matched Time " + finale);
+                        }
+                    }
                 }
             }
         }
