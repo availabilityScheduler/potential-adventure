@@ -38,7 +38,6 @@ public class CompareSchedules extends AppCompatActivity {
     private ExpandableListView expandableListView;
 
     private String[]  listGroup =  new String[7];
-    Set<String> set = new HashSet<>();
     private HashMap<String, List<String>> listItems;
 
     MainAdapter adapter;
@@ -47,7 +46,6 @@ public class CompareSchedules extends AppCompatActivity {
     private FirebaseUser currentFirebaseUser;
 
     ArrayList<String> listOfKeys;
-    ArrayList<String> finalKeys =  new ArrayList<String>();
 
 
     List<String> monday = new ArrayList<>();
@@ -67,7 +65,6 @@ public class CompareSchedules extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         //For the logic
         ArrayList<String> friendList = getTheFriendsToCompare();
         scheduleDataRetrieval(friendList);
@@ -78,34 +75,6 @@ public class CompareSchedules extends AppCompatActivity {
 
     }
 
-    private void setTheDays(Set<String> set) {
-        if(set.contains("mon"))
-            listGroup[0] = (getString(R.string.Monday));
-        if(set.contains("tue"))
-            listGroup[1] = (getString(R.string.Tuesday));
-        if(set.contains("wed"))
-            listGroup[2] = (getString(R.string.Wednesday));
-        if(set.contains("thr"))
-            listGroup[3] = (getString(R.string.Thursday));
-        if(set.contains("fri"))
-            listGroup[4] = (getString(R.string.Friday));
-        if(set.contains("sat"))
-            listGroup[5] = (getString(R.string.Saturday));
-        if(set.contains("sun"))
-            listGroup[6] = (getString(R.string.Sunday));
-
-        System.out.println("this is listitem " + listItems);
-        System.out.println("this is listitem.size " + listItems.size());
-
-        List<String> intoTheAdapter = new ArrayList<String>(Arrays.asList(listGroup));
-        intoTheAdapter.removeAll(Collections.singleton(null));
-
-        adapter =  new MainAdapter(this, intoTheAdapter, this.listItems);
-        expandableListView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-
-
-    }
 
     private void compareSchedules(Map<String, Map<String, Boolean>> first, Map<String, Map<String, Boolean>> second) {
         System.out.println("userSchedule " + second);
@@ -265,16 +234,7 @@ public class CompareSchedules extends AppCompatActivity {
     private void putTheTimesIntoList(Map<String, String> matchedMap){
 
         System.out.println("matchedTimesMap " +  matchedMap);
-        String notAvailable = "No available times today :(";
         List<String> array = new ArrayList<>();
-
-        for(Map.Entry<String, String> secondMap : matchedMap.entrySet()) {
-            finalKeys.add(secondMap.getKey());
-        }
-        for(int i = 0; i < finalKeys.size(); i++){
-            set.add(finalKeys.get(i));
-        }
-        System.out.println(set);
 
 
         if(matchedMap.containsKey("mon")){
@@ -284,7 +244,7 @@ public class CompareSchedules extends AppCompatActivity {
                 }
                 else {
                     monday.add(item);
-                    setTheDays(set);
+                    setTheDays("mon");
                     listItems.put(listGroup[0], monday);
                 }
             }
@@ -298,7 +258,7 @@ public class CompareSchedules extends AppCompatActivity {
                 }
                 else {
                     tuesday.add(item);
-                    setTheDays(set);
+                    setTheDays("tue");
                     listItems.put(listGroup[1], tuesday);
                 }
             }
@@ -311,7 +271,7 @@ public class CompareSchedules extends AppCompatActivity {
                 }
                 else {
                     wednesday.add(item);
-                    setTheDays(set);
+                    setTheDays("wed");
                     listItems.put(listGroup[2], wednesday);
                 }
             }
@@ -326,7 +286,7 @@ public class CompareSchedules extends AppCompatActivity {
                 }
                 else {
                     thursday.add(item);
-                    setTheDays(set);
+                    setTheDays("thr");
                     listItems.put(listGroup[3], thursday);
                 }
             }
@@ -339,7 +299,7 @@ public class CompareSchedules extends AppCompatActivity {
                 }
                 else {
                     friday.add(item);
-                    setTheDays(set);
+                    setTheDays("fri");
                     listItems.put(listGroup[4], friday);
                 }
             }
@@ -352,7 +312,7 @@ public class CompareSchedules extends AppCompatActivity {
                 }
                 else {
                     saturday.add(item);
-                    setTheDays(set);
+                    setTheDays("sat");
                     listItems.put(listGroup[5], saturday);
                 }
             }
@@ -365,7 +325,7 @@ public class CompareSchedules extends AppCompatActivity {
                 }
                 else {
                     sunday.add(item);
-                    setTheDays(set);
+                    setTheDays("sun");
                     listItems.put(listGroup[6], sunday);
                 }
             }
@@ -373,6 +333,33 @@ public class CompareSchedules extends AppCompatActivity {
         }
     }
 
+    private void setTheDays(String set) {
+        if(set.contains("mon"))
+            listGroup[0] = (getString(R.string.Monday));
+        else if(set.contains("tue"))
+            listGroup[1] = (getString(R.string.Tuesday));
+        else if(set.contains("wed"))
+            listGroup[2] = (getString(R.string.Wednesday));
+        else if(set.contains("thr"))
+            listGroup[3] = (getString(R.string.Thursday));
+        else if(set.contains("fri"))
+            listGroup[4] = (getString(R.string.Friday));
+        else if(set.contains("sat"))
+            listGroup[5] = (getString(R.string.Saturday));
+        else if(set.contains("sun"))
+            listGroup[6] = (getString(R.string.Sunday));
+
+        //list needs to go into adapter as an arraylist of string, so conversion here
+        List<String> intoTheAdapter = new ArrayList<String>(Arrays.asList(listGroup));
+
+        //removing the null values that were created
+        intoTheAdapter.removeAll(Collections.singleton(null));
+
+        adapter =  new MainAdapter(this, intoTheAdapter, this.listItems);
+        expandableListView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
+    }
 
     //gets the friends to compare
     private ArrayList<String> getTheFriendsToCompare(){
