@@ -97,7 +97,9 @@ public class CompareSchedules extends AppCompatActivity {
         System.out.println("this is listitem " + listItems);
         System.out.println("this is listitem.size " + listItems.size());
 
-        List<String> intoTheAdapter = Arrays.asList(listGroup);
+        List<String> intoTheAdapter = new ArrayList<String>(Arrays.asList(listGroup));
+        intoTheAdapter.removeAll(Collections.singleton(null));
+
         adapter =  new MainAdapter(this, intoTheAdapter, this.listItems);
         expandableListView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
