@@ -10,9 +10,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Light/Dark Mode"
-        tools:layout_editor_absoluteX="70dp"
-        tools:layout_editor_absoluteY="570dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="626dp" />
 
     <TextView
         android:id="@+id/textView5"
@@ -21,5 +21,14 @@
         android:text="Settings"
         tools:layout_editor_absoluteX="37dp"
         tools:layout_editor_absoluteY="37dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="664dp"
         tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>
