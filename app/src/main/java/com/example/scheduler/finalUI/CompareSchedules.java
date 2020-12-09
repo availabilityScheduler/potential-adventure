@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ExpandableListView;
-import android.widget.RadioButton;
 import android.widget.Toast;
 import com.example.scheduler.R;
 import com.example.scheduler.mainActivities.ThirdActivity;
@@ -24,11 +23,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 
 public class CompareSchedules extends AppCompatActivity {
@@ -56,6 +53,21 @@ public class CompareSchedules extends AppCompatActivity {
     List<String> saturday = new ArrayList<>();
     List<String> sunday = new ArrayList<>();
 
+    //Main hashmap to save and push schedule to db
+    private Map<String, Map<String, Boolean>> saveDay = new HashMap<>();
+
+    //Secondary hasmap placed into saveDay appropriately
+    private Map<String, Boolean> mon = new HashMap<>();
+    private Map<String, Boolean> tue = new HashMap<>();
+    private Map<String, Boolean> wed = new HashMap<>();
+    private Map<String, Boolean> thr = new HashMap<>();
+    private Map<String, Boolean> fri = new HashMap<>();
+    private Map<String, Boolean> sat = new HashMap<>();
+    private Map<String, Boolean> sun = new HashMap<>();
+
+    private Map<String, Map<String, Boolean>> smth = new HashMap<>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,11 +87,44 @@ public class CompareSchedules extends AppCompatActivity {
 
     }
 
+    private void handleIfForHashmaps(String theDay, String theTime) {
+        if (theDay.equals("mon")){
+                mon.put(theTime, true);
+                saveDay.put(theDay, mon);
+        }
+        else if(theDay.equals("tue")) {
 
-    private void compareSchedules(Map<String, Map<String, Boolean>> first, Map<String, Map<String, Boolean>> second) {
+                tue.put(theTime, true);
+            saveDay.put(theDay, tue);
+        }
+        else if(theDay.equals("wed")) {
+
+            wed.put(theTime, true);
+            saveDay.put(theDay, wed);
+        }else if(theDay.equals("thr")) {
+
+            thr.put(theTime, true);
+            saveDay.put(theDay, thr);
+        }else if(theDay.equals("fri")) {
+
+            fri.put(theTime, true);
+            saveDay.put(theDay, fri);
+        }else if(theDay.equals("sat")) {
+
+            sat.put(theTime, true);
+            saveDay.put(theDay, sat);
+        }else if(theDay.equals("sun")) {
+
+            sun.put(theTime, true);
+            saveDay.put(theDay, sun);
+        }
+
+        System.out.println("Final Saveday before Saving "+ Arrays.asList(saveDay));
+    }
+
+    private Map<String, Map<String, Boolean>> theFunction(Map<String, Map<String, Boolean>> first, Map<String, Map<String, Boolean>> second){
         System.out.println("userSchedule " + second);
         System.out.println("myschedule " + first);
-
 
         Set<String> keys = first.keySet();
         listOfKeys = new ArrayList<>(keys);
@@ -95,38 +140,29 @@ public class CompareSchedules extends AppCompatActivity {
         for(String days: listOfKeys){
             for(Map.Entry<String, Map<String, Boolean>> secondMap : second.entrySet()) {
                 String day = secondMap.getKey();
-                //System.out.println("day Retrieved from user's " + day);
                 if(day.equals(days)){
                     Map<String, Boolean> myTime = first.get(day);
                     Map<String, Boolean> theirTime = second.get(day);
-                    //System.out.println("my time pertaining to that day " + myTime); //{6am= true}
-                    //System.out.println("Their time pertaining to that day " + theirTime); //{6am= true, 8am = true}
                     if(secondMap.getValue().equals(myTime)) {
-//                        System.out.println("DayMatched " + day);
-//                        System.out.println("FriendTimeMatched " + secondMap.getValue());
-//                        System.out.println("myTime " + myTime);
                         Map<String, String> matchedMap = new HashMap<>();
                         tempTime = myTime.keySet().toString().replace(']', ' ');
                         tempTime = tempTime.replace('[', ' ');
                         matchedMap.put(day, tempTime);
+                        handleIfForHashmaps(day, tempTime);
                         putTheTimesIntoList(matchedMap);
 
                     }
                     else if(myTime.entrySet().size() > 1 && theirTime.entrySet().size() > 1){
                         for(Map.Entry<String, Boolean> myTime1 : myTime.entrySet()) {
-                            //System.out.println("mytime1.entryset " + myTime1);
                             Map<String, Boolean> finale = new HashMap<>();
                             finale.put(myTime1.getKey(), myTime1.getValue());
                             for(Map.Entry<String, Boolean> theirTime1 : theirTime.entrySet()) {
-                                //System.out.println("theirTime1.entryset " + theirTime1);
                                 Map<String, Boolean> theirFinale = new HashMap<>();
                                 theirFinale.put(theirTime1.getKey(), theirTime1.getValue());
                                 if(finale.equals(theirFinale)){
-//                                    System.out.println("Matched day " + day);
-//                                    System.out.println("Matched Time " + finale);
-                                        //System.out.println("TheirMatched Time " + theirFinale);
                                     Map<String, String> matchedMap = new HashMap<>();
                                     matchedMap.put(day, theirTime1.getKey());
+                                    handleIfForHashmaps(day, theirTime1.getKey());
                                     putTheTimesIntoList(matchedMap);
                                 }
                             }
@@ -134,28 +170,24 @@ public class CompareSchedules extends AppCompatActivity {
                     }
                     else if(myTime.entrySet().size() > 1){
                         for(Map.Entry<String, Boolean> myTime1 : myTime.entrySet()) {
-                            //System.out.println("mytime1.entryset " + myTime1);
                             Map<String, Boolean> finale = new HashMap<>();
                             finale.put(myTime1.getKey(), myTime1.getValue());
                             if(finale.equals(second.get(day))){
-//                                System.out.println("Matched day " + day);
-//                                System.out.println("Matched Time " + finale);
                                 Map<String, String> matchedMap = new HashMap<>();
                                 matchedMap.put(day, myTime1.getKey());
+                                handleIfForHashmaps(day, myTime1.getKey());
                                 putTheTimesIntoList(matchedMap);
                             }
                         }
                     }
                     else if(theirTime.entrySet().size() > 1){
                         for(Map.Entry<String, Boolean> theirTime1 : theirTime.entrySet()) {
-                           // System.out.println("theirTime1.entryset " + theirTime1);
                             Map<String, Boolean> finale = new HashMap<>();
                             finale.put(theirTime1.getKey(), theirTime1.getValue());
                             if(finale.equals(first.get(day))){
-//                                System.out.println("Matched day " + day);
-//                                System.out.println("Matched Time " + finale);
                                 Map<String, String> matchedMap = new HashMap<>();
                                 matchedMap.put(day, theirTime1.getKey());
+                                handleIfForHashmaps(day, theirTime1.getKey());
                                 putTheTimesIntoList(matchedMap);
                             }
                         }
@@ -163,8 +195,70 @@ public class CompareSchedules extends AppCompatActivity {
                 }
             }
         }
+        return saveDay;
     }
 
+
+    private void getsUserSchedules(Map<String, Map<String, Boolean>> first, final String friendList) {
+
+        System.out.println("friend " + friendList);
+        if(!friendList.isEmpty()){
+            mUserFriendDatabase = FirebaseDatabase.getInstance().getReference("Schedules");
+            mUserFriendDatabase.orderByChild("aName").equalTo(friendList).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.exists()){
+                        //HashMap to retrieve higher level of our structure, this retrieves each user's entire object
+                        Map<String, Object> getScheduleMap = (Map<String, Object>) dataSnapshot.getValue();
+                        //System.out.println("getScheduleMap " +getScheduleMap);
+                        Iterator it = getScheduleMap.entrySet().iterator();
+                        for (int i = 0; it.hasNext(); i++) {
+                            Map.Entry pair = (Map.Entry) it.next();
+                            //Retrieves User Schedule and the aName for that particular user
+                            final Map<String, Object> getFriendsMap = (Map<String, Object>) getScheduleMap.get(pair.getKey());
+                            //System.out.println("getFriendsMap " +getFriendsMap);
+                            if(getFriendsMap.containsKey("userSchedule")){
+                                //gets my own data, have to use callback method as onDataChange is a async method
+                                getMyOwnScheduleData(new MyCallback() {
+                                    @Override
+                                    public void onCallback(Map<String, Map<String, Boolean>> ownMap) {
+                                        //maybe we could implement a recursive sol here?, where the next user will get matched with
+                                        //the just-newly-matched schedule
+                                        Map<String, Map<String, Boolean>> users = (Map<String, Map<String, Boolean>>) getFriendsMap.get("userSchedule");
+                                        smth = theFunction(ownMap, users);
+                                        //scheduleDataRetrieval(friends, smth);
+                                    }
+                                });
+                            }
+                        }
+                    }
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.w(TAG, "Failed To Read", databaseError.toException());
+                }
+            });
+        }
+    }
+
+    private void scheduleDataRetrieval(final ArrayList<String> friendList){
+        currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        firebaseAcctId = currentFirebaseUser.getUid();
+
+//        final int[] count = {0};
+//        for(int i=0; i<friendList.size();i++) {
+            getMyOwnScheduleData(new MyCallback() {
+                @Override
+                public void onCallback(Map<String, Map<String, Boolean>> ownMap) {
+                    getsUserSchedules(ownMap, friendList.get(0));
+
+                    for(int i=1; i<friendList.size();i++) {
+                        getsUserSchedules(ownMap, friendList.get(i));
+                    }
+                }
+            });
+//        }
+    }
     //To retrieve my own schedule data
     private void getMyOwnScheduleData(final MyCallback myCallback){
         currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -188,48 +282,6 @@ public class CompareSchedules extends AppCompatActivity {
     public interface MyCallback {
         void onCallback(Map<String, Map<String, Boolean>> ownMap);
     }
-
-    private void scheduleDataRetrieval(final ArrayList<String> friendList){
-        currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        firebaseAcctId = currentFirebaseUser.getUid();
-
-        for(int i=0; i<friendList.size();i++){
-            mUserFriendDatabase = FirebaseDatabase.getInstance().getReference("Schedules");
-            mUserFriendDatabase.orderByChild("aName").equalTo(friendList.get(i)).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if(dataSnapshot.exists()){
-                        //HashMap to retrieve higher level of our structure, this retrieves each user's entire object
-                        Map<String, Object> getScheduleMap = (Map<String, Object>) dataSnapshot.getValue();
-                        //System.out.println("getScheduleMap " +getScheduleMap);
-                        Iterator it = getScheduleMap.entrySet().iterator();
-                        for (int i = 0; it.hasNext(); i++) {
-                            Map.Entry pair = (Map.Entry) it.next();
-                            //Retrieves User Schedule and the aName for that particular user
-                            final Map<String, Object> getFriendsMap = (Map<String, Object>) getScheduleMap.get(pair.getKey());
-                            //System.out.println("getFriendsMap " +getFriendsMap);
-                            if(getFriendsMap.containsKey("userSchedule")){
-                                //gets my own data, have to use callback method as onDataChange is a async method
-                                getMyOwnScheduleData(new MyCallback() {
-                                    @Override
-                                    public void onCallback(Map<String, Map<String, Boolean>> ownMap) {
-                                        //maybe we could implement a recursive sol here?, where the next user will get matched with
-                                        //the just-newly-matched schedule
-                                        compareSchedules(ownMap, (Map<String, Map<String, Boolean>>) getFriendsMap.get("userSchedule"));
-                                    }
-                                });
-                            }
-                        }
-                    }
-                }
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    Log.w(TAG, "Failed To Read", databaseError.toException());
-                }
-            });
-        }
-    }
-
 
     private void putTheTimesIntoList(Map<String, String> matchedMap){
 
