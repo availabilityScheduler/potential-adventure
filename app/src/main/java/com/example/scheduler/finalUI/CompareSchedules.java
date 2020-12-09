@@ -237,6 +237,7 @@ public class CompareSchedules extends AppCompatActivity {
 
 
     private void putTheTimesIntoList(Map<String, String> matchedMap){
+        //stuffg
         System.out.println("matchedTimesMap " +  matchedMap);
         String notAvailable = "No available times today :(";
         List<String> array = new ArrayList<>();
