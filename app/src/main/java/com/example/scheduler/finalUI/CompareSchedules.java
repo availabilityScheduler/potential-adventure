@@ -21,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -36,7 +37,8 @@ public class CompareSchedules extends AppCompatActivity {
     private FloatingActionButton backButton;
     private ExpandableListView expandableListView;
 
-    private List<String>  listGroup;
+    private String[]  listGroup =  new String[7];
+    Set<String> set = new HashSet<>();
     private HashMap<String, List<String>> listItems;
 
     MainAdapter adapter;
@@ -45,6 +47,8 @@ public class CompareSchedules extends AppCompatActivity {
     private FirebaseUser currentFirebaseUser;
 
     ArrayList<String> listOfKeys;
+    ArrayList<String> finalKeys =  new ArrayList<String>();
+
 
     List<String> monday = new ArrayList<>();
     List<String> tuesday = new ArrayList<>();
@@ -70,24 +74,40 @@ public class CompareSchedules extends AppCompatActivity {
 
         //For the UI
         expandableListView = findViewById(R.id.expandableDays);
-        listGroup =  new ArrayList<>();
         listItems = new HashMap<>();
-        adapter =  new MainAdapter(this, listGroup, listItems);
-        expandableListView.setAdapter(adapter);
 
-        listGroup.add(getString(R.string.Monday));
-        listGroup.add(getString(R.string.Tuesday));
-        listGroup.add(getString(R.string.Wednesday));
-        listGroup.add(getString(R.string.Thursday));
-        listGroup.add(getString(R.string.Friday));
-        listGroup.add(getString(R.string.Saturday));
-        listGroup.add(getString(R.string.Sunday));
+    }
+
+    private void setTheDays(Set<String> set) {
+        if(set.contains("mon"))
+            listGroup[0] = (getString(R.string.Monday));
+        if(set.contains("tue"))
+            listGroup[1] = (getString(R.string.Tuesday));
+        if(set.contains("wed"))
+            listGroup[2] = (getString(R.string.Wednesday));
+        if(set.contains("thr"))
+            listGroup[3] = (getString(R.string.Thursday));
+        if(set.contains("fri"))
+            listGroup[4] = (getString(R.string.Friday));
+        if(set.contains("sat"))
+            listGroup[5] = (getString(R.string.Saturday));
+        if(set.contains("sun"))
+            listGroup[6] = (getString(R.string.Sunday));
+
+        System.out.println("this is listitem " + listItems);
+        System.out.println("this is listitem.size " + listItems.size());
+
+        List<String> intoTheAdapter = Arrays.asList(listGroup);
+        adapter =  new MainAdapter(this, intoTheAdapter, this.listItems);
+        expandableListView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
+
     }
 
     private void compareSchedules(Map<String, Map<String, Boolean>> first, Map<String, Map<String, Boolean>> second) {
         System.out.println("userSchedule " + second);
         System.out.println("myschedule " + first);
-
 
 
         Set<String> keys = first.keySet();
@@ -98,6 +118,8 @@ public class CompareSchedules extends AppCompatActivity {
 
         listOfKeys.retainAll(AnotherlistOfKeys);
         System.out.println("simmilar keys " + listOfKeys);
+        String tempTime;
+
 
         for(String days: listOfKeys){
             for(Map.Entry<String, Map<String, Boolean>> secondMap : second.entrySet()) {
@@ -113,7 +135,9 @@ public class CompareSchedules extends AppCompatActivity {
 //                        System.out.println("FriendTimeMatched " + secondMap.getValue());
 //                        System.out.println("myTime " + myTime);
                         Map<String, String> matchedMap = new HashMap<>();
-                        matchedMap.put(day, myTime.keySet().toString());
+                        tempTime = myTime.keySet().toString().replace(']', ' ');
+                        tempTime = tempTime.replace('[', ' ');
+                        matchedMap.put(day, tempTime);
                         putTheTimesIntoList(matchedMap);
 
                     }
@@ -237,101 +261,114 @@ public class CompareSchedules extends AppCompatActivity {
 
 
     private void putTheTimesIntoList(Map<String, String> matchedMap){
-        //stuffg
+
         System.out.println("matchedTimesMap " +  matchedMap);
         String notAvailable = "No available times today :(";
         List<String> array = new ArrayList<>();
 
-        for(String keys : listOfKeys){
-            if(keys.equals("mon")){
-                array.add(matchedMap.get("mon"));
-                for(String item: array){
-                    if(item == null){
-                    }
-                    else {
-                        monday.add(item);
-                        listItems.put(listGroup.get(0), monday);
-                    }
-                }
-                array.clear();
-
-            }
-            else if(keys.equals("tue")){
-                array.add(matchedMap.get("tue"));
-                for (String item : array) {
-                    if(item == null){
-                    }
-                    else {
-                        tuesday.add(item);
-                        listItems.put(listGroup.get(1), tuesday);
-                    }
-                }
-                array.clear();
-            }
-            else if(keys.equals("wed")){
-                array.add(matchedMap.get("wed"));
-                for (String item : array) {
-                    if(item == null){
-                    }
-                    else {
-                        wednesday.add(item);
-                        listItems.put(listGroup.get(2), wednesday);
-                    }
-                }
-                array.clear();
-
-            }
-            else if(keys.equals("thr")){
-                array.add(matchedMap.get("thr"));
-                for (String item : array) {
-                    if(item == null){
-
-                    }
-                    else {
-                        thursday.add(item);
-                        listItems.put(listGroup.get(3), thursday);
-                    }
-                }
-                array.clear();
-            }
-            else if(keys.equals("fri")){
-                array.add(matchedMap.get("fri"));
-                for (String item : array) {
-                    if(item == null){
-                    }
-                    else {
-                        friday.add(item);
-                        listItems.put(listGroup.get(4), friday);
-                    }
-                }
-                array.clear();
-            }
-            else if(matchedMap.containsKey("sat")){
-                array.add(matchedMap.get("sat"));
-                for (String item : array) {
-                    if(item == null){
-                    }
-                    else {
-                        saturday.add(item);
-                        listItems.put(listGroup.get(5), saturday);
-                    }
-                }
-                array.clear();
-            }
-            else if(matchedMap.containsKey("sun")){
-                array.add(matchedMap.get("sun"));
-                for (String item : array) {
-                    if(item == null){
-                    }
-                    else {
-                        sunday.add(item);
-                        listItems.put(listGroup.get(6), sunday);
-                    }
-                }
-                array.clear();
-            }
+        for(Map.Entry<String, String> secondMap : matchedMap.entrySet()) {
+            finalKeys.add(secondMap.getKey());
         }
-        adapter.notifyDataSetChanged();
+        for(int i = 0; i < finalKeys.size(); i++){
+            set.add(finalKeys.get(i));
+        }
+        System.out.println(set);
+
+
+        if(matchedMap.containsKey("mon")){
+            array.add(matchedMap.get("mon"));
+            for(String item: array){
+                if(item == null){
+                }
+                else {
+                    monday.add(item);
+                    setTheDays(set);
+                    listItems.put(listGroup[0], monday);
+                }
+            }
+            array.clear();
+
+        }
+        else if(matchedMap.containsKey("tue")){
+            array.add(matchedMap.get("tue"));
+            for (String item : array) {
+                if(item == null){
+                }
+                else {
+                    tuesday.add(item);
+                    setTheDays(set);
+                    listItems.put(listGroup[1], tuesday);
+                }
+            }
+            array.clear();
+        }
+        else if(matchedMap.containsKey("wed")){
+            array.add(matchedMap.get("wed"));
+            for (String item : array) {
+                if(item == null){
+                }
+                else {
+                    wednesday.add(item);
+                    setTheDays(set);
+                    listItems.put(listGroup[2], wednesday);
+                }
+            }
+            array.clear();
+
+        }
+        else if(matchedMap.containsKey("thr")){
+            array.add(matchedMap.get("thr"));
+            for (String item : array) {
+                if(item == null){
+
+                }
+                else {
+                    thursday.add(item);
+                    setTheDays(set);
+                    listItems.put(listGroup[3], thursday);
+                }
+            }
+            array.clear();
+        }
+        else if(matchedMap.containsKey("fri")){
+            array.add(matchedMap.get("fri"));
+            for (String item : array) {
+                if(item == null){
+                }
+                else {
+                    friday.add(item);
+                    setTheDays(set);
+                    listItems.put(listGroup[4], friday);
+                }
+            }
+            array.clear();
+        }
+        else if(matchedMap.containsKey("sat")){
+            array.add(matchedMap.get("sat"));
+            for (String item : array) {
+                if(item == null){
+                }
+                else {
+                    saturday.add(item);
+                    setTheDays(set);
+                    listItems.put(listGroup[5], saturday);
+                }
+            }
+            array.clear();
+        }
+        else if(matchedMap.containsKey("sun")){
+            array.add(matchedMap.get("sun"));
+            for (String item : array) {
+                if(item == null){
+                }
+                else {
+                    sunday.add(item);
+                    setTheDays(set);
+                    listItems.put(listGroup[6], sunday);
+                }
+            }
+            array.clear();
+        }
     }
 
 
