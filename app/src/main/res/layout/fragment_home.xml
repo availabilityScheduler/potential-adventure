@@ -1772,6 +1772,7 @@
         android:hapticFeedbackEnabled="true"
         app:elevation="6dp"
         app:fabSize="mini"
+        app:tint=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.954"

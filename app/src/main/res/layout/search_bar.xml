@@ -53,7 +53,7 @@
         android:id="@+id/search_btn"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginEnd="6dp"
         android:background="@drawable/search_icon_backdrop"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@+id/search_field"
@@ -63,13 +63,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/result_list"
-        android:layout_width="182dp"
+        android:layout_width="200dp"
         android:layout_height="290dp"
         android:layout_marginTop="27dp"
+        android:gravity="center"
+        android:background="@drawable/table_back"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.156"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/search_field"
+        app:layout_constraintStart_toStartOf="@+id/search_field"
         app:layout_constraintTop_toBottomOf="@+id/search_field"
         app:layout_constraintVertical_bias="0.028">
 
