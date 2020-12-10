@@ -11,8 +11,6 @@ import android.util.Log;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import com.example.scheduler.R;
 import com.example.scheduler.mainActivities.ThirdActivity;
@@ -23,8 +21,6 @@ import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import com.google.android.gms.common.util.ArrayUtils;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -72,7 +68,6 @@ public class CompareSchedules extends AppCompatActivity {
 
 
     private List<String> finalTimeString;
-
 
 //    private AdView mAdView;
 
