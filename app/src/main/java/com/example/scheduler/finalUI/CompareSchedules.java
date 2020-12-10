@@ -10,6 +10,7 @@ import android.widget.ExpandableListView;
 import android.widget.Toast;
 import com.example.scheduler.R;
 import com.example.scheduler.mainActivities.ThirdActivity;
+import com.google.android.gms.common.util.ArrayUtils;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -37,6 +38,8 @@ public class CompareSchedules extends AppCompatActivity {
 
     private String[]  listGroup =  new String[7];
     private HashMap<String, List<String>> listItems;
+    HashMap<String, List<String>> finalListItems = new HashMap<>();
+
     ArrayList<String> friendList;
 
     MainAdapter adapter;
@@ -66,6 +69,8 @@ public class CompareSchedules extends AppCompatActivity {
     private Map<String, Boolean> fri = new HashMap<>();
     private Map<String, Boolean> sat = new HashMap<>();
     private Map<String, Boolean> sun = new HashMap<>();
+
+    private List<String> finalTimeString;
 
 
 
@@ -119,8 +124,6 @@ public class CompareSchedules extends AppCompatActivity {
             sun.put(theTime, true);
             saveDay.put(theDay, sun);
         }
-
-        //System.out.println("Final Saveday before Saving "+ Arrays.asList(saveDay));
     }
 
     private Map<String, Map<String, Boolean>> theFunction(Map<String, Map<String, Boolean>> first, Map<String, Map<String, Boolean>> second){
@@ -275,7 +278,6 @@ public class CompareSchedules extends AppCompatActivity {
         //System.out.println("matchedTimesMap " +  matchedMap);
         List<String> array = new ArrayList<>();
 
-
         if(matchedMap.containsKey("mon")){
             array.add(matchedMap.get("mon"));
             for(String item: array){
@@ -283,7 +285,7 @@ public class CompareSchedules extends AppCompatActivity {
                 }
                 else {
                     monday.add(item);
-                    setTheDays("mon");
+                    setTheDays("Monday");
                     listItems.put(listGroup[0], monday);
                 }
             }
@@ -297,7 +299,7 @@ public class CompareSchedules extends AppCompatActivity {
                 }
                 else {
                     tuesday.add(item);
-                    setTheDays("tue");
+                    setTheDays("Tuesday");
                     listItems.put(listGroup[1], tuesday);
                 }
             }
@@ -310,7 +312,7 @@ public class CompareSchedules extends AppCompatActivity {
                 }
                 else {
                     wednesday.add(item);
-                    setTheDays("wed");
+                    setTheDays("Wednesday");
                     listItems.put(listGroup[2], wednesday);
                 }
             }
@@ -325,7 +327,7 @@ public class CompareSchedules extends AppCompatActivity {
                 }
                 else {
                     thursday.add(item);
-                    setTheDays("thr");
+                    setTheDays("Thursday");
                     listItems.put(listGroup[3], thursday);
                 }
             }
@@ -338,7 +340,7 @@ public class CompareSchedules extends AppCompatActivity {
                 }
                 else {
                     friday.add(item);
-                    setTheDays("fri");
+                    setTheDays("Friday");
                     listItems.put(listGroup[4], friday);
                 }
             }
@@ -351,7 +353,7 @@ public class CompareSchedules extends AppCompatActivity {
                 }
                 else {
                     saturday.add(item);
-                    setTheDays("sat");
+                    setTheDays("Saturday");
                     listItems.put(listGroup[5], saturday);
                 }
             }
@@ -364,7 +366,7 @@ public class CompareSchedules extends AppCompatActivity {
                 }
                 else {
                     sunday.add(item);
-                    setTheDays("sun");
+                    setTheDays("Sunday");
                     listItems.put(listGroup[6], sunday);
                 }
             }
@@ -374,52 +376,66 @@ public class CompareSchedules extends AppCompatActivity {
 
     private void setTheDays(String set) {
         System.out.println("the DAY IN QUESTION "+ set );
-        if (set.equals("mon")) {
+        if (set.equals("Monday")) {
             listGroup[0] = (getString(R.string.Monday));
-            doTheStuff(getString(R.string.Monday));
-        } else if (set.equals("tue")) {
+            //doTheStuff(getString(R.string.Monday));
+        } else if (set.equals("Tuesday")) {
             listGroup[1] = (getString(R.string.Tuesday));
-            doTheStuff(getString(R.string.Tuesday));
+            //doTheStuff(getString(R.string.Tuesday));
         }
-        else if (set.equals("wed")) {
+        else if (set.equals("Wednesday")) {
             listGroup[2] = (getString(R.string.Wednesday));
-            doTheStuff(getString(R.string.Wednesday));
+            //doTheStuff(getString(R.string.Wednesday));
         }
-
-        else if (set.equals("thr")) {
+        else if (set.equals("Thursday")) {
             listGroup[3] = (getString(R.string.Thursday));
-            doTheStuff(getString(R.string.Thursday));
+            //doTheStuff(getString(R.string.Thursday));
         }
-
-        else if (set.equals("fri")) {
+        else if (set.equals("Friday")) {
             listGroup[4] = (getString(R.string.Friday));
-            doTheStuff(getString(R.string.Friday));
+            //doTheStuff(getString(R.string.Friday));
         }
 
-        else if (set.equals("sat")) {
+        else if (set.equals("Saturday")) {
             listGroup[5] = (getString(R.string.Saturday));
-            doTheStuff(getString(R.string.Saturday));
+            //doTheStuff(getString(R.string.Saturday));
         }
-
-        else if (set.equals("sun")){
+        else if (set.equals("Sunday")){
             listGroup[6] = (getString(R.string.Sunday));
-            doTheStuff(getString(R.string.Sunday));
+            //doTheStuff(getString(R.string.Sunday));
         }
 
-        //list needs to go into adapter as an arraylist of string, so conversion here
-        List<String> intoTheAdapter = new ArrayList<String>(Arrays.asList(listGroup));
+        if(friendList.size()>1){
+            HashMap<String, List<String>> finalListItems =  doTheStuff(set);
+            System.out.println("THEFINALLISTITEMS "  + finalListItems);
 
-        //removing the null values that were created
-        intoTheAdapter.removeAll(Collections.singleton(null));
+            String[] finalDaysArray = new String[finalListItems.size()];
+            int count =0;
+            for(int i=0;i<listGroup.length;i++){
+                for(Map.Entry<String, List<String>> finalItemsKey : finalListItems.entrySet()) {
+                    if(listGroup[i] != null && listGroup[i].equals(finalItemsKey.getKey()) ){
+                        //System.out.println("LISTGROUPBITCCH " +listGroup[i]);
+                        finalDaysArray[count] = listGroup[i];
+                        count++;
+                    }
+                }
+            }
 
-//        HashMap<String, List<String>> finalListItems =  doTheStuff(set);
-//        System.out.println("into the adapter " + intoTheAdapter);
-//        System.out.println("tis.listitems " + this.listItems);
+            //list needs to go into adapter as an arraylist of string, so conversion here
+            List<String> intoTheAdapter = new ArrayList<String>(Arrays.asList(finalDaysArray));
+            adapter = new MainAdapter(this, intoTheAdapter, finalListItems);
+            expandableListView.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
 
-        //System.out.println("THEFINALLISTITEMS "  + finalListItems);
-        adapter =  new MainAdapter(this, intoTheAdapter, this.listItems);
-        expandableListView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+        }else {
+            List<String> intoTheAdapter = new ArrayList<String>(Arrays.asList(listGroup));
+            //removing the null values that were created
+            intoTheAdapter.removeAll(Collections.singleton(null));
+
+            adapter = new MainAdapter(this, intoTheAdapter, this.listItems);
+            expandableListView.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
+        }
 
     }
 
@@ -431,7 +447,7 @@ public class CompareSchedules extends AppCompatActivity {
 
 
         for(Map.Entry<String, List<String>> listMaps : listItems.entrySet()) {
-            System.out.println("LISTMAP.GETKEY " + listMaps.getKey());
+            //System.out.println("LISTMAP.GETKEY " + listMaps.getKey());
             if(listMaps.getKey().equals(day)){
                 for(String entry : listMaps.getValue()) {
                         if (map.containsKey(entry)) {
@@ -449,15 +465,20 @@ public class CompareSchedules extends AppCompatActivity {
         for(Map.Entry<String, Integer> mapsVals : map.entrySet()) {
             if(mapsVals.getValue() ==  friendList.size()){
                 set1.add(mapsVals.getKey());
+                //System.out.println("TheSET " + set1);
+                finalTimeString = new ArrayList<>(set1);
+                finalListItems.put(day, finalTimeString);
+            }
+            else{
+//                ArrayList<String> unavailables =  new ArrayList<>();
+//                unavailables.add("Unavailable!");
+//                finalListItems.put(day, unavailables);
+                listItems.remove(day,mapsVals.getKey());
             }
         }
-        System.out.println("TheSET " + set1);
 
-        HashMap<String, List<String>> finalListItems = new HashMap<>();
-        List<String> finalTimeString = new ArrayList<>(set1);
-        finalListItems.put(day, finalTimeString);
-
-        System.out.println("Final List going into ADAPTER " + finalListItems);
+        //System.out.println("Final List going into ADAPTER " + finalListItems);
+        //System.out.println("LISTITEMSBRUH " + listItems);
         return finalListItems;
     }
 
