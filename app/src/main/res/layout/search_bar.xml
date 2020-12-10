@@ -10,22 +10,6 @@
     android:importantForAutofill="noExcludeDescendants">
 
 
-    <TextView
-        android:id="@+id/heading_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginBottom="12dp"
-        android:fontFamily="@font/nunito_bold"
-        android:text="Search for Users"
-        android:gravity="center"
-        android:textColor="@color/colorPrimaryText"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/search_field"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
     <EditText
         android:id="@+id/search_field"
         android:layout_width="wrap_content"
