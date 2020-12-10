@@ -256,6 +256,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         //ENDS OnCreate()
     }
 
+
+
     private void clearSchedule(View view){
         deleteSchedule = FirebaseDatabase.getInstance().getReference().child("Schedules");
         currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
