@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HalfWay</string>
+    <string name="app_name">USchedule</string>
     <string name="action_settings">Settings</string>
 
     <!-- Strings used for fragments for navigation -->
@@ -56,58 +56,6 @@
     <string name="Friday">Friday</string>
     <string name="Saturday">Saturday</string>
     <string name="Sunday">Sunday</string>
-
-<!--    <string-array name="Monday">-->
-<!--        <item>item1</item>-->
-<!--    </string-array>-->
-<!--    <string-array name="Tuesday">-->
-<!--        <item>item1</item>-->
-<!--        <item>item2</item>-->
-
-<!--    </string-array>-->
-<!--    <string-array name="Wednesday">-->
-<!--        <item>item1</item>-->
-<!--        <item>item2</item>-->
-<!--        <item>item3</item>-->
-
-<!--    </string-array>-->
-<!--    <string-array name="Thursday">-->
-<!--        <item>item1</item>-->
-<!--        <item>item2</item>-->
-<!--        <item>item3</item>-->
-<!--        <item>item4</item>-->
-
-<!--    </string-array>-->
-<!--    <string-array name="Friday">-->
-<!--        <item>item1</item>-->
-<!--        <item>item2</item>-->
-<!--        <item>item3</item>-->
-<!--        <item>item4</item>-->
-<!--        <item>item5</item>-->
-<!--    </string-array>-->
-<!--    <string-array name="Saturday">-->
-<!--        <item>item1</item>-->
-<!--        <item>item2</item>-->
-<!--        <item>item3</item>-->
-<!--        <item>item4</item>-->
-<!--        <item>item5</item>-->
-<!--        <item>item6</item>-->
-<!--    </string-array>-->
-<!--    <string-array name="Sunday">-->
-<!--        <item>item1</item>-->
-<!--        <item>item2</item>-->
-<!--        <item>item3</item>-->
-<!--        <item>item4</item>-->
-<!--        <item>item5</item>-->
-<!--        <item>item6</item>-->
-<!--        <item>item7</item>-->
-<!--    </string-array>-->
-
-
-    <!--
-    This string is used for square devices and overridden by hello_world in
-    values-round/strings.xml for round devices.
-    -->
-    <string name="hello_world">Hello Square World!</string>
+g
 
 </resources>
