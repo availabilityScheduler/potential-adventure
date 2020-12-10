@@ -82,7 +82,7 @@ public class CompareSchedules extends AppCompatActivity {
     }
 
 
-    private void theFunction(Map<String, Map<String, Boolean>> first, Map<String, Map<String, Boolean>> second){
+    private void comparisonLogic(Map<String, Map<String, Boolean>> first, Map<String, Map<String, Boolean>> second){
         System.out.println("userSchedule " + second);
         System.out.println("myschedule " + first);
 
@@ -177,7 +177,7 @@ public class CompareSchedules extends AppCompatActivity {
                                     @Override
                                     public void onCallback(Map<String, Map<String, Boolean>> ownMap) {
                                         Map<String, Map<String, Boolean>> users = (Map<String, Map<String, Boolean>>) getFriendsMap.get("userSchedule");
-                                        theFunction(ownMap, users);
+                                        comparisonLogic(ownMap, users);
 
                                     }
                                 });
