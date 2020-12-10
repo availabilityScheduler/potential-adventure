@@ -24,6 +24,11 @@ import com.example.scheduler.R;
 import com.example.scheduler.mainActivities.ThirdActivity;
 import com.example.scheduler.fragments.HomeFragment;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -54,12 +59,12 @@ public class searchBar extends AppCompatActivity {
     private RecyclerView mResultList;
     private DatabaseReference mUserDatabase;
 
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_bar);
-
 
         //Retrieving Id's
         mSearchField = (EditText) findViewById(R.id.search_field);
@@ -117,6 +122,8 @@ public class searchBar extends AppCompatActivity {
                     return false;
                 }
             });
+
+
     }
 
     //Main logic to search users

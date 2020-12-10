@@ -12,13 +12,23 @@ import android.widget.TextView;
 
 import com.example.scheduler.mainActivities.Member;
 import com.example.scheduler.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.Arrays;
 
 public class UserProfile extends AppCompatActivity {
 
     private TextView userName;
     private Member thisUser;
     private FloatingActionButton backbtn;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
