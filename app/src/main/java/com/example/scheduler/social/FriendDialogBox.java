@@ -3,6 +3,8 @@ package com.example.scheduler.social;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
@@ -18,6 +20,8 @@ public class FriendDialogBox extends DialogFragment {
     //friend check marks, tracks em
     private ArrayList<Integer> selectedFriends;
     private ArrayList<String> friendsToCompare;
+    AlertDialog alertDialog;
+
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -50,10 +54,7 @@ public class FriendDialogBox extends DialogFragment {
                     System.out.println("Compare this friend" + yourFriendFromDb[selectedFriends.get(i)]);
                     friendsToCompare.add(yourFriendFromDb[selectedFriends.get(i)]);
                 }
-                Intent accept = new Intent(FriendDialogBox.this.getActivity(), CompareSchedules.class);
-                accept.putExtra("friendsPassedToCompareSchedules", friendsToCompare);
-                accept.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(accept);
+                doTheComparison();
                 //ig in another activity class which will show the final output, we can handle the logic there by using these
                 //names and retrieving their schedules to compare and show
 
@@ -64,7 +65,15 @@ public class FriendDialogBox extends DialogFragment {
 
             }
         });
-        return builder.create();
+        alertDialog = builder.create();
+        alertDialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        return alertDialog;
+    }
+    private void doTheComparison() {
+        Intent accept = new Intent(FriendDialogBox.this.getActivity(), CompareSchedules.class);
+        accept.putExtra("friendsPassedToCompareSchedules", friendsToCompare);
+        accept.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(accept);
     }
 
 }
