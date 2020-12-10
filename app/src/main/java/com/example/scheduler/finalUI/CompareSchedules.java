@@ -49,7 +49,6 @@ public class CompareSchedules extends AppCompatActivity {
 
     ArrayList<String> listOfKeys;
 
-
     List<String> monday = new ArrayList<>();
     List<String> tuesday = new ArrayList<>();
     List<String> wednesday = new ArrayList<>();
@@ -58,17 +57,6 @@ public class CompareSchedules extends AppCompatActivity {
     List<String> saturday = new ArrayList<>();
     List<String> sunday = new ArrayList<>();
 
-    //Main hashmap to save and push schedule to db
-    private Map<String, Map<String, Boolean>> saveDay = new HashMap<>();
-
-    //Secondary hasmap placed into saveDay appropriately
-    private Map<String, Boolean> mon = new HashMap<>();
-    private Map<String, Boolean> tue = new HashMap<>();
-    private Map<String, Boolean> wed = new HashMap<>();
-    private Map<String, Boolean> thr = new HashMap<>();
-    private Map<String, Boolean> fri = new HashMap<>();
-    private Map<String, Boolean> sat = new HashMap<>();
-    private Map<String, Boolean> sun = new HashMap<>();
 
     private List<String> finalTimeString;
 
@@ -93,40 +81,8 @@ public class CompareSchedules extends AppCompatActivity {
 
     }
 
-    private void handleIfForHashmaps(String theDay, String theTime) {
-        if (theDay.equals("mon")){
-                mon.put(theTime, true);
-                saveDay.put(theDay, mon);
-        }
-        else if(theDay.equals("tue")) {
 
-                tue.put(theTime, true);
-            saveDay.put(theDay, tue);
-        }
-        else if(theDay.equals("wed")) {
-
-            wed.put(theTime, true);
-            saveDay.put(theDay, wed);
-        }else if(theDay.equals("thr")) {
-
-            thr.put(theTime, true);
-            saveDay.put(theDay, thr);
-        }else if(theDay.equals("fri")) {
-
-            fri.put(theTime, true);
-            saveDay.put(theDay, fri);
-        }else if(theDay.equals("sat")) {
-
-            sat.put(theTime, true);
-            saveDay.put(theDay, sat);
-        }else if(theDay.equals("sun")) {
-
-            sun.put(theTime, true);
-            saveDay.put(theDay, sun);
-        }
-    }
-
-    private Map<String, Map<String, Boolean>> theFunction(Map<String, Map<String, Boolean>> first, Map<String, Map<String, Boolean>> second){
+    private void theFunction(Map<String, Map<String, Boolean>> first, Map<String, Map<String, Boolean>> second){
         System.out.println("userSchedule " + second);
         System.out.println("myschedule " + first);
 
@@ -152,7 +108,6 @@ public class CompareSchedules extends AppCompatActivity {
                         tempTime = myTime.keySet().toString().replace(']', ' ');
                         tempTime = tempTime.replace('[', ' ');
                         matchedMap.put(day, tempTime);
-                        handleIfForHashmaps(day, tempTime);
                         putTheTimesIntoList(matchedMap);
 
                     }
@@ -166,7 +121,6 @@ public class CompareSchedules extends AppCompatActivity {
                                 if(finale.equals(theirFinale)){
                                     Map<String, String> matchedMap = new HashMap<>();
                                     matchedMap.put(day, theirTime1.getKey());
-                                    handleIfForHashmaps(day, theirTime1.getKey());
                                     putTheTimesIntoList(matchedMap);
                                 }
                             }
@@ -179,7 +133,6 @@ public class CompareSchedules extends AppCompatActivity {
                             if(finale.equals(second.get(day))){
                                 Map<String, String> matchedMap = new HashMap<>();
                                 matchedMap.put(day, myTime1.getKey());
-                                handleIfForHashmaps(day, myTime1.getKey());
                                 putTheTimesIntoList(matchedMap);
                             }
                         }
@@ -191,7 +144,6 @@ public class CompareSchedules extends AppCompatActivity {
                             if(finale.equals(first.get(day))){
                                 Map<String, String> matchedMap = new HashMap<>();
                                 matchedMap.put(day, theirTime1.getKey());
-                                handleIfForHashmaps(day, theirTime1.getKey());
                                 putTheTimesIntoList(matchedMap);
                             }
                         }
@@ -199,7 +151,6 @@ public class CompareSchedules extends AppCompatActivity {
                 }
             }
         }
-        return saveDay;
     }
 
 
@@ -211,10 +162,9 @@ public class CompareSchedules extends AppCompatActivity {
             mUserFriendDatabase.orderByChild("aName").equalTo(friendList.get(i)).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    if(dataSnapshot.exists()){
-                        //HashMap to retrieve higher level of our structure, this retrieves each user's entire object
-                        Map<String, Object> getScheduleMap = (Map<String, Object>) dataSnapshot.getValue();
-                        //System.out.println("getScheduleMap " +getScheduleMap);
+                    //HashMap to retrieve higher level of our structure, this retrieves each user's entire object
+                    Map<String, Object> getScheduleMap = (Map<String, Object>) dataSnapshot.getValue();
+                    //System.out.println("getScheduleMap " +getScheduleMap);
                         Iterator it = getScheduleMap.entrySet().iterator();
                         for (int i = 0; it.hasNext(); i++) {
                             Map.Entry pair = (Map.Entry) it.next();
@@ -234,7 +184,6 @@ public class CompareSchedules extends AppCompatActivity {
                             }
                         }
                     }
-                }
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
                     Log.w(TAG, "Failed To Read", databaseError.toException());
@@ -470,9 +419,6 @@ public class CompareSchedules extends AppCompatActivity {
                 finalListItems.put(day, finalTimeString);
             }
             else{
-//                ArrayList<String> unavailables =  new ArrayList<>();
-//                unavailables.add("Unavailable!");
-//                finalListItems.put(day, unavailables);
                 listItems.remove(day,mapsVals.getKey());
             }
         }
