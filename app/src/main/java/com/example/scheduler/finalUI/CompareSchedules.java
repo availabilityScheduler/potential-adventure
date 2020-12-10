@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.scheduler.R;
 import com.example.scheduler.mainActivities.ThirdActivity;
+import com.example.scheduler.social.searchBar;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -97,6 +98,17 @@ public class CompareSchedules extends AppCompatActivity {
         //For the UI
         expandableListView = findViewById(R.id.expandableDays);
         listItems = new HashMap<>();
+
+        //back button
+        backButton = findViewById(R.id.backButtonInComparison);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ThirdActivity.class);
+                startActivity(intent);
+                //overridePendingTransition(R.anim.top_to_visible, R.anim.visible_to_bottom);
+            }
+        });
 
     }
 
