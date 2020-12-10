@@ -21,7 +21,7 @@
         android:elevation="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <TableLayout
             android:id="@+id/weekdays"
@@ -35,8 +35,7 @@
 
             <!--row1-->
 
-            <TableRow
-                android:layout_marginEnd="10dp">
+            <TableRow android:layout_marginEnd="10dp">
 
                 <TextView
                     android:layout_width="80dp"
@@ -142,8 +141,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/weekdays">
 
-                <TableRow
-                    android:layout_marginEnd="10dp">
+                <TableRow android:layout_marginEnd="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -228,8 +226,7 @@
 
                 <!--row3-->
 
-                <TableRow
-                    android:layout_marginEnd="10dp">
+                <TableRow android:layout_marginEnd="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -313,8 +310,7 @@
 
                 <!--8AM row-->
 
-                <TableRow
-                    android:layout_marginEnd="10dp">
+                <TableRow android:layout_marginEnd="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -398,8 +394,7 @@
 
                 <!--9AM row-->
 
-                <TableRow
-                    android:layout_marginEnd="10dp">
+                <TableRow android:layout_marginEnd="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -484,8 +479,7 @@
 
                 <!--10AM row-->
 
-                <TableRow
-                    android:layout_marginEnd="10dp">
+                <TableRow android:layout_marginEnd="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -569,8 +563,7 @@
 
                 <!--11AM row-->
 
-                <TableRow
-                    android:layout_marginEnd="10dp">
+                <TableRow android:layout_marginEnd="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -654,8 +647,7 @@
 
                 <!--12PM row-->
 
-                <TableRow
-                    android:layout_marginEnd="10dp">
+                <TableRow android:layout_marginEnd="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -739,8 +731,7 @@
 
                 <!--1PM row-->
 
-                <TableRow
-                    android:layout_marginEnd="10dp">
+                <TableRow android:layout_marginEnd="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -824,8 +815,7 @@
 
                 <!--2PM row-->
 
-                <TableRow
-                    android:layout_marginEnd="10dp">
+                <TableRow android:layout_marginEnd="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -909,8 +899,7 @@
 
                 <!--3PM row-->
 
-                <TableRow
-                    android:layout_marginEnd="10dp">
+                <TableRow android:layout_marginEnd="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -994,8 +983,7 @@
 
                 <!--4PM row-->
 
-                <TableRow
-                    android:layout_marginEnd="10dp">
+                <TableRow android:layout_marginEnd="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1079,8 +1067,7 @@
 
                 <!--5PM row-->
 
-                <TableRow
-                    android:layout_marginEnd="10dp">
+                <TableRow android:layout_marginEnd="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1164,8 +1151,7 @@
 
                 <!--6PM row-->
 
-                <TableRow
-                    android:layout_marginEnd="10dp">
+                <TableRow android:layout_marginEnd="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1249,8 +1235,7 @@
 
                 <!--7PM row-->
 
-                <TableRow
-                    android:layout_marginEnd="10dp">
+                <TableRow android:layout_marginEnd="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1334,8 +1319,7 @@
 
                 <!--8PM row-->
 
-                <TableRow
-                    android:layout_marginEnd="10dp">
+                <TableRow android:layout_marginEnd="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1419,8 +1403,7 @@
 
                 <!--9PM row-->
 
-                <TableRow
-                    android:layout_marginEnd="10dp">
+                <TableRow android:layout_marginEnd="10dp">
 
                     <TextView
                         android:layout_width="88dp"
@@ -1505,8 +1488,7 @@
 
                 <!--10PM row-->
 
-                <TableRow
-                    android:layout_marginEnd="10dp">
+                <TableRow android:layout_marginEnd="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1592,8 +1574,7 @@
                 <!--11PM row-->
 
 
-                <TableRow
-                    android:layout_marginEnd="10dp">
+                <TableRow android:layout_marginEnd="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1677,8 +1658,7 @@
 
                 <!--12AM row-->
 
-                <TableRow
-                    android:layout_marginEnd="10dp">
+                <TableRow android:layout_marginEnd="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1759,78 +1739,59 @@
                         android:gravity="center"
                         android:text="" />
                 </TableRow>
-
             </TableLayout>
         </ScrollView>
     </TableLayout>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
         android:backgroundTint="@color/whiteColor"
         android:hapticFeedbackEnabled="true"
         app:elevation="6dp"
         app:fabSize="mini"
-        app:tint="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:transitionName="activity_trans"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintHorizontal_bias="0.953"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.936"
-        app:srcCompat="@mipmap/friends" />
-
-    <Button
-        android:id="@+id/compareFriends"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:text="Compare"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.01"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.99" />
+        app:layout_constraintTop_toBottomOf="@+id/saveSchedule"
+        app:srcCompat="@mipmap/friends"
+        app:tint="@null" />
 
     <Button
         android:id="@+id/saveSchedule"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginTop="31dp"
         android:text="Save"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintHorizontal_bias="0.947"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias=".915" />
+        app:layout_constraintTop_toBottomOf="@+id/whole" />
 
     <Button
-        android:id="@+id/getStuff"
+        android:id="@+id/compareFriends"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="Show Schedule"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.345"
-        app:layout_constraintStart_toStartOf="@id/saveSchedule"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.915" />
+        android:layout_marginTop="31dp"
+        android:text="Compare"
+        app:layout_constraintEnd_toStartOf="@+id/saveSchedule"
+        app:layout_constraintHorizontal_bias="0.918"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/whole" />
 
     <Button
         android:id="@+id/clear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
+        android:layout_marginTop="8dp"
         android:text="Clear"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
-        app:layout_constraintStart_toStartOf="@id/compareFriends"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.99" />
+        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/saveSchedule" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

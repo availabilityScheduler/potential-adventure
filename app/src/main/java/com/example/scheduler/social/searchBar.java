@@ -1,10 +1,12 @@
 package com.example.scheduler.social;
 
 import android.annotation.SuppressLint;
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -239,7 +241,8 @@ public class searchBar extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(searchBar.this, ThirdActivity.class);
-        startActivity(intent);
-        overridePendingTransition(R.anim.visible_to_top, R.anim.bottom_to_visible);
+        startActivity(intent,
+                ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+
     }
 }

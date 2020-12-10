@@ -3,8 +3,11 @@ package com.example.scheduler.fragments;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,7 +45,16 @@ public class AboutFragment extends Fragment {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             }
         });
+
+        Fragment duedateFrag = new Fragment();
+        FragmentTransaction ft  = getFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_container, duedateFrag);
+        ft.addToBackStack(null);
+        ft.commit();
+
     }
+
+
     /*
     private void onCreate(final Bundle savedInstanceState, final View view){
         super.onCreate(savedInstanceState);
