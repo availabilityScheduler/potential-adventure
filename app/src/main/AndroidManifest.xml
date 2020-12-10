@@ -2,10 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.scheduler">
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-feature android:name="android.hardware.type.watch" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -14,34 +18,48 @@
         android:roundIcon="@drawable/image_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <uses-library
+            android:name="com.google.android.wearable"
+            android:required="true" />
 
+        <!--
+               Set to true if your app is Standalone, that is, it does not require the handheld
+               app to run.
+        -->
+        <meta-data
+            android:name="com.google.android.wearable.standalone"
+            android:value="true" />
+
+        <activity
+            android:name=".cardsUI.displayCards"
+            android:label="@string/title_activity_display_cards">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".finalUI.CompareSchedules" />
         <activity android:name=".social.UserProfile" />
         <activity android:name=".mainAuth.Login" />
         <activity android:name=".mainAuth.Register" />
-        <activity android:name=".mainActivities.ThirdActivity">
-        </activity>
+        <activity android:name=".mainActivities.ThirdActivity"></activity>
         <activity
             android:name=".mainActivities.MainActivity"
             android:label=""
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".social.searchBar" />
-
-<!--        <meta-data-->
-<!--            android:name="com.google.android.gms.ads.APPLICATION_ID"-->
-<!--            android:value="ca-app-pub-5814252081898356~4325057546"/>-->
+        <activity android:name=".social.searchBar" /> <!-- <meta-data -->
+        <!-- android:name="com.google.android.gms.ads.APPLICATION_ID" -->
+        <!-- android:value="ca-app-pub-5814252081898356~4325057546"/> -->
         <meta-data
             android:name="com.google.android.gms.ads.AD_MANAGER_APP"
-            android:value="true"/>
-<!--            android:name="com.google.android.gms.ads.APPLICATION_ID"-->
-<!--            android:value="ca-app-pub-3940256099942544~3347511713"/>-->
-
-
+            android:value="true" />
     </application>
 
 </manifest>
