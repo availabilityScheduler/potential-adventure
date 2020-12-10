@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HalfWay</string>
+    <string name="app_name">USchedule</string>
     <string name="action_settings">Settings</string>
 
     <!-- Strings used for fragments for navigation -->
@@ -28,6 +28,7 @@
     <string name="dialog_choose_friends">Choose friends to compare with</string>
     <string name="accept">Accept</string>
     <string name="cancel">Cancel</string>
+
     <string name="mon">MON</string>
     <string name="tue">TUE</string>
     <string name="wed">WED</string>
@@ -45,10 +46,16 @@
     <string name="_12_00_pm">12:00 PM</string>
     <string name="_1_00_pm">1:00 PM</string>
     <string name="title_activity_test_activity">test_activity</string>
-    <!--
-    This string is used for square devices and overridden by hello_world in
-    values-round/strings.xml for round devices.
-    -->
-    <string name="hello_world">Hello Square World!</string>
+
+
+    <!--for list group view-->
+    <string name="Monday">Monday</string>
+    <string name="Tuesday">Tuesday</string>
+    <string name="Wednesday">Wednesday</string>
+    <string name="Thursday">Thursday</string>
+    <string name="Friday">Friday</string>
+    <string name="Saturday">Saturday</string>
+    <string name="Sunday">Sunday</string>
+g
 
 </resources>

@@ -4,15 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
     tools:context=".fragments.AboutFragment">
-
 
     <TextView
         android:id="@+id/about_heading"
         android:layout_width="fill_parent"
-        android:layout_height="185dp"
-        android:background="@drawable/about_design"
+        android:layout_height="100dp"
+        android:background="?attr/colorSecondary"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,34 +18,51 @@
 
 
     <TextView
-        android:id="@+id/about_heading_label"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="15dp"
-        android:background="@drawable/about_design"
         android:fontFamily="@font/nunito_semibold"
-        android:gravity="center"
-        android:text="About the App"
+        android:text="About Us"
         android:textAlignment="center"
-        android:textColor="#ffffff"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/about_heading"
+        android:textColor="#FFFFFF"
+        android:textSize="45sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/about_heading"
+        app:layout_constraintBottom_toBottomOf="@+id/about_heading" />
+
+    <TextView
+        android:id="@+id/about_endcap"
+        android:layout_width="fill_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <ImageView
         android:id="@+id/about_logo_icon"
-        android:layout_width="115dp"
-        android:layout_height="115dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:gravity="center"
         android:background="@drawable/icon_backdrop"
-        app:layout_constraintBottom_toTopOf="@+id/about_heading_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/about_heading"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName2"
         app:srcCompat="@drawable/image_logo_margin" />
 
-
-
-
+    <EditText
+        android:id="@+id/editTextTextPersonName2"
+        android:layout_width="310dp"
+        android:layout_height="172dp"
+        android:gravity="center"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Insert description here"
+        app:layout_constraintBottom_toTopOf="@+id/about_endcap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/about_logo_icon" />
 </androidx.constraintlayout.widget.ConstraintLayout>
