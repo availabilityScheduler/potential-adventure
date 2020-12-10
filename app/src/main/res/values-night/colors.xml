@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#006b80</color>
+    <color name="colorSecondary">#47b5bd</color>
+    <color name="colorTertiary">#006b80</color>
+    <color name="colorAccent">#000000</color>
+    <color name="whiteColor">#EAEAEA</color>
+    <color name="blackColor">#000</color>
+    <color name="lightGrayColor">#8E8D8D</color>
+    <color name="teal">#009a9a </color>
+
+    <!-- for Night/Dark Mode -->
+    <color name="colorBackground">#121212</color>
+    <color name="colorForeground">#272727</color>
+    <color name="colorOutline">#FFFFFF</color>
+    <color name="colorPrimaryText">#FFFFFF</color>
+    <color name="colorMinorText">#777777</color>
+    <color name="colorSecondaryText">#000000</color>
+
+
+</resources>

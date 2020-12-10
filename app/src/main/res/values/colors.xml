@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#006b80</color>
-    <color name="colorPrimaryDark">#000000</color>
-    <color name="colorPrimaryText">#000000</color>
     <color name="colorSecondary">#47b5bd</color>
-    <color name="colorSecondaryDark">#006b80</color>
     <color name="colorTertiary">#006b80</color>
-    <color name="colorTertiaryDark">#006b80</color>
     <color name="colorAccent">#000000</color>
     <color name="whiteColor">#EAEAEA</color>
     <color name="blackColor">#000</color>
     <color name="lightGrayColor">#8E8D8D</color>
     <color name="teal">#009a9a </color>
+
+    <!-- for Normal/Light Mode -->
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorForeground">#EAEAEA</color>
+    <color name="colorOutline">#000000</color>
+    <color name="colorPrimaryText">#000000</color>
+    <color name="colorMinorText">#999999</color>
+    <color name="colorSecondaryText">#FFFFFF</color>
+
 
 </resources>

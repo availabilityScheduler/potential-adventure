@@ -7,7 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".finalUI.CompareSchedules">
 
-
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        tools:layout_editor_absoluteX="0dp" />
+  
     <!--if you change back to relative layout instead
     of constraint layout up there, youd be able to
     see the expandable list preview, but for some reason,
