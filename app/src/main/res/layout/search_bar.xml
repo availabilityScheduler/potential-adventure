@@ -26,13 +26,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
-
     <EditText
         android:id="@+id/search_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="73dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="112dp"
         android:autofillHints="searching"
         android:background="@drawable/search_layout"
         android:ems="10"
@@ -48,6 +47,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/heading_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Search for Users"
+        android:textColor="#555555"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/search_field"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageButton
         android:id="@+id/search_btn"
@@ -75,5 +89,6 @@
         app:layout_constraintVertical_bias="0.028">
 
     </androidx.recyclerview.widget.RecyclerView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

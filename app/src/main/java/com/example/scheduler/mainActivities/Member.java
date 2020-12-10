@@ -26,7 +26,7 @@ public class Member {
         this.userSchedule = userSchedule;
     }
 
-    Map<String, Boolean> memberMap =  new HashMap<>();
+    public Map<String, Boolean> memberMap =  new HashMap<>();
 
     public void setMemberMap(Map<String, Boolean> memberMap) {
         this.memberMap = memberMap;

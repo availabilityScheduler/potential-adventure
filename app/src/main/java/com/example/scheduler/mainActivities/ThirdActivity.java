@@ -14,6 +14,7 @@ import com.example.scheduler.R;
 import com.example.scheduler.fragments.AboutFragment;
 import com.example.scheduler.fragments.HomeFragment;
 import com.example.scheduler.fragments.UpdateFragment;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -152,6 +153,8 @@ public class ThirdActivity extends AppCompatActivity implements NavigationView.O
             mNavigationView.setCheckedItem(R.id.nav_home);
         }
         //Ends onCreate()
+        MobileAds.initialize(this);
+
     }
 
     //Inflate the menu; this adds items to the action bar if it is present.

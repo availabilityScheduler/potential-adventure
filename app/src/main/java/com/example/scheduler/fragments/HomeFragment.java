@@ -149,7 +149,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private void onCreate(final Bundle savedInstanceState, final View view){
         super.onCreate(savedInstanceState);
-//for radio button color
+
+
+        //for radio button color
         ColorStateList colorStateList = new ColorStateList(
                 new int[][]{
                         new int[]{-android.R.attr.state_enabled}, //disabled
@@ -160,6 +162,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         Color.rgb(179, 55, 0)
                 }
         );
+
+
         //for the million buttons
         for (int i = 0; i < buttonViewIds.length; i++) {
             for (int j = 0; j < buttonViewIds[0].length; j++) {
@@ -169,6 +173,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
             }
         }
+
 
         openFriendsDialog = view.findViewById(R.id.compareFriends);
         openFriendsDialog.setOnClickListener(new View.OnClickListener() {
@@ -208,6 +213,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }
         });
 
+
         //Floating action button to show friend search
         FloatingActionButton fab = view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -219,7 +225,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }
         });
 
-        final Member getTheName = addsNameToScheduleDb();
 
         //Save Button
         saveButton = view.findViewById(R.id.saveSchedule);
@@ -232,10 +237,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
                 //Member object now includes the name we just retrieved thru addsNameToScheduleDb function
                 //Then we save schdule into it as well
-                getTheName.setUserSchedule(saveDay);
+                Member getTheNameAndSavedDates = addsNameToScheduleDb();
+                getTheNameAndSavedDates.setUserSchedule(saveDay);
 
                 //Push it to db
-                db.child(firebaseAcctId).setValue(getTheName);
+                db.child(firebaseAcctId).setValue(getTheNameAndSavedDates);
 
                 View theViewBeingSaved = view;
                 //sends current view to saveRadioButton function to save the states of the buttons
@@ -245,6 +251,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         });
 
 
+        clearSchedule(view);
+
+        //ENDS OnCreate()
+    }
+
+
+
+    private void clearSchedule(View view){
         deleteSchedule = FirebaseDatabase.getInstance().getReference().child("Schedules");
         currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -261,7 +275,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 for (int i = 0; i < buttonViewIds.length; i++) {
                     for (int j = 0; j < buttonViewIds[0].length; j++) {
                         //buttonArray[i][j] = finalView.findViewById(buttonViewIds[i][j]);
-                         buttonArray[i][j].setChecked(false);
+                        buttonArray[i][j].setChecked(false);
                         buttonArray[i][j].setSelected(false);
 
                     }
@@ -281,8 +295,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 sun.clear();
             }
         });
-
-        //ENDS OnCreate()
     }
 
     private Member addsNameToScheduleDb(){
@@ -734,6 +746,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             theButton.setChecked(true);
             theButton.setSelected(true);
 
+            //hehe
             //retrieve substring from time object and split it, and push it into hashmap
             theIdString = theButton.getResources().getResourceEntryName(redis);
             day = theIdString.substring(0,3);
@@ -757,6 +770,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    //test#2
     private void handleIfForHashmaps(Map<String, Object> main, String theDay, String theTime, boolean delete) {
         if (theDay.equals("mon")){
             if(delete == true)
@@ -896,7 +910,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 }
             });
         }
-        //returns the view with the saved state of buttons 
+        //returns the view with the saved state of buttons
         return v;
     }
 }

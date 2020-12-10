@@ -12,12 +12,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.scheduler.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 public class AboutFragment extends Fragment {
+
+    private AdView adview1;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_home, container, false);
         return inflater.inflate(R.layout.fragment_about, container, false);
     }
 

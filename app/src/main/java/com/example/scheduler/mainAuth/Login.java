@@ -62,8 +62,10 @@ public class Login extends AppCompatActivity {
     private DatabaseReference db;
     private Member thisMember;
 
+    //test commit
+
     //GSO!!
-    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = Login.class.getSimpleName();
     private FirebaseAuth mAuth;
 
     private MainActivity mBinding;
@@ -118,7 +120,7 @@ public class Login extends AppCompatActivity {
                     mPassword.setError("Password is Required.");
                     return;
                 }
-                if(password.length() < 6){
+                if(password.length() < 8){
                     mPassword.setError("Password Must be >= 8 Characters");
                     return;
                 }

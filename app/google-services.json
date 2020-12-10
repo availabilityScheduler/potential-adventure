@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "914411942176-6froo3hp25ta91ha0qrpqgsb0s2kubrq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.scheduler",
+            "certificate_hash": "a3314a977e5fae4905e42cbe3966bc38b7fabdb2"
+          }
+        },
+        {
+          "client_id": "914411942176-spanbv6k1t8k4j6e3bsb61i3i950hn5p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.scheduler",
+            "certificate_hash": "bfc60500f63f96dc7f6c920064c26bb39a48b76e"
+          }
+        },
+        {
           "client_id": "914411942176-fsbnt6kkopdk4hgnld772ej498l3hn03.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -73,7 +89,8 @@
             }
           ]
         }
-      }
+      },
+      "admob_app_id": "ca-app-pub-5814252081898356~4325057546"
     }
   ],
   "configuration_version": "1"
