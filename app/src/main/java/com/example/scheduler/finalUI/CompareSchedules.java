@@ -38,6 +38,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 public class CompareSchedules extends AppCompatActivity {
@@ -106,7 +107,6 @@ public class CompareSchedules extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ThirdActivity.class);
                 startActivity(intent);
-                //overridePendingTransition(R.anim.top_to_visible, R.anim.visible_to_bottom);
             }
         });
 
@@ -125,7 +125,6 @@ public class CompareSchedules extends AppCompatActivity {
 
         listOfKeys.retainAll(AnotherlistOfKeys);
         //System.out.println("simmilar keys " + listOfKeys);
-        String tempTime;
 
 
         for(String days: listOfKeys){
@@ -136,9 +135,10 @@ public class CompareSchedules extends AppCompatActivity {
                     Map<String, Boolean> theirTime = second.get(day);
                     if(secondMap.getValue().equals(myTime)) {
                         Map<String, String> matchedMap = new HashMap<>();
-                        tempTime = myTime.keySet().toString().replace(']', ' ');
-                        tempTime = tempTime.replace('[', ' ');
-                        matchedMap.put(day, tempTime);
+                        Set<String> arr = myTime.keySet();
+                        Optional<String> var = arr.stream().findFirst();
+                        String mytime = var.get();
+                        matchedMap.put(day, mytime);
                         putTheTimesIntoList(matchedMap);
 
                     }
@@ -196,25 +196,25 @@ public class CompareSchedules extends AppCompatActivity {
                     //HashMap to retrieve higher level of our structure, this retrieves each user's entire object
                     Map<String, Object> getScheduleMap = (Map<String, Object>) dataSnapshot.getValue();
                     //System.out.println("getScheduleMap " +getScheduleMap);
-                        Iterator it = getScheduleMap.entrySet().iterator();
-                        for (int i = 0; it.hasNext(); i++) {
-                            Map.Entry pair = (Map.Entry) it.next();
-                            //Retrieves User Schedule and the aName for that particular user
-                            final Map<String, Object> getFriendsMap = (Map<String, Object>) getScheduleMap.get(pair.getKey());
-                            //System.out.println("getFriendsMap " +getFriendsMap);
-                            if(getFriendsMap.containsKey("userSchedule")){
-                                //gets my own data, have to use callback method as onDataChange is a async method
-                                 getMyOwnScheduleData(new MyCallback() {
-                                    @Override
-                                    public void onCallback(Map<String, Map<String, Boolean>> ownMap) {
-                                        Map<String, Map<String, Boolean>> users = (Map<String, Map<String, Boolean>>) getFriendsMap.get("userSchedule");
-                                        comparisonLogic(ownMap, users);
+                    Iterator it = getScheduleMap.entrySet().iterator();
+                    for (int i = 0; it.hasNext(); i++) {
+                        Map.Entry pair = (Map.Entry) it.next();
+                        //Retrieves User Schedule and the aName for that particular user
+                        final Map<String, Object> getFriendsMap = (Map<String, Object>) getScheduleMap.get(pair.getKey());
+                        //System.out.println("getFriendsMap " +getFriendsMap);
+                        if(getFriendsMap.containsKey("userSchedule")){
+                            //gets my own data, have to use callback method as onDataChange is a async method
+                            getMyOwnScheduleData(new MyCallback() {
+                                @Override
+                                public void onCallback(Map<String, Map<String, Boolean>> ownMap) {
+                                    Map<String, Map<String, Boolean>> users = (Map<String, Map<String, Boolean>>) getFriendsMap.get("userSchedule");
+                                    comparisonLogic(ownMap, users);
 
-                                    }
-                                });
-                            }
+                                }
+                            });
                         }
                     }
+                }
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
                     Log.w(TAG, "Failed To Read", databaseError.toException());
@@ -255,7 +255,7 @@ public class CompareSchedules extends AppCompatActivity {
 
     private void putTheTimesIntoList(Map<String, String> matchedMap){
 
-        //System.out.println("matchedTimesMap " +  matchedMap);
+        System.out.println("matchedTimesMap " +  matchedMap);
         List<String> array = new ArrayList<>();
 
         if(matchedMap.containsKey("mon")){
@@ -393,7 +393,7 @@ public class CompareSchedules extends AppCompatActivity {
             int count =0;
             for(int i=0;i<listGroup.length;i++){
                 for(Map.Entry<String, List<String>> finalItemsKey : finalListItems.entrySet()) {
-                    if(listGroup[i] != null && listGroup[i].equals(finalItemsKey.getKey()) ){
+                    if(listGroup[i] != null && listGroup[i].equals(finalItemsKey.getKey())){
                         //System.out.println("LISTGROUPBITCCH " +listGroup[i]);
                         finalDaysArray[count] = listGroup[i];
                         count++;
@@ -401,8 +401,12 @@ public class CompareSchedules extends AppCompatActivity {
                 }
             }
 
+
             //list needs to go into adapter as an arraylist of string, so conversion here
             List<String> intoTheAdapter = new ArrayList<String>(Arrays.asList(finalDaysArray));
+            System.out.println("intoadapter " +intoTheAdapter);
+            System.out.println("finallistitems " +finalListItems);
+
             adapter = new MainAdapter(this, intoTheAdapter, finalListItems);
             expandableListView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
@@ -425,22 +429,25 @@ public class CompareSchedules extends AppCompatActivity {
         Set<String> set1 = new HashSet<>();
         System.out.println("The DAY " + day);
 
+        //System.out.println("LISTITEMS " + listItems);
 
         for(Map.Entry<String, List<String>> listMaps : listItems.entrySet()) {
-            //System.out.println("LISTMAP.GETKEY " + listMaps.getKey());
+//            System.out.println("LISTMAP.GETKEY " + listMaps.getKey());
+//            System.out.println("LISTMAP.GETVALUE " + listMaps.getValue());
+
             if(listMaps.getKey().equals(day)){
                 for(String entry : listMaps.getValue()) {
-                        if (map.containsKey(entry)) {
-                            int count = map.get(entry);
-                            count=count+1;
-                            map.put(entry, count);
-                        } else {
-                            map.put(entry, 1);
-                        }
+                    if (map.containsKey(entry)) {
+                        int count = map.get(entry);
+                        count=count+1;
+                        map.put(entry, count);
+                    } else {
+                        map.put(entry, 1);
+                    }
                 }
             }
         }
-        System.out.println("THEMAPCOUNT " + map);
+//        System.out.println("THEMAPCOUNT " + map);
 
         for(Map.Entry<String, Integer> mapsVals : map.entrySet()) {
             if(mapsVals.getValue() ==  friendList.size()){
@@ -454,8 +461,8 @@ public class CompareSchedules extends AppCompatActivity {
             }
         }
 
-        //System.out.println("Final List going into ADAPTER " + finalListItems);
-        //System.out.println("LISTITEMSBRUH " + listItems);
+//        System.out.println("Final List going into ADAPTER " + finalListItems);
+//        System.out.println("LISTITEMSBRUH " + listItems);
         return finalListItems;
     }
 
