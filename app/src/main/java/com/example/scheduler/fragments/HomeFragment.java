@@ -3,21 +3,34 @@ package com.example.scheduler.fragments;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
+
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.drawable.AnimatedVectorDrawable;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.Toast;
+
+import com.example.scheduler.mainActivities.ThirdActivity;
 import com.example.scheduler.social.FriendDialogBox;
 import com.example.scheduler.mainActivities.Member;
 import com.example.scheduler.R;
@@ -43,6 +56,13 @@ import java.util.Map;
 public class HomeFragment extends Fragment implements View.OnClickListener {
     //Instance Member
     private Member thisMember;
+
+    //saved animation
+    AnimatedVectorDrawableCompat avd;
+    AnimatedVectorDrawable avd2;
+    ImageView done;
+    ImageView greenCircle;
+
 
     //DB instance normal
     private DatabaseReference db;
@@ -234,6 +254,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         });
 
 
+        done = view.findViewById(R.id.done);
+        greenCircle = view.findViewById(R.id.greencircle);
+
         //Save Button
         saveButton = view.findViewById(R.id.saveSchedule);
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -251,17 +274,62 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 //Push it to db
                 db.child(firebaseAcctId).setValue(getTheNameAndSavedDates);
 
-                View theViewBeingSaved = view;
-                //sends current view to saveRadioButton function to save the states of the buttons
+                final View theViewBeingSaved = view;
+                //sends the current(updated) view to saveRadioButton function to save the states of the buttons
                 saveRadioButtons(theViewBeingSaved);
 
+                //For saving progress animation check mark
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        Drawable drawable = done.getDrawable();
+                         if(drawable instanceof  AnimatedVectorDrawable){
+                             done.setVisibility(View.VISIBLE);
+                             avd2 = (AnimatedVectorDrawable) drawable;
+                             revealSaveProgress(theViewBeingSaved);
+                             avd2.start();
+                             Toast.makeText(getActivity(),"Schedule saved!", Toast.LENGTH_SHORT).show();
+                             handler.postDelayed(new Runnable() {
+                                public void run() {
+                                    hideSaveProgress(theViewBeingSaved);
+                                    done.setVisibility(View.INVISIBLE);
+                                }
+                             }, 1000);   // time it takes before it runs the program
+                        }
+                    }
+                }, 500);
             }
         });
 
 
         clearSchedule(view);
-
         //ENDS OnCreate()
+    }
+
+    private void revealSaveProgress(View v) {
+        View view = v.findViewById(R.id.greencircle);
+        int cx = view.getWidth() / 2;
+        int cy = view.getHeight() / 2;
+        float finalRadius = (float) Math.hypot(cx, cy);
+        Animator anim = ViewAnimationUtils.createCircularReveal(view, cx, cy, 0, finalRadius);
+        view.setVisibility(View.VISIBLE);
+        anim.start();
+    }
+
+    private void hideSaveProgress(View v) {
+        final View view = v.findViewById(R.id.greencircle);
+        int cx = view.getWidth() / 2;
+        int cy = view.getHeight() / 2;
+        float initialRadius = (float) Math.hypot(cx, cy);
+        Animator anim = ViewAnimationUtils.createCircularReveal(view, cx, cy, initialRadius, 0);
+        anim.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                view.setVisibility(View.INVISIBLE);
+            }
+        });
+        anim.start();
     }
 
 
