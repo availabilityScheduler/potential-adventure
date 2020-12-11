@@ -2,6 +2,7 @@ package com.example.scheduler.fragments;
 
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.view.ViewCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
@@ -15,28 +16,28 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.util.Pair;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.scheduler.mainActivities.ThirdActivity;
 import com.example.scheduler.social.FriendDialogBox;
 import com.example.scheduler.mainActivities.Member;
 import com.example.scheduler.R;
@@ -62,13 +63,12 @@ import java.util.Map;
 public class HomeFragment extends Fragment implements View.OnClickListener {
     //Instance Member
     private Member thisMember;
-
     //saved animation
-    AnimatedVectorDrawableCompat avd;
     AnimatedVectorDrawable avd2;
     ImageView done;
     ImageView greenCircle;
 
+    private ImageView cross;
 
     //DB instance normal
     private DatabaseReference db;
@@ -170,6 +170,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         finalView = loadRadioButtons(inflater, container);
+        if (Build.VERSION.SDK_INT < 16) {
+            getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
 
         onCreate(savedInstanceState, finalView);
         return finalView;
@@ -260,9 +264,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         });
 
 
+        //for the save button animations, tickmark and background circle
         done = view.findViewById(R.id.done);
         greenCircle = view.findViewById(R.id.greencircle);
-
         //Save Button
         saveButton = view.findViewById(R.id.saveSchedule);
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -283,79 +287,36 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 final View theViewBeingSaved = view;
                 //sends the current(updated) view to saveRadioButton function to save the states of the buttons
                 saveRadioButtons(theViewBeingSaved);
+                saveAnimation(theViewBeingSaved);
 
                 //For saving progress animation check mark
-                final Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    public void run() {
-                        Drawable drawable = done.getDrawable();
-                         if(drawable instanceof  AnimatedVectorDrawable){
-                             done.setVisibility(View.VISIBLE);
-                             avd2 = (AnimatedVectorDrawable) drawable;
-                             revealSaveProgress(theViewBeingSaved);
-                             avd2.start();
-                             Toast.makeText(getActivity(),"Schedule saved!", Toast.LENGTH_SHORT).show();
-                             handler.postDelayed(new Runnable() {
-                                public void run() {
-                                    hideSaveProgress(theViewBeingSaved);
-                                    done.setVisibility(View.INVISIBLE);
-                                }
-                             }, 1000);   // time it takes before it runs the program
-                        }
-                    }
-                }, 500);
+
             }
         });
 
-
-        clearSchedule(view);
-        //ENDS OnCreate()
-    }
-
-    private void revealSaveProgress(View v) {
-        View view = v.findViewById(R.id.greencircle);
-        int cx = view.getWidth() / 2;
-        int cy = view.getHeight() / 2;
-        float finalRadius = (float) Math.hypot(cx, cy);
-        Animator anim = ViewAnimationUtils.createCircularReveal(view, cx, cy, 0, finalRadius);
-        view.setVisibility(View.VISIBLE);
-        anim.start();
-    }
-
-    private void hideSaveProgress(View v) {
-        final View view = v.findViewById(R.id.greencircle);
-        int cx = view.getWidth() / 2;
-        int cy = view.getHeight() / 2;
-        float initialRadius = (float) Math.hypot(cx, cy);
-        Animator anim = ViewAnimationUtils.createCircularReveal(view, cx, cy, initialRadius, 0);
-        anim.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                super.onAnimationEnd(animation);
-                view.setVisibility(View.INVISIBLE);
-            }
-        });
-        anim.start();
-    }
-
-    private void clearSchedule(View view){
-        deleteSchedule = FirebaseDatabase.getInstance().getReference().child("Schedules");
-        currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
+        //for the clear button animation, cross image
+        cross = view.findViewById(R.id.cross);
         //Clears Button
         clearButton = view.findViewById(R.id.clear);
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+                deleteSchedule = FirebaseDatabase.getInstance().getReference().child("Schedules");
+                currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
                 //Clears from data storage
-                showWarningDialog(view);
+
+                final View smthView =  view;
+                showWarningDialog(smthView);
             }
         });
+
+        //ENDS OnCreate()
     }
 
     private void showWarningDialog(View v){
+        final View original = v;
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.clearAlertDialog);
-        View view = LayoutInflater.from(getActivity()).inflate(R.layout.warning_dialog, (ConstraintLayout)v.findViewById(R.id.layoutDialogContainer));
+        final View view = LayoutInflater.from(getActivity()).inflate(R.layout.warning_dialog, (ConstraintLayout)v.findViewById(R.id.layoutDialogContainer));
         builder.setView(view);
 
         TextView textTitle = view.findViewById(R.id.textTitle);
@@ -369,7 +330,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         ImageView imageWarning = view.findViewById(R.id.imageIcon);
         imageWarning.setImageResource(R.drawable.ic_warning);
-
         final AlertDialog alertDialog = builder.create();
 
         buttonYes.setOnClickListener(new View.OnClickListener() {
@@ -401,6 +361,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 sun.clear();
                 Toast.makeText(getActivity(),"Schedule cleared :(", Toast.LENGTH_SHORT).show();
                 alertDialog.dismiss();
+                saveAnimation(original);
 
             }
         });
@@ -408,7 +369,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         buttonNo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                noToClearAnimation(original);
                 alertDialog.dismiss();
+
             }
         });
         if(alertDialog.getWindow() != null){
@@ -416,6 +379,106 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
         alertDialog.show();
 
+    }
+    private void saveAnimation(final View theViewBeingSaved){
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                Drawable drawable = done.getDrawable();
+                if(drawable instanceof  AnimatedVectorDrawable){
+                    final String word = "save";
+                    done.setVisibility(View.VISIBLE);
+                    avd2 = (AnimatedVectorDrawable) drawable;
+                    revealSaveProgress(theViewBeingSaved, word);
+                    avd2.start();
+                    Toast.makeText(getActivity(),"Schedule saved!", Toast.LENGTH_SHORT).show();
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            hideSaveProgress(theViewBeingSaved, word);
+                            done.setVisibility(View.INVISIBLE);
+                        }
+                    }, 1000);   // time it takes before it runs the program
+                }
+            }
+        }, 500);
+    }
+
+    private void noToClearAnimation(final View theViewBeingSaved){
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                Drawable drawable = cross.getDrawable();
+                if(drawable instanceof  AnimatedVectorDrawable){
+                    final String word  =  "clear";
+                    cross.setVisibility(View.VISIBLE);
+                    avd2 = (AnimatedVectorDrawable) drawable;
+                    revealSaveProgress(theViewBeingSaved, word);
+                    avd2.start();
+                    Toast.makeText(getActivity(),":)", Toast.LENGTH_SHORT).show();
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            hideSaveProgress(theViewBeingSaved, word);
+                            cross.setVisibility(View.INVISIBLE);
+                        }
+                    }, 1000);   // time it takes before it runs the program
+                }
+            }
+        }, 500);
+    }
+
+
+    private void revealSaveProgress(View v, String word) {
+        if(word.equals("save")) {
+            View view = v.findViewById(R.id.greencircle);
+            int cx = view.getWidth() / 2;
+            int cy = view.getHeight() / 2;
+            float finalRadius = (float) Math.hypot(cx, cy);
+            Animator anim = ViewAnimationUtils.createCircularReveal(view, cx, cy, 0, finalRadius);
+            view.setVisibility(View.VISIBLE);
+            anim.start();
+        }
+        else{
+            View view = v.findViewById(R.id.redcircle);
+            int cx = view.getWidth() / 2;
+            int cy = view.getHeight() / 2;
+            float finalRadius = (float) Math.hypot(cx, cy);
+            Animator anim = ViewAnimationUtils.createCircularReveal(view, cx, cy, 0, finalRadius);
+            view.setVisibility(View.VISIBLE);
+            anim.start();
+        }
+    }
+
+    private void hideSaveProgress(View v, String word) {
+        if(word.equals("save")) {
+            final View view = v.findViewById(R.id.greencircle);
+            int cx = view.getWidth() / 2;
+            int cy = view.getHeight() / 2;
+            float initialRadius = (float) Math.hypot(cx, cy);
+            Animator anim = ViewAnimationUtils.createCircularReveal(view, cx, cy, initialRadius, 0);
+            anim.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+                    view.setVisibility(View.INVISIBLE);
+                }
+            });
+            anim.start();
+        }
+        else{
+            final View view = v.findViewById(R.id.redcircle);
+            int cx = view.getWidth() / 2;
+            int cy = view.getHeight() / 2;
+            float initialRadius = (float) Math.hypot(cx, cy);
+            Animator anim = ViewAnimationUtils.createCircularReveal(view, cx, cy, initialRadius, 0);
+            anim.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+                    view.setVisibility(View.INVISIBLE);
+                }
+            });
+            anim.start();
+        }
     }
 
     private Member addsNameToScheduleDb(){
