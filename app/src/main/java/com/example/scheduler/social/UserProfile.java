@@ -46,7 +46,6 @@ public class UserProfile extends AppCompatActivity {
             }
         });
 
-
         //GoogleSignInAccount acct = GoogleSignIn.getAccountForExtension();
 
 

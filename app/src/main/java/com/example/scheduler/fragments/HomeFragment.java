@@ -326,7 +326,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.mon6am:
-                System.out.println("vID: " + v.getId());
                 deselection((RadioButton) v.findViewById(R.id.mon6am));
                 break;
             case R.id.tue6am:
@@ -348,7 +347,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 deselection((RadioButton) v.findViewById(R.id.sun6am));
                 break;
             case R.id.mon7am:
-                System.out.println("vID: " + v.getId());
                 deselection((RadioButton) v.findViewById(R.id.mon7am));
                 break;
             case R.id.tue7am:
@@ -370,7 +368,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 deselection((RadioButton) v.findViewById(R.id.sun7am));
                 break;
             case R.id.mon8am:
-                System.out.println("vID: " + v.getId());
                 deselection((RadioButton) v.findViewById(R.id.mon8am));
                 break;
             case R.id.tue8am:
@@ -392,7 +389,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 deselection((RadioButton) v.findViewById(R.id.sun8am));
                 break;
             case R.id.mon9am:
-                System.out.println("vID: " + v.getId());
                 deselection((RadioButton) v.findViewById(R.id.mon9am));
                 break;
             case R.id.tue9am:
@@ -414,7 +410,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 deselection((RadioButton) v.findViewById(R.id.sun9am));
                 break;
             case R.id.mon10am:
-                System.out.println("vID: " + v.getId());
                 deselection((RadioButton) v.findViewById(R.id.mon10am));
                 break;
             case R.id.tue10am:
@@ -436,7 +431,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 deselection((RadioButton) v.findViewById(R.id.sun10am));
                 break;
             case R.id.mon11am:
-                System.out.println("vID: " + v.getId());
                 deselection((RadioButton) v.findViewById(R.id.mon11am));
                 break;
             case R.id.tue11am:
@@ -458,7 +452,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 deselection((RadioButton) v.findViewById(R.id.sun11am));
                 break;
             case R.id.mon12pm:
-                System.out.println("vID: " + v.getId());
                 deselection((RadioButton) v.findViewById(R.id.mon12pm));
                 break;
             case R.id.tue12pm:
@@ -480,7 +473,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 deselection((RadioButton) v.findViewById(R.id.sun12pm));
                 break;
             case R.id.mon1pm:
-                System.out.println("vID: " + v.getId());
                 deselection((RadioButton) v.findViewById(R.id.mon1pm));
                 break;
             case R.id.tue1pm:
@@ -502,7 +494,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 deselection((RadioButton) v.findViewById(R.id.sun1pm));
                 break;
             case R.id.mon2pm:
-                System.out.println("vID: " + v.getId());
                 deselection((RadioButton) v.findViewById(R.id.mon2pm));
                 break;
             case R.id.tue2pm:
@@ -524,7 +515,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 deselection((RadioButton) v.findViewById(R.id.sun2pm));
                 break;
             case R.id.mon3pm:
-                System.out.println("vID: " + v.getId());
                 deselection((RadioButton) v.findViewById(R.id.mon3pm));
                 break;
             case R.id.tue3pm:
@@ -546,7 +536,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 deselection((RadioButton) v.findViewById(R.id.sun3pm));
                 break;
             case R.id.mon4pm:
-                System.out.println("vID: " + v.getId());
                 deselection((RadioButton) v.findViewById(R.id.mon4pm));
                 break;
             case R.id.tue4pm:
@@ -568,7 +557,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 deselection((RadioButton) v.findViewById(R.id.sun4pm));
                 break;
             case R.id.mon5pm:
-                System.out.println("vID: " + v.getId());
                 deselection((RadioButton) v.findViewById(R.id.mon5pm));
                 break;
             case R.id.tue5pm:
@@ -590,7 +578,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 deselection((RadioButton) v.findViewById(R.id.sun5pm));
                 break;
             case R.id.mon6pm:
-                System.out.println("vID: " + v.getId());
                 deselection((RadioButton) v.findViewById(R.id.mon6pm));
                 break;
             case R.id.tue6pm:
@@ -612,7 +599,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 deselection((RadioButton) v.findViewById(R.id.sun6pm));
                 break;
             case R.id.mon7pm:
-                System.out.println("vID: " + v.getId());
                 deselection((RadioButton) v.findViewById(R.id.mon7pm));
                 break;
             case R.id.tue7pm:
@@ -634,7 +620,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 deselection((RadioButton) v.findViewById(R.id.sun7pm));
                 break;
             case R.id.mon8pm:
-                System.out.println("vID: " + v.getId());
                 deselection((RadioButton) v.findViewById(R.id.mon8pm));
                 break;
             case R.id.tue8pm:
@@ -656,7 +641,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 deselection((RadioButton) v.findViewById(R.id.sun8pm));
                 break;
             case R.id.mon9pm:
-                System.out.println("vID: " + v.getId());
                 deselection((RadioButton) v.findViewById(R.id.mon9pm));
                 break;
             case R.id.tue9pm:
@@ -678,7 +662,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 deselection((RadioButton) v.findViewById(R.id.sun9pm));
                 break;
             case R.id.mon10pm:
-                System.out.println("vID: " + v.getId());
                 deselection((RadioButton) v.findViewById(R.id.mon10pm));
                 break;
             case R.id.tue10pm:
@@ -700,7 +683,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 deselection((RadioButton) v.findViewById(R.id.sun10pm));
                 break;
             case R.id.mon11pm:
-                System.out.println("vID: " + v.getId());
                 deselection((RadioButton) v.findViewById(R.id.mon11pm));
                 break;
             case R.id.tue11pm:
@@ -722,7 +704,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 deselection((RadioButton) v.findViewById(R.id.sun11pm));
                 break;
             case R.id.mon12am:
-                System.out.println("vID: " + v.getId());
                 deselection((RadioButton) v.findViewById(R.id.mon12am));
                 break;
             case R.id.tue12am:
@@ -748,13 +729,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private void deselection(RadioButton theButton) {
         int redis = theButton.getId();
-        String temp;
         String day, time;
         if (!theButton.isSelected()) {
             theButton.setChecked(true);
             theButton.setSelected(true);
 
-            //hehe
             //retrieve substring from time object and split it, and push it into hashmap
             theIdString = theButton.getResources().getResourceEntryName(redis);
             day = theIdString.substring(0,3);
@@ -762,8 +741,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
             boolean noDelete = false;
             handleIfForHashmaps(saveDay, day, time, noDelete);
-
-            //Toast.makeText(test_activity.this, day + time + " Added! ", Toast.LENGTH_SHORT).show();
 
         } else {
             theButton.setChecked(false);
@@ -778,7 +755,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    //test#2
     private void handleIfForHashmaps(Map<String, Object> main, String theDay, String theTime, boolean delete) {
         if (theDay.equals("mon")){
             if(delete == true)
@@ -833,7 +809,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 main.put(theDay, sun);
             }
         }
-        System.out.println("Final Saveday before Saving "+ Arrays.asList(main));
     }
 
     private void saveRadioButtons(View viewBeingSaved){
@@ -853,7 +828,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
         //loads it from the sharedpreference xml file which is saved locally.
-        //If you'd like to see where it is, you can go under device file explorer on the bottom right of the android pane/data/data/com.example.scheduler/sharedpreferences
+        //under device file explorer on the bottom right of the android pane/data/data/com.example.scheduler/sharedpreferences
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
         String time;
 
@@ -872,7 +847,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 buttonArray[i][j].setSelected(sharedPreferences.getBoolean(stringDaysAndTime[i][j], false));
                 if(buttonArray[i][j].isChecked()) {
                     time = stringDaysAndTime[i][j].substring(3);
-                    System.out.println("time " + time);
                 }
             }
         }
@@ -882,9 +856,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if(dataSnapshot.exists()) {
-                        System.out.println("Key: " + dataSnapshot.getKey());
-                        System.out.println("Value: " + dataSnapshot.getValue());
-
                         //hashmap to retrieve higher level of our structure
                         Map<String, Object> getScheduleMap = (Map<String, Object>) dataSnapshot.getValue();
                         Iterator it = getScheduleMap.entrySet().iterator();
@@ -892,7 +863,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                             Map.Entry pair = (Map.Entry) it.next();
                             //retrieve the "day" key
                             String eachDay = pair.getKey().toString();
-                            System.out.println("Testing " + getScheduleMap.get(pair.getKey()).toString());
                             //hashmap to iterate through the time:true values from the hasmap
                             Map<String, Boolean> getTimeMap = (Map<String, Boolean>) getScheduleMap.get(pair.getKey());
                             Iterator lit = getTimeMap.entrySet().iterator();
@@ -903,8 +873,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                                 String eachTime = pair2.getKey().toString();
                                 String eachBool = pair2.getValue().toString();
 
-                                System.out.println("TIME: " + eachTime);
-                                System.out.println("BOOL: " + eachBool);
                                 //passes it to the handler function for proper integration
                                 handleIfForHashmaps(saveDay, eachDay, eachTime, false);
                             }

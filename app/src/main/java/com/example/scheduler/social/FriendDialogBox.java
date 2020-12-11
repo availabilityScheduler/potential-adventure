@@ -26,8 +26,8 @@ public class FriendDialogBox extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         //Tracks chosen friends
-        selectedFriends = new ArrayList<Integer>();
-        friendsToCompare = new ArrayList<String>();
+        selectedFriends = new ArrayList<>();
+        friendsToCompare = new ArrayList<>();
 
         //Dialog builder
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -44,19 +44,15 @@ public class FriendDialogBox extends DialogFragment {
                     selectedFriends.add(which);
                 } else if (selectedFriends.contains(which)){
                     //If friend is already in array, remove
-                    System.out.println("elseif" + which);
                     selectedFriends.remove(Integer.valueOf(which));
                 }
             }
         }).setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 for(int i=0; i <selectedFriends.size();i++){
-                    System.out.println("Compare this friend" + yourFriendFromDb[selectedFriends.get(i)]);
                     friendsToCompare.add(yourFriendFromDb[selectedFriends.get(i)]);
                 }
                 doTheComparison();
-                //ig in another activity class which will show the final output, we can handle the logic there by using these
-                //names and retrieving their schedules to compare and show
 
             }
         }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
