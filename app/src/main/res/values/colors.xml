@@ -9,6 +9,12 @@
     <color name="lightGrayColor">#8E8D8D</color>
     <color name="teal">#009a9a </color>
 
+    <color name="warning">#FFCC00</color>
+    <color name="colorNeutral">#434343</color>
+    <color name="anotherWhite">#FFFFFF</color>
+
+
+
     <!-- for Normal/Light Mode -->
     <color name="colorBackground">#FFFFFF</color>
     <color name="colorForeground">#EAEAEA</color>

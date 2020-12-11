@@ -23,7 +23,8 @@
         <activity android:name=".social.UserProfile" />
         <activity android:name=".mainAuth.Login" />
         <activity android:name=".mainAuth.Register" />
-        <activity android:name=".mainActivities.ThirdActivity"></activity>
+        <activity android:name=".mainActivities.ThirdActivity">
+        </activity>
         <activity
             android:name=".mainActivities.MainActivity"
             android:label=""

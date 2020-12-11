@@ -1,6 +1,7 @@
 package com.example.scheduler.fragments;
 
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
@@ -9,11 +10,13 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.AnimatedVectorDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
@@ -21,13 +24,16 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.util.Pair;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.scheduler.mainActivities.ThirdActivity;
@@ -332,8 +338,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         anim.start();
     }
 
-
-
     private void clearSchedule(View view){
         deleteSchedule = FirebaseDatabase.getInstance().getReference().child("Schedules");
         currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -344,6 +348,33 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View view) {
                 //Clears from data storage
+                showWarningDialog(view);
+            }
+        });
+    }
+
+    private void showWarningDialog(View v){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.clearAlertDialog);
+        View view = LayoutInflater.from(getActivity()).inflate(R.layout.warning_dialog, (ConstraintLayout)v.findViewById(R.id.layoutDialogContainer));
+        builder.setView(view);
+
+        TextView textTitle = view.findViewById(R.id.textTitle);
+        textTitle.setText(getResources().getString(R.string.warning_title));
+
+        Button buttonYes = view.findViewById(R.id.buttonYes);
+        buttonYes.setText(getResources().getString(R.string.confirm));
+
+        Button buttonNo = view.findViewById(R.id.buttonNo);
+        buttonNo.setText(getResources().getString(R.string.deny));
+
+        ImageView imageWarning = view.findViewById(R.id.imageIcon);
+        imageWarning.setImageResource(R.drawable.ic_warning);
+
+        final AlertDialog alertDialog = builder.create();
+
+        buttonYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.clear().apply();
@@ -353,7 +384,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         //buttonArray[i][j] = finalView.findViewById(buttonViewIds[i][j]);
                         buttonArray[i][j].setChecked(false);
                         buttonArray[i][j].setSelected(false);
-
                     }
                 }
                 //clears database
@@ -369,8 +399,23 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 fri.clear();
                 sat.clear();
                 sun.clear();
+                Toast.makeText(getActivity(),"Schedule cleared :(", Toast.LENGTH_SHORT).show();
+                alertDialog.dismiss();
+
             }
         });
+
+        buttonNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+        if(alertDialog.getWindow() != null){
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        }
+        alertDialog.show();
+
     }
 
     private Member addsNameToScheduleDb(){
