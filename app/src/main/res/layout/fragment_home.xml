@@ -1751,9 +1751,9 @@
         android:layout_marginTop="64dp"
         android:backgroundTint="@color/whiteColor"
         android:hapticFeedbackEnabled="true"
+        android:transitionName="activity_trans"
         app:elevation="6dp"
         app:fabSize="mini"
-        android:transitionName="activity_trans"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.953"
         app:layout_constraintStart_toStartOf="parent"
@@ -1763,8 +1763,8 @@
 
     <Button
         android:id="@+id/saveSchedule"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="105dp"
+        android:layout_height="45dp"
         android:layout_marginTop="31dp"
         android:text="Save"
         app:layout_constraintEnd_toEndOf="parent"
@@ -1774,12 +1774,12 @@
 
     <Button
         android:id="@+id/compareFriends"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="110dp"
+        android:layout_height="45dp"
         android:layout_marginTop="31dp"
         android:text="Compare"
         app:layout_constraintEnd_toStartOf="@+id/saveSchedule"
-        app:layout_constraintHorizontal_bias="0.918"
+        app:layout_constraintHorizontal_bias="0.862"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/whole" />
 
@@ -1787,23 +1787,23 @@
         android:id="@+id/clear"
         android:layout_width="105dp"
         android:layout_height="45dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="31dp"
         android:text="Clear"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.586"
+        app:layout_constraintEnd_toStartOf="@+id/compareFriends"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/compareFriends" />
+        app:layout_constraintTop_toBottomOf="@+id/whole" />
 
     <ImageView
         android:id="@+id/greencircle"
         android:layout_width="134dp"
         android:layout_height="127dp"
         android:layout_marginTop="146dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="72dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintHorizontal_bias="0.474"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:srcCompat="@drawable/green_circle" />
@@ -1816,7 +1816,7 @@
         app:layout_constraintEnd_toEndOf="@+id/greencircle"
         app:layout_constraintStart_toStartOf="@+id/greencircle"
         app:layout_constraintTop_toTopOf="@+id/greencircle"
-        app:layout_constraintVertical_bias="0.481"
+        app:layout_constraintVertical_bias="0.37"
         app:srcCompat="@drawable/progress_tick_mark" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
