@@ -1754,10 +1754,12 @@
         android:transitionName="activity_trans"
         app:elevation="6dp"
         app:fabSize="mini"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.953"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/saveSchedule"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@mipmap/friends"
         app:tint="@null" />
 
@@ -1798,14 +1800,15 @@
         android:id="@+id/greencircle"
         android:layout_width="134dp"
         android:layout_height="127dp"
-        android:layout_marginTop="146dp"
+        android:layout_marginTop="72dp"
         android:layout_marginBottom="72dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.474"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/compareFriends"
+        app:layout_constraintVertical_bias="0.576"
         app:srcCompat="@drawable/green_circle" />
 
     <ImageView
