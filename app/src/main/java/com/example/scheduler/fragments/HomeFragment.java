@@ -176,6 +176,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
 
         onCreate(savedInstanceState, finalView);
+
+        //so that they are set to gone, and it doesnt pop up again
+        cross.setVisibility(View.GONE);
+        done.setVisibility(View.GONE);
         return finalView;
     }
 
@@ -183,26 +187,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         super.onCreate(savedInstanceState);
 
 
-        //for radio button color
-        ColorStateList colorStateList = new ColorStateList(
-                new int[][]{
-                        new int[]{-android.R.attr.state_enabled}, //disabled
-                        new int[]{android.R.attr.state_enabled} //enabled
-                },
-                new int[]{
-                        Color.BLACK, //disabled
-                        Color.rgb(179, 55, 0)
-                }
-        );
-
-
         //for the million buttons
         for (int i = 0; i < buttonViewIds.length; i++) {
             for (int j = 0; j < buttonViewIds[0].length; j++) {
                 buttonArray[i][j] = finalView.findViewById(buttonViewIds[i][j]);
                 buttonArray[i][j].setOnClickListener(this);
-                buttonArray[i][j].setButtonTintList(colorStateList);
-
             }
         }
 
@@ -293,6 +282,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
             }
         });
+
 
         //for the clear button animation, cross image
         cross = view.findViewById(R.id.cross);
@@ -395,7 +385,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     handler.postDelayed(new Runnable() {
                         public void run() {
                             hideSaveProgress(theViewBeingSaved, word);
-                            done.setVisibility(View.INVISIBLE);
+                            done.setVisibility(View.GONE);
                         }
                     }, 1000);   // time it takes before it runs the program
                 }
@@ -418,7 +408,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     handler.postDelayed(new Runnable() {
                         public void run() {
                             hideSaveProgress(theViewBeingSaved, word);
-                            cross.setVisibility(View.INVISIBLE);
+                            cross.setVisibility(View.GONE);
                         }
                     }, 1000);   // time it takes before it runs the program
                 }
