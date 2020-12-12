@@ -32,6 +32,8 @@ import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -59,16 +61,26 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import static com.firebase.ui.auth.AuthUI.getApplicationContext;
+
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
     //Instance Member
     private Member thisMember;
+
     //saved animation
     AnimatedVectorDrawable avd2;
     ImageView done;
     ImageView greenCircle;
 
+    //clear animation
     private ImageView cross;
+
+    private FloatingActionButton fab_main, fab1_add, fab2_delete;
+    private Animation fab_open, fab_close, fab_clock, fab_anticlock;
+    TextView textview_add, textview_remove;
+
+    Boolean isOpen = false;
 
     //DB instance normal
     private DatabaseReference db;
@@ -235,17 +247,58 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         });
 
 
-        //Floating action button to show friend search
-        final FloatingActionButton fab = view.findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        //The whole fab animation and add stuff
+        fab_main = view.findViewById(R.id.fab);
+        fab1_add = view.findViewById(R.id.fab1_add);
+        fab2_delete = view.findViewById(R.id.fab2_delete);
+        fab_close = AnimationUtils.loadAnimation(getContext(), R.anim.fab_close);
+        fab_open = AnimationUtils.loadAnimation(getContext(), R.anim.fab_open);
+        fab_clock = AnimationUtils.loadAnimation(getContext(), R.anim.fab_rotate_clock);
+        fab_anticlock = AnimationUtils.loadAnimation(getContext(), R.anim.fab_rotate_anticlock);
+
+        textview_add = (TextView) view.findViewById(R.id.textview_add);
+        textview_remove = (TextView)view.findViewById(R.id.textview_remove);
+
+        fab_main.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
+                if (isOpen) {
+                    textview_add.setVisibility(View.INVISIBLE);
+                    textview_remove.setVisibility(View.INVISIBLE);
+                    fab2_delete.startAnimation(fab_close);
+                    fab1_add.startAnimation(fab_close);
+                    fab_main.startAnimation(fab_anticlock);
+                    fab2_delete.setClickable(false);
+                    fab1_add.setClickable(false);
+                    isOpen = false;
+                } else {
+                    textview_add.setVisibility(View.VISIBLE);
+                    textview_remove.setVisibility(View.VISIBLE);
+                    fab2_delete.startAnimation(fab_open);
+                    fab1_add.startAnimation(fab_open);
+                    fab_main.startAnimation(fab_clock);
+                    fab2_delete.setClickable(true);
+                    fab1_add.setClickable(true);
+                    isOpen = true;
+                }
+
+            }
+        });
+
+
+        fab2_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "Delete Friends", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        fab1_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 Intent prof_intent = new Intent(getContext(), searchBar.class);
-
                 Pair[] pairs = new Pair[1];
-                pairs[0] = new Pair<View,String>(fab,"activity_trans");
-
-
+                pairs[0] = new Pair<View,String>(fab1_add,"activity_trans");
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(getActivity(), pairs);
                 startActivity(prof_intent,options.toBundle());
 

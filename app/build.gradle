@@ -20,6 +20,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    dataBinding{
+        enabled true
+    }
 }
 
 dependencies {
@@ -35,6 +39,7 @@ dependencies {
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.21'
 
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
+
 
     //ads
     implementation 'com.google.android.gms:play-services-ads:19.6.0'
