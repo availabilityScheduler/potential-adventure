@@ -220,22 +220,29 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 mUserFriendDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        friendCount = (int) dataSnapshot.getChildrenCount();
-                        Map<String, Object> getFriendMaps = (Map<String, Object>) dataSnapshot.getValue();
-                        //Iterates through the values of our hashmap
-                        Iterator it = getFriendMaps.entrySet().iterator();
-                        friendList = new String[friendCount];
-                        for (int i = 0; it.hasNext(); i++) {
-                            Map.Entry pair = (Map.Entry) it.next();
-                            String eachFriend = pair.getKey().toString();
-                            friendList[i] = eachFriend;
+                        //if friends exist, then do this(might not be efficient)
+                        if(dataSnapshot.exists()){
+                            friendCount = (int) dataSnapshot.getChildrenCount();
+                            Map<String, Object> getFriendMaps = (Map<String, Object>) dataSnapshot.getValue();
+                            //Iterates through the values of our hashmap
+                            Iterator it = getFriendMaps.entrySet().iterator();
+                            friendList = new String[friendCount];
+                            for (int i = 0; it.hasNext(); i++) {
+                                Map.Entry pair = (Map.Entry) it.next();
+                                String eachFriend = pair.getKey().toString();
+                                friendList[i] = eachFriend;
+                            }
+                            DialogFragment newFragment = new FriendDialogBox();
+                            Bundle bundle = new Bundle();
+                            bundle.putStringArray("sendFriendList", friendList);
+                            newFragment.setArguments(bundle);
+                            newFragment.show(getActivity().getSupportFragmentManager(), "friendDialogBox");
+                            it.remove();
                         }
-                        DialogFragment newFragment = new FriendDialogBox();
-                        Bundle bundle = new Bundle();
-                        bundle.putStringArray("sendFriendList", friendList);
-                        newFragment.setArguments(bundle);
-                        newFragment.show(getActivity().getSupportFragmentManager(), "friendDialogBox");
-                        it.remove();
+                        else{
+                            Toast.makeText(getContext(), "Add a friend to compare!", Toast.LENGTH_SHORT).show();
+                        }
+
                     }
 
                     @Override

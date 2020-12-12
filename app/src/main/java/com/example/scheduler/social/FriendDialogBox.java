@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -20,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
@@ -54,7 +56,6 @@ public class FriendDialogBox extends DialogFragment{
         Bundle bundle = getArguments();
         final String[] yourFriendFromDb = bundle.getStringArray("sendFriendList");
 
-
        builder.setTitle(R.string.dialog_choose_friends).setMultiChoiceItems(yourFriendFromDb, null, new DialogInterface.OnMultiChoiceClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which, boolean isChecked) {
@@ -68,12 +69,16 @@ public class FriendDialogBox extends DialogFragment{
                 }
             }
         }).setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
+            @Override
             public void onClick(DialogInterface dialog, int id) {
                 for(int i=0; i <selectedFriends.size();i++){
                     System.out.println("Compare this friend" + yourFriendFromDb[selectedFriends.get(i)]);
                     friendsToCompare.add(yourFriendFromDb[selectedFriends.get(i)]);
                 }
-                doTheComparison();
+                if(friendsToCompare.isEmpty())
+                    Toast.makeText(getContext(), "Select friend to compare with :)", Toast.LENGTH_SHORT).show();
+                else
+                    doTheComparison();
             }
         }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
@@ -85,10 +90,12 @@ public class FriendDialogBox extends DialogFragment{
                removeAfriend(yourFriendFromDb, deleteFriends);
            }
        });
+
         alertDialog = builder.create();
         alertDialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         return alertDialog;
     }
+
     private void doTheComparison() {
         Intent accept = new Intent(FriendDialogBox.this.getActivity(), CompareSchedules.class);
         accept.putExtra("friendsPassedToCompareSchedules", friendsToCompare);
@@ -110,7 +117,6 @@ public class FriendDialogBox extends DialogFragment{
         }
 
     }
-
 }
 
 

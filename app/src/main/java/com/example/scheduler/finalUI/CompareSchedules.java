@@ -190,6 +190,7 @@ public class CompareSchedules extends AppCompatActivity {
 
         for(int i=0; i<friendList.size();i++) {
             mUserFriendDatabase = FirebaseDatabase.getInstance().getReference("Schedules");
+            final int finalI = i;
             mUserFriendDatabase.orderByChild("aName").equalTo(friendList.get(i)).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -197,7 +198,7 @@ public class CompareSchedules extends AppCompatActivity {
                     Map<String, Object> getScheduleMap = (Map<String, Object>) dataSnapshot.getValue();
                     //System.out.println("getScheduleMap " +getScheduleMap);
                     Iterator it = getScheduleMap.entrySet().iterator();
-                    for (int i = 0; it.hasNext(); i++) {
+                    for (int j = 0; it.hasNext(); j++) {
                         Map.Entry pair = (Map.Entry) it.next();
                         //Retrieves User Schedule and the aName for that particular user
                         final Map<String, Object> getFriendsMap = (Map<String, Object>) getScheduleMap.get(pair.getKey());
@@ -212,6 +213,10 @@ public class CompareSchedules extends AppCompatActivity {
 
                                 }
                             });
+                        }
+                        else{
+                            Toast.makeText(CompareSchedules.this, friendList.get(finalI)+" has not set up his schedule", Toast.LENGTH_SHORT).show();
+
                         }
                     }
                 }
@@ -472,8 +477,6 @@ public class CompareSchedules extends AppCompatActivity {
         ArrayList<String> theFriends = null;
         if(extras != null) {
             theFriends = extras.getStringArrayList("friendsPassedToCompareSchedules");
-            //just to see/and test it out
-            Toast.makeText(CompareSchedules.this, theFriends.get(0), Toast.LENGTH_SHORT).show();
         }
         return theFriends;
     }

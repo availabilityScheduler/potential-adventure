@@ -100,7 +100,6 @@ public class searchBar extends AppCompatActivity {
                     Toast.makeText(searchBar.this, "Type in a friend to search", Toast.LENGTH_SHORT).show();
                 else
                     firebaseUserSearch(searchText);
-
             }
         });
 

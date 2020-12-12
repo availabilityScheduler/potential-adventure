@@ -29,6 +29,8 @@
     <string name="accept">Accept</string>
     <string name="cancel">Cancel</string>
     <string name="remove">Remove</string>
+    <string name="noFriends_toCompare">Back</string>
+
 
 
     <string name="mon">MON</string>
