@@ -92,12 +92,14 @@ public class searchBar extends AppCompatActivity {
         mResultList.setLayoutManager(new LinearLayoutManager(getBaseContext()));
 
 
-        //Working but bug--> gotta pull the keyboard down to see result(at least in my oneplus7)
         mSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String searchText = mSearchField.getText().toString();
-                firebaseUserSearch(searchText);
+                if(searchText.isEmpty())
+                    Toast.makeText(searchBar.this, "Type in a friend to search", Toast.LENGTH_SHORT).show();
+                else
+                    firebaseUserSearch(searchText);
 
             }
         });
@@ -196,9 +198,11 @@ public class searchBar extends AppCompatActivity {
                     final TextView user_name = (TextView) findViewById(R.id.name_text);
                     String username = user_name.getText().toString();
                     writeFriendData(username);
-                    Intent intent = new Intent(searchBar.this, ThirdActivity.class);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.visible_to_top, R.anim.bottom_to_visible);
+                    Intent intent = getIntent();
+                    onReAdd(intent);
+//                    Intent intent = new Intent(searchBar.this, ThirdActivity.class);
+//                    startActivity(intent);
+//                    overridePendingTransition(R.anim.visible_to_top, R.anim.bottom_to_visible);
 
                 }
             });
@@ -255,6 +259,10 @@ public class searchBar extends AppCompatActivity {
         Intent intent = new Intent(searchBar.this, ThirdActivity.class);
         startActivity(intent,
                 ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+    }
 
+    public void onReAdd(Intent intent) {
+        startActivity(intent,
+                ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
 }

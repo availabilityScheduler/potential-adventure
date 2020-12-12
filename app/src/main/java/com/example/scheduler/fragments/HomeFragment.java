@@ -463,7 +463,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                             hideSaveProgress(theViewBeingSaved, word);
                             cross.setVisibility(View.GONE);
                         }
-                    }, 10000);   // time it takes before it runs the program
+                    }, 1000);   // time it takes before it runs the program
                 }
             }
         }, 500);
