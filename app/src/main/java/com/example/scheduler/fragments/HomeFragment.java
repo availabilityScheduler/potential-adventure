@@ -215,7 +215,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 //Gets current firebase authID
                 currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
                 firebaseAcctId = currentFirebaseUser.getUid();
-                //Gets the path to friend list
+                //Gets the path to friend lists
                 mUserFriendDatabase = FirebaseDatabase.getInstance().getReference("Friends").child(firebaseAcctId);
                 mUserFriendDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -333,13 +333,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 //Push it to db
                 db.child(firebaseAcctId).setValue(getTheNameAndSavedDates);
 
-                final View theViewBeingSaved = view;
                 //sends the current(updated) view to saveRadioButton function to save the states of the buttons
-                saveRadioButtons(theViewBeingSaved);
-                saveAnimation(theViewBeingSaved);
+                final View theViewBeingSaved = view;
 
                 //For saving progress animation check mark
-
+                saveRadioButtons(theViewBeingSaved);
+                saveAnimation(theViewBeingSaved);
             }
         });
 
