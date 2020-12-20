@@ -12,20 +12,20 @@
 
     <TableLayout
         android:id="@+id/whole"
-        android:layout_width="400dp"
+        android:layout_width="fill_parent"
         android:layout_height="480dp"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginVertical="17dp"
+        android:layout_marginVertical="10dp"
         android:layout_weight="1"
         android:background="@drawable/table_back"
         android:elevation="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TableLayout
             android:id="@+id/weekdays"
-            android:layout_width="400dp"
+            android:layout_width="fill_parent"
             android:layout_height="20dp"
             android:layout_marginVertical="5dp"
             android:layout_weight="1"
@@ -120,7 +120,7 @@
 
         <ScrollView
             android:id="@+id/scrollView2"
-            android:layout_width="400dp"
+            android:layout_width="fill_parent"
             android:layout_height="450dp"
             android:layout_weight="1"
             android:scrollbars="none"
@@ -131,10 +131,8 @@
 
             <TableLayout
                 android:id="@+id/mainTable"
-                android:layout_width="400dp"
+                android:layout_width="fill_parent"
                 android:layout_height="412dp"
-                android:layout_marginHorizontal="0dp"
-                android:layout_marginVertical="0dp"
                 android:contextClickable="false"
                 android:hapticFeedbackEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -1141,7 +1139,7 @@
                     <RadioButton
                         android:id="@+id/sun5pm"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/radiobutton_design"
                         android:button="@android:color/transparent"
@@ -1748,14 +1746,14 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
         android:backgroundTint="@color/whiteColor"
         android:hapticFeedbackEnabled="true"
+        android:transitionName="activity_trans"
         app:elevation="6dp"
         app:fabSize="mini"
-        android:transitionName="activity_trans"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.953"
+        app:layout_constraintHorizontal_bias="0.950"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/saveSchedule"
         app:srcCompat="@mipmap/friends"
@@ -1765,33 +1763,30 @@
         android:id="@+id/saveSchedule"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
         android:text="Save"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.947"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/whole"
         app:layout_constraintTop_toBottomOf="@+id/whole" />
 
     <Button
         android:id="@+id/compareFriends"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="20dp"
         android:text="Compare"
         app:layout_constraintEnd_toStartOf="@+id/saveSchedule"
-        app:layout_constraintHorizontal_bias="0.918"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/clear"
         app:layout_constraintTop_toBottomOf="@+id/whole" />
 
     <Button
         android:id="@+id/clear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
         android:text="Clear"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.947"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/saveSchedule" />
+        app:layout_constraintStart_toStartOf="@+id/whole"
+        app:layout_constraintTop_toBottomOf="@+id/whole"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
