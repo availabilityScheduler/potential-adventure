@@ -33,6 +33,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -140,29 +141,11 @@ public class Register extends AppCompatActivity {
                             });
 
                             Toast.makeText(Register.this, "User Created.", Toast.LENGTH_SHORT).show();
-                            userID = fAuth.getCurrentUser().getUid();
-//                            DocumentReference documentReference = fStore.collection("users").document(userID);
-//                            Map<String,Object> user = new HashMap<>();
+
                             thisMember.setaName(fullName);
                             thisMember.setID(email);
-//                            thisMember.setFirstName(personFirstName);
-//                            thisMember.setLastName(personLastName);
-//                            user.put("fName", fullName);
-//                            user.put("email", email);
-//                            user.put("phone",phone);
-                            db.child(userID).setValue(thisMember);
 
-//                            documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                @Override
-//                                public void onSuccess(Void aVoid) {
-//                                    Log.d(TAG, "onSuccess: user Profile is created for "+ userID);
-//                                }
-//                            }).addOnFailureListener(new OnFailureListener() {
-//                                @Override
-//                                public void onFailure(@NonNull Exception e) {
-//                                    Log.d(TAG, "onFailure: " + e.toString());
-//                                }
-//                            });
+                            db.child(userID).setValue(thisMember);
                             startActivity(new Intent(getApplicationContext(), Login.class));
 
                         }else {

@@ -52,6 +52,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -179,15 +181,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private FirebaseUser currentFirebaseUser;
     private Button clearButton;
 
+    private FirebaseAuth fAuth;
+
+
     @Nullable
     public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         finalView = loadRadioButtons(inflater, container);
-        if (Build.VERSION.SDK_INT < 16) {
-            getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        }
-
         onCreate(savedInstanceState, finalView);
 
         //so that they are set to gone, and it doesnt pop up again
@@ -201,6 +201,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private void onCreate(final Bundle savedInstanceState, final View view){
         super.onCreate(savedInstanceState);
 
+        //background gradient color
         ConstraintLayout constraintLayout = view.findViewById(R.id.coordinatorLayout2);
         AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
         animationDrawable.setEnterFadeDuration(2000);
@@ -215,7 +216,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }
         }
 
-
+        //friend dialog box opening up
         openFriendsDialog = view.findViewById(R.id.compareFriends);
         openFriendsDialog.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -300,7 +301,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }
         });
 
-
         fab2_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -334,11 +334,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 db = FirebaseDatabase.getInstance().getReference("Schedules");
 
                 //Member object now includes the name we just retrieved thru addsNameToScheduleDb function
-                //Then we save schdule into it as well
+                //Then we save schedule into it as well
                 Member getTheNameAndSavedDates = addsNameToScheduleDb();
                 getTheNameAndSavedDates.setUserSchedule(saveDay);
 
-                //Push it to db
                 db.child(firebaseAcctId).setValue(getTheNameAndSavedDates);
 
                 //sends the current(updated) view to saveRadioButton function to save the states of the buttons
@@ -549,7 +548,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             String personName = acct.getDisplayName().toLowerCase();
             //for member db object
             thisMember.setaName(personName);
-
         }
         return thisMember;
     }
