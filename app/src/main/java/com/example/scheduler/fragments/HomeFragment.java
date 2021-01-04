@@ -18,6 +18,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.AnimatedVectorDrawable;
+import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -192,12 +193,19 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         //so that they are set to gone, and it doesnt pop up again
         cross.setVisibility(View.GONE);
         done.setVisibility(View.GONE);
+
+
         return finalView;
     }
 
     private void onCreate(final Bundle savedInstanceState, final View view){
         super.onCreate(savedInstanceState);
 
+        ConstraintLayout constraintLayout = view.findViewById(R.id.coordinatorLayout2);
+        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(2000);
+        animationDrawable.setExitFadeDuration(4000);
+        animationDrawable.start();
 
         //for the million buttons
         for (int i = 0; i < buttonViewIds.length; i++) {
