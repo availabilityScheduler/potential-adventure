@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "524591291021-n6o3cse87be4u5rkfs8tm2lca04r108b.apps.googleusercontent.com",
+          "client_id": "524591291021-16b65mptvvilgbabtm8liijiojgnonn4.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.uschedule.scheduler",
-            "certificate_hash": "36799096a3f72e2587f9bbc9591e40aa235e69e4"
+            "certificate_hash": "121448bfa0364c2dd3ebde81ac3cc3e528c28fc9"
           }
         },
         {
