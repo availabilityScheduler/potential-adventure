@@ -15,59 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "914411942176-6froo3hp25ta91ha0qrpqgsb0s2kubrq.apps.googleusercontent.com",
+          "client_id": "914411942176-fb3ge54joa983d94bqvj7pr459n41pul.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.scheduler",
-            "certificate_hash": "a3314a977e5fae4905e42cbe3966bc38b7fabdb2"
-          }
-        },
-        {
-          "client_id": "914411942176-spanbv6k1t8k4j6e3bsb61i3i950hn5p.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.scheduler",
-            "certificate_hash": "bfc60500f63f96dc7f6c920064c26bb39a48b76e"
-          }
-        },
-        {
-          "client_id": "914411942176-fsbnt6kkopdk4hgnld772ej498l3hn03.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.scheduler",
-            "certificate_hash": "d59ecca70bafd7331a859f8f1d8e10b80de09c3f"
-          }
-        },
-        {
-          "client_id": "914411942176-31ndtpjvs9cc1ltt9jqq6rdnfgprmb2r.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.scheduler",
-            "certificate_hash": "80a563b1f96bea0c7a7e213d723aa03fe0e423a8"
-          }
-        },
-        {
-          "client_id": "914411942176-62j98pjhnr0c84oq746vmufnqg4kgtrn.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.scheduler",
-            "certificate_hash": "1d6c42f7cbe393a0d284a6f8d56be6b903519d75"
-          }
-        },
-        {
-          "client_id": "914411942176-vji1fnfsnqhjflbcajkdad1bdjlrivb5.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.scheduler",
-            "certificate_hash": "36799096a3f72e2587f9bbc9591e40aa235e69e4"
-          }
-        },
-        {
-          "client_id": "914411942176-9ougip6hjkc9iavper4gtmcf4dqtvj4r.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.scheduler",
-            "certificate_hash": "d612484fc447759937257729a8c2455b7ae8e061"
+            "certificate_hash": "121448bfa0364c2dd3ebde81ac3cc3e528c28fc9"
           }
         },
         {
