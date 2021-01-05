@@ -1,34 +1,21 @@
-package com.example.scheduler.social;
+package com.uschedule.scheduler.social;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
-import com.example.scheduler.R;
-import com.example.scheduler.finalUI.CompareSchedules;
-import com.google.android.gms.common.util.ArrayUtils;
+import com.uschedule.scheduler.R;
+import com.uschedule.scheduler.finalUI.CompareSchedules;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.Map;
 
 public class FriendDialogBox extends DialogFragment{
 

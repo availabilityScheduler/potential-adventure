@@ -1,4 +1,4 @@
-package com.example.scheduler.mainActivities;
+package com.uschedule.scheduler.mainActivities;
 
 import android.content.Intent;
 
@@ -9,10 +9,9 @@ import android.view.Menu;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
-import com.example.scheduler.R;
-import com.example.scheduler.fragments.AboutFragment;
-import com.example.scheduler.fragments.HomeFragment;
-import com.google.android.gms.ads.MobileAds;
+import com.uschedule.scheduler.R;
+import com.uschedule.scheduler.fragments.AboutFragment;
+import com.uschedule.scheduler.fragments.HomeFragment;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;

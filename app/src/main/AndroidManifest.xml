@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.scheduler">
+    package="com.uschedule.scheduler">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
@@ -17,11 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".finalUI.CompareSchedules" />
-        <activity android:name=".mainActivities.ThirdActivity">
+        <activity android:name="com.uschedule.scheduler.finalUI.CompareSchedules" />
+        <activity android:name="com.uschedule.scheduler.mainActivities.ThirdActivity">
         </activity>
         <activity
-            android:name=".mainActivities.MainActivity"
+            android:name="com.uschedule.scheduler.mainActivities.MainActivity"
             android:label=""
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -31,7 +31,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".social.searchBar" /> <!-- <meta-data -->
+        <activity android:name="com.uschedule.scheduler.social.searchBar" /> <!-- <meta-data -->
         <!-- android:name="com.google.android.gms.ads.APPLICATION_ID" -->
         <!-- android:value="ca-app-pub-5814252081898356~4325057546"/> -->
         <meta-data

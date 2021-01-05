@@ -1,4 +1,4 @@
-package com.example.scheduler.finalUI;
+package com.uschedule.scheduler.finalUI;
 
 
 import android.view.View;
@@ -12,14 +12,8 @@ import android.widget.ExpandableListView;
 import android.widget.Toast;
 
 
-import com.example.scheduler.R;
-import com.example.scheduler.mainActivities.ThirdActivity;
-import com.example.scheduler.social.searchBar;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.uschedule.scheduler.R;
+import com.uschedule.scheduler.mainActivities.ThirdActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,8 +24,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;

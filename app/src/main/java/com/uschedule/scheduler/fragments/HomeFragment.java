@@ -1,11 +1,9 @@
-package com.example.scheduler.fragments;
+package com.uschedule.scheduler.fragments;
 
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.view.ViewCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
-import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -14,14 +12,10 @@ import android.app.ActivityOptions;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.graphics.Rect;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -31,20 +25,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.scheduler.social.FriendDialogBox;
-import com.example.scheduler.mainActivities.Member;
-import com.example.scheduler.R;
-import com.example.scheduler.social.searchBar;
+import com.uschedule.scheduler.social.FriendDialogBox;
+import com.uschedule.scheduler.mainActivities.Member;
+import com.uschedule.scheduler.R;
+import com.uschedule.scheduler.social.searchBar;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -52,8 +42,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserInfo;
-import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -63,8 +51,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-
-import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
@@ -1037,7 +1023,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
         //loads it from the sharedpreference xml file which is saved locally.
-        //If you'd like to see where it is, you can go under device file explorer on the bottom right of the android pane/data/data/com.example.scheduler/sharedpreferences
+        //If you'd like to see where it is, you can go under device file explorer on the bottom right of the android pane/data/data/com.uschedule.scheduler/sharedpreferences
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
         String time;
 

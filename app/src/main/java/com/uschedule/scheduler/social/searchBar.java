@@ -1,43 +1,28 @@
-package com.example.scheduler.social;
+package com.uschedule.scheduler.social;
 
-import android.animation.Animator;
 import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.graphics.drawable.AnimatedVectorDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Pair;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
-import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import android.view.View;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.example.scheduler.mainActivities.Member;
-import com.example.scheduler.R;
-import com.example.scheduler.mainActivities.ThirdActivity;
-import com.example.scheduler.fragments.HomeFragment;
+import com.uschedule.scheduler.mainActivities.Member;
+import com.uschedule.scheduler.R;
+import com.uschedule.scheduler.mainActivities.ThirdActivity;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -53,13 +38,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 
 
 import java.util.HashMap;
 import java.util.Map;
-
-import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 
 
 public class searchBar extends AppCompatActivity {

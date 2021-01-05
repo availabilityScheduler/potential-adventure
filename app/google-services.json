@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:914411942176:android:3bdf4e279c154ff6cea745",
         "android_client_info": {
-          "package_name": "com.example.scheduler"
+          "package_name": "com.uschedule.scheduler"
         }
       },
       "oauth_client": [

@@ -1,4 +1,4 @@
-package com.example.scheduler.finalUI;
+package com.uschedule.scheduler.finalUI;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
-import com.example.scheduler.R;
+import com.uschedule.scheduler.R;
 
 import java.util.HashMap;
 import java.util.List;
