@@ -1,48 +1,47 @@
 {
   "project_info": {
-    "project_number": "914411942176",
-    "firebase_url": "https://mahirscheduler.firebaseio.com",
-    "project_id": "mahirscheduler",
-    "storage_bucket": "mahirscheduler.appspot.com"
+    "project_number": "524591291021",
+    "firebase_url": "https://uscheduleog-default-rtdb.firebaseio.com",
+    "project_id": "uscheduleog",
+    "storage_bucket": "uscheduleog.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:914411942176:android:3bdf4e279c154ff6cea745",
+        "mobilesdk_app_id": "1:524591291021:android:a53196da7f5c1eb2f960c4",
         "android_client_info": {
           "package_name": "com.uschedule.scheduler"
         }
       },
       "oauth_client": [
         {
-          "client_id": "914411942176-fb3ge54joa983d94bqvj7pr459n41pul.apps.googleusercontent.com",
+          "client_id": "524591291021-n6o3cse87be4u5rkfs8tm2lca04r108b.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.scheduler",
-            "certificate_hash": "121448bfa0364c2dd3ebde81ac3cc3e528c28fc9"
+            "package_name": "com.uschedule.scheduler",
+            "certificate_hash": "36799096a3f72e2587f9bbc9591e40aa235e69e4"
           }
         },
         {
-          "client_id": "914411942176-kmqrjom7psrtbbh2dkk6ehrbj8rbe6ah.apps.googleusercontent.com",
+          "client_id": "524591291021-au79o96e1hdjuuafc21suej4d5lh5k40.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBwQ_fEFgKvfQycDThJnWClA7pCyH97ExQ"
+          "current_key": "AIzaSyDymEhsPu-OEp7Mc5nt8knRkT4cr97O8GE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "914411942176-kmqrjom7psrtbbh2dkk6ehrbj8rbe6ah.apps.googleusercontent.com",
+              "client_id": "524591291021-au79o96e1hdjuuafc21suej4d5lh5k40.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
         }
-      },
-      "admob_app_id": "ca-app-pub-5814252081898356~4325057546"
+      }
     }
   ],
   "configuration_version": "1"
