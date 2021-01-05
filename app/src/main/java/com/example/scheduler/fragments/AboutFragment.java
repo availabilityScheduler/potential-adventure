@@ -27,22 +27,22 @@ public class AboutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_about, container, false);
 
-        AppCompatDelegate.setDefaultNightMode(
-                AppCompatDelegate.MODE_NIGHT_YES);
-
-        themeButton = v.findViewById(R.id.ModeSwitch);
-        themeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-            }
-        });
-
-        Fragment duedateFrag = new Fragment();
-        FragmentTransaction ft  = getFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment_container, duedateFrag);
-        ft.addToBackStack(null);
-        ft.commit();
+//        AppCompatDelegate.setDefaultNightMode(
+//                AppCompatDelegate.MODE_NIGHT_YES);
+//
+//        themeButton = v.findViewById(R.id.ModeSwitch);
+//        themeButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+//            }
+//        });
+//
+//        Fragment duedateFrag = new Fragment();
+//        FragmentTransaction ft  = getFragmentManager().beginTransaction();
+//        ft.replace(R.id.fragment_container, duedateFrag);
+//        ft.addToBackStack(null);
+//        ft.commit();
         return inflater.inflate(R.layout.fragment_about, container, false);
     }
 }
