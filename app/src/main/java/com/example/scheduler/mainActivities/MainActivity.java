@@ -41,17 +41,11 @@ public class MainActivity extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
 
 
-//changes
-
     private Animation firstAnim;
     private Animation secondAnim;
 
     private TextView firstHalf;
     private TextView secondHalf;
-
-    private TextView createAccount;
-    private TextView loginBtnHomeScreen;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

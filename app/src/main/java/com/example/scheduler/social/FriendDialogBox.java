@@ -36,7 +36,7 @@ public class FriendDialogBox extends DialogFragment{
     private ArrayList<Integer> selectedFriends;
     private ArrayList<Integer> deleteFriends;
     private ArrayList<String> friendsToCompare;
-    AlertDialog alertDialog;
+    private AlertDialog alertDialog;
     private String firebaseAcctId;
     private FirebaseUser currentFirebaseUser;
 

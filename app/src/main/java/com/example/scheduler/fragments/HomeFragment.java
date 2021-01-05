@@ -72,9 +72,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private Member thisMember;
 
     //saved animation
-    AnimatedVectorDrawable avd2;
-    ImageView done;
-    ImageView greenCircle;
+    private AnimatedVectorDrawable avd2;
+    private ImageView done;
+    private ImageView greenCircle;
 
     //clear animation
     private ImageView cross;

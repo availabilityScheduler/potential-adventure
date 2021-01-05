@@ -112,10 +112,8 @@ public class ThirdActivity extends AppCompatActivity implements NavigationView.O
         try {
             db.keepSynced(true);
         } catch (DatabaseException e) {
-            // Do anything
         }
 
-        //Fill in navigation panel information and save to database
         if (acct != null) {
             String personName = acct.getDisplayName().toLowerCase();
             String personFirstName = acct.getGivenName().toLowerCase();
@@ -123,24 +121,18 @@ public class ThirdActivity extends AppCompatActivity implements NavigationView.O
             String personEmail = acct.getEmail().toLowerCase();
             Uri personPhoto = acct.getPhotoUrl();
 
-            //for nav bar
             mName.setText(personName);
             mEmail.setText(personEmail);
-            //mSchedule
             Glide.with(this).load(personPhoto).into(mPhoto);
 
-            //Firebase auth should be used instead of google for userID, as people who register through normal email wont show up otherwise
             FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
             String userAuthId = currentFirebaseUser.getUid();
-            //save button to save schedule into db
 
-            //for member db object
             thisMember.setaName(personName);
             thisMember.setID(personEmail);
             thisMember.setFirstName(personFirstName);
             thisMember.setLastName(personLastName);
 
-            //saves user under their id, no duplicates
             db.child(userAuthId).setValue(thisMember);
         }
 
@@ -149,15 +141,14 @@ public class ThirdActivity extends AppCompatActivity implements NavigationView.O
                     new HomeFragment()).commit();
             mNavigationView.setCheckedItem(R.id.nav_home);
         }
+
         //Ends onCreate()
-        MobileAds.initialize(this);
 
     }
 
     //Inflate the menu; this adds items to the action bar if it is present.
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.top_right_drawer, menu);
         return true;
     }
@@ -207,7 +198,6 @@ public class ThirdActivity extends AppCompatActivity implements NavigationView.O
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new AboutFragment()).commit();
                 break;
-
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;

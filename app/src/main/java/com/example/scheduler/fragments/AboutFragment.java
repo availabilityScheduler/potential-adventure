@@ -20,25 +20,17 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 
 public class AboutFragment extends Fragment {
-
-    private AdView adview1;
+    private Button themeButton;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_home, container, false);
-        return inflater.inflate(R.layout.fragment_about, container, false);
-    }
-
-    private Button themeButton;
-
-    private void onCreate(final Bundle savedInstanceState, final View view){
-        super.onCreate(savedInstanceState);
+        View v = inflater.inflate(R.layout.fragment_about, container, false);
 
         AppCompatDelegate.setDefaultNightMode(
                 AppCompatDelegate.MODE_NIGHT_YES);
 
-        themeButton = view.findViewById(R.id.ModeSwitch);
+        themeButton = v.findViewById(R.id.ModeSwitch);
         themeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,23 +43,7 @@ public class AboutFragment extends Fragment {
         ft.replace(R.id.fragment_container, duedateFrag);
         ft.addToBackStack(null);
         ft.commit();
-
+        return inflater.inflate(R.layout.fragment_about, container, false);
     }
-
-
-    /*
-    private void onCreate(final Bundle savedInstanceState, final View view){
-        super.onCreate(savedInstanceState);
-        themeButton = view.findViewById(R.id.ModeSwitch);
-        themeButton.setOnClickListener(new View.OnClickListener() {
-            val isNightTheme = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-    when (isNightTheme) {
-                Configuration.UI_MODE_NIGHT_YES ->
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-    Configuration.UI_MODE_NIGHT_NO ->
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-    }
-        }
-    }
-*/
 }
+

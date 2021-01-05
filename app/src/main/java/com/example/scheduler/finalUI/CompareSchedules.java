@@ -52,24 +52,24 @@ public class CompareSchedules extends AppCompatActivity {
 
     private String[]  listGroup =  new String[7];
     private HashMap<String, List<String>> listItems;
-    HashMap<String, List<String>> finalListItems = new HashMap<>();
+    private HashMap<String, List<String>> finalListItems = new HashMap<>();
 
-    ArrayList<String> friendList;
+    private ArrayList<String> friendList;
 
-    MainAdapter adapter;
+    private MainAdapter adapter;
     private DatabaseReference mUserFriendDatabase;
     private String firebaseAcctId;
     private FirebaseUser currentFirebaseUser;
 
-    ArrayList<String> listOfKeys;
+    private ArrayList<String> listOfKeys;
 
-    List<String> monday = new ArrayList<>();
-    List<String> tuesday = new ArrayList<>();
-    List<String> wednesday = new ArrayList<>();
-    List<String> thursday = new ArrayList<>();
-    List<String> friday = new ArrayList<>();
-    List<String> saturday = new ArrayList<>();
-    List<String> sunday = new ArrayList<>();
+    private List<String> monday = new ArrayList<>();
+    private List<String> tuesday = new ArrayList<>();
+    private List<String> wednesday = new ArrayList<>();
+    private List<String> thursday = new ArrayList<>();
+    private List<String> friday = new ArrayList<>();
+    private List<String> saturday = new ArrayList<>();
+    private List<String> sunday = new ArrayList<>();
 
 
     private List<String> finalTimeString;
