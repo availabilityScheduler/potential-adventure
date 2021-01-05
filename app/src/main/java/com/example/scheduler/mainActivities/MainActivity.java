@@ -14,8 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scheduler.R;
-import com.example.scheduler.mainAuth.Login;
-import com.example.scheduler.mainAuth.Register;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -70,28 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
         firstHalf.setAnimation(firstAnim);
         secondHalf.setAnimation(secondAnim);
-
-        //registering redirects to register class
-        createAccount = (TextView) findViewById(R.id.accountCreation);
-        createAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Register.class);
-                startActivity(intent);
-            }
-        });
-
-        //Logging in with email screen
-        loginBtnHomeScreen = (TextView) findViewById(R.id.loginBtnHomeScreen);
-        loginBtnHomeScreen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Login.class);
-                startActivity(intent);
-            }
-        });
-
-
+        
 
         signInButton = findViewById(R.id.sign_in_button);
         // Configure Google Sign In

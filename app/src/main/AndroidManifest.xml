@@ -18,7 +18,6 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".finalUI.CompareSchedules" />
-        <activity android:name=".social.UserProfile" />
         <activity android:name=".mainAuth.Login" />
         <activity android:name=".mainAuth.Register" />
         <activity android:name=".mainActivities.ThirdActivity">

@@ -6,13 +6,6 @@
             android:id="@+id/nav_top_right_home"
             android:title="Home" />
 
-        <item
-            android:id="@+id/create_event"
-            android:title="Create Event" />
-
-        <item
-            android:id="@+id/join_event"
-            android:title="Join Event" />
     </group>
 
 </menu>

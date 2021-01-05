@@ -205,16 +205,6 @@ public class searchBar extends AppCompatActivity {
 
                 }
             });
-            Button view_profile = (Button) mView.findViewById(R.id.view_profile);
-            view_profile.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(searchBar.this, UserProfile.class);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.visible_to_top, R.anim.bottom_to_visible);
-                }
-
-            });
         }
     }
 

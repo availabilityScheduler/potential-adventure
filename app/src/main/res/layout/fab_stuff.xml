@@ -5,84 +5,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <TextView
-        android:id="@+id/textview_remove"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="6dp"
-        android:layout_marginBottom="182dp"
-        android:layout_toStartOf="@+id/fab2_delete"
-        android:background="@color/colorPrimary"
-        android:padding="8dp"
-        android:text="Remove"
-        android:textColor="#ffffff"
-        android:visibility="invisible" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab2_delete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="176dp"
-        android:layout_marginEnd="24dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:clickable="true"
-        android:elevation="16dp"
-        android:focusable="true"
-        android:visibility="invisible"
-        app:backgroundTint="#ffffff"
-        app:pressedTranslationZ="12dp"
-        android:hapticFeedbackEnabled="true"
-        app:elevation="6dp"
-        app:fabSize="mini"
-        app:maxImageSize="33dp"
-        app:srcCompat="@drawable/remove_user"
-        app:tint="@null"
-
-            />
-
-
-    <TextView
-        android:id="@+id/textview_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="6dp"
-        android:layout_marginBottom="111dp"
-        android:layout_toStartOf="@+id/fab1_add"
-        android:background="@color/colorPrimary"
-        android:padding="8dp"
-        android:text="Add"
-        android:textColor="#ffffff"
-        android:visibility="invisible" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab1_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="106dp"
-        android:layout_marginEnd="24dp"
-        android:background="?android:attr/selectableItemBackground"
-        app:backgroundTint="#ffffff"
-        android:clickable="true"
-        android:transitionName="activity_trans"
-        android:focusable="true"
-        android:visibility="invisible"
-        app:pressedTranslationZ="12dp"
-        android:hapticFeedbackEnabled="true"
-        app:elevation="6dp"
-        app:fabSize="mini"
-        app:maxImageSize="33dp"
-        app:srcCompat="@drawable/add_user"
-        app:tint="@null"
-        />
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
+        android:transitionName="activity_trans"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
