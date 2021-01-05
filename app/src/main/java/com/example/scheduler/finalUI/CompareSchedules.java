@@ -30,9 +30,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -184,12 +187,12 @@ public class CompareSchedules extends AppCompatActivity {
         }
     }
 
-
     private void getsUserSchedules(final ArrayList<String> friendList) {
         //System.out.println("friend " + friendList);
 
         for(int i=0; i<friendList.size();i++) {
             mUserFriendDatabase = FirebaseDatabase.getInstance().getReference("Schedules");
+            final int finalI = i;
             mUserFriendDatabase.orderByChild("aName").equalTo(friendList.get(i)).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -197,7 +200,7 @@ public class CompareSchedules extends AppCompatActivity {
                     Map<String, Object> getScheduleMap = (Map<String, Object>) dataSnapshot.getValue();
                     //System.out.println("getScheduleMap " +getScheduleMap);
                     Iterator it = getScheduleMap.entrySet().iterator();
-                    for (int i = 0; it.hasNext(); i++) {
+                    for (int j = 0; it.hasNext(); j++) {
                         Map.Entry pair = (Map.Entry) it.next();
                         //Retrieves User Schedule and the aName for that particular user
                         final Map<String, Object> getFriendsMap = (Map<String, Object>) getScheduleMap.get(pair.getKey());
@@ -212,6 +215,10 @@ public class CompareSchedules extends AppCompatActivity {
 
                                 }
                             });
+                        }
+                        else{
+                            Toast.makeText(CompareSchedules.this, friendList.get(finalI)+" has not set up his schedule", Toast.LENGTH_SHORT).show();
+
                         }
                     }
                 }
@@ -400,12 +407,54 @@ public class CompareSchedules extends AppCompatActivity {
                     }
                 }
             }
-
-
             //list needs to go into adapter as an arraylist of string, so conversion here
             List<String> intoTheAdapter = new ArrayList<String>(Arrays.asList(finalDaysArray));
-            System.out.println("intoadapter " +intoTheAdapter);
-            System.out.println("finallistitems " +finalListItems);
+
+
+            //THE WHOLE SORTING LOGIC-->VERY INEFFICIENT LOL
+            for(List<String> values: finalListItems.values()){
+                Comparator<String> smth = new Comparator<String>() {
+                    public int compare(String o1, String o2) {
+                        if (o1.length() != o2.length()) {
+                            return o1.length() - o2.length();
+                        }
+                        return o1.compareTo(o2);
+                    }
+                };
+
+                Collections.sort(values, smth);
+
+                Comparator<String> cmp = new Comparator<String>() {
+                    public int compare(String o1, String o2) {
+                        int theReturn = 0;
+                        if (o1.length() < 4 && o2.length() > 3) {
+                            int diff = (o1.substring(1, 3)).compareTo(o2.substring(2, 4));
+                            theReturn = (diff == 2)
+                                    ? (Integer.valueOf(o2.substring(4)).compareTo(Integer.valueOf(o1.substring(3))))
+                                    : diff;
+
+                        } else if (o1.length() > 3 && o2.length() < 4) {
+                            int diff = (o1.substring(2, 4)).compareTo(o2.substring(1, 3));
+                            theReturn = (diff == 2)
+                                    ? (Integer.valueOf(o2.substring(3)).compareTo(Integer.valueOf(o1.substring(4))))
+                                    : diff;
+                        } else if (o1.length() == 4 && o2.length() == 4) {
+                            int diff = (o1.substring(2, 4)).compareTo(o2.substring(2, 4));
+                            theReturn = (diff == 2)
+                                    ? (Integer.valueOf(o2.substring(4)).compareTo(Integer.valueOf(o1.substring(4))))
+                                    : diff;
+                        } else if (o1.length() == 3 && o2.length() == 3) {
+                            int diff = (o1.substring(1, 3)).compareTo(o2.substring(1, 3));
+                            theReturn = (diff == 1)
+                                    ? (Integer.valueOf(o2.substring(3)).compareTo(Integer.valueOf(o1.substring(3))))
+                                    : diff;
+                        }
+                        return theReturn;
+                    }
+                };
+
+                Collections.sort(values, cmp);
+            }
 
             adapter = new MainAdapter(this, intoTheAdapter, finalListItems);
             expandableListView.setAdapter(adapter);
@@ -416,6 +465,53 @@ public class CompareSchedules extends AppCompatActivity {
             //removing the null values that were created
             intoTheAdapter.removeAll(Collections.singleton(null));
 
+
+            //THE WHOLE SORTING LOGIC-->VERY INEFFICIENT LOL, NEEDS TO BE REFACTORED
+            System.out.println("before ordering "  + listItems);
+            for(List<String> values: listItems.values()){
+                Comparator<String> smth = new Comparator<String>() {
+                    public int compare(String o1, String o2) {
+                        if (o1.length() != o2.length()) {
+                            return o1.length() - o2.length();
+                        }
+                        return o1.compareTo(o2);
+                    }
+                };
+
+                Collections.sort(values, smth);
+
+                Comparator<String> cmp = new Comparator<String>() {
+                    public int compare(String o1, String o2) {
+                        int theReturn = 0;
+                        if (o1.length() < 4 && o2.length() > 3) {
+                            int diff = (o1.substring(1, 3)).compareTo(o2.substring(2, 4));
+                            theReturn = (diff == 2)
+                                    ? (Integer.valueOf(o2.substring(4)).compareTo(Integer.valueOf(o1.substring(3))))
+                                    : diff;
+
+                        } else if (o1.length() > 3 && o2.length() < 4) {
+                            int diff = (o1.substring(2, 4)).compareTo(o2.substring(1, 3));
+                            theReturn = (diff == 2)
+                                    ? (Integer.valueOf(o2.substring(3)).compareTo(Integer.valueOf(o1.substring(4))))
+                                    : diff;
+                        } else if (o1.length() == 4 && o2.length() == 4) {
+                            int diff = (o1.substring(2, 4)).compareTo(o2.substring(2, 4));
+                            theReturn = (diff == 2)
+                                    ? (Integer.valueOf(o2.substring(4)).compareTo(Integer.valueOf(o1.substring(4))))
+                                    : diff;
+                        } else if (o1.length() == 3 && o2.length() == 3) {
+                            int diff = (o1.substring(1, 3)).compareTo(o2.substring(1, 3));
+                            theReturn = (diff == 1)
+                                    ? (Integer.valueOf(o2.substring(3)).compareTo(Integer.valueOf(o1.substring(3))))
+                                    : diff;
+                        }
+                        return theReturn;
+                    }
+                };
+
+                Collections.sort(values, cmp);
+            }
+            System.out.println("after ordering "  + listItems);
             adapter = new MainAdapter(this, intoTheAdapter, this.listItems);
             expandableListView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
@@ -472,8 +568,6 @@ public class CompareSchedules extends AppCompatActivity {
         ArrayList<String> theFriends = null;
         if(extras != null) {
             theFriends = extras.getStringArrayList("friendsPassedToCompareSchedules");
-            //just to see/and test it out
-            Toast.makeText(CompareSchedules.this, theFriends.get(0), Toast.LENGTH_SHORT).show();
         }
         return theFriends;
     }

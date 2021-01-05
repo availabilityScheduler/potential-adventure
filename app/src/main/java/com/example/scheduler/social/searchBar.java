@@ -1,19 +1,26 @@
 package com.example.scheduler.social;
 
+import android.animation.Animator;
 import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.AnimatedVectorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
+import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -46,10 +53,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 
 
 import java.util.HashMap;
 import java.util.Map;
+
+import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 
 
 public class searchBar extends AppCompatActivity {
@@ -62,11 +72,13 @@ public class searchBar extends AppCompatActivity {
     private DatabaseReference mUserDatabase;
 
 
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_bar);
+
 
         //Retrieving Id's
         mSearchField = (EditText) findViewById(R.id.search_field);
@@ -80,14 +92,14 @@ public class searchBar extends AppCompatActivity {
         mResultList.setLayoutManager(new LinearLayoutManager(getBaseContext()));
 
 
-        //Working but bug--> gotta pull the keyboard down to see result(at least in my oneplus7)
         mSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 String searchText = mSearchField.getText().toString();
-                firebaseUserSearch(searchText);
-
+                if(searchText.isEmpty())
+                    Toast.makeText(searchBar.this, "Type in a friend to search", Toast.LENGTH_SHORT).show();
+                else
+                    firebaseUserSearch(searchText);
             }
         });
 
@@ -128,6 +140,7 @@ public class searchBar extends AppCompatActivity {
 
 
     }
+
 
     //Main logic to search users
     private void firebaseUserSearch(final String searchText) {
@@ -184,9 +197,11 @@ public class searchBar extends AppCompatActivity {
                     final TextView user_name = (TextView) findViewById(R.id.name_text);
                     String username = user_name.getText().toString();
                     writeFriendData(username);
-                    Intent intent = new Intent(searchBar.this, ThirdActivity.class);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.visible_to_top, R.anim.bottom_to_visible);
+                    Intent intent = getIntent();
+                    onReAdd(intent);
+//                    Intent intent = new Intent(searchBar.this, ThirdActivity.class);
+//                    startActivity(intent);
+//                    overridePendingTransition(R.anim.visible_to_top, R.anim.bottom_to_visible);
 
                 }
             });
@@ -243,6 +258,10 @@ public class searchBar extends AppCompatActivity {
         Intent intent = new Intent(searchBar.this, ThirdActivity.class);
         startActivity(intent,
                 ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+    }
 
+    public void onReAdd(Intent intent) {
+        startActivity(intent,
+                ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
 }

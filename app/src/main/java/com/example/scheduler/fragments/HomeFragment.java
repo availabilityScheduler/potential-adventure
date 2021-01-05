@@ -1,23 +1,46 @@
 package com.example.scheduler.fragments;
 
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.view.ViewCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
+
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.Rect;
+import android.graphics.drawable.AnimatedVectorDrawable;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.scheduler.social.FriendDialogBox;
 import com.example.scheduler.mainActivities.Member;
 import com.example.scheduler.R;
@@ -29,6 +52,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,10 +64,26 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import static com.firebase.ui.auth.AuthUI.getApplicationContext;
+
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
     //Instance Member
     private Member thisMember;
+
+    //saved animation
+    AnimatedVectorDrawable avd2;
+    ImageView done;
+    ImageView greenCircle;
+
+    //clear animation
+    private ImageView cross;
+
+    private FloatingActionButton fab_main, fab1_add, fab2_delete;
+    private Animation fab_open, fab_close, fab_clock, fab_anticlock;
+    TextView textview_add, textview_remove;
+
+    Boolean isOpen = false;
 
     //DB instance normal
     private DatabaseReference db;
@@ -64,7 +105,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     //Int all the radio buttons
     private int[][] buttonViewIds = new int[][]{
-            {R.id.mon6am, R.id.tue6am, R.id.wed6am, R.id.thr6am, R.id.fri6am, R.id.sat6am, R.id.sun6am},
+                {R.id.mon6am, R.id.tue6am, R.id.wed6am, R.id.thr6am, R.id.fri6am, R.id.sat6am, R.id.sun6am},
             {R.id.mon7am, R.id.tue7am, R.id.wed7am, R.id.thr7am, R.id.fri7am, R.id.sat7am, R.id.sun7am},
             {R.id.mon8am, R.id.tue8am, R.id.wed8am, R.id.thr8am, R.id.fri8am, R.id.sat8am, R.id.sun8am},
             {R.id.mon9am, R.id.tue9am, R.id.wed9am, R.id.thr9am, R.id.fri9am, R.id.sat9am, R.id.sun9am},
@@ -140,43 +181,42 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private FirebaseUser currentFirebaseUser;
     private Button clearButton;
 
+    private FirebaseAuth fAuth;
+
+
     @Nullable
     public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         finalView = loadRadioButtons(inflater, container);
-
         onCreate(savedInstanceState, finalView);
+
+        //so that they are set to gone, and it doesnt pop up again
+        cross.setVisibility(View.GONE);
+        done.setVisibility(View.GONE);
+
+
         return finalView;
     }
 
     private void onCreate(final Bundle savedInstanceState, final View view){
         super.onCreate(savedInstanceState);
 
-
-        //for radio button color
-        ColorStateList colorStateList = new ColorStateList(
-                new int[][]{
-                        new int[]{-android.R.attr.state_enabled}, //disabled
-                        new int[]{android.R.attr.state_enabled} //enabled
-                },
-                new int[]{
-                        Color.BLACK, //disabled
-                        Color.rgb(179, 55, 0)
-                }
-        );
-
+        //background gradient color
+        ConstraintLayout constraintLayout = view.findViewById(R.id.coordinatorLayout2);
+        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(2000);
+        animationDrawable.setExitFadeDuration(4000);
+        animationDrawable.start();
 
         //for the million buttons
         for (int i = 0; i < buttonViewIds.length; i++) {
             for (int j = 0; j < buttonViewIds[0].length; j++) {
                 buttonArray[i][j] = finalView.findViewById(buttonViewIds[i][j]);
                 buttonArray[i][j].setOnClickListener(this);
-                buttonArray[i][j].setButtonTintList(colorStateList);
-
             }
         }
 
-
+        //friend dialog box opening up
         openFriendsDialog = view.findViewById(R.id.compareFriends);
         openFriendsDialog.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -184,27 +224,34 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 //Gets current firebase authID
                 currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
                 firebaseAcctId = currentFirebaseUser.getUid();
-                //Gets the path to friend list
+                //Gets the path to friend lists
                 mUserFriendDatabase = FirebaseDatabase.getInstance().getReference("Friends").child(firebaseAcctId);
                 mUserFriendDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        friendCount = (int) dataSnapshot.getChildrenCount();
-                        Map<String, Object> getFriendMaps = (Map<String, Object>) dataSnapshot.getValue();
-                        //Iterates through the values of our hashmap
-                        Iterator it = getFriendMaps.entrySet().iterator();
-                        friendList = new String[friendCount];
-                        for (int i = 0; it.hasNext(); i++) {
-                            Map.Entry pair = (Map.Entry) it.next();
-                            String eachFriend = pair.getKey().toString();
-                            friendList[i] = eachFriend;
+                        //if friends exist, then do this(might not be efficient)
+                        if(dataSnapshot.exists()){
+                            friendCount = (int) dataSnapshot.getChildrenCount();
+                            Map<String, Object> getFriendMaps = (Map<String, Object>) dataSnapshot.getValue();
+                            //Iterates through the values of our hashmap
+                            Iterator it = getFriendMaps.entrySet().iterator();
+                            friendList = new String[friendCount];
+                            for (int i = 0; it.hasNext(); i++) {
+                                Map.Entry pair = (Map.Entry) it.next();
+                                String eachFriend = pair.getKey().toString();
+                                friendList[i] = eachFriend;
+                            }
+                            DialogFragment newFragment = new FriendDialogBox();
+                            Bundle bundle = new Bundle();
+                            bundle.putStringArray("sendFriendList", friendList);
+                            newFragment.setArguments(bundle);
+                            newFragment.show(getActivity().getSupportFragmentManager(), "friendDialogBox");
+                            it.remove();
                         }
-                        DialogFragment newFragment = new FriendDialogBox();
-                        Bundle bundle = new Bundle();
-                        bundle.putStringArray("sendFriendList", friendList);
-                        newFragment.setArguments(bundle);
-                        newFragment.show(getActivity().getSupportFragmentManager(), "friendDialogBox");
-                        it.remove();
+                        else{
+                            Toast.makeText(getContext(), "Add a friend to compare!", Toast.LENGTH_SHORT).show();
+                        }
+
                     }
 
                     @Override
@@ -216,17 +263,57 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         });
 
 
-        //Floating action button to show friend search
-        final FloatingActionButton fab = view.findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        //The whole fab animation and add stuff
+        fab_main = view.findViewById(R.id.fab);
+        fab1_add = view.findViewById(R.id.fab1_add);
+        fab2_delete = view.findViewById(R.id.fab2_delete);
+        fab_close = AnimationUtils.loadAnimation(getContext(), R.anim.fab_close);
+        fab_open = AnimationUtils.loadAnimation(getContext(), R.anim.fab_open);
+        fab_clock = AnimationUtils.loadAnimation(getContext(), R.anim.fab_rotate_clock);
+        fab_anticlock = AnimationUtils.loadAnimation(getContext(), R.anim.fab_rotate_anticlock);
+
+        textview_add = (TextView) view.findViewById(R.id.textview_add);
+        textview_remove = (TextView)view.findViewById(R.id.textview_remove);
+
+        fab_main.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
+                if (isOpen) {
+                    textview_add.setVisibility(View.INVISIBLE);
+                    textview_remove.setVisibility(View.INVISIBLE);
+                    fab2_delete.startAnimation(fab_close);
+                    fab1_add.startAnimation(fab_close);
+                    fab_main.startAnimation(fab_anticlock);
+                    fab2_delete.setClickable(false);
+                    fab1_add.setClickable(false);
+                    isOpen = false;
+                } else {
+                    textview_add.setVisibility(View.VISIBLE);
+                    textview_remove.setVisibility(View.VISIBLE);
+                    fab2_delete.startAnimation(fab_open);
+                    fab1_add.startAnimation(fab_open);
+                    fab_main.startAnimation(fab_clock);
+                    fab2_delete.setClickable(true);
+                    fab1_add.setClickable(true);
+                    isOpen = true;
+                }
+
+            }
+        });
+
+        fab2_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "Delete Friends", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        fab1_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 Intent prof_intent = new Intent(getContext(), searchBar.class);
-
                 Pair[] pairs = new Pair[1];
-                pairs[0] = new Pair<View,String>(fab,"activity_trans");
-
-
+                pairs[0] = new Pair<View,String>(fab1_add,"activity_trans");
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(getActivity(), pairs);
                 startActivity(prof_intent,options.toBundle());
 
@@ -234,6 +321,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         });
 
 
+        //for the save button animations, tickmark and background circle
+        done = view.findViewById(R.id.done);
+        greenCircle = view.findViewById(R.id.greencircle);
         //Save Button
         saveButton = view.findViewById(R.id.saveSchedule);
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -244,38 +334,63 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 db = FirebaseDatabase.getInstance().getReference("Schedules");
 
                 //Member object now includes the name we just retrieved thru addsNameToScheduleDb function
-                //Then we save schdule into it as well
+                //Then we save schedule into it as well
                 Member getTheNameAndSavedDates = addsNameToScheduleDb();
                 getTheNameAndSavedDates.setUserSchedule(saveDay);
 
-                //Push it to db
                 db.child(firebaseAcctId).setValue(getTheNameAndSavedDates);
 
-                View theViewBeingSaved = view;
-                //sends current view to saveRadioButton function to save the states of the buttons
-                saveRadioButtons(theViewBeingSaved);
+                //sends the current(updated) view to saveRadioButton function to save the states of the buttons
+                final View theViewBeingSaved = view;
 
+                //For saving progress animation check mark
+                saveRadioButtons(theViewBeingSaved);
+                saveAnimation(theViewBeingSaved);
             }
         });
 
 
-        clearSchedule(view);
-
-        //ENDS OnCreate()
-    }
-
-
-
-    private void clearSchedule(View view){
-        deleteSchedule = FirebaseDatabase.getInstance().getReference().child("Schedules");
-        currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
+        //for the clear button animation, cross image
+        cross = view.findViewById(R.id.cross);
         //Clears Button
         clearButton = view.findViewById(R.id.clear);
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+                deleteSchedule = FirebaseDatabase.getInstance().getReference().child("Schedules");
+                currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
                 //Clears from data storage
+
+                final View smthView =  view;
+                showWarningDialog(smthView);
+            }
+        });
+
+        //ENDS OnCreate()
+    }
+
+    private void showWarningDialog(View v){
+        final View original = v;
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.clearAlertDialog);
+        final View view = LayoutInflater.from(getActivity()).inflate(R.layout.warning_dialog, (ConstraintLayout)v.findViewById(R.id.layoutDialogContainer));
+        builder.setView(view);
+
+        TextView textTitle = view.findViewById(R.id.textTitle);
+        textTitle.setText(getResources().getString(R.string.warning_title));
+
+        Button buttonYes = view.findViewById(R.id.buttonYes);
+        buttonYes.setText(getResources().getString(R.string.confirm));
+
+        Button buttonNo = view.findViewById(R.id.buttonNo);
+        buttonNo.setText(getResources().getString(R.string.deny));
+
+        ImageView imageWarning = view.findViewById(R.id.imageIcon);
+        imageWarning.setImageResource(R.drawable.ic_warning);
+        final AlertDialog alertDialog = builder.create();
+
+        buttonYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.clear().apply();
@@ -285,7 +400,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         //buttonArray[i][j] = finalView.findViewById(buttonViewIds[i][j]);
                         buttonArray[i][j].setChecked(false);
                         buttonArray[i][j].setSelected(false);
-
                     }
                 }
                 //clears database
@@ -301,8 +415,126 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 fri.clear();
                 sat.clear();
                 sun.clear();
+                Toast.makeText(getActivity(),"Schedule cleared :(", Toast.LENGTH_SHORT).show();
+                alertDialog.dismiss();
+                saveAnimation(original);
+
             }
         });
+
+        buttonNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                noToClearAnimation(original);
+                alertDialog.dismiss();
+
+            }
+        });
+        if(alertDialog.getWindow() != null){
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        }
+        alertDialog.show();
+
+    }
+    private void saveAnimation(final View theViewBeingSaved){
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                Drawable drawable = done.getDrawable();
+                if(drawable instanceof  AnimatedVectorDrawable){
+                    final String word = "save";
+                    done.setVisibility(View.VISIBLE);
+                    avd2 = (AnimatedVectorDrawable) drawable;
+                    revealSaveProgress(theViewBeingSaved, word);
+                    avd2.start();
+                    Toast.makeText(getActivity(),"Schedule saved!", Toast.LENGTH_SHORT).show();
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            hideSaveProgress(theViewBeingSaved, word);
+                            done.setVisibility(View.GONE);
+                        }
+                    }, 1000);   // time it takes before it runs the program
+                }
+            }
+        }, 500);
+    }
+
+    private void noToClearAnimation(final View theViewBeingSaved){
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                Drawable drawable = cross.getDrawable();
+                if(drawable instanceof  AnimatedVectorDrawable){
+                    final String word  =  "clear";
+                    cross.setVisibility(View.VISIBLE);
+                    avd2 = (AnimatedVectorDrawable) drawable;
+                    revealSaveProgress(theViewBeingSaved, word);
+                    avd2.start();
+                    Toast.makeText(getActivity(),":)", Toast.LENGTH_SHORT).show();
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            hideSaveProgress(theViewBeingSaved, word);
+                            cross.setVisibility(View.GONE);
+                        }
+                    }, 1000);   // time it takes before it runs the program
+                }
+            }
+        }, 500);
+    }
+
+
+    private void revealSaveProgress(View v, String word) {
+        if(word.equals("save")) {
+            View view = v.findViewById(R.id.greencircle);
+            int cx = view.getWidth() / 2;
+            int cy = view.getHeight() / 2;
+            float finalRadius = (float) Math.hypot(cx, cy);
+            Animator anim = ViewAnimationUtils.createCircularReveal(view, cx, cy, 0, finalRadius);
+            view.setVisibility(View.VISIBLE);
+            anim.start();
+        }
+        else{
+            View view = v.findViewById(R.id.redcircle);
+            int cx = view.getWidth() / 2;
+            int cy = view.getHeight() / 2;
+            float finalRadius = (float) Math.hypot(cx, cy);
+            Animator anim = ViewAnimationUtils.createCircularReveal(view, cx, cy, 0, finalRadius);
+            view.setVisibility(View.VISIBLE);
+            anim.start();
+        }
+    }
+
+    private void hideSaveProgress(View v, String word) {
+        if(word.equals("save")) {
+            final View view = v.findViewById(R.id.greencircle);
+            int cx = view.getWidth() / 2;
+            int cy = view.getHeight() / 2;
+            float initialRadius = (float) Math.hypot(cx, cy);
+            Animator anim = ViewAnimationUtils.createCircularReveal(view, cx, cy, initialRadius, 0);
+            anim.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+                    view.setVisibility(View.INVISIBLE);
+                }
+            });
+            anim.start();
+        }
+        else{
+            final View view = v.findViewById(R.id.redcircle);
+            int cx = view.getWidth() / 2;
+            int cy = view.getHeight() / 2;
+            float initialRadius = (float) Math.hypot(cx, cy);
+            Animator anim = ViewAnimationUtils.createCircularReveal(view, cx, cy, initialRadius, 0);
+            anim.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+                    view.setVisibility(View.INVISIBLE);
+                }
+            });
+            anim.start();
+        }
     }
 
     private Member addsNameToScheduleDb(){
@@ -316,7 +548,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             String personName = acct.getDisplayName().toLowerCase();
             //for member db object
             thisMember.setaName(personName);
-
         }
         return thisMember;
     }
