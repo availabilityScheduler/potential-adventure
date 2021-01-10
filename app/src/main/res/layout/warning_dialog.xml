@@ -2,20 +2,18 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layoutDialogContainer"
-    android:layout_width="350dp"
-    android:layout_height="750dp"
-    android:layout_margin="20dp"
-    android:padding="20dp">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutDialog"
         android:layout_width="263dp"
         android:layout_height="95dp"
-        android:layout_marginTop="600dp"
+        android:layout_marginTop="300dp"
         android:background="@drawable/dialog_clear_background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -28,7 +26,8 @@
             android:textColor="@color/colorPrimaryText"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="-4dp" />
 
         <ImageView
             android:id="@+id/imageIcon"
@@ -45,21 +44,6 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonYes"
-        android:layout_width="90dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="40dp"
-        android:background="@drawable/neutral_warning_background"
-        android:textColor="@color/colorPrimaryText"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/layoutDialog"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/buttonNo"
-        app:layout_constraintTop_toBottomOf="@+id/layoutDialog"
-        app:layout_constraintVertical_bias="0.925" />
-
-    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonNo"
         android:layout_width="90dp"
         android:layout_height="40dp"
@@ -72,6 +56,21 @@
         app:layout_constraintEnd_toStartOf="@id/buttonYes"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layoutDialog"
-        app:layout_constraintVertical_bias="0.925" />
+        app:layout_constraintVertical_bias="0.475" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonYes"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/neutral_warning_background"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/layoutDialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/buttonNo"
+        app:layout_constraintTop_toBottomOf="@+id/layoutDialog"
+        app:layout_constraintVertical_bias="0.475" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
