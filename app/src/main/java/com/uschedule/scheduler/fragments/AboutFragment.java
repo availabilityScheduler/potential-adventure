@@ -66,7 +66,7 @@ public class AboutFragment extends Fragment {
                     shareIntent.setType("text/plain");
                     shareIntent.putExtra(Intent.EXTRA_SUBJECT, "USchedule");
                     String shareMessage= "\nShare USchedule!\n\n";
-                    shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID +"\n\n";
+                    shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=com.uschedule.scheduler" +"\n\n";
                     shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
                     startActivity(Intent.createChooser(shareIntent, "Sharing options"));
                 } catch(Exception e) {
@@ -89,10 +89,6 @@ public class AboutFragment extends Fragment {
                 .addItem(developersElement)
                 .addItem(legalElement)
                 .addItem(shareElement);
-
-        if (BuildConfig.FLAVOR.equals("playStore")) {
-            aboutPage.addItem(thirdPartyLicenses);
-        }
 
         View aboutPageView = aboutPage.create();
         return aboutPageView;

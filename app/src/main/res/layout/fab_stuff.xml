@@ -7,27 +7,26 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
-        android:transitionName="activity_trans"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="32dp"
-        android:layout_marginEnd="24dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="15dp"
         android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
         android:elevation="16dp"
         android:focusable="true"
+        android:hapticFeedbackEnabled="true"
+        android:transitionName="activity_trans"
         android:visibility="visible"
         app:backgroundTint="#ffffff"
-        app:pressedTranslationZ="12dp"
-        android:hapticFeedbackEnabled="true"
         app:elevation="6dp"
         app:fabSize="mini"
         app:maxImageSize="33dp"
+        app:pressedTranslationZ="12dp"
         app:srcCompat="@drawable/add"
-        app:tint="@null"
-        />
+        app:tint="@null" />
 
 
 </RelativeLayout>

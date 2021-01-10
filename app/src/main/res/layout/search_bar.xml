@@ -63,8 +63,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/result_list"
-        android:layout_width="200dp"
-        android:layout_height="290dp"
+        android:layout_width="237dp"
+        android:layout_height="264dp"
         android:layout_marginTop="27dp"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
